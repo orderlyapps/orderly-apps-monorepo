@@ -1,5 +1,5 @@
 {
-  "name": "@amodeo/ui",
+  "name": "@amodeo/content",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -15,6 +15,12 @@
   },
   "devDependencies": {
     "@amodeo/config": "workspace:^",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
   }
 }

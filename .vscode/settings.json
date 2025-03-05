@@ -1,7 +1,66 @@
 {
+  "commands.workspaceCommands": {
+    "~start": {
+      "nestedItems": {
+        "dev": {
+          "sequence": [
+            {
+              "command": "commands.focusTerminal",
+              "args": {
+                "name": "dev"
+              }
+            },
+            {
+              "command": "workbench.action.terminal.kill"
+            },
+            {
+              "command": "commands.runInTerminal",
+              "args": {
+                "text": " pnpm run dev:${input:app}",
+                "reveal": true,
+                "name": "dev",
+                "reuse": "newest",
+                "waitForExit": true
+              },
+              "inputs": [
+                {
+                  "type": "pickString",
+                  "id": "app",
+                  "description": "Which app to start?",
+                  "options": ["proclaimer", "orderly"]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
   "eslint.workingDirectories": [
     {
       "mode": "auto"
     }
-  ]
+  ],
+
+  "editor.minimap.enabled": false,
+
+  "explorerExclude.backup": {},
+  "explorer.compactFolders": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    ".files": "*"
+  },
+
+  "files.autoSave": "afterDelay",
+  "files.exclude": {
+    "**/.git": false,
+    "**/.svn": false,
+    "**/.hg": false,
+    "**/CVS": false,
+    "**/node_modules": false,
+    "**/.turbo": false,
+    "**/dist": false,
+    "**/dev-dist": false
+  }
 }

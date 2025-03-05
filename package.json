@@ -2,8 +2,10 @@
   "name": "turbo-test",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
+    "build:orderly": "VITE_APP_NAME='orderly' turbo run build",
+    "build:proclaimer": "VITE_APP_NAME='proclaimer' turbo run build",
+    "dev:orderly": "VITE_APP_NAME='orderly' turbo run dev",
+    "dev:proclaimer": "VITE_APP_NAME='proclaimer' turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"

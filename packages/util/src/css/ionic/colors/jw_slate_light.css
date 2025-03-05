@@ -1,0 +1,17 @@
+:root {
+  --ion-color-jw_slate_light: #3c7f8b;
+  --ion-color-jw_slate_light-rgb: 60, 127, 139;
+  --ion-color-jw_slate_light-contrast: #fff;
+  --ion-color-jw_slate_light-contrast-rgb: 0, 0, 0;
+  --ion-color-jw_slate_light-shade: #35707a;
+  --ion-color-jw_slate_light-tint: #508c97;
+}
+
+.ion-color-jw_slate_light {
+  --ion-color-base: var(--ion-color-jw_slate_light);
+  --ion-color-base-rgb: var(--ion-color-jw_slate_light-rgb);
+  --ion-color-contrast: var(--ion-color-jw_slate_light-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-jw_slate_light-contrast-rgb);
+  --ion-color-shade: var(--ion-color-jw_slate_light-shade);
+  --ion-color-tint: var(--ion-color-jw_slate_light-tint);
+}

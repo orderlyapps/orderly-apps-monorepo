@@ -1,0 +1,2 @@
+1. react component files should always be created in a pascal case named file inside a kebab case named folder of the same name.
+2. use snake case for object property names and camel case for function names.

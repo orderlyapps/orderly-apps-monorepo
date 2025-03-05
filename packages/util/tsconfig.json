@@ -1,5 +1,5 @@
 {
-  "extends": "@amodeo/config/typescript/react-library",
+  "extends": "@amodeo/config/typescript/base",
   "compilerOptions": {
     "outDir": "dist"
   },
