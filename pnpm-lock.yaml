@@ -118,6 +118,18 @@ importers:
 
   packages/content:
     dependencies:
+      '@amodeo/data':
+        specifier: workspace:^
+        version: link:../data
+      '@amodeo/feature':
+        specifier: workspace:^
+        version: link:../feature
+      '@amodeo/ui':
+        specifier: workspace:^
+        version: link:../ui
+      '@amodeo/util':
+        specifier: workspace:^
+        version: link:../util
       react:
         specifier: '*'
         version: 19.0.0

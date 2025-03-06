@@ -5,13 +5,14 @@
   "type": "module",
   "exports": {
     "./*": {
-      "types": "./src/*.ts",
+      "types": "./src/*.tsx",
       "default": "./dist/*.js"
     }
   },
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "create-component": "node scripts/create-component.js"
   },
   "devDependencies": {
     "@amodeo/config": "workspace:^",

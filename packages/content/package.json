@@ -5,7 +5,7 @@
   "type": "module",
   "exports": {
     "./*": {
-      "types": "./src/*.ts",
+      "types": "./src/*.tsx",
       "default": "./dist/*.js"
     }
   },
@@ -22,5 +22,11 @@
   "peerDependencies": {
     "react": "*",
     "react-dom": "*"
+  },
+  "dependencies": {
+    "@amodeo/data": "workspace:^",
+    "@amodeo/feature": "workspace:^",
+    "@amodeo/ui": "workspace:^",
+    "@amodeo/util": "workspace:^"
   }
 }
