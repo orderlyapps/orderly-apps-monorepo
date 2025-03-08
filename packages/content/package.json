@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "imports": {
+    "#*": "./dist/*"
+  },
   "exports": {
     "./*": {
       "types": "./src/*.tsx",
@@ -15,8 +18,8 @@
   },
   "devDependencies": {
     "@amodeo/config": "workspace:^",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.1",
     "typescript": "^5.8.2"
   },
   "peerDependencies": {
@@ -27,6 +30,7 @@
     "@amodeo/data": "workspace:^",
     "@amodeo/feature": "workspace:^",
     "@amodeo/ui": "workspace:^",
-    "@amodeo/util": "workspace:^"
+    "@amodeo/util": "workspace:^",
+    "@ionic/react": "^8.4.3"
   }
 }

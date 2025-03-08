@@ -7,6 +7,10 @@
     "./*": {
       "types": "./src/*.ts",
       "default": "./dist/*.js"
+    },
+    "./react-query-provider": {
+      "types": "./src/react-query/provider/react-query-provider.tsx",
+      "default": "./dist/react-query/provider/react-query-provider.js"
     }
   },
   "scripts": {
@@ -15,6 +19,18 @@
   },
   "devDependencies": {
     "@amodeo/config": "workspace:^",
-    "typescript": "^5.8.2"
+    "@types/react": "^18.3.0",
+    "type-fest": "^4.37.0",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "@tanstack/react-query": "^5.67.1",
+    "@tanstack/react-query-devtools": "^5.67.1",
+    "zustand": "^5.0.3"
+  },
+  "peerDependencies": {
+    "react": "*"
   }
 }

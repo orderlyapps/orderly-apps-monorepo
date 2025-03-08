@@ -4,13 +4,15 @@
   "scripts": {
     "build:orderly": "VITE_APP_NAME='orderly' turbo run build",
     "build:proclaimer": "VITE_APP_NAME='proclaimer' turbo run build",
-    "dev:orderly": "VITE_APP_NAME='orderly' turbo run dev",
+    "dev:orderly": "VITE_APP_NAME='orderly' dotenv -- turbo run dev",
     "dev:proclaimer": "VITE_APP_NAME='proclaimer' turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@turbo/gen": "^2.4.4",
+    "dotenv-cli": "^8.0.0",
     "prettier": "^3.5.0",
     "turbo": "^2.4.4",
     "typescript": "5.7.3"

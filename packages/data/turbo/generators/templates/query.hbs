@@ -1,0 +1,57 @@
+/**
+ * {{pascalCase name}}
+ * 
+ * @description Hook for fetching {{name}} data
+ */
+import { useQuery } from '@tanstack/react-query';
+
+/**
+ * Query key for {{name}}
+ */
+export const {{camelCase name}}_query_key = ['{{camelCase name}}'] as const;
+
+/**
+ * Fetch {{name}} data from API
+ * 
+ * @param {object} params - Parameters for the query 
+ * @returns {Promise<any>} The query result
+ */
+export const fetch{{pascalCase name}} = async (params: { query_params?: Record<string, any> } = {}): Promise<any> => {
+  const { query_params = {} } = params;
+  
+  // Replace with your actual API call logic
+  const response = await fetch(`/api/{{kebabCase name}}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: Object.keys(query_params).length ? JSON.stringify(query_params) : undefined,
+  });
+  
+  if (!response.ok) {
+    throw new Error('Failed to fetch {{name}} data');
+  }
+  
+  return response.json();
+};
+
+/**
+ * {{pascalCase name}} component
+ * 
+ * @param {object} params - Parameters for the query
+ * @param {Record<string, any>} params.query_params - Query parameters
+ * @param {object} params.options - Additional query options
+ * @returns {UseQueryResult} The query result
+ */
+export default function {{pascalCase name}}(params: {
+  query_params?: Record<string, any>;
+  options?: Parameters<typeof useQuery>[2];
+} = {}) {
+  const { query_params = {}, options = {} } = params;
+  
+  return useQuery({
+    queryKey: [...{{camelCase name}}_query_key, query_params],
+    queryFn: () => fetch{{pascalCase name}}({ query_params }),
+    ...options,
+  });
+}
