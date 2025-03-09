@@ -32,6 +32,24 @@
               ]
             }
           ]
+        },
+        "commit": {
+          "sequence": [
+            {
+              "command": "git.stageAll"
+            },
+            {
+              "command": "commands.run",
+              "args": [
+                {
+                  "command": "extension.conventionalCommits"
+                }
+              ]
+            },
+            {
+              "command": "git.sync"
+            }
+          ]
         }
       }
     }
