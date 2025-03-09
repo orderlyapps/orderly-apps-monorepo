@@ -1,3 +1,4 @@
 1. react component files should always be created in a pascal case named file inside a kebab case named folder of the same name.
 2. use snake case for object property names and camel case for function names.
 3. i use plop for generating files when creating new components.
+4. this is a pnpm turborepo monorepo

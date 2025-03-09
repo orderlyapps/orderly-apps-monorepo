@@ -1,0 +1,141 @@
+:root {
+  --background-grey-light: #ddd;
+  --border-grey-light: #c7c7c7;
+
+  /*Color of the Backdrop component */
+  /* --ion-backdrop-color: #fff; */
+
+  /*Opacity of the Backdrop component */
+  /* --ion-backdrop-opacity: #fff; */
+
+  /*Background color of the overlays */
+  /* --ion-overlay-background-color: #fff; */
+
+  /*Border color */
+  /* --ion-border-color: #fff; */
+
+  /*Box shadow color */
+  /* --ion-box-shadow-color: #fff; */
+
+  /*Background of the Tab Bar */
+  --ion-tab-bar-background: var(--background-grey-light);
+
+  /*Background of the focused Tab Bar */
+  --ion-tab-bar-background-focused: var(--background-grey-light);
+
+  /*Border color of the Tab Bar */
+  --ion-tab-bar-border-color: var(--border-grey-light);
+
+  /*Color of the Tab Bar */
+  /* --ion-tab-bar-color: #fff; */
+
+  /*Color of the selected Tab Button */
+  /* --ion-tab-bar-color-selected: #fff; */
+
+  /*Background of the Toolbar */
+  --ion-toolbar-background: var(--background-grey-light);
+
+  /*Border color of the Toolbar */
+  --ion-toolbar-border-color: var(--border-grey-light);
+
+  /*Color of the components in the Toolbar */
+  /* --ion-toolbar-color: #fff; */
+
+  /*Color of the Segment Buttons in the Toolbar */
+  /* --ion-toolbar-segment-color: #fff; */
+
+  /*Color of the checked Segment Buttons in the Toolbar */
+  /* --ion-toolbar-segment-color-checked: #fff; */
+
+  /*Background of the Segment Buttons in the Toolbar */
+  --ion-toolbar-segment-background: var(--background-grey-light);
+
+  /*Background of the Segment Buttons in the Toolbar */
+  /* --ion-toolbar-segment-background-checked: #fff; */
+
+  /*Color of the Segment Button indicator in the Toolbar */
+  /* --ion-toolbar-segment-indicator-color: #fff; */
+
+  /*Background of the Item */
+  /* --ion-item-background: #fff; */
+
+  /*Border color of the Item */
+  /* --ion-item-border-color: #fff; */
+
+  /*Color of the components in the Item */
+  /* --ion-item-color: #fff; */
+
+  /*Color of the placeholder in Inputs*/
+  /* --ion-placeholder-color: #fff; */
+}
+
+.ion-palette-dark {
+  --background-grey-dark: #272727;
+  --border-grey-dark: #444;
+
+  /*Color of the Backdrop component */
+  /* --ion-backdrop-color: #fff; */
+
+  /*Opacity of the Backdrop component */
+  /* --ion-backdrop-opacity: #fff; */
+
+  /*Background color of the overlays */
+  /* --ion-overlay-background-color: #fff; */
+
+  /*Border color */
+  /* --ion-border-color: #fff; */
+
+  /*Box shadow color */
+  /* --ion-box-shadow-color: #fff; */
+
+  /*Background of the Tab Bar */
+  --ion-tab-bar-background: var(--background-grey-dark);
+
+  /*Background of the focused Tab Bar */
+  --ion-tab-bar-background-focused: var(--background-grey-dark);
+
+  /*Border color of the Tab Bar */
+  --ion-tab-bar-border-color: var(--border-grey-dark);
+
+  /*Color of the Tab Bar */
+  /* --ion-tab-bar-color: #fff; */
+
+  /*Color of the selected Tab Button */
+  /* --ion-tab-bar-color-selected: #fff; */
+
+  /*Background of the Toolbar */
+  --ion-toolbar-background: var(--background-grey-dark);
+
+  /*Border color of the Toolbar */
+  --ion-toolbar-border-color: var(--border-grey-dark);
+
+  /*Color of the components in the Toolbar */
+  /* --ion-toolbar-color: #fff; */
+
+  /*Color of the Segment Buttons in the Toolbar */
+  /* --ion-toolbar-segment-color: #fff; */
+
+  /*Color of the checked Segment Buttons in the Toolbar */
+  /* --ion-toolbar-segment-color-checked: #fff; */
+
+  /*Background of the Segment Buttons in the Toolbar */
+  --ion-toolbar-segment-background: var(--background-grey-dark);
+
+  /*Background of the Segment Buttons in the Toolbar */
+  /* --ion-toolbar-segment-background-checked: #fff; */
+
+  /*Color of the Segment Button indicator in the Toolbar */
+  /* --ion-toolbar-segment-indicator-color: #fff; */
+
+  /*Background of the Item */
+  /* --ion-item-background: #fff; */
+
+  /*Border color of the Item */
+  /* --ion-item-border-color: #fff; */
+
+  /*Color of the components in the Item */
+  /* --ion-item-color: #fff; */
+
+  /*Color of the placeholder in Inputs*/
+  /* --ion-placeholder-color: #fff; */
+}

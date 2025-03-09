@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./css/*": {
+      "types": "./src/css/types.d.ts",
+      "default": "./src/css/app/*.css"
+    },
     "./*": {
       "types": "./src/*.ts",
       "default": "./dist/*.js"

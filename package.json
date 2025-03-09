@@ -2,10 +2,10 @@
   "name": "turbo-test",
   "private": true,
   "scripts": {
-    "build:orderly": "VITE_APP_NAME='orderly' turbo run build",
-    "build:proclaimer": "VITE_APP_NAME='proclaimer' turbo run build",
+    "build:orderly": "VITE_APP_NAME='orderly' dotenv -- turbo run build",
+    "build:proclaimer": "VITE_APP_NAME='proclaimer' dotenv -- turbo run build",
     "dev:orderly": "VITE_APP_NAME='orderly' dotenv -- turbo run dev",
-    "dev:proclaimer": "VITE_APP_NAME='proclaimer' turbo run dev",
+    "dev:proclaimer": "VITE_APP_NAME='proclaimer' dotenv -- turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"

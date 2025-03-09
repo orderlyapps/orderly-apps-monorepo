@@ -4,6 +4,10 @@
   "private": true,
   "type": "module",
   "exports": {
+    "./util/*": {
+      "types": "./src/*.ts",
+      "default": "./dist/*.js"
+    },
     "./*": {
       "types": "./src/*.tsx",
       "default": "./dist/*.js"
@@ -27,6 +31,7 @@
   },
   "dependencies": {
     "@amodeo/data": "workspace:^",
+    "@amodeo/util": "workspace:^",
     "@ionic/react": "^8.0.0",
     "@ionic/react-router": "^8.4.3",
     "ionicons": "^7.4.0",

@@ -1,22 +1,21 @@
 // import { ORDERLY_ROUTES } from "@workspace/pages/ORDERLY_ROUTES";
 // import { ORDERLY_ROUTES } from "@workspace/content/orderly";
 
-// import { IonTabsApp } from "@workspace/ionic/IonTabsApp";
-
-// import "@workspace/css/utilities";
-// import "@workspace/css/jw_colors";
-// import "@workspace/css/orderly";
 import { ReactQueryProvider } from "@amodeo/data/react-query-provider";
-import { IonTabsApp } from "@amodeo/ui/ionic/ion-tabs-app/IonTabsApp";
-// import { UpdateNotification } from "@workspace/ionic/UpdateNotification";
+import { TabsApp } from "@amodeo/ui/ionic/tabs-app/TabsApp";
+import { UpdateNotification } from "@amodeo/ui/ionic/update-notification/UpdateNotification";
+
+import "@amodeo/ui/ionic/tabs-app/utils/ionicInit";
+import "@amodeo/util/css/orderly";
+import { ORDERLY_ROUTES } from "./routes.js";
 
 export function Orderly({ useRegisterSW }: { useRegisterSW?: any }) {
   return (
     <ReactQueryProvider>
-      <IonTabsApp 
-      // pages={ORDERLY_ROUTES}
-      ></IonTabsApp>
-      {/* <UpdateNotification useRegisterSW={useRegisterSW} /> */}
+      <TabsApp
+      pages={ORDERLY_ROUTES}
+      ></TabsApp>
+      <UpdateNotification useRegisterSW={useRegisterSW} />
     </ReactQueryProvider>
   );
 }
