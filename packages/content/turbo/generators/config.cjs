@@ -1,35 +1,5 @@
 /** @param plop {import('@turbo/gen').PlopTypes.NodePlopAPI} */
 module.exports = (plop) => {
-  // A simple generator to add a new React component to the internal UI library
-  plop.setGenerator("content-component", {
-    description: "",
-    prompts: [
-      {
-        type: "input",
-        name: "name",
-        message: "What is the name of the content component?",
-      },
-      // {
-      //   type: "input",
-      //   name: "folder",
-      //   message: "What folder should this go in? (Leave empty for root)",
-      // },
-      {
-        type: "list",
-        name: "folder",
-        message: "What folder should this go in? (Leave empty for root)",
-        choices: ["details", "lists", "feature", "modals"],
-      },
-    ],
-    actions: [
-      {
-        type: "add",
-        path: "src/components/{{#if folder}}{{folder}}/{{/if}}{{kebabCase name}}/{{pascalCase name}}.tsx",
-        templateFile: "templates/component.hbs",
-      },
-    ],
-  });
-
   plop.setGenerator("ionic-page", {
     description: "",
     prompts: [
@@ -61,6 +31,11 @@ module.exports = (plop) => {
         type: "add",
         path: "src/shells/{{kebabCase app}}/pages/{{ section }}/{{#if folder}}{{folder}}/{{/if}}{{kebabCase name}}/{{pascalCase name}}Page.tsx",
         templateFile: "templates/page.hbs",
+      },
+      {
+        type: "add",
+        path: "src/content/{{kebabCase name}}/{{pascalCase name}}.tsx",
+        templateFile: "templates/component.hbs",
       },
       {
         type: "append",

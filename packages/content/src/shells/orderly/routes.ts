@@ -14,7 +14,7 @@ import {
   settings,
 } from "@amodeo/ui/util/ionic/icons/icons";
 
-export const ORDERLY_PAGES: Record<string, Route> = {
+export const ORDERLY_PAGES = {
   // home: {
   //   path: "/home",
   //   tab: "Home",

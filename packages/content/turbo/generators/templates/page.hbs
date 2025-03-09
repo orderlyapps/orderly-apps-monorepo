@@ -8,8 +8,9 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import { Suspense } from 'react';
-import { IonLoadingSpinner } from "@workspace/ionic/IonLoadingSpinner";
+import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
+import { {{ pascalCase name }} } from "../../../../../content/{{ kebabCase name }}/{{ pascalCase name }}.js";
 
 export default function {{ pascalCase name }}Page() {
   return (
@@ -23,9 +24,9 @@ export default function {{ pascalCase name }}Page() {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <Suspense fallback={<IonLoadingSpinner />}>
+        <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            {{ pascalCase name }} 
+            <{{ pascalCase name }}></{{ pascalCase name }}>
           </ErrorBoundary>
         </Suspense>
       </IonContent>
