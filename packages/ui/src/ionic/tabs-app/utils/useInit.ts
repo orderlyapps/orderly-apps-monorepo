@@ -1,5 +1,5 @@
 import { supabase } from "@amodeo/data/supabase/client";
-import { useStore } from "@amodeo/data/zustand/use-store";
+import { useStore } from "@amodeo/data/zustand/stores/use-store";
 import { useEffect } from "react";
 
 export function useInit() {

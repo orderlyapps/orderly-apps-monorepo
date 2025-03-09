@@ -1,7 +1,6 @@
 import { Database as DatabaseGenerated } from "./exported-types-remote.js";
 import { MergeDeep } from "type-fest";
 
-
 // Override the type for a specific column in a view:
 export type Database = MergeDeep<
   DatabaseGenerated,
@@ -44,12 +43,6 @@ export type Database = MergeDeep<
           Row: {
             publisher: Tables<"publishers">;
             congregation: Tables<"congregations"> | null;
-            midweek_assignments:
-              | { week_id: string; assignment: MidweekAssignment }[]
-              | null;
-            weekend_assignments:
-              | { week_id: string; assignment: WeekendAssignment }[]
-              | null;
             outlines: Tables<"outlines">[] | null;
           };
         };
@@ -76,86 +69,6 @@ export type Database = MergeDeep<
     };
   }
 >;
-
-export type ViewNames = keyof DatabaseGenerated["public"]["Views"];
-export type TableNames = keyof DatabaseGenerated["public"]["Tables"];
-export type ColumnNames<T extends ViewNames | TableNames> = keyof Tables<T>;
-export type MidweekAssignment =
-  DatabaseGenerated["public"]["Enums"]["midweek_assignment"];
-export type WeekendAssignment =
-  DatabaseGenerated["public"]["Enums"]["weekend_assignment"];
-
-// VIEWS
-
-export type PublisherView = {
-  id: string;
-  congregation: Tables<"congregations"> | null;
-  publisher: Tables<"publishers">;
-  outlines: Tables<"outlines">[] | null;
-  midweek_assignments:
-    | { week_id: string; assignment: MidweekAssignment }[]
-    | null;
-  midweek_participation: MidweekAssignment[];
-  weekend_assignments:
-    | { week_id: string; assignment: WeekendAssignment }[]
-    | null;
-  weekend_participation: WeekendAssignment[];
-  speaker_assignments: {
-    week_id: string;
-    outline: Tables<"outlines">;
-    congregation: Tables<"congregations">;
-  }[];
-  speaker_availability: number;
-};
-
-export type ScheduleView = {
-  week_id: string;
-  congregation_id: string;
-  congregation_name: string;
-  midweek_meeting_data: Tables<"midweek_meeting_data">;
-  midweek_assignments: Record<MidweekAssignment, Tables<"publishers"> | null>;
-  weekend_meeting_data: Tables<"weekend_meeting_data">;
-  weekend_assignments: Record<WeekendAssignment, Tables<"publishers"> | null>;
-  public_talk_details: {
-    speaker: PublisherView;
-    outline: Tables<"outlines">;
-  };
-  speaker_assignments: {
-    speaker: PublisherView;
-    outline: Tables<"outlines">;
-    congregation: Tables<"congregations">;
-  }[];
-};
-
-export type AvailableSpeakersView = {
-  week_id: string;
-  congregation_id: string;
-  congregation: Tables<"congregations">;
-  speakers: { speaker: Tables<"publishers">; outlines: Tables<"outlines">[] }[];
-};
-
-export type SpeakerScheduleView = {
-  week_id: string;
-  congregation_id: string;
-  congregation: Tables<"congregations">;
-  available_speakers: {
-    speaker: Tables<"publishers">;
-    outlines: Tables<"outlines">[];
-  }[];
-  public_talk_details: {
-    speaker: {
-      publisher: Tables<"publishers">;
-      congregation: Tables<"congregations">;
-      outlines: Tables<"outlines">[];
-    };
-    outline: Tables<"outlines">;
-  }[];
-  outgoing_speakers: {
-    speaker: Tables<"publishers">;
-    outline: Tables<"outlines">;
-    congregation: Tables<"congregations">;
-  }[];
-};
 
 // TYPE FACTORIES
 
