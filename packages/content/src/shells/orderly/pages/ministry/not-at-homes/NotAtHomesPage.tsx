@@ -3,40 +3,35 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonList,
   IonPage,
   IonTitle,
   IonToolbar,
-} from "@ionic/react";
-import { Suspense } from "react";
+} from '@ionic/react';
+import { Suspense } from 'react';
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { ThemeSelect } from "@amodeo/ui/ionic/theme-select/ThemeSelect";
-import { BuildTime } from "@amodeo/ui/ionic/build-time/BuildTime";
+import { NotAtHomes } from "../../../../../content/not-at-homes/NotAtHomes.js";
 
-export default function SettingsPage() {
+export default function NotAtHomesPage() {
   return (
-    <IonPage>
+       <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="start">
+          <IonButtons slot='start'>
             <IonBackButton></IonBackButton>
           </IonButtons>
-          <IonTitle>Settings</IonTitle>
+          <IonTitle>Not At Homes</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <IonList inset>
-              <ThemeSelect />
-              <BuildTime />
-            </IonList>
+            <NotAtHomes></NotAtHomes>
           </ErrorBoundary>
         </Suspense>
       </IonContent>
     </IonPage>
   );
-}
+};
 
 //generated using packages content turbo generators templates page.hbs

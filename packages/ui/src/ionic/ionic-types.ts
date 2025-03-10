@@ -1,0 +1,18 @@
+export type IonicThemeColors =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "success"
+  | "warning"
+  | "danger"
+  | "light"
+  | "medium"
+  | "dark"
+  | "jw_blue"
+  | "jw_brown"
+  | "jw_slate"
+  | "jw_red"
+  | "jw_red_light"
+  | "jw_brown_light"
+  | "jw_slate_light"
+  | "jw_red_light";

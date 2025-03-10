@@ -2,14 +2,29 @@ import { create } from "zustand";
 import { createSelectors } from "../helpers/create-selectors.js";
 import { combine } from "zustand/middleware";
 import { setTheme, theme, ThemeOption } from "../slices/theme/use-theme.js";
+import {
+  setMapView,
+  mapView,
+  MapView,
+} from "../slices/map-view/use-map-view.js";
+import {
+  congregation,
+  setCongregation,
+} from "../slices/congregation/use-congregation.js";
 
 const initialState = {
   theme,
-} as const;
+  mapView,
+  congregation,
+};
 
-const actions = (set: (state: typeof initialState) => void) => {
+const actions = (set: (state: any) => void) => {
   return {
-    setTheme: setTheme(set),
+    setTheme: setTheme(set as (state: { theme: ThemeOption }) => void),
+    setMapView: setMapView(set as (state: { mapView: MapView }) => void),
+    setCongregation: setCongregation(
+      set as (state: { congregation: string }) => void
+    ),
   };
 };
 

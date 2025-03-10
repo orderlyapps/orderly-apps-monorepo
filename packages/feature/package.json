@@ -4,8 +4,12 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./*": {
+    "./util/*": {
       "types": "./src/*.ts",
+      "default": "./dist/*.js"
+    },
+    "./*": {
+      "types": "./src/*.tsx",
       "default": "./dist/*.js"
     }
   },
@@ -15,6 +19,17 @@
   },
   "devDependencies": {
     "@amodeo/config": "workspace:^",
+    "@types/geojson": "^7946.0.16",
+    "@types/react": "^18.3.12",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@amodeo/data": "workspace:^",
+    "@vis.gl/react-maplibre": "^8.0.1",
+    "maplibre-gl": "^5.2.0"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
   }
 }

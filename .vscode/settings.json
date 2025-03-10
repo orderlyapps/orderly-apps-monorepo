@@ -33,6 +33,7 @@
             }
           ]
         },
+
         "commit": {
           "sequence": [
             {
@@ -48,6 +49,18 @@
             },
             {
               "command": "git.sync"
+            }
+          ]
+        },
+
+        "gen": {
+          "sequence": [
+            {
+              "command": "commands.runInTerminal",
+              "args": {
+                "text": "turbo gen",
+                "reveal": true
+              }
             }
           ]
         }
@@ -67,7 +80,8 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    ".files": "*"
+    ".files": "*",
+    "*.js": "${capture}.d.ts, ${capture}.d.ts.map"
   },
 
   "files.autoSave": "afterDelay",

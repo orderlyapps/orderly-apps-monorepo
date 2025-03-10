@@ -15,6 +15,18 @@ import {
 } from "@amodeo/ui/util/ionic/icons/icons";
 
 export const ORDERLY_PAGES = {
+  midweek_meeting:{
+    path: '/schedules/midweek-meeting',
+    Component: lazy(
+      () => import('./pages/schedules/midweek-meeting/MidweekMeetingPage.js')
+    ),
+  },
+  not_at_homes:{
+    path: '/ministry/not-at-homes',
+    Component: lazy(
+      () => import('./pages/ministry/not-at-homes/NotAtHomesPage.js')
+    ),
+  },
   // home: {
   //   path: "/home",
   //   tab: "Home",
