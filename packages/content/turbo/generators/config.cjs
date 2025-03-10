@@ -44,6 +44,7 @@ module.exports = (plop) => {
         template:
           "  {{ snakeCase name }}:{\n" +
           "    path: '/{{ section }}/{{ kebabCase name}}',\n" +
+          "    // params: '{ id: '' }',\n" +
           "    Component: lazy(\n" +
           "      () => import('./pages/{{ section }}/{{#if folder}}{{folder}}/{{/if}}{{kebabCase name}}/{{pascalCase name}}Page.js')\n" +
           "    ),\n" +

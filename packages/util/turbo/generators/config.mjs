@@ -1,8 +1,7 @@
-import type { PlopTypes } from "@turbo/gen";
+// @ts-check
 
-// Learn more about Turborepo Generators at https://turbo.build/repo/docs/core-concepts/monorepos/code-generation
-
-export default function generator(plop: PlopTypes.NodePlopAPI): void {
+/** @param {import('@turbo/gen').PlopTypes.NodePlopAPI} plop */
+export default function generator(plop) {
   // A simple generator to add a new TypeScript utility file
   plop.setGenerator("typescript-util", {
     description: "Adds a new TypeScript utility file",
@@ -21,9 +20,9 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
           { name: "formatters", value: "src/formatters" },
           { name: "validators", value: "src/validators" },
           { name: "types", value: "src/types" },
-          { name: "constants", value: "src/constants" }
-        ]
-      }
+          { name: "constants", value: "src/constants" },
+        ],
+      },
     ],
     actions: [
       {

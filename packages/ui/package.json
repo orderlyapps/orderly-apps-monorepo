@@ -34,6 +34,7 @@
     "@amodeo/util": "workspace:^",
     "@ionic/react": "^8.0.0",
     "@ionic/react-router": "^8.4.3",
+    "date-fns": "^4.1.0",
     "ionicons": "^7.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

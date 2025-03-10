@@ -15,16 +15,26 @@ import {
 } from "@amodeo/ui/util/ionic/icons/icons";
 
 export const ORDERLY_PAGES = {
-  midweek_meeting:{
-    path: '/schedules/midweek-meeting',
+  midweek_meeting_details: {
+    path: "/schedules/midweek-meeting-details",
+    params: { week: "" },
     Component: lazy(
-      () => import('./pages/schedules/midweek-meeting/MidweekMeetingPage.js')
+      () =>
+        import(
+          "./pages/schedules/midweek-meeting-details/MidweekMeetingDetailsPage.js"
+        )
     ),
   },
-  not_at_homes:{
-    path: '/ministry/not-at-homes',
+  midweek_meeting: {
+    path: "/schedules/midweek-meeting",
     Component: lazy(
-      () => import('./pages/ministry/not-at-homes/NotAtHomesPage.js')
+      () => import("./pages/schedules/midweek-meeting/MidweekMeetingPage.js")
+    ),
+  },
+  not_at_homes: {
+    path: "/ministry/not-at-homes",
+    Component: lazy(
+      () => import("./pages/ministry/not-at-homes/NotAtHomesPage.js")
     ),
   },
   // home: {
