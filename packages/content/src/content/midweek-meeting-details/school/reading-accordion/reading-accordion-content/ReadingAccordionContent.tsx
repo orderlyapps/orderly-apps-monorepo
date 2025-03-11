@@ -1,6 +1,5 @@
 import { IonItem, IonLabel, IonText } from "@ionic/react";
 import { Tables } from "@amodeo/data/supabase/supabase-types";
-import { formatName } from "@amodeo/util/formatters/formatName";
 import { ReadingMessageButton } from "./reading-message-button/ReadingMessageButton.js";
 
 interface ReadingAccordionContentProps {

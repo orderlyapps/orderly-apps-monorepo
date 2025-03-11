@@ -1,9 +1,9 @@
-import { Map, MapRef } from "@vis.gl/react-maplibre";
+import { Map, MapRef, ViewStateChangeEvent } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { MapLayerMouseEvent, StyleSpecification } from "maplibre-gl";
 import { forwardRef, ForwardedRef } from "react";
-import light from "./styles/light.json";
-import dark from "./styles/dark.json";
+import light from "./styles/light.json" with { type: "json" };
+import dark from "./styles/dark.json" with { type: "json" };
 import { useStore } from "@amodeo/data/zustand/stores/use-store";
 
 export const MapLibre = forwardRef(
@@ -24,7 +24,7 @@ export const MapLibre = forwardRef(
     return (
       <Map
         initialViewState={mapView}
-        onMove={setMapView}
+        onMove={(e: ViewStateChangeEvent) => setMapView(e.viewState)}
         mapStyle={
           theme === "dark"
             ? (dark as StyleSpecification)
@@ -33,6 +33,7 @@ export const MapLibre = forwardRef(
         reuseMaps
         attributionControl={false}
         onClick={(event: MapLayerMouseEvent) => {
+          console.log("🚀 ~ event:", event);
           onClick?.(event);
         }}
         ref={ref}

@@ -1,7 +1,6 @@
 import { IonButton, IonIcon, IonItem } from "@ionic/react";
 import { chatboxOutline } from "ionicons/icons";
 import { Tables } from "@amodeo/data/supabase/supabase-types";
-import { formatName } from "@amodeo/util/formatters/formatName";
 
 interface ReadingMessageButtonProps {
   data: {

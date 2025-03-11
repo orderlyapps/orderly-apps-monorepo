@@ -16,9 +16,11 @@ import { Fragment, Suspense, useState } from "react";
 import { LoadingSpinner } from "../loading-spinner/LoadingSpinner.js";
 import { formatWeekDate } from "@amodeo/util/dateTime/format-week-dat/formatWeekDate";
 
+export type PathFunction = ReturnType<typeof getPaths>;
+
 export const WeeksList = <
   Props extends {
-    pathFunction: ReturnType<typeof getPaths>;
+    pathFunction: PathFunction;
     page: Parameters<Props["pathFunction"]>[0];
     icon: string;
   },

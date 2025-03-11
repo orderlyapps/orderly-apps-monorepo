@@ -1,4 +1,4 @@
-import { UserConfig, ConfigEnv } from "vite";
+import { UserConfig } from "vite";
 
 export const vitePWAConfigBase: (
   __filename: string,

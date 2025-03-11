@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dev": "tsc --watch",
-    "create-component": "node scripts/create-component.js"
+    "build": "tsc"
   },
   "devDependencies": {
     "@amodeo/config": "workspace:^",

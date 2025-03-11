@@ -3,8 +3,9 @@ import { useStore } from "@amodeo/data/zustand/stores/use-store";
 import { useEffect } from "react";
 
 export function useInit() {
-  const setStoreProperties = useStore.use.setStoreProperties();
-  const theme = useStore.use.theme();
+  // TODO remove type assertions
+  const setStoreProperties: any = useStore.use.setStoreProperties();
+  const theme: any = useStore.use.theme();
 
   // const toggleDarkPalette = (shouldAdd: boolean) => {
   //   document.documentElement.classList.toggle("ion-palette-dark", shouldAdd);

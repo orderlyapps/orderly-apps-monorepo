@@ -31,7 +31,7 @@ export const ApplyAccordionContent = ({ data, school, part }: ApplyAccordionCont
         </IonItem>
       )}
 
-      <IonItem key={part} lines="none">
+      <IonItem lines="none">
         <IonLabel>
           <IonText>
             <strong>Time: </strong>
@@ -40,7 +40,7 @@ export const ApplyAccordionContent = ({ data, school, part }: ApplyAccordionCont
         </IonLabel>
       </IonItem>
 
-      <IonItem key={part} lines="none">
+      <IonItem lines="none">
         <IonLabel>
           <IonText>
             <strong>Details: </strong>

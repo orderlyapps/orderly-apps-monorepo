@@ -4,7 +4,6 @@ import {
   getPaths,
   getRoutes,
   getUseParams,
-  Route,
 } from "@amodeo/ui/util/ionic/tabs-app/utils/pathFunctions";
 import {
   schedules,
