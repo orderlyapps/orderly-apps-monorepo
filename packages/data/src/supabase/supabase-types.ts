@@ -6,63 +6,15 @@ export type Database = MergeDeep<
   DatabaseGenerated,
   {
     public: {
-      Tables: {
-        suburbs_2: {
-          Row: {
-            bbox: [number, number, number, number];
-            center: [number, number];
-          };
-          Insert: {
-            bbox: [number, number, number, number];
-            center: [number, number];
-          };
-          Update: {
-            bbox?: [number, number, number, number];
-            center?: [number, number];
-          };
-        };
-        not_at_homes: {
-          Insert: {
-            location: [number, number];
-          };
-          Update: {
-            location?: [number, number];
-          };
-        };
-        streets: {
-          Insert: {
-            coordinates: [number, number];
-          };
-          Update: {
-            coordinates?: [number, number];
-          };
-        };
-      };
+      Tables: {};
       Views: {
-        _view_publishers: {
+        _view_midweek_meeting_schedule: {
           Row: {
-            publisher: Tables<"publishers">;
-            congregation: Tables<"congregations"> | null;
-            outlines: Tables<"outlines">[] | null;
-          };
-        };
-        _view_public_talks: {
-          Row: {
-            speaker: Tables<"publishers">;
-            outline: Tables<"outlines">;
-          };
-        };
-        _view_weekend_meeting_schedule: {
-          Row: {
-            speakers: {
-              speaker: Tables<"_view_publishers_simple">;
-              outline: Tables<"outlines">;
-              congregation: Tables<"congregations"> | null;
-            }[];
-            outline: Tables<"outlines">;
-            weekend_meeting_dataL: Tables<"weekend_meeting_data">;
-            chairman: Tables<"publishers">;
-            reader: Tables<"publishers">;
+            midweek_meeting_data: Tables<"midweek_meeting_data">;
+            midweek_assignments: Record<
+              DatabaseGenerated["public"]["Enums"]["midweek_assignment"],
+              Tables<"publishers">
+            >;
           };
         };
       };

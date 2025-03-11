@@ -13,6 +13,7 @@ import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner"
 import { ErrorBoundary } from "react-error-boundary";
 import { ThemeSelect } from "@amodeo/ui/ionic/theme-select/ThemeSelect";
 import { BuildTime } from "@amodeo/ui/ionic/build-time/BuildTime";
+import { CongregationSelect } from "@amodeo/ui/ionic/congregation-select/CongregationSelect";
 
 export default function SettingsPage() {
   return (
@@ -31,6 +32,7 @@ export default function SettingsPage() {
             <IonList inset>
               <ThemeSelect />
               <BuildTime />
+              <CongregationSelect />
             </IonList>
           </ErrorBoundary>
         </Suspense>

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../../../supabase/client.js";
+import { useStore } from "../../../zustand/stores/use-store.js";
 
 export const useMidweekMeetingScheduleDetailsQuery = (week_id: string) =>
   useQuery({
@@ -8,7 +9,7 @@ export const useMidweekMeetingScheduleDetailsQuery = (week_id: string) =>
       const { data, error } = await supabase
         .from("_view_midweek_meeting_schedule")
         .select("*")
-        .eq("congregation_id", "a42cc43a-562f-4ed4-ac74-73dfdb42aaa5")
+        .eq("congregation_id", useStore.getState().congregation)
         .eq("week_id", week_id)
         .single();
 

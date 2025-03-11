@@ -145,6 +145,9 @@ importers:
       '@ionic/react':
         specifier: ^8.4.3
         version: 8.4.3(react-dom@19.0.0)(react@19.0.0)
+      ionicons:
+        specifier: ^7.4.0
+        version: 7.4.0
       react:
         specifier: '*'
         version: 19.0.0

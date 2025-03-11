@@ -63,6 +63,37 @@
               }
             }
           ]
+        },
+
+        "snippets": {
+          "command": "commands.run",
+          "args": [
+            {
+              "command": "library-snippets"
+            }
+          ]
+        }
+      }
+    },
+    "library": {
+      "nestedItems": {
+        "library-snippets": {
+          "nestedItems": {
+            "react": {
+              "command": "editor.action.insertSnippet",
+              "args": {
+                "name": "${input:snippet}"
+              },
+              "inputs": [
+                {
+                  "type": "pickString",
+                  "id": "snippet",
+                  "description": "Which wrap in fragment to use?",
+                  "options": ["-Wrap in fragment","-React Component","-Map Array to List"]
+                }
+              ]
+            }
+          }
         }
       }
     }
@@ -81,19 +112,21 @@
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     ".files": "*",
-    "*.js": "${capture}.d.ts, ${capture}.d.ts.map"
+    "*.js": "${capture}.d.ts, ${capture}.d.ts.map",
+    ".snippets": "*.code-snippets"
   },
 
   "files.autoSave": "afterDelay",
   "files.exclude": {
-    "**/.git": false,
-    "**/.svn": false,
-    "**/.hg": false,
-    "**/CVS": false,
-    "**/node_modules": false,
-    "**/.turbo": false,
-    "**/dist": false,
-    "**/dev-dist": false,
-    "**/turbo": false
-  }
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/node_modules": true,
+    "**/.turbo": true,
+    "**/dist": true,
+    "**/dev-dist": true,
+    "**/turbo": true
+  },
+  "editor.linkedEditing": true
 }

@@ -32,6 +32,7 @@
     "@amodeo/ui": "workspace:^",
     "@amodeo/util": "workspace:^",
     "@ionic/react": "^8.4.3",
+    "ionicons": "^7.4.0",
     "react-error-boundary": "^5.0.0"
   }
 }
