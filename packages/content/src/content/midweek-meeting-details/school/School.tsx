@@ -1,6 +1,7 @@
 import { IonList, IonListHeader } from "@ionic/react";
 import { Tables } from "@amodeo/data/supabase/supabase-types";
 import { ApplyAccordion } from "./apply-accordion/ApplyAccordion.js";
+import { ReadingAccordion } from "./reading-accordion/ReadingAccordion.js";
 
 type SchoolPartsListProps = {
   data: {
@@ -31,6 +32,8 @@ export const School = ({ data }: SchoolPartsListProps) => {
           {school === "3" && <IonListHeader>Third School</IonListHeader>}
           {school === "4" && <IonListHeader>Fourth School</IonListHeader>}
           {school === "5" && <IonListHeader>Fifth School</IonListHeader>}
+
+          <ReadingAccordion data={data} school={school} />
 
           {data && apply.map((part: string) => (
             <ApplyAccordion

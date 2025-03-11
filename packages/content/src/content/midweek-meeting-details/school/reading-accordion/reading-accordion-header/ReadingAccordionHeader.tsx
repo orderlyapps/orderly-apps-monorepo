@@ -2,27 +2,18 @@ import { IonItem, IonLabel, IonList, IonText } from "@ionic/react";
 import { Tables } from "@amodeo/data/supabase/supabase-types";
 import { formatName } from "@amodeo/util/formatters/formatName";
 
-interface ApplyAccordionHeaderProps {
+interface ReadingAccordionHeaderProps {
   data: Tables<"_view_midweek_meeting_schedule">;
   school: string;
-  part: string;
 }
 
-export const ApplyAccordionHeader = ({ data, school, part }: ApplyAccordionHeaderProps) => {
+export const ReadingAccordionHeader = ({ data, school }: ReadingAccordionHeaderProps) => {
   return (
     <IonList slot="header">
       <IonItem lines="none">
         <IonLabel>
-          <IonText color="jw_brown_light">
-            <strong>
-              {
-                data.midweek_meeting_data[
-                  ("mwb_ayf_part" +
-                    part +
-                    "_title") as keyof Tables<"midweek_meeting_data">
-                ]
-              }
-            </strong>
+          <IonText color="jw_slate_light">
+            <strong>3. Bible Reading</strong>
           </IonText>
           <br />
           <div style={{ textAlign: "right" }}>
@@ -31,8 +22,7 @@ export const ApplyAccordionHeader = ({ data, school, part }: ApplyAccordionHeade
                 data?.midweek_assignments[
                   ("school_" +
                     school +
-                    "_apply_" +
-                    part) as keyof Tables<"_view_midweek_meeting_schedule">["midweek_assignments"]
+                    "_bible_reading") as keyof Tables<"_view_midweek_meeting_schedule">["midweek_assignments"]
                 ]
               )}
             </IonText>

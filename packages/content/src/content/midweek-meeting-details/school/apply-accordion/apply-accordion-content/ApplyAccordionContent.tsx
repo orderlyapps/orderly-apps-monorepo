@@ -1,7 +1,7 @@
 import { IonItem, IonLabel, IonText } from "@ionic/react";
 import { Tables } from "@amodeo/data/supabase/supabase-types";
 import { formatName } from "@amodeo/util/formatters/formatName";
-import { ApplyMessageButton } from "../../apply-message-button/ApplyMessageButton.js";
+import { ApplyMessageButton } from "./apply-message-button/ApplyMessageButton.js";
 
 interface ApplyAccordionContentProps {
   data: any;
