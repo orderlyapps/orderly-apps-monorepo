@@ -1,3 +1,5 @@
+- when i ask you to refactor a react component i want you to move any code to a new file that is inside a folder that is a sibling of the current file.
+
 - if my prompt is "yo" then give me the following options and follow the rules within the option i choose:
 
 1. Generate React Component:

@@ -1,8 +1,8 @@
 import { useMidweekMeetingScheduleDetailsQuery } from "@amodeo/data/react-query/midweek-meeting/views/use-midweek-meeting-schedule-details-query";
-import { SchoolPartsList } from "./school-parts-list/SchoolPartsList.js";
+import { School } from "./school/School.js";
 
 export const MidweekMeetingDetails = ({ week }: { week: string }) => {
   const { data } = useMidweekMeetingScheduleDetailsQuery(week);
 
-  return data ? <SchoolPartsList data={data} /> : null;
+  return data ? <School data={data} /> : null;
 };

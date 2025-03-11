@@ -12,7 +12,7 @@ interface SchoolPartsListItemProps {
   part: string;
 }
 
-export const SchoolPartsListItem = ({
+export const ApplyMessageButton = ({
   data,
   school,
   part,
