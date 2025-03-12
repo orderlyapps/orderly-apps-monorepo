@@ -7,6 +7,11 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist"]
     },
+    "deploy": {
+      "dependsOn": ["^build", "build", "^deploy"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist"]
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },

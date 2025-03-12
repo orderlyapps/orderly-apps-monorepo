@@ -34,6 +34,70 @@
           ]
         },
 
+        "deploy": {
+          "sequence": [
+            {
+              "command": "commands.focusTerminal",
+              "args": {
+                "name": "deploy"
+              }
+            },
+            {
+              "command": "workbench.action.terminal.kill"
+            },
+            {
+              "command": "commands.runInTerminal",
+              "args": {
+                "text": " pnpm run deploy:${input:app}",
+                "reveal": true,
+                "name": "deploy",
+                "reuse": "newest",
+                "waitForExit": true
+              },
+              "inputs": [
+                {
+                  "type": "pickString",
+                  "id": "app",
+                  "description": "Which app to deploy?",
+                  "options": ["proclaimer", "orderly"]
+                }
+              ]
+            }
+          ]
+        },
+
+        "build": {
+          "sequence": [
+            {
+              "command": "commands.focusTerminal",
+              "args": {
+                "name": "build"
+              }
+            },
+            {
+              "command": "workbench.action.terminal.kill"
+            },
+            {
+              "command": "commands.runInTerminal",
+              "args": {
+                "text": " pnpm run build:${input:app}",
+                "reveal": true,
+                "name": "build",
+                "reuse": "newest",
+                "waitForExit": true
+              },
+              "inputs": [
+                {
+                  "type": "pickString",
+                  "id": "app",
+                  "description": "Which app to build?",
+                  "options": ["proclaimer", "orderly"]
+                }
+              ]
+            }
+          ]
+        },
+
         "commit": {
           "sequence": [
             {

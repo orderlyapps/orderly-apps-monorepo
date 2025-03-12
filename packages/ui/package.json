@@ -25,20 +25,18 @@
     "@types/react-router-dom": "^5.3.3",
     "typescript": "^5.8.2"
   },
-  "peerDependencies": {
-    "react": "*",
-    "react-dom": "*"
-  },
   "dependencies": {
     "@amodeo/data": "workspace:^",
     "@amodeo/util": "workspace:^",
-    "@ionic/react": "^8.0.0",
-    "@ionic/react-router": "^8.4.3",
     "date-fns": "^4.1.0",
-    "ionicons": "^7.4.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4"
+    "ionicons": "^7.4.0"
+  },
+  "peerDependencies": {
+    "@ionic/react": "*",
+    "@ionic/react-router": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-router": "*",
+    "react-router-dom": "*"
   }
 }

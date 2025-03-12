@@ -6,13 +6,18 @@
   "scripts": {
     "dev": "vite --port 3000 --host",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npx wrangler pages deploy dist --project-name=orderly --branch=beta"
   },
   "dependencies": {
     "@amodeo/config": "workspace:^",
     "@amodeo/content": "workspace:^",
+    "@ionic/react": "^8.0.0",
+    "@ionic/react-router": "^8.4.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router": "^7.3.0",
+    "react-router-dom": "^7.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

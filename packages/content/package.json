@@ -22,17 +22,17 @@
     "@types/react-dom": "^18.3.1",
     "typescript": "^5.8.2"
   },
-  "peerDependencies": {
-    "react": "*",
-    "react-dom": "*"
-  },
   "dependencies": {
     "@amodeo/data": "workspace:^",
     "@amodeo/feature": "workspace:^",
     "@amodeo/ui": "workspace:^",
     "@amodeo/util": "workspace:^",
-    "@ionic/react": "^8.4.3",
     "ionicons": "^7.4.0",
     "react-error-boundary": "^5.0.0"
+  },
+  "peerDependencies": {
+    "@ionic/react": "*",
+    "react": "*",
+    "react-dom": "*"
   }
 }

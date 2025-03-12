@@ -6,6 +6,8 @@
     "build:proclaimer": "VITE_APP_NAME='proclaimer' dotenv -- turbo run build",
     "dev:orderly": "VITE_APP_NAME='orderly' dotenv -- turbo run dev",
     "dev:proclaimer": "VITE_APP_NAME='proclaimer' dotenv -- turbo run dev",
+    "deploy:orderly": "VITE_APP_NAME='orderly' dotenv -- turbo run deploy",
+    "deploy:proclaimer": "VITE_APP_NAME='proclaimer' dotenv -- turbo run deploy",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
@@ -20,5 +22,8 @@
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "wrangler": "^3.112.0"
   }
 }
