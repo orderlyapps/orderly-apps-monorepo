@@ -27,7 +27,7 @@
                   "type": "pickString",
                   "id": "app",
                   "description": "Which app to start?",
-                  "options": ["proclaimer", "orderly"]
+                  "options": ["orderly", "proclaimer"]
                 }
               ]
             }
@@ -59,7 +59,7 @@
                   "type": "pickString",
                   "id": "app",
                   "description": "Which app to deploy?",
-                  "options": ["proclaimer", "orderly"]
+                  "options": ["orderly", "proclaimer"]
                 }
               ]
             }
@@ -91,7 +91,7 @@
                   "type": "pickString",
                   "id": "app",
                   "description": "Which app to build?",
-                  "options": ["proclaimer", "orderly"]
+                  "options": ["orderly", "proclaimer"]
                 }
               ]
             }
@@ -153,7 +153,11 @@
                   "type": "pickString",
                   "id": "snippet",
                   "description": "Which wrap in fragment to use?",
-                  "options": ["-Wrap in fragment","-React Component","-Map Array to List"]
+                  "options": [
+                    "-Wrap in fragment",
+                    "-React Component",
+                    "-Map Array to List"
+                  ]
                 }
               ]
             }
