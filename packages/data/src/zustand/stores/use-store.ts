@@ -11,19 +11,29 @@ import {
   congregation,
   setCongregation,
 } from "../slices/congregation/use-congregation.js";
+import {
+  notAtHomes,
+  NotAtHomes,
+  setNotAtHomes,
+} from "../slices/not-at-homes/use-not-at-homes.js";
 
 const initialState = {
   theme,
   mapView,
   congregation,
+  notAtHomes,
 };
 
-const actions = (set: (state: any) => void) => {
+const actions = (set: (state: any) => void, get: () => any) => {
   return {
     setTheme: setTheme(set as (state: { theme: ThemeOption }) => void),
     setMapView: setMapView(set as (state: { mapView: MapView }) => void),
     setCongregation: setCongregation(
       set as (state: { congregation: string }) => void
+    ),
+    ...setNotAtHomes(
+      set as (state: { notAtHomes: NotAtHomes }) => void,
+      get as () => { notAtHomes: NotAtHomes }
     ),
   };
 };
@@ -35,7 +45,7 @@ const useStoreBase = create(
       initialState,
 
       // Methods
-      (set, _get, _api) => {
+      (set, get, _api) => {
         return {
           setStoreProperties: <K extends keyof typeof initialState>(
             property: K,
@@ -63,7 +73,7 @@ const useStoreBase = create(
               };
             });
           },
-          ...actions(set),
+          ...actions(set, get),
         };
       }
     ),

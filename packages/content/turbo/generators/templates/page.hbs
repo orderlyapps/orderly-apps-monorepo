@@ -11,10 +11,12 @@ import { Suspense } from 'react';
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
 import { {{ pascalCase name }} } from "../../../../../content/{{ kebabCase name }}/{{ pascalCase name }}.js";
+import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 
 export default function {{ pascalCase name }}Page() {
+  const { modalProps, pageProps } = useCardModal();
   return (
-       <IonPage>
+       <IonPage {...pageProps}>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot='start'>
@@ -26,7 +28,7 @@ export default function {{ pascalCase name }}Page() {
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <{{ pascalCase name }}></{{ pascalCase name }}>
+            <{{ pascalCase name }} modalProps={modalProps}></{{ pascalCase name }}>
           </ErrorBoundary>
         </Suspense>
       </IonContent>
