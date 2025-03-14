@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@amodeo/data": "workspace:^",
+    "@react-pdf/renderer": "^4.3.0",
     "@vis.gl/react-maplibre": "^8.0.1",
     "maplibre-gl": "^5.2.0"
   },
