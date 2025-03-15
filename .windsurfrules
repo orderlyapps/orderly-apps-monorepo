@@ -1,68 +1,75 @@
-- when i ask you to refactor a react component i want you to move any code to a new file that is inside a folder that is a sibling of the current file.
+## PROJECT DESCRIPTION
 
-- if my prompt is "yo" then give me the following options and follow the rules within the option i choose:
+- This is a monorepo that is used to build two web applications.
+- One is called orderly and the other is called proclaim and both are created using vite-project as an entry point depending on the environment variable VITE_APP_NAME.
+- There is another app called testing which is purely used for testing purposes.
 
-1. Generate React Component:
+# Packages:
+- config: Configuration files shared across apps
+- content: Application-specific content and components
+- data: Data layer (Supabase integration as per rules)
+- feature: Feature-specific implementations
+- ui: Reusable UI components
+- util: Utility functions
 
-- ask me for the component name
-- ask me for the component description
-- ask me for the component props
+# Git
 
-2. State Management:
+- when i ask you to make a new branch i want you to use the current date and a description of the feature or bugfix
+- when commiting code to git always push to remote
 
-- ask me for the store name
-- ask me for the store description
-- ask me for the store actions
+# General Code Style & Formatting
 
-- end every one of your messages with "-over-"
-- ask me a series of yes/no questions once i have prompted you to help you provide better code
-- if i ask you to refactor code i want you to go one step at a time. Do not move to the next step until i give you the keyword "next"
+- when i ask you to refactor a react component i want you to move any refactored code to a new file that is inside a folder that is a sibling of the current file.
+- Use English for all code and documentation.
+- Always declare the type of each variable and function (parameters and return value).
+- Avoid using any.
+- Create necessary types.
+- Use JSDoc to document public classes and methods.
+- Don't leave blank lines within a function.
+- One export per file.
 
-1. Package Organization:
+# Styling & UI
 
-- Each package should have a clear, single responsibility (UI, data, content, etc.)
-- Keep related functionality grouped within the same package
-- Maintain consistent exports via index files for public APIs
+- Use Ionic Framework for styling.
 
-2. State Management:
+# Data Fetching & Forms
 
-- Zustand stores should follow the pattern of initialState + actions structure
-- Use selectors pattern for accessing store values
-- Separate store logic into slices for better organization
+- Use TanStack Query (react-query) for frontend data fetching.
 
-3. Data Fetching:
+# State Management & Logic
 
-- React Query hooks should be prefixed with 'use' and suffixed with 'Query'
-- Keep query key structure consistent (array-based with entity name as first element)
-- Group related queries by domain entity in directory structure
+- Use Zustand for state management.
 
-4. Component Structure:
+# Backend & Database
 
-- Lazy load components where appropriate to improve performance
-- Keep component props typed with explicit TypeScript interfaces
-- Separate component logic from presentation when complexity increases
+- Use Supabase for database access.
 
-5. File Location Conventions:
+# Naming Conventions
 
-- Keep utility functions in the util package
-- Place shared hooks in appropriate packages based on their purpose
-- Organize test files adjacent to implementation files with .test.ts(x) extension
+- Use PascalCase for classes.
+- Use camelCase for variables, functions, and methods.
+- Use kebab-case for file and directory names.
+- Use UPPERCASE for environment variables.
+- Avoid magic numbers and define constants.
+- Use snake_case for object property names
 
-6. Import Conventions:
+# Functions & Logic
 
-- Use explicit file extensions in imports (.js) even for TypeScript files
-- Group imports by external packages first, then internal modules
-- Prefer named exports over default exports for better refactoring support
+- Keep functions short and single-purpose (<20 lines).
+- Avoid deeply nested blocks by:
+- Using early returns.
+- Extracting logic into utility functions.
+- Use higher-order functions (map, filter, reduce) to simplify logic.
+- Use arrow functions for simple cases (<3 instructions), named functions otherwise.
+- Use default parameter values instead of null/undefined checks.
+- Use RO-RO (Receive Object, Return Object) for passing and returning multiple parameters.
 
-7. Error Handling:
+# Data Handling
 
-- Use consistent error handling patterns across asynchronous operations
-- Throw typed errors with meaningful messages
+- Avoid excessive use of primitive types; encapsulate data in composite types.
+- Avoid placing validation inside functions—use classes with internal validation instead.
+- Prefer immutability for data:
+- Use readonly for immutable properties.
+- Use as const for literals that never change.
 
-8. Other:
 
-- React component files should always be created in a pascal case named file inside a kebab case named folder of the same name.
-- Use snake case for object property names and camel case for function names.
-- I use plop for generating files when creating new components.
-- This is a pnpm turborepo monorepo
-- Use consistent code style and formatting
