@@ -186,15 +186,15 @@
 
   "files.autoSave": "afterDelay",
   "files.exclude": {
-    "**/.git": false,
-    "**/.svn": false,
-    "**/.hg": false,
-    "**/CVS": false,
-    "**/node_modules": false,
-    "**/.turbo": false,
-    "**/dist": false,
-    "**/dev-dist": false,
-    "**/turbo": false
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/node_modules": true,
+    "**/.turbo": true,
+    "**/dist": true,
+    "**/dev-dist": true,
+    "**/turbo": true
   },
   "editor.linkedEditing": true
 }

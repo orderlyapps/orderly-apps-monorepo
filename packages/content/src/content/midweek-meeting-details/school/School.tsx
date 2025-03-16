@@ -33,7 +33,7 @@ export const School = ({ data }: SchoolPartsListProps) => {
           {school === "4" && <IonListHeader>Fourth School</IonListHeader>}
           {school === "5" && <IonListHeader>Fifth School</IonListHeader>}
 
-          <ReadingAccordion data={data} school={school} />
+          <ReadingAccordion data={data} school={school} assignment={"school_" + school + "_bible_reading"}/>
 
           {data && apply.map((part: string) => (
             <ApplyAccordion

@@ -1,7 +1,9 @@
-import { IonItem, IonLabel, IonText } from "@ionic/react";
+import { IonButton, IonIcon, IonItem, IonLabel, IonText } from "@ionic/react";
 import { Tables } from "@amodeo/data/supabase/supabase-types";
 import { formatName } from "@amodeo/util/formatters/formatName";
 import { ApplyMessageButton } from "./apply-message-button/ApplyMessageButton.js";
+import StudentAssignmentPDF from "@amodeo/feature/pdf/student-assignment/StudentAssignment";
+import { downloadPDF } from "@amodeo/ui/util/ionic/icons/icons";
 
 interface ApplyAccordionContentProps {
   data: any;
@@ -65,7 +67,27 @@ export const ApplyAccordionContent = ({
           </IonLabel>
         </IonItem>
       )}
-      <ApplyMessageButton data={data} school={school} part={part} />
+
+      <IonItem>
+        <IonButton
+          fill="clear"
+          expand="block"
+          slot="end"
+          className="ion-padding-end"
+        >
+          <StudentAssignmentPDF.Download
+            data={{
+              data,
+              school,
+              assignment: "school_" + school + "_apply_" + part,
+            }}
+          >
+            <IonIcon icon={downloadPDF} slot="icon-only" size="large"></IonIcon>
+          </StudentAssignmentPDF.Download>
+        </IonButton>
+
+        <ApplyMessageButton data={data} school={school} part={part} />
+      </IonItem>
     </div>
   );
 };

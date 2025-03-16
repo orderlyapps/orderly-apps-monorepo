@@ -5,14 +5,15 @@ import { ReadingAccordionContent } from "./reading-accordion-content/ReadingAcco
 interface SchoolReadingAccordionProps {
   data: any;
   school: string;
+  assignment: string;
 }
 
-export const ReadingAccordion = ({ data, school }: SchoolReadingAccordionProps) => {
+export const ReadingAccordion = ({ data, school, assignment }: SchoolReadingAccordionProps) => {
   return (
     <IonAccordionGroup>
       <IonAccordion value="first">
         <ReadingAccordionHeader data={data} school={school} />
-        <ReadingAccordionContent data={data} school={school} />
+        <ReadingAccordionContent data={data} school={school} assignment={assignment} />
       </IonAccordion>
     </IonAccordionGroup>
   );

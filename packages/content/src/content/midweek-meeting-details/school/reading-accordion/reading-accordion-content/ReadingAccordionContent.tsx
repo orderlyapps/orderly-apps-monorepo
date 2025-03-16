@@ -1,17 +1,19 @@
-import { IonItem, IonLabel, IonText } from "@ionic/react";
+import { IonButton, IonIcon, IonItem, IonLabel, IonText } from "@ionic/react";
 import { Tables } from "@amodeo/data/supabase/supabase-types";
 import { ReadingMessageButton } from "./reading-message-button/ReadingMessageButton.js";
-import TemplatePDF from "@amodeo/feature/pdf/util/TemplatePDF";
 import StudentAssignmentPDF from "@amodeo/feature/pdf/student-assignment/StudentAssignment";
+import { downloadPDF, notAtHomes } from "@amodeo/ui/util/ionic/icons/icons";
 
 interface ReadingAccordionContentProps {
   data: Tables<"_view_midweek_meeting_schedule">;
   school: string;
+  assignment: string;
 }
 
 export const ReadingAccordionContent = ({
   data,
   school,
+  assignment,
 }: ReadingAccordionContentProps) => {
   return (
     <div className="ion-padding" slot="content">
@@ -28,11 +30,20 @@ export const ReadingAccordionContent = ({
         </IonLabel>
       </IonItem>
 
-      <div style={{ height: "100vh" }}>
-        <StudentAssignmentPDF.Render />
-      </div>
-
-      <ReadingMessageButton data={data} school={school} />
+      <IonItem >
+        <IonButton fill="clear" expand="block" slot="end" className="ion-padding-end">
+          <StudentAssignmentPDF.Download
+            data={{
+              data,
+              school,
+              assignment: "school_" + school + "_bible_reading",
+            }}
+          >
+            <IonIcon icon={downloadPDF} slot="icon-only" size="large"></IonIcon>
+          </StudentAssignmentPDF.Download>
+        </IonButton>
+        <ReadingMessageButton data={data} school={school} />
+      </IonItem>
     </div>
   );
 };

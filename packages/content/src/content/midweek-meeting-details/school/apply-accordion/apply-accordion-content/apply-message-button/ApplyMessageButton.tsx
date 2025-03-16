@@ -71,10 +71,8 @@ DETAILS: ${
     }`)}`;
 
   return (
-    <IonItem key={part} lines="none">
-      <IonButton fill="clear" expand="block" href={smsHref} slot="end">
+      <IonButton fill="clear" expand="block" href={smsHref} slot="end" className="ion-padding-start">
         <IonIcon icon={chatboxOutline} slot="icon-only" size="large" />
       </IonButton>
-    </IonItem>
   );
 };

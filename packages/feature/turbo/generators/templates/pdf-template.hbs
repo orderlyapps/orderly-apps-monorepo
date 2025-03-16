@@ -47,7 +47,7 @@ function {{pascalCase name}}PDF({ data }: {{pascalCase name}}PDFData) {
   </PDFDownloadLink>
 );
 
-{{pascalCase name}}PDF.Render = ({ data }: { data?: {{pascalCase name}}PDFData }) => {
+{{pascalCase name}}PDF.Render = ({ data }: {{pascalCase name}}PDFData) => {
   return (
     <PDFViewer width={"95%"} height={"95%"}>
       <{{pascalCase name}}PDF data={data} />

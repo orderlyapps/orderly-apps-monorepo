@@ -32,10 +32,14 @@ DETAILS: ${data?.midweek_meeting_data.mwb_tgw_bread}`
   )}`;
 
   return (
-    <IonItem lines="none">
-      <IonButton fill="clear" expand="block" href={smsHref} slot="end">
-        <IonIcon icon={chatboxOutline} slot="icon-only" size="large" />
-      </IonButton>
-    </IonItem>
+    <IonButton
+      fill="clear"
+      expand="block"
+      href={smsHref}
+      slot="end"
+      className="ion-padding-start"
+    >
+      <IonIcon icon={chatboxOutline} slot="icon-only" size="large" />
+    </IonButton>
   );
 };
