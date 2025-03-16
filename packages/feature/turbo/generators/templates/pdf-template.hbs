@@ -1,0 +1,58 @@
+import {
+  Document,
+  Page,
+  PDFDownloadLink,
+  PDFViewer,
+  Text,
+  View,
+  StyleSheet,
+} from "@react-pdf/renderer";
+
+type {{pascalCase name}}PDFData = {
+  data?: any;
+};
+
+const styles = StyleSheet.create({
+  page: {
+    padding: 12,
+    fontSize: 12,
+  },
+});
+
+function {{pascalCase name}}PDF({ data }: {{pascalCase name}}PDFData) {
+  console.log("{{pascalCase name}}PDFData:", data);
+
+  return (
+    <Document>
+      <Page size={"A4"} style={styles.page}>
+        <View>
+          <Text>{{pascalCase name}} PDF</Text>
+        </View>
+      </Page>
+    </Document>
+  );
+}
+
+{{pascalCase name}}PDF.Download = ({
+  children,
+  data,
+}: {
+  children?: React.ReactNode;
+} & {{pascalCase name}}PDFData) => (
+  <PDFDownloadLink
+    document={<{{pascalCase name}}PDF data={data} />}
+    fileName="{{pascalCase name}}.pdf"
+  >
+    {children || "Download"}
+  </PDFDownloadLink>
+);
+
+{{pascalCase name}}PDF.Render = ({ data }: { data?: {{pascalCase name}}PDFData }) => {
+  return (
+    <PDFViewer width={"95%"} height={"95%"}>
+      <{{pascalCase name}}PDF data={data} />
+    </PDFViewer>
+  );
+};
+
+export default {{pascalCase name}}PDF;

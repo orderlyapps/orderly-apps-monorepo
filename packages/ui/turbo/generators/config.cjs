@@ -1,8 +1,7 @@
 /** @param plop {import('@turbo/gen').PlopTypes.NodePlopAPI} */
 module.exports = (plop) => {
   // A simple generator to add a new React component to the internal UI library
-  plop.setGenerator("react-component", {
-    description: "Adds a new react component",
+  plop.setGenerator("ui component", {
     prompts: [
       {
         type: "input",

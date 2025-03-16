@@ -1,59 +1,50 @@
-// import {
-//   Document,
-//   Page,
-//   PDFDownloadLink,
-//   PDFViewer,
-//   Text,
-//   View,
-//   StyleSheet,
-// } from "@react-pdf/renderer";
+import {
+  Document,
+  Page,
+  PDFDownloadLink,
+  PDFViewer,
+  Text,
+  View,
+} from "@react-pdf/renderer";
 
-// function TemplatePDF() {
-//   return (
-//     <Document>
-//       <Page size={"A4"} style={{ padding: 12, fontSize: 12 }}>
-//         <View>
-//           <Text>Template PDF</Text>
-//         </View>
-//       </Page>
-//     </Document>
-//   );
-// }
+type PDFData = {
+  data?: any;
+};
 
-// TemplatePDF.Download = ({ children }: { children?: React.ReactNode }) => (
-//   <PDFDownloadLink document={<TemplatePDF />} fileName="Template.pdf">
-//     {children || "Download"}
-//   </PDFDownloadLink>
-// );
+function TemplatePDF({ data }: PDFData) {
+  console.log("PDFData:", data);
 
-// const styles = StyleSheet.create({
-//   page: {
-//     flexDirection: "row",
-//     backgroundColor: "red",
-//   },
-//   section: {
-//     margin: 10,
-//     padding: 10,
-//     backgroundColor: "#E4E4E4",
-//     flexGrow: 1,
-//   },
-// });
+  return (
+    <Document>
+      <Page size={"A4"} style={{ padding: 12, fontSize: 12 }}>
+        <View>
+          <Text>Template PDF</Text>
+        </View>
+      </Page>
+    </Document>
+  );
+}
 
-// TemplatePDF.Render = () => {
-//   return (
-//     <PDFViewer width={"95%"} height={"95%"}>
-//       <Document>
-//         <Page size="A4" style={styles.page}>
-//           <View style={styles.section}>
-//             <Text>Section #1</Text>
-//           </View>
-//           <View style={styles.section}>
-//             <Text>Section #2</Text>
-//           </View>
-//         </Page>
-//       </Document>
-//     </PDFViewer>
-//   );
-// };
+TemplatePDF.Download = ({
+  children,
+  data,
+}: {
+  children?: React.ReactNode;
+} & PDFData) => (
+  <PDFDownloadLink
+    document={<TemplatePDF data={data} />}
+    fileName="Template.pdf"
+  >
+    {children || "Download"}
+  </PDFDownloadLink>
+);
 
-// export default TemplatePDF;
+TemplatePDF.Render = ({ data }: { data?: PDFData }) => {
+  return (
+    <PDFViewer width={"95%"} height={"95%"}>
+      <TemplatePDF data={data} />
+    </PDFViewer>
+  );
+};
+
+export default TemplatePDF;
