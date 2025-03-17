@@ -6,7 +6,7 @@ export function CardNav({
   label,
   path,
   icon,
-  color = "medium",
+  color = "primary",
 }: {
   label: string;
   path: string;

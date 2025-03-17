@@ -13,7 +13,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { CardNav } from "@amodeo/ui/ionic/card-nav/CardNav";
 import { notAtHomes } from "@amodeo/ui/util/ionic/icons/icons";
 import { orderlyPath } from "#shells/orderly/routes.js";
-import { mapOutline } from "ionicons/icons";
+import { locateOutline, locationOutline, mapOutline } from "ionicons/icons";
 
 export default function MinistryPage() {
   return (
@@ -33,14 +33,17 @@ export default function MinistryPage() {
               label="Map List"
               path={orderlyPath("map_list")}
               icon={mapOutline}
-              color="jw_brown_light"
-            ></CardNav>
+            />
             <CardNav
               label="Not At Homes"
               path={orderlyPath("not_at_homes")}
+              icon={locationOutline}
+            />
+            <CardNav
+              label="Letter Writing"
+              path={orderlyPath("letter_writing")}
               icon={notAtHomes}
-              color="jw_brown_light"
-            ></CardNav>
+            />
           </ErrorBoundary>
         </Suspense>
       </IonContent>

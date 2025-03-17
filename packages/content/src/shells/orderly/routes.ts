@@ -14,6 +14,13 @@ import {
 } from "@amodeo/ui/util/ionic/icons/icons";
 
 export const ORDERLY_PAGES = {
+  letter_writing:{
+    path: '/ministry/letter-writing',
+    // params: '{ id: '' }',
+    Component: lazy(
+      () => import('./pages/ministry/letter-writing/LetterWritingPage.js')
+    ),
+  },
   map_details: {
     path: "/ministry/map-details",
     params: { mapID: "", fileType: "" },
