@@ -1,1 +1,5 @@
-export const JW_BLUE = "#0072CE"
+export const JW_BLUE = "#4a6da7"
+export const JW_SLATE = "#2a6b77"
+export const JW_BROWN = "#9b6d17"
+export const JW_RED = "#942926"
+export const JW_GREEN = "#28af4a"

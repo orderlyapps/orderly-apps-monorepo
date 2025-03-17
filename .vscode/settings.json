@@ -198,16 +198,15 @@
     "**/dev-dist": true,
     "**/turbo": true,
     "**/.vscode": true,
-    "**/.files": false,
-    "**/testing": true,
-    "**/vite-project": true,
-    "**/config": true,
-    "**/content": false,
-    "**/data": true,
-    "**/feature": true,
-    "**/ui": true,
-    "**/util": true,
-    "**/.wrangler": true
+    "**/.wrangler": true,
+    "**/.files": true,
+    "packages/config": true,
+    "packages/content": true,
+    "packages/data": true,
+    "packages/feature/src/maps": true,
+    "packages/feature/src/pdf": false,
+    "packages/ui": true,
+    "packages/util": true
   },
   "editor.linkedEditing": true
 }

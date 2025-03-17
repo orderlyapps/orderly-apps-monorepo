@@ -30,8 +30,6 @@ type StudentAssignmentPDFData = {
 };
 
 function StudentAssignmentPDF({ data }: StudentAssignmentPDFData) {
-  console.log("StudentAssignmentPDFData:", data.assignment);
-
   return (
     <Document>
       <Page size={"A6"} style={{ padding: 10, fontSize: 11 }}>

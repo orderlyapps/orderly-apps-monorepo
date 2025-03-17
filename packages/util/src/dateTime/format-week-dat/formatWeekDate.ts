@@ -24,7 +24,7 @@ export function formatWeekDate(dateString: string): string {
     month: endDate.getMonth() === date.getMonth() ? undefined : "short",
   });
 
-  const result = `${start} - ${end}`;
+  const result = `${start}-${end}`;
 
   return result;
 }

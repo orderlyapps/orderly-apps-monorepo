@@ -14,6 +14,8 @@
 
 # Git
 
+- never run git commands unless i specifically ask you to
+- never create new branches
 - when i ask you to make a new branch i want you to use the current date and a description of the feature or bugfix
 - when commiting code to git always push to remote
 
