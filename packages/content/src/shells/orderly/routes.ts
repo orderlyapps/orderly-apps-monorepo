@@ -14,6 +14,13 @@ import {
 } from "@amodeo/ui/util/ionic/icons/icons";
 
 export const ORDERLY_PAGES = {
+  public_talks_list:{
+    path: '/schedules/public-talks-list',
+    // params: '{ id: '' }',
+    Component: lazy(
+      () => import('./pages/schedules/public-talks-list/PublicTalksListPage.js')
+    ),
+  },
   letter_writing:{
     path: '/ministry/letter-writing',
     // params: '{ id: '' }',

@@ -43,6 +43,12 @@ export type Database = MergeDeep<
             >;
           };
         };
+        _view_public_talks: {
+          Row: {
+            outline: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"];
+            speaker: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
+          };
+        };
       };
     };
   }

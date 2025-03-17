@@ -10,11 +10,9 @@ import {
 import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { midweekMeeting, weekendMeeting } from "@amodeo/ui/util/ionic/icons/icons";
-import { orderlyPath } from "#shells/orderly/routes.js";
-import { CardNav } from "@amodeo/ui/ionic/card-nav/CardNav";
+import { PublicTalksList } from "../../../../../content/public-talks-list/PublicTalksList.js";
 
-export default function SchedulesPage() {
+export default function PublicTalksListPage() {
   return (
     <IonPage>
       <IonHeader>
@@ -22,22 +20,13 @@ export default function SchedulesPage() {
           <IonButtons slot="start">
             <IonBackButton></IonBackButton>
           </IonButtons>
-          <IonTitle>Schedules</IonTitle>
+          <IonTitle>Public Talks List</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <CardNav
-              label="Midweek Meeting"
-              path={orderlyPath("midweek_meeting")}
-              icon={midweekMeeting}
-            />
-            <CardNav
-              label="Public Talks"
-              path={orderlyPath("public_talks_list")}
-              icon={weekendMeeting}
-            />
+            <PublicTalksList />
           </ErrorBoundary>
         </Suspense>
       </IonContent>

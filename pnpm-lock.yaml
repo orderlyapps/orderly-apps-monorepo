@@ -234,6 +234,9 @@ importers:
       '@ionic/react-router':
         specifier: ^8.5.0
         version: 8.5.0(react-dom@19.0.0)(react-router-dom@5.3.4)(react-router@5.3.4)(react@19.0.0)
+      date-fns:
+        specifier: ^4.1.0
+        version: 4.1.0
       ionicons:
         specifier: ^7.4.0
         version: 7.4.0
