@@ -10,12 +10,9 @@ import {
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route } from "react-router-dom";
 import { homeOutline, settingsOutline } from "ionicons/icons";
-import { lazy, LazyExoticComponent, Suspense } from "react";
+import { JSX, lazy, LazyExoticComponent, Suspense } from "react";
 import { LoadingSpinner } from "../loading-spinner/LoadingSpinner.js";
-
-// import "./utils/ionicInit.js";
 import { useInit } from "./utils/useInit.js";
-
 
 export const TabsApp = ({
   pages = defaultPages,
@@ -74,7 +71,9 @@ const defaultPages = [
     tab: "Settings",
     icon: settingsOutline,
     Component: lazy(() =>
-      import("./utils/settings.js").then((module) => ({ default: module.Settings }))
+      import("./utils/settings.js").then((module) => ({
+        default: module.Settings,
+      }))
     ),
   },
 ];

@@ -6,7 +6,33 @@ export type Database = MergeDeep<
   DatabaseGenerated,
   {
     public: {
-      Tables: {};
+      Tables: {
+        suburbs_2: {
+          Row: {
+            bbox: [number, number, number, number];
+            center: [number, number];
+          };
+          Insert: {
+            bbox: [number, number, number, number];
+            center: [number, number];
+          };
+          Update: {
+            bbox: [number, number, number, number];
+            center: [number, number];
+          };
+        };
+        not_at_homes: {
+          Row: {
+            location: [number, number];
+          };
+          Insert: {
+            location: [number, number];
+          };
+          Update: {
+            location: [number, number];
+          };
+        };
+      };
       Views: {
         _view_midweek_meeting_schedule: {
           Row: {

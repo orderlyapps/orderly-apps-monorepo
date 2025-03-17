@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { LazyExoticComponent } from "react";
+import { JSX, LazyExoticComponent } from "react";
 
 export type Route = {
   path: string;

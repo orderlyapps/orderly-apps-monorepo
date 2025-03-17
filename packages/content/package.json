@@ -18,8 +18,10 @@
   },
   "devDependencies": {
     "@amodeo/config": "workspace:^",
-    "@types/react": "^18.3.0",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^19.0.4",
+    "@types/react-dom": "^19.0.4",
+    "@types/react-router": "5.1.20",
+    "@types/react-router-dom": "5.3.3",
     "typescript": "^5.8.2"
   },
   "dependencies": {
@@ -27,12 +29,13 @@
     "@amodeo/feature": "workspace:^",
     "@amodeo/ui": "workspace:^",
     "@amodeo/util": "workspace:^",
+    "@ionic/react": "^8.5.0",
+    "@ionic/react-router": "^8.5.0",
     "ionicons": "^7.4.0",
-    "react-error-boundary": "^5.0.0"
-  },
-  "peerDependencies": {
-    "@ionic/react": "*",
-    "react": "*",
-    "react-dom": "*"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-error-boundary": "^5.0.0",
+    "react-router": "5.3.4",
+    "react-router-dom": "5.3.4"
   }
 }

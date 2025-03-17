@@ -190,11 +190,24 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
     "**/node_modules": true,
     "**/.turbo": true,
     "**/dist": true,
     "**/dev-dist": true,
-    "**/turbo": true
+    "**/turbo": true,
+    "**/.vscode": true,
+    "**/.files": false,
+    "**/testing": false,
+    "**/vite-project": false,
+    "**/config": false,
+    "**/content": false,
+    "**/data": false,
+    "**/feature": false,
+    "**/ui": false,
+    "**/util": false,
+    "**/.wrangler": true
   },
   "editor.linkedEditing": true
 }
