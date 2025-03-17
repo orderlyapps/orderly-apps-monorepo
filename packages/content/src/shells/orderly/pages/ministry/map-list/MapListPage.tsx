@@ -10,12 +10,10 @@ import {
 import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { CardNav } from "@amodeo/ui/ionic/card-nav/CardNav";
-import { notAtHomes } from "@amodeo/ui/util/ionic/icons/icons";
+import { MapList } from "../../../../../content/map-list/MapList.js";
 import { orderlyPath } from "#shells/orderly/routes.js";
-import { mapOutline } from "ionicons/icons";
 
-export default function MinistryPage() {
+export default function MapListPage() {
   return (
     <IonPage>
       <IonHeader>
@@ -23,24 +21,13 @@ export default function MinistryPage() {
           <IonButtons slot="start">
             <IonBackButton></IonBackButton>
           </IonButtons>
-          <IonTitle>Ministry</IonTitle>
+          <IonTitle>Map List</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <CardNav
-              label="Map List"
-              path={orderlyPath("map_list")}
-              icon={mapOutline}
-              color="jw_brown_light"
-            ></CardNav>
-            <CardNav
-              label="Not At Homes"
-              path={orderlyPath("not_at_homes")}
-              icon={notAtHomes}
-              color="jw_brown_light"
-            ></CardNav>
+            <MapList pathFunction={orderlyPath}></MapList>
           </ErrorBoundary>
         </Suspense>
       </IonContent>

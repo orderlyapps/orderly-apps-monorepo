@@ -14,6 +14,17 @@ import {
 } from "@amodeo/ui/util/ionic/icons/icons";
 
 export const ORDERLY_PAGES = {
+  map_details: {
+    path: "/ministry/map-details",
+    params: { mapID: "", fileType: "" },
+    Component: lazy(
+      () => import("./pages/ministry/map-details/MapDetailsPage.js")
+    ),
+  },
+  map_list: {
+    path: "/ministry/map-list",
+    Component: lazy(() => import("./pages/ministry/map-list/MapListPage.js")),
+  },
   midweek_meeting_details: {
     path: "/schedules/midweek-meeting-details",
     params: { week: "" },
