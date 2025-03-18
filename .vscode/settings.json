@@ -154,7 +154,8 @@
                   "id": "snippet",
                   "description": "Which wrap in fragment to use?",
                   "options": [
-                    "-Wrap in fragment",
+                    "-Wrap in Fragment",
+                    "-Wrap in Conditional",
                     "-React Component",
                     "-Map Array to List"
                   ]
@@ -197,7 +198,7 @@
     "**/dist": true,
     "**/dev-dist": true,
     "**/turbo": true,
-    "**/.vscode": true,
+    "**/.vscode": false,
     "**/.wrangler": true,
     "**/.files": false,
     "packages/config": true,

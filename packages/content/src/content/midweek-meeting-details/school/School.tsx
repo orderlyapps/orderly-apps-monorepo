@@ -1,7 +1,9 @@
-import { IonList, IonListHeader } from "@ionic/react";
+import { IonAccordion, IonAccordionGroup, IonListHeader } from "@ionic/react";
 import { Tables } from "@amodeo/data/supabase/supabase-types";
 import { ApplyAccordion } from "./apply-accordion/ApplyAccordion.js";
 import { ReadingAccordion } from "./reading-accordion/ReadingAccordion.js";
+import { AccordionHeader } from "../util/AccordionHeader.js";
+import { AccordionContent } from "../util/AccordionContent.js";
 
 type SchoolPartsListProps = {
   data: {
@@ -22,29 +24,53 @@ export const School = ({ data }: SchoolPartsListProps) => {
   );
 
   return (
-    <IonList>
+    <>
       {schools?.map((school: string) => (
         <div key={school}>
           {school === "1" && schools[1] && (
             <IonListHeader>Main Hall</IonListHeader>
           )}
-          {school === "2" && <IonListHeader>Second School</IonListHeader>}
-          {school === "3" && <IonListHeader>Third School</IonListHeader>}
+          {school === "2" && (
+            <>
+              <IonListHeader>Second School</IonListHeader>
+              <IonAccordionGroup>
+                <IonAccordion>
+                  <AccordionHeader
+                    part={"Counsellor"}
+                    participant={data?.midweek_assignments.counselor_2}
+                    color="medium"
+                  ></AccordionHeader>
+                  <AccordionContent
+                    name={
+                      data?.midweek_assignments.counselor_2?.first_name || ""
+                    }
+                    messageDetails={"Second School Counsellor"}
+                  ></AccordionContent>
+                </IonAccordion>
+              </IonAccordionGroup>
+            </>
+          )}
+          {school === "3" && <IonListHeader>Fourth School</IonListHeader>}
           {school === "4" && <IonListHeader>Fourth School</IonListHeader>}
           {school === "5" && <IonListHeader>Fifth School</IonListHeader>}
 
-          <ReadingAccordion data={data} school={school} assignment={"school_" + school + "_bible_reading"}/>
+          <ReadingAccordion
+            data={data}
+            school={school}
+            assignment={"school_" + school + "_bible_reading"}
+          />
 
-          {data && apply.map((part: string) => (
-            <ApplyAccordion
-              key={part}
-              data={data}
-              school={school}
-              part={part}
-            />
-          ))}
+          {data &&
+            apply.map((part: string) => (
+              <ApplyAccordion
+                key={part}
+                data={data}
+                school={school}
+                part={part}
+              />
+            ))}
         </div>
       ))}
-    </IonList>
+    </>
   );
 };
