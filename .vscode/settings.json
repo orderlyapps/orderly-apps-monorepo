@@ -142,6 +142,17 @@
               "command": "library-snippets"
             }
           ]
+        },
+        "import types from supabase": {
+          "args": {
+            "icon": "circle-filled",
+            "iconColor": "charts.green",
+            "name": "supabase",
+            "reuse": "newest",
+            "reveal": true,
+            "text": "supabase gen types typescript --project-id qwshevjczcvmibztktuc > packages/data/src/supabase/exported-types-remote.ts"
+          },
+          "command": "commands.runInTerminal"
         }
       }
     },
@@ -204,14 +215,14 @@
     "**/dist": true,
     "**/dev-dist": true,
     "**/turbo": true,
-    "**/.vscode": false,
+    "**/.vscode": true,
     "**/.wrangler": true,
-    "**/.files": false,
+    "**/.files": true,
     "packages/config": true,
     "packages/content": false,
     "packages/data": false,
     "packages/feature/src/maps": true,
-    "packages/feature/src/pdf": false,
+    "packages/feature/src/pdf": true,
     "packages/ui": false,
     "packages/util": true
   },

@@ -12,7 +12,7 @@ export const ReminderMessageButton = ({
   time,
   messageDetails,
 }: SchoolPartsListItemProps) => {
-  const smsHref = `sms:?body=${encodeURIComponent(
+  const smsHref = `sms://?&body=${encodeURIComponent(
     `Hi ${participant},
 Just checking if you're ok for your part on the midweek meeting? Here are the details...
 

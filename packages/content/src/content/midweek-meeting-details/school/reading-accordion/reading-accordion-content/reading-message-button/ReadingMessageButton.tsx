@@ -1,4 +1,4 @@
-import { IonButton, IonIcon, IonItem } from "@ionic/react";
+import { IonButton, IonIcon } from "@ionic/react";
 import { chatboxOutline } from "ionicons/icons";
 import { Tables } from "@amodeo/data/supabase/supabase-types";
 
@@ -14,7 +14,7 @@ export const ReadingMessageButton = ({
   data,
   school,
 }: ReadingMessageButtonProps) => {
-  const smsHref = `sms:?body=${encodeURIComponent(
+  const smsHref = `sms://?&body=${encodeURIComponent(
     `Hi ${
       data?.midweek_assignments[
         ("school_" +

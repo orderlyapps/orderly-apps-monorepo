@@ -1,8 +1,10 @@
 import {
   IonBackButton,
+  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
+  IonIcon,
   IonList,
   IonPage,
   IonTitle,
@@ -14,6 +16,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ThemeSelect } from "@amodeo/ui/ionic/theme-select/ThemeSelect";
 import { BuildTime } from "@amodeo/ui/ionic/build-time/BuildTime";
 import { CongregationSelect } from "@amodeo/ui/ionic/congregation-select/CongregationSelect";
+import { chatboxOutline } from "ionicons/icons";
 
 export default function SettingsPage() {
   return (
@@ -33,6 +36,16 @@ export default function SettingsPage() {
               <ThemeSelect />
               <BuildTime />
               <CongregationSelect />
+              <div style={{ marginTop: "3rem" }}></div>
+              <IonButton
+                fill="outline"
+                expand="block"
+                href={`sms://?&body=${encodeURIComponent(`Here is the link to the Proclaimer app 🙂\n\nhttps://proclaimer.pages.dev`)}`}
+                slot="end"
+                className="ion-margin"
+              >
+                Share Proclaimer App
+              </IonButton>
             </IonList>
           </ErrorBoundary>
         </Suspense>

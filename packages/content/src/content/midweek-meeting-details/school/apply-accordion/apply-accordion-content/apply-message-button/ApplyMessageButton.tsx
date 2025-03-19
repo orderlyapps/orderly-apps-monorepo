@@ -17,7 +17,7 @@ export const ApplyMessageButton = ({
   school,
   part,
 }: SchoolPartsListItemProps) => {
-  const smsHref = `sms:?body=${encodeURIComponent(
+  const smsHref = `sms://?&body=${encodeURIComponent(
     `Hi ${
       data?.midweek_assignments[
         ("school_" +

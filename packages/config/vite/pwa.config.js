@@ -18,7 +18,7 @@ export const vitePWAConfigBase = (_filename, dirname) => {
         BUILD_TIME: new Date(),
         "import.meta.env.BUILD_TIME": JSON.stringify(new Date().getTime()),
       },
-      publicDir: "public/" + ENV.VITE_APP_NAME, 
+      publicDir: "public/" + ENV.VITE_APP_NAME,
       plugins: [
         react(),
         VitePWA({
@@ -28,8 +28,8 @@ export const vitePWAConfigBase = (_filename, dirname) => {
           registerType: "prompt",
           injectRegister: "auto",
           manifest: {
-            short_name: ENV.VITE_APP_NAME,
-            name: ENV.VITE_APP_NAME,
+            short_name: title[ENV.VITE_APP_NAME],
+            name: title[ENV.VITE_APP_NAME],
             icons: [
               {
                 src: "assets/manifest-icon-192.maskable.png",
