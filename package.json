@@ -6,8 +6,14 @@
     "build:proclaimer": "VITE_APP_NAME='proclaimer' dotenv -- turbo run build",
     "dev:orderly": "VITE_APP_NAME='orderly' dotenv -- turbo run dev",
     "dev:proclaimer": "VITE_APP_NAME='proclaimer' dotenv -- turbo run dev",
-    "deploy:orderly": "VITE_APP_NAME='orderly' dotenv -- turbo run deploy",
-    "deploy:proclaimer": "VITE_APP_NAME='proclaimer' dotenv -- turbo run deploy",
+
+    "deploy:orderly:alpha": "VITE_APP_NAME='orderly' dotenv -- turbo run deploy:orderly:alpha",
+    "deploy:orderly:beta": "VITE_APP_NAME='orderly' dotenv -- turbo run deploy:orderly:beta",
+    "deploy:orderly:production": "VITE_APP_NAME='orderly' dotenv -- turbo run deploy:orderly:production",
+    "deploy:proclaimer:alpha": "VITE_APP_NAME='proclaimer' dotenv -- turbo run deploy:proclaimer:alpha",
+    "deploy:proclaimer:beta": "VITE_APP_NAME='proclaimer' dotenv -- turbo run deploy:proclaimer:beta",
+    "deploy:proclaimer:production": "VITE_APP_NAME='proclaimer' dotenv -- turbo run deploy:proclaimer:production",
+
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"

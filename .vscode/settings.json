@@ -48,7 +48,7 @@
             {
               "command": "commands.runInTerminal",
               "args": {
-                "text": " pnpm run deploy:${input:app}",
+                "text": " pnpm run deploy:${input:app}:${input:branch}",
                 "reveal": true,
                 "name": "deploy",
                 "reuse": "newest",
@@ -60,6 +60,12 @@
                   "id": "app",
                   "description": "Which app to deploy?",
                   "options": ["orderly", "proclaimer"]
+                },
+                {
+                  "type": "pickString",
+                  "id": "branch",
+                  "description": "Which branch to deploy?",
+                  "options": ["alpha", "beta", "production"]
                 }
               ]
             }
@@ -206,7 +212,7 @@
     "packages/data": false,
     "packages/feature/src/maps": true,
     "packages/feature/src/pdf": false,
-    "packages/ui": true,
+    "packages/ui": false,
     "packages/util": true
   },
   "editor.linkedEditing": true

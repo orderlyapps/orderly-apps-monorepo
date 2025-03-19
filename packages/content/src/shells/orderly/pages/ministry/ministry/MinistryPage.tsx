@@ -30,7 +30,7 @@ export default function MinistryPage() {
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
             <CardNav
-              label="Map List"
+              label="Maps"
               path={orderlyPath("map_list")}
               icon={mapOutline}
             />

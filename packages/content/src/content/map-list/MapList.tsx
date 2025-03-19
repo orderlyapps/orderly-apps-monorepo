@@ -1,15 +1,26 @@
 import { getPaths } from "@amodeo/ui/util/ionic/tabs-app/utils/pathFunctions";
-import { IonIcon, IonItem, IonList, IonSearchbar, IonText } from "@ionic/react";
-import { mapOutline } from "ionicons/icons";
-import { useState } from "react";
+import {
+  IonButton,
+  IonCheckbox,
+  IonIcon,
+  IonItem,
+  IonList,
+  IonText,
+} from "@ionic/react";
+import { chevronForwardOutline, mapOutline } from "ionicons/icons";
+import { useLocalStorage } from "usehooks-ts";
 
 export const MapList = ({
   pathFunction,
+  query,
 }: {
   pathFunction: ReturnType<typeof getPaths>;
+  query: string;
 }) => {
-  const [query, setQuery] = useState<string>("");
-
+  const [favourites, setFavourites] = useLocalStorage<string[]>(
+    "mapFavourites",
+    []
+  );
   const mapIDs = [
     { id: "115", type: "jpeg" },
     { id: "116", type: "png" },
@@ -178,30 +189,49 @@ export const MapList = ({
 
   return (
     <>
-      <IonSearchbar
-        showCancelButton="focus"
-        placeholder="Search"
-        debounce={300}
-        onIonInput={(e) => {
-          setQuery(e.detail.value as string);
-        }}
-      />
       <IonList inset>
         {mapIDs
-          .filter((m) => m.id.toLowerCase().includes(query.toLowerCase()))
+          .filter(
+            (m) =>
+              m.id.toLowerCase().includes(query.toLowerCase()) ||
+              favourites.includes(m.id)
+          )
           .map((m) => {
             return (
               <IonItem
                 key={m.id}
-                routerLink={pathFunction("map_details", {
-                  mapID: m.id,
-                  fileType: m.type,
-                })}
               >
+                <IonCheckbox
+                  slot="start"
+                  aria-label="Toggle task completion"
+                  checked={favourites.includes(m.id)}
+                  onIonChange={(e) => {
+                    if (e.detail.checked) {
+                      setFavourites([...favourites, m.id]);
+                    } else {
+                      setFavourites(favourites.filter((id) => id !== m.id));
+                    }
+                  }}
+                ></IonCheckbox>
                 <IonIcon icon={mapOutline} />
                 <IonText className="ion-padding">
                   <strong>{m.id}</strong>
                 </IonText>
+                <IonButton
+                  slot="end"
+                  routerLink={pathFunction("map_details", {
+                    mapID: m.id,
+                    fileType: m.type,
+                  })}
+                  fill="clear"
+                >
+                  <IonIcon
+                    slot="icon-only"
+                    size="small"
+                    color="medium"
+                    icon={chevronForwardOutline}
+                  ></IonIcon>
+                </IonButton>
               </IonItem>
             );
           })}

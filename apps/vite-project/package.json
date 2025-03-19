@@ -7,7 +7,12 @@
     "dev": "vite --port 3000 --host",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "deploy": "npx wrangler pages deploy dist --project-name=orderly --branch=beta"
+    "deploy:orderly:alpha": "npx wrangler pages deploy dist --project-name=orderly --branch=alpha",
+    "deploy:orderly:beta": "npx wrangler pages deploy dist --project-name=orderly --branch=beta",
+    "deploy:orderly:production": "npx wrangler pages deploy dist --project-name=orderly --branch=main",
+    "deploy:proclaimer:alpha": "npx wrangler pages deploy dist --project-name=proclaimer --branch=alpha",
+    "deploy:proclaimer:beta": "npx wrangler pages deploy dist --project-name=proclaimer --branch=beta",
+    "deploy:proclaimer:production": "npx wrangler pages deploy dist --project-name=proclaimer --branch=main"
   },
   "dependencies": {
     "@amodeo/config": "workspace:^",

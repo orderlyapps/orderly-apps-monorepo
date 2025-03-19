@@ -11,8 +11,10 @@ import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
 import { MapDetails } from "../../../../../content/map-details/MapDetails.js";
+import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 
 export default function MapDetailsPage() {
+  const { mapID, fileType } = useOrderlyPageParams("map_details");
   return (
     <IonPage>
       <IonHeader>
@@ -20,7 +22,7 @@ export default function MapDetailsPage() {
           <IonButtons slot="start">
             <IonBackButton></IonBackButton>
           </IonButtons>
-          <IonTitle>Map Details</IonTitle>
+          <IonTitle>{mapID}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
