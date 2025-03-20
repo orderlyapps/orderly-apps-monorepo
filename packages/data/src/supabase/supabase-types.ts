@@ -47,6 +47,17 @@ export type Database = MergeDeep<
           Row: {
             outline: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"];
             speaker: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
+            chairman: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
+            reader: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
+          };
+        };
+        _view_outgoing_speakers: {
+          Row: {
+            outgoing_speakers: {
+              speaker: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
+              congregation: DatabaseGenerated["public"]["Tables"]["congregations"]["Row"];
+              outline: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"];
+            }[];
           };
         };
       };

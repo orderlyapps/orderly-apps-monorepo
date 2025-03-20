@@ -20,7 +20,7 @@ export default function PublicTalksListPage() {
           <IonButtons slot="start">
             <IonBackButton></IonBackButton>
           </IonButtons>
-          <IonTitle>Public Talks List</IonTitle>
+          <IonTitle>Public Talks</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>

@@ -1,36 +1,23 @@
-// import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
-
-// export const PublicTalksList = ({
-//   children,
-//   modalProps,
-// }: {
-//   children?: React.ReactNode,
-//   modalProps: ReturnType<typeof useCardModal>['modalProps'];
-// }) => {
-//   return (
-//     <div className="full centered">
-//       <h1>Public Talks List Component</h1>
-//       {children}
-//     </div>
-//   );
-// };
-
+import { useOutgoingSpeakersQuery } from "@amodeo/data/react-query/weekend-meeting/use-outgoing-speakers-query";
 import { usePublicTalksQuery } from "@amodeo/data/react-query/weekend-meeting/use-public-talks-query";
-import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { formatWeekDate } from "@amodeo/util/dateTime/format-week-dat/formatWeekDate";
 import { formatName } from "@amodeo/util/formatters/formatName";
 import {
-  IonContent,
+  IonAccordion,
+  IonAccordionGroup,
+  IonCol,
+  IonGrid,
   IonItem,
+  IonItemDivider,
   IonLabel,
-  IonList,
   IonRefresher,
   IonRefresherContent,
+  IonRow,
   IonText,
   RefresherCustomEvent,
 } from "@ionic/react";
 import { addWeeks, formatDate, previousMonday, subWeeks } from "date-fns";
-import { Fragment, Suspense, useState } from "react";
+import { Fragment, useState } from "react";
 
 export const PublicTalksList = () => {
   const [oldDates, setOldDates] = useState<string[]>([]);
@@ -43,6 +30,12 @@ export const PublicTalksList = () => {
   const { data } = usePublicTalksQuery(
     dates[0] || "",
     dates[dates.length - 1] || ""
+  );
+
+  const { data: outgoingSpeakers } = useOutgoingSpeakersQuery(
+    dates[0] || "",
+    dates[dates.length - 1] || "",
+    { enabled: !!data }
   );
 
   const generateOldDates = (event: RefresherCustomEvent) => {
@@ -61,9 +54,6 @@ export const PublicTalksList = () => {
       setOldDates([...pastDates, ...oldDates]);
       // Any calls to load data go here
 
-
-
-      
       event.detail.complete();
     }, 350);
   };
@@ -76,36 +66,108 @@ export const PublicTalksList = () => {
   })) as typeof data;
 
   return (
-    <IonContent>
-      <Suspense fallback={<LoadingSpinner />}>
-        <IonRefresher slot="fixed" onIonRefresh={generateOldDates}>
-          <IonRefresherContent></IonRefresherContent>
-        </IonRefresher>
-        <IonList lines="none">
-          {allTalks &&
-            allTalks.map((week) => (
-              <Fragment key={week.week_id}>
-                <IonItem>
-                  <IonLabel>
-                    <IonText color={"primary"}>
-                      <strong>{formatWeekDate(week.week_id || "")}</strong>
-                    </IonText>
-                    {week.speaker && (
-                      <>
-                        <br />
-                        <IonText>
-                          <strong>{week.outline?.theme}</strong>
+    <>
+      <IonRefresher slot="fixed" onIonRefresh={generateOldDates}>
+        <IonRefresherContent></IonRefresherContent>
+      </IonRefresher>
+      {allTalks &&
+        allTalks.map((week, index) => (
+          <IonAccordionGroup key={week.week_id}>
+            {(new Date(week.week_id as string).getDate() <= 7 ||
+              index === 0) && (
+              <IonItemDivider sticky className="ion-padding">
+                <IonLabel color={"primary"}>
+                  {new Date(week.week_id as string).toLocaleString("default", {
+                    month: "long",
+                  })}
+                </IonLabel>
+              </IonItemDivider>
+            )}
+
+            <IonAccordion value={week.week_id || ""}>
+              <IonItem slot="header">
+                <IonLabel>
+                  <IonText color={"primary"}>
+                    <strong>{formatWeekDate(week.week_id || "")}</strong>
+                  </IonText>
+                  {week.speaker && (
+                    <>
+                      <br />
+                      <IonText>
+                        <strong>{week.outline?.theme}</strong>
+                      </IonText>
+                      <br />
+                      <IonText>{`${formatName(week.speaker)} ${week.congregation_id !== week.speaker.congregation_id ? `(${week.home_congregation})` : ""}`}</IonText>
+                    </>
+                  )}
+                </IonLabel>
+              </IonItem>
+
+              <IonItem slot="content" className="ion-padding-bottom">
+                <IonLabel>
+                  <IonGrid>
+                    <IonRow class="ion-justify-content-between">
+                      <IonCol size="4">
+                        <IonText color={"medium"}>
+                          <strong>Chairman:</strong>
                         </IonText>
-                        <br />
-                        <IonText>{`${formatName(week.speaker)} (${week.home_congregation})`}</IonText>
-                      </>
-                    )}
-                  </IonLabel>
-                </IonItem>
-              </Fragment>
-            ))}
-        </IonList>
-      </Suspense>
-    </IonContent>
+                      </IonCol>
+                      <IonCol>
+                        {week.chairman && (
+                          <IonText>{formatName(week.chairman)}</IonText>
+                        )}
+                      </IonCol>
+                    </IonRow>
+                  </IonGrid>
+                  <IonGrid>
+                    <IonRow class="ion-justify-content-between">
+                      <IonCol size="4">
+                        <IonText color={"medium"}>
+                          <strong>Reader:</strong>
+                        </IonText>
+                      </IonCol>
+                      <IonCol>
+                        {week.reader && (
+                          <IonText>{formatName(week.reader)}</IonText>
+                        )}
+                      </IonCol>
+                    </IonRow>
+                  </IonGrid>
+
+                  <IonGrid>
+                    <IonRow class="ion-justify-content-between">
+                      <IonCol size="4">
+                        <IonText color={"medium"}>
+                          <strong>Outgoing:</strong>
+                        </IonText>
+                      </IonCol>
+                      <IonCol>
+                        {outgoingSpeakers
+                          ?.find((item) => item.week_id === week.week_id)
+                          ?.outgoing_speakers.filter(
+                            (s) => week.congregation_id !== s.congregation.id
+                          )
+                          .map((s, index) => (
+                            <Fragment key={index}>
+                              <IonText>
+                                {formatName(s.speaker)} ({s.outline?.id}){" "}
+                              </IonText>
+                              <br />
+                              <IonText color={"medium"}>
+                                {s.congregation.name}
+                              </IonText>
+                              <br />
+                              <br />
+                            </Fragment>
+                          ))}
+                      </IonCol>
+                    </IonRow>
+                  </IonGrid>
+                </IonLabel>
+              </IonItem>
+            </IonAccordion>
+          </IonAccordionGroup>
+        ))}
+    </>
   );
 };
