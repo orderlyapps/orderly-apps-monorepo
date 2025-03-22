@@ -38,9 +38,9 @@
     "prefix": "react",
     "body": [
       "",
-      "{${TM_SELECTED_TEXT} && ${TM_SELECTED_TEXT}.map((${1:item}: any)=>{",
+      "{$1 && $1.map((${2:item}: any)=>{",
       "\treturn (",
-      "\t\t<${2|div,IonItem|}$0 key={$1.id}>{$1.name}</$2>)})}",
+      "\t\t<${3|div,IonItem,IonAccordion|}$0 key={$2.id}>{$2.name}</$3>)})}",
     ],
     "description": "Maps an array to a list of jsx elements",
     "scope": "typescript,typescriptreact,javascript,javascriptreact",

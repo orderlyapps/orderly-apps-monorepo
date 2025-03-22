@@ -16,12 +16,18 @@ import {
   NotAtHomes,
   setNotAtHomes,
 } from "../slices/not-at-homes/use-not-at-homes.js";
+import {
+  MidweekMeeting,
+  midweekMeeting,
+  setMidweekMeeting,
+} from "../slices/midweek-meeting/midweek-meeting.js";
 
 const initialState = {
   theme,
   mapView,
   congregation,
   notAtHomes,
+  midweekMeeting,
 };
 
 const actions = (set: (state: any) => void, get: () => any) => {
@@ -34,6 +40,10 @@ const actions = (set: (state: any) => void, get: () => any) => {
     ...setNotAtHomes(
       set as (state: { notAtHomes: NotAtHomes }) => void,
       get as () => { notAtHomes: NotAtHomes }
+    ),
+    ...setMidweekMeeting(
+      set as (state: { midweekMeeting: MidweekMeeting }) => void,
+      get as () => { midweekMeeting: MidweekMeeting }
     ),
   };
 };

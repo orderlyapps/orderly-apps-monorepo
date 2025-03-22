@@ -1,3 +1,4 @@
+import { orderlyPath } from "#shells/orderly/routes.js";
 import { useOutgoingSpeakersQuery } from "@amodeo/data/react-query/weekend-meeting/use-outgoing-speakers-query";
 import { usePublicTalksQuery } from "@amodeo/data/react-query/weekend-meeting/use-public-talks-query";
 import { formatWeekDate } from "@amodeo/util/dateTime/format-week-dat/formatWeekDate";
@@ -5,11 +6,13 @@ import { formatName } from "@amodeo/util/formatters/formatName";
 import {
   IonAccordion,
   IonAccordionGroup,
+  IonButton,
   IonCol,
   IonGrid,
   IonItem,
   IonItemDivider,
   IonLabel,
+  IonList,
   IonRefresher,
   IonRefresherContent,
   IonRow,
@@ -103,68 +106,112 @@ export const PublicTalksList = () => {
                 </IonLabel>
               </IonItem>
 
-              <IonItem slot="content" className="ion-padding-bottom">
-                <IonLabel>
-                  <IonGrid>
-                    <IonRow class="ion-justify-content-between">
-                      <IonCol size="4">
-                        <IonText color={"medium"}>
-                          <strong>Chairman:</strong>
-                        </IonText>
-                      </IonCol>
-                      <IonCol>
-                        {week.chairman && (
-                          <IonText>{formatName(week.chairman)}</IonText>
-                        )}
-                      </IonCol>
-                    </IonRow>
-                  </IonGrid>
-                  <IonGrid>
-                    <IonRow class="ion-justify-content-between">
-                      <IonCol size="4">
-                        <IonText color={"medium"}>
-                          <strong>Reader:</strong>
-                        </IonText>
-                      </IonCol>
-                      <IonCol>
-                        {week.reader && (
-                          <IonText>{formatName(week.reader)}</IonText>
-                        )}
-                      </IonCol>
-                    </IonRow>
-                  </IonGrid>
-
-                  <IonGrid>
-                    <IonRow class="ion-justify-content-between">
-                      <IonCol size="4">
-                        <IonText color={"medium"}>
-                          <strong>Outgoing:</strong>
-                        </IonText>
-                      </IonCol>
-                      <IonCol>
-                        {outgoingSpeakers
-                          ?.find((item) => item.week_id === week.week_id)
-                          ?.outgoing_speakers.filter(
-                            (s) => week.congregation_id !== s.congregation.id
-                          )
-                          .map((s, index) => (
-                            <Fragment key={index}>
-                              <IonText>
-                                {formatName(s.speaker)} ({s.outline?.id}){" "}
-                              </IonText>
-                              <br />
+              <IonList slot="content" className="ion-padding-bottom">
+                <IonItem lines="none">
+                  <IonLabel>
+                    {week.chairman && (
+                      <>
+                        <IonGrid>
+                          <IonRow class="ion-justify-content-between">
+                            <IonCol size="4">
                               <IonText color={"medium"}>
-                                {s.congregation.name}
+                                <strong>Chairman:</strong>
                               </IonText>
-                              <br />
-                              <br />
-                            </Fragment>
-                          ))}
-                      </IonCol>
-                    </IonRow>
-                  </IonGrid>
-                </IonLabel>
-              </IonItem>
+                            </IonCol>
+                            <IonCol>
+                              <IonText>{formatName(week.chairman)}</IonText>
+                            </IonCol>
+                          </IonRow>
+                        </IonGrid>
+                      </>
+                    )}
+
+                    {week.reader && (
+                      <>
+                        <IonGrid>
+                          <IonRow class="ion-justify-content-between">
+                            <IonCol size="4">
+                              <IonText color={"medium"}>
+                                <strong>Reader:</strong>
+                              </IonText>
+                            </IonCol>
+                            <IonCol>
+                              {week.reader && (
+                                <IonText>{formatName(week.reader)}</IonText>
+                              )}
+                            </IonCol>
+                          </IonRow>
+                        </IonGrid>
+                      </>
+                    )}
+
+                    <IonGrid>
+                      {outgoingSpeakers
+                        ?.find((item) => item.week_id === week.week_id)
+                        ?.outgoing_speakers?.filter(
+                          (s: any) => week.congregation_id !== s.congregation.id
+                        )
+                        ?.map((s: any, index: number) => {
+                          if (index === 0) {
+                            return (
+                              <IonRow>
+                                <IonCol size="4">
+                                  <IonText color={"medium"}>
+                                    <strong>Outgoing:</strong>
+                                  </IonText>
+                                </IonCol>
+                                <IonCol>
+                                  <Fragment key={index}>
+                                    <IonText>
+                                      {formatName(s.speaker)} ({s.outline?.id}
+                                      ){" "}
+                                    </IonText>
+                                    <br />
+                                    <IonText color={"medium"}>
+                                      {s.congregation.name}
+                                    </IonText>
+                                    <br />
+                                    <br />
+                                  </Fragment>
+                                </IonCol>
+                              </IonRow>
+                            );
+                          }
+
+                          return (
+                            <IonRow>
+                              <IonCol size="4"></IonCol>
+                              <IonCol>
+                                <Fragment key={index}>
+                                  <IonText>
+                                    {formatName(s.speaker)} ({s.outline?.id}
+                                    ){" "}
+                                  </IonText>
+                                  <br />
+                                  <IonText color={"medium"}>
+                                    {s.congregation.name}
+                                  </IonText>
+                                  <br />
+                                  <br />
+                                </Fragment>
+                              </IonCol>
+                            </IonRow>
+                          );
+                        })}
+                    </IonGrid>
+                  </IonLabel>
+                </IonItem>
+                {/* <IonButton
+                  expand="block"
+                  className="ion-margin"
+                  fill="outline"
+                  routerLink={orderlyPath("weekend_meeting_edit", {
+                    week_id: week.week_id || "",
+                  })}
+                >
+                  Edit
+                </IonButton> */}
+              </IonList>
             </IonAccordion>
           </IonAccordionGroup>
         ))}

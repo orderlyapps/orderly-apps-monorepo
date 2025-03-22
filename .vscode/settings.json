@@ -178,6 +178,20 @@
                   ]
                 }
               ]
+            },
+            "ionic": {
+              "command": "editor.action.insertSnippet",
+              "args": {
+                "name": "${input:snippet}"
+              },
+              "inputs": [
+                {
+                  "type": "pickString",
+                  "id": "snippet",
+                  "description": "Which wrap in fragment to use?",
+                  "options": ["-Ionic Modal"]
+                }
+              ]
             }
           }
         }
@@ -208,8 +222,6 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
     "**/node_modules": true,
     "**/.turbo": true,
     "**/dist": true,
@@ -218,13 +230,7 @@
     "**/.vscode": true,
     "**/.wrangler": true,
     "**/.files": true,
-    "packages/config": true,
-    "packages/content": false,
-    "packages/data": false,
-    "packages/feature/src/maps": true,
-    "packages/feature/src/pdf": true,
-    "packages/ui": false,
-    "packages/util": true
+    "packages/config": true
   },
   "editor.linkedEditing": true
 }

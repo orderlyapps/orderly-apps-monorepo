@@ -1,8 +1,10 @@
 import {
   IonBackButton,
+  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
+  IonIcon,
   IonPage,
   IonSearchbar,
   IonTitle,
@@ -15,9 +17,15 @@ import { MapList } from "../../../../../content/map-list/MapList.js";
 import { orderlyPath } from "#shells/orderly/routes.js";
 import { useState } from "react";
 import { Searchbar } from "@amodeo/ui/ionic/searchbar/Searchbar";
+import { filterCircle, filterCircleOutline } from "ionicons/icons";
+import { useLocalStorage } from "usehooks-ts";
 
 export default function MapListPage() {
-  const [query, setQuery] = useState<string>("");
+  const [query, setQuery] = useLocalStorage<string>("mapListQuery", "");
+  const [filterFavourites, setFilterFavourites] = useLocalStorage(
+    "filterFavourites",
+    false
+  );
   return (
     <IonPage>
       <IonHeader>
@@ -26,19 +34,32 @@ export default function MapListPage() {
             <IonBackButton></IonBackButton>
           </IonButtons>
           <IonTitle>Maps</IonTitle>
+          <IonButtons slot="end">
+            <IonButton onClick={() => setFilterFavourites(!filterFavourites)}>
+              <IonIcon
+                slot="icon-only"
+                icon={filterFavourites ? filterCircle : filterCircleOutline}
+              ></IonIcon>
+            </IonButton>
+          </IonButtons>
         </IonToolbar>
-        <IonToolbar>
-          <Searchbar
-            onIonInput={(e) => {
-              setQuery(e.detail.value as string);
-            }}
-          ></Searchbar>
-        </IonToolbar>
+        {!filterFavourites && (
+          <>
+            <IonToolbar>
+              <Searchbar
+                onIonInput={(e) => {
+                  setQuery(e.detail.value as string);
+                }}
+                value={query}
+              ></Searchbar>
+            </IonToolbar>
+          </>
+        )}
       </IonHeader>
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <MapList pathFunction={orderlyPath} query={query}></MapList>
+            <MapList pathFunction={orderlyPath}></MapList>
           </ErrorBoundary>
         </Suspense>
       </IonContent>

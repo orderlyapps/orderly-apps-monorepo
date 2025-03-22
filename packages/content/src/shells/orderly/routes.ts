@@ -14,18 +14,28 @@ import {
 } from "@amodeo/ui/util/ionic/icons/icons";
 
 export const ORDERLY_PAGES = {
-  public_talks_list:{
-    path: '/schedules/public-talks-list',
-    // params: '{ id: '' }',
+  weekend_meeting_edit: {
+    path: "/schedules/weekend-meeting-edit",
+    params: { week_id: "" },
     Component: lazy(
-      () => import('./pages/schedules/public-talks-list/PublicTalksListPage.js')
+      () =>
+        import(
+          "./pages/schedules/weekend-meeting-edit/WeekendMeetingEditPage.js"
+        )
     ),
   },
-  letter_writing:{
-    path: '/ministry/letter-writing',
+  public_talks_list: {
+    path: "/schedules/public-talks-list",
     // params: '{ id: '' }',
     Component: lazy(
-      () => import('./pages/ministry/letter-writing/LetterWritingPage.js')
+      () => import("./pages/schedules/public-talks-list/PublicTalksListPage.js")
+    ),
+  },
+  letter_writing: {
+    path: "/ministry/letter-writing",
+    // params: '{ id: '' }',
+    Component: lazy(
+      () => import("./pages/ministry/letter-writing/LetterWritingPage.js")
     ),
   },
   map_details: {

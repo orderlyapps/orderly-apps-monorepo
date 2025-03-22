@@ -2,21 +2,27 @@ import { getPaths } from "@amodeo/ui/util/ionic/tabs-app/utils/pathFunctions";
 import {
   IonButton,
   IonCheckbox,
+  IonCol,
+  IonGrid,
   IonIcon,
   IonItem,
+  IonLabel,
   IonList,
+  IonRow,
   IonText,
 } from "@ionic/react";
 import { chevronForwardOutline, mapOutline } from "ionicons/icons";
-import { useLocalStorage } from "usehooks-ts";
+import { useLocalStorage, useReadLocalStorage } from "usehooks-ts";
 
 export const MapList = ({
   pathFunction,
-  query,
 }: {
   pathFunction: ReturnType<typeof getPaths>;
-  query: string;
 }) => {
+  const showFavourites = useReadLocalStorage("filterFavourites");
+
+  const query = useReadLocalStorage<string>("mapListQuery") || "";
+
   const [favourites, setFavourites] = useLocalStorage<string[]>(
     "mapFavourites",
     []
@@ -189,50 +195,58 @@ export const MapList = ({
 
   return (
     <>
-      <IonList inset>
+      <IonList>
         {mapIDs
-          .filter(
-            (m) =>
+          .filter((m) => {
+            if (showFavourites) {
+              return favourites.includes(m.id);
+            }
+            return (
               m.id.toLowerCase().includes(query.toLowerCase()) ||
               favourites.includes(m.id)
-          )
+            );
+          })
           .map((m) => {
             return (
-              <IonItem
-                key={m.id}
-              >
-                <IonCheckbox
-                  slot="start"
-                  aria-label="Toggle task completion"
-                  checked={favourites.includes(m.id)}
-                  onIonChange={(e) => {
-                    if (e.detail.checked) {
-                      setFavourites([...favourites, m.id]);
-                    } else {
-                      setFavourites(favourites.filter((id) => id !== m.id));
-                    }
-                  }}
-                ></IonCheckbox>
-                <IonIcon icon={mapOutline} />
-                <IonText className="ion-padding">
-                  <strong>{m.id}</strong>
-                </IonText>
-                <IonButton
-                  slot="end"
-                  routerLink={pathFunction("map_details", {
-                    mapID: m.id,
-                    fileType: m.type,
-                  })}
-                  fill="clear"
-                >
-                  <IonIcon
-                    slot="icon-only"
-                    size="small"
-                    color="medium"
-                    icon={chevronForwardOutline}
-                  ></IonIcon>
-                </IonButton>
-              </IonItem>
+              <IonGrid key={m.id} className="ion-no-padding">
+                <IonRow>
+                  <IonCol size="2">
+                    <IonItem
+                      // style={{ width: "2.4rem" }}
+                      className="ion-padding-start"
+                    >
+                      <IonCheckbox
+                        slot="start"
+                        checked={favourites.includes(m.id)}
+                        onIonChange={(e) => {
+                          if (e.detail.checked) {
+                            setFavourites([...favourites, m.id]);
+                          } else {
+                            setFavourites(
+                              favourites.filter((id) => id !== m.id)
+                            );
+                          }
+                        }}
+                      ></IonCheckbox>
+                    </IonItem>
+                  </IonCol>
+                  <IonCol>
+                    <IonItem
+                      lines="full"
+                      routerLink={pathFunction("map_details", {
+                        mapID: m.id,
+                        fileType: m.type,
+                      })}
+                      className="ion-margin-start"
+                    >
+                      <IonIcon slot="start" icon={mapOutline}></IonIcon>
+                      <IonText>
+                        <strong>{m.id}</strong>
+                      </IonText>
+                    </IonItem>
+                  </IonCol>
+                </IonRow>
+              </IonGrid>
             );
           })}
       </IonList>

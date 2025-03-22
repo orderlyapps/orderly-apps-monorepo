@@ -60,6 +60,17 @@ export type Database = MergeDeep<
             }[];
           };
         };
+        _view_speakers: {
+          Row: {
+            assignments: {
+              outline: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"];
+              congregation: DatabaseGenerated["public"]["Tables"]["congregations"]["Row"];
+              week_id: string;
+            }[];
+            congregation: DatabaseGenerated["public"]["Tables"]["congregations"]["Row"];
+            outlines: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"][];
+          };
+        };
       };
     };
   }

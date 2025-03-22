@@ -145,6 +145,13 @@ export type Database = {
             foreignKeyName: "midweek_assignments_participant_id_fkey1"
             columns: ["participant_id"]
             isOneToOne: false
+            referencedRelation: "_view_speakers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "midweek_assignments_participant_id_fkey1"
+            columns: ["participant_id"]
+            isOneToOne: false
             referencedRelation: "publishers"
             referencedColumns: ["id"]
           },
@@ -302,6 +309,13 @@ export type Database = {
             columns: ["participant_id"]
             isOneToOne: false
             referencedRelation: "_view_publishers_simple"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "midweek_participants_participant_id_fkey1"
+            columns: ["participant_id"]
+            isOneToOne: false
+            referencedRelation: "_view_speakers"
             referencedColumns: ["id"]
           },
           {
@@ -631,6 +645,13 @@ export type Database = {
             foreignKeyName: "speaker_availability_speaker_id_fkey"
             columns: ["speaker_id"]
             isOneToOne: true
+            referencedRelation: "_view_speakers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "speaker_availability_speaker_id_fkey"
+            columns: ["speaker_id"]
+            isOneToOne: true
             referencedRelation: "publishers"
             referencedColumns: ["id"]
           },
@@ -669,6 +690,13 @@ export type Database = {
             columns: ["speaker_id"]
             isOneToOne: false
             referencedRelation: "_view_publishers_simple"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "speaker_outlines_speaker_d_fkey"
+            columns: ["speaker_id"]
+            isOneToOne: false
+            referencedRelation: "_view_speakers"
             referencedColumns: ["id"]
           },
           {
@@ -1018,6 +1046,13 @@ export type Database = {
             foreignKeyName: "weekend_assignments_participant_id_fkey"
             columns: ["participant_id"]
             isOneToOne: false
+            referencedRelation: "_view_speakers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "weekend_assignments_participant_id_fkey"
+            columns: ["participant_id"]
+            isOneToOne: false
             referencedRelation: "publishers"
             referencedColumns: ["id"]
           },
@@ -1073,6 +1108,13 @@ export type Database = {
             columns: ["participant_id"]
             isOneToOne: false
             referencedRelation: "_view_publishers_simple"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "weekend_participants_participant_id_fkey"
+            columns: ["participant_id"]
+            isOneToOne: false
+            referencedRelation: "_view_speakers"
             referencedColumns: ["id"]
           },
           {
@@ -1289,6 +1331,75 @@ export type Database = {
           weekend_meeting_data: Json | null
         }
         Relationships: []
+      }
+      _view_speakers: {
+        Row: {
+          assignments: Json[] | null
+          congregation: Json | null
+          congregation_id: string | null
+          first_name: string | null
+          id: string | null
+          last_name: string | null
+          outlines: Json[] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "publishers_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_available_speakers"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "publishers_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_midweek_meeting_schedule"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "publishers_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_outgoing_speakers"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "publishers_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_schedule"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "publishers_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_weekend_meeting_schedule"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "publishers_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_weekend_meeting_schedule2"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "publishers_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "congregation_week_view"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "publishers_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "congregations"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       _view_weekend_meeting_schedule: {
         Row: {
