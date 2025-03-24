@@ -14,21 +14,20 @@ import {
 } from "@amodeo/ui/util/ionic/icons/icons";
 
 export const ORDERLY_PAGES = {
-  weekend_meeting_edit: {
-    path: "/schedules/weekend-meeting-edit",
+  weekend_meeting: {
+    path: "/schedules/weekend-meeting",
+    Component: lazy(
+      () => import("./pages/schedules/weekend-meeting/WeekendMeetingPage.js")
+    ),
+  },
+  weekend_meeting_details: {
+    path: "/schedules/weekend-meeting-details",
     params: { week_id: "" },
     Component: lazy(
       () =>
         import(
-          "./pages/schedules/weekend-meeting-edit/WeekendMeetingEditPage.js"
+          "./pages/schedules/weekend-meeting-details/WeekendMeetingDetailsPage.js"
         )
-    ),
-  },
-  public_talks_list: {
-    path: "/schedules/public-talks-list",
-    // params: '{ id: '' }',
-    Component: lazy(
-      () => import("./pages/schedules/public-talks-list/PublicTalksListPage.js")
     ),
   },
   letter_writing: {

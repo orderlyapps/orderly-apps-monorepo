@@ -4,7 +4,7 @@ import { IonItem, IonLabel, IonSelect, IonSelectOption } from "@ionic/react";
 
 export function CongregationSelect() {
   const congregations = useCongregationsQuery().data || [];
-  const congregation = useStore.use.congregation();
+  const congregation = useStore.use.congregation_id();
   const setCongregation = useStore.use.setCongregation();
 
   const handleChange = (ev: any) => setCongregation(ev.target.value);

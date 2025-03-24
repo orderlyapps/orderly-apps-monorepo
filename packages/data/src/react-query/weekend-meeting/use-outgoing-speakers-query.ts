@@ -8,18 +8,20 @@ import { supabase } from "../../supabase/client.js";
  * @returns The outgoing speakers between the given start and end dates.
  */
 export const useOutgoingSpeakersQuery = (
-  startDate: string,
-  endDate: string,
-  options: { enabled: boolean }
+  schedule: {
+    startDate: string;
+    endDate: string;
+  },
+  options?: { enabled: boolean }
 ) =>
   useQuery({
-    queryKey: ["outgoing-speakers"],
+    queryKey: ["outgoing-speakers", schedule.startDate, schedule.endDate],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("_view_outgoing_speakers")
+        .from("_view_outgoing_speakers_2")
         .select("*")
-        .gte("week_id", startDate)
-        .lte("week_id", endDate)
+        .gte("week_id", schedule.startDate)
+        .lte("week_id", schedule.endDate)
         .eq("congregation_id", "a42cc43a-562f-4ed4-ac74-73dfdb42aaa5")
         .order("week_id", { ascending: true });
 
@@ -29,5 +31,5 @@ export const useOutgoingSpeakersQuery = (
 
       return data;
     },
-    enabled: options.enabled,
+    enabled: !!schedule.startDate && !!schedule.endDate && options?.enabled,
   });

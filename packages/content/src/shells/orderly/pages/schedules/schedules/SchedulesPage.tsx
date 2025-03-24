@@ -10,7 +10,10 @@ import {
 import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { midweekMeeting, weekendMeeting } from "@amodeo/ui/util/ionic/icons/icons";
+import {
+  midweekMeeting,
+  weekendMeeting,
+} from "@amodeo/ui/util/ionic/icons/icons";
 import { orderlyPath } from "#shells/orderly/routes.js";
 import { CardNav } from "@amodeo/ui/ionic/card-nav/CardNav";
 
@@ -34,8 +37,8 @@ export default function SchedulesPage() {
               icon={midweekMeeting}
             />
             <CardNav
-              label="Public Talks"
-              path={orderlyPath("public_talks_list")}
+              label="Weekend Meeting"
+              path={orderlyPath("weekend_meeting")}
               icon={weekendMeeting}
             />
           </ErrorBoundary>

@@ -16,6 +16,8 @@
             {
               "command": "commands.runInTerminal",
               "args": {
+                "icon": "circle-filled",
+                "iconColor": "charts.green",
                 "text": " pnpm run dev:${input:app}",
                 "reveal": true,
                 "name": "dev",
@@ -48,6 +50,8 @@
             {
               "command": "commands.runInTerminal",
               "args": {
+                "icon": "circle-filled",
+                "iconColor": "charts.green",
                 "text": " pnpm run deploy:${input:app}:${input:branch}",
                 "reveal": true,
                 "name": "deploy",
@@ -86,6 +90,8 @@
             {
               "command": "commands.runInTerminal",
               "args": {
+                "icon": "circle-filled",
+                "iconColor": "charts.green",
                 "text": " pnpm run build:${input:app}",
                 "reveal": true,
                 "name": "build",
@@ -128,7 +134,10 @@
             {
               "command": "commands.runInTerminal",
               "args": {
+                "icon": "circle-filled",
+                "iconColor": "charts.green",
                 "text": "turbo gen",
+                "name": "gen",
                 "reveal": true
               }
             }
@@ -232,5 +241,6 @@
     "**/.files": true,
     "packages/config": true
   },
-  "editor.linkedEditing": true
+  "editor.linkedEditing": true,
+  "workbench.editor.limit.enabled": true
 }

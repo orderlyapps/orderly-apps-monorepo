@@ -60,7 +60,6 @@
     "description": "Speaker select component with modal",
     "scope": "typescriptreact,javascriptreact",
   },
-
   "-Ionic Page": {
     "isFileTemplate": true,
     "prefix": "ionic",

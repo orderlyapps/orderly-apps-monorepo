@@ -21,7 +21,8 @@
 
 # General Code Style & Formatting
 
-- when i ask you to refactor a react component i want you to move any refactored code to a new file that is inside a folder that is a sibling of the current file.
+- when i ask you to refactor a react component i want you to move any refactored code to a new file that is inside a folder that is inside a folder called components that is a sibling of the current file.
+- do not create index files to export components
 - Use English for all code and documentation.
 - Always declare the type of each variable and function (parameters and return value).
 - Avoid using any.
@@ -29,6 +30,7 @@
 - Use JSDoc to document public classes and methods.
 - Don't leave blank lines within a function.
 - One export per file.
+- Use named exports instead of default exports. 
 
 # Styling & UI
 

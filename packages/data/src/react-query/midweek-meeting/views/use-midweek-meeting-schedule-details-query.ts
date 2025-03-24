@@ -9,7 +9,7 @@ export const useMidweekMeetingScheduleDetailsQuery = (week_id: string) =>
       const { data, error } = await supabase
         .from("_view_midweek_meeting_schedule")
         .select("*")
-        .eq("congregation_id", useStore.getState().congregation)
+        .eq("congregation_id", useStore.getState().congregation_id)
         .eq("week_id", week_id)
         .single();
 

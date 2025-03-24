@@ -60,6 +60,11 @@ export type Database = MergeDeep<
             }[];
           };
         };
+        _view_outgoing_speakers_2: {
+          Row: {
+            outgoing_speakers: DatabaseGenerated["public"]["Tables"]["speaker_assignments"]["Row"][];
+          };
+        };
         _view_speakers: {
           Row: {
             assignments: {

@@ -8,7 +8,7 @@ import {
   MapView,
 } from "../slices/map-view/use-map-view.js";
 import {
-  congregation,
+  congregation_id,
   setCongregation,
 } from "../slices/congregation/use-congregation.js";
 import {
@@ -17,17 +17,17 @@ import {
   setNotAtHomes,
 } from "../slices/not-at-homes/use-not-at-homes.js";
 import {
-  MidweekMeeting,
-  midweekMeeting,
-  setMidweekMeeting,
-} from "../slices/midweek-meeting/midweek-meeting.js";
+  weekendMeeting,
+  setWeekendMeeting,
+  WeekendMeeting,
+} from "../slices/weekend-meeting/use-weekend-meeting.js";
 
 const initialState = {
   theme,
   mapView,
-  congregation,
+  congregation_id,
   notAtHomes,
-  midweekMeeting,
+  weekendMeeting,
 };
 
 const actions = (set: (state: any) => void, get: () => any) => {
@@ -35,15 +35,15 @@ const actions = (set: (state: any) => void, get: () => any) => {
     setTheme: setTheme(set as (state: { theme: ThemeOption }) => void),
     setMapView: setMapView(set as (state: { mapView: MapView }) => void),
     setCongregation: setCongregation(
-      set as (state: { congregation: string }) => void
+      set as (state: { congregation_id: string }) => void
     ),
     ...setNotAtHomes(
       set as (state: { notAtHomes: NotAtHomes }) => void,
       get as () => { notAtHomes: NotAtHomes }
     ),
-    ...setMidweekMeeting(
-      set as (state: { midweekMeeting: MidweekMeeting }) => void,
-      get as () => { midweekMeeting: MidweekMeeting }
+    ...setWeekendMeeting(
+      set as (state: { weekendMeeting: WeekendMeeting }) => void,
+      get as () => { weekendMeeting: WeekendMeeting }
     ),
   };
 };

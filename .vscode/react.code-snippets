@@ -2,7 +2,7 @@
   "-Wrap in Fragment": {
     "prefix": "react",
     "body": [
-      "<${1|IonList,IonItem,div,strong|}$0 >",
+      "<${1|IonList,IonItem,div,strong,Fragment,IonAccordionGroup,IonAccordion,IonText|}$0 >",
       "\t${TM_SELECTED_TEXT}",
       "</$1>",
     ],

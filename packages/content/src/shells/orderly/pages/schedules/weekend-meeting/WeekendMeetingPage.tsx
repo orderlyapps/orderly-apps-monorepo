@@ -10,9 +10,9 @@ import {
 import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { PublicTalksList } from "../../../../../content/public-talks-list/PublicTalksList.js";
+import { WeekendMeeting } from "../../../../../content/weekend-meeting/WeekendMeeting.js";
 
-export default function PublicTalksListPage() {
+export default function WeekendMeetingPage() {
   return (
     <IonPage>
       <IonHeader>
@@ -20,13 +20,13 @@ export default function PublicTalksListPage() {
           <IonButtons slot="start">
             <IonBackButton></IonBackButton>
           </IonButtons>
-          <IonTitle>Public Talks</IonTitle>
+          <IonTitle>Weekend Meeting</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <PublicTalksList />
+            <WeekendMeeting />
           </ErrorBoundary>
         </Suspense>
       </IonContent>
