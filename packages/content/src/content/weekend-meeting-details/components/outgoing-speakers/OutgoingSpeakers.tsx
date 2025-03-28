@@ -1,25 +1,21 @@
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { usePublishersQuery } from "@amodeo/data/react-query/publishers/tables/use-publishers-query";
-import { useOutgoingSpeakersQuery } from "@amodeo/data/react-query/weekend-meeting/use-outgoing-speakers-query";
+import { useOutgoingSpeakerDetailsQuery } from "@amodeo/data/react-query/weekend-meeting/views/use-outgoing-speaker-details-query";
+import { formatName } from "@amodeo/util/formatters/formatName";
 import { IonItem } from "@ionic/react";
 
 export const OutgoingSpeakers = () => {
   const { week_id } = useOrderlyPageParams("weekend_meeting_details");
-  const { data: outgoingSpeakers } = useOutgoingSpeakersQuery(
-    { startDate: week_id, endDate: week_id },
-    { enabled: !!week_id }
-  );
-  const { data: publishers } = usePublishersQuery(!!outgoingSpeakers);
-
-  const d = outgoingSpeakers?.find(
-    (s: any) => s.week_id === week_id
-  )?.outgoing_speakers;
+  const { data } = useOutgoingSpeakerDetailsQuery(week_id, {
+    enabled: !!week_id,
+  });
 
   return (
     <div>
-      {d &&
-        d.map((s: any) => {
-          return <IonItem key={s.id}>{s.speaker_id}</IonItem>;
+      {data?.outgoing_speakers &&
+        data.outgoing_speakers.map((s: any, index: number) => {
+          // console.log("🚀 ~ OutgoingSpeakers ~ s:", s.speaker);
+          return <IonItem key={index}>{formatName(s.speaker)}</IonItem>;
         })}
     </div>
   );

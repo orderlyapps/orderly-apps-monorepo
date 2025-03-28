@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "../../supabase/client.js";
+import { supabase } from "../../../supabase/client.js";
 
 /**
  * Fetches outgoing speakers from the database.
  * @returns The outgoing speakers.
  */
-export const useSpeakersQuery = (
+export const useWeekendParticipantsQuery = (
   options: { enabled?: boolean } = { enabled: true }
 ) =>
   useQuery({
-    queryKey: ["speakers"],
+    queryKey: ["weekend_participants"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("_view_speakers")
+        .from("_view_weekend_participants")
         .select("*")
         .order("last_name", { ascending: true });
 

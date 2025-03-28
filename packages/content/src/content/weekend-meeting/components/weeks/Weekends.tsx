@@ -4,7 +4,7 @@ import { Tables } from "@amodeo/data/supabase/supabase-types";
 import { WeekHeader } from "./components/week-header/WeekHeader.js";
 import { WeekContent } from "./components/week-content/WeekContent.js";
 
-type WeeksProps = {
+type WeekendsProps = {
   week_id?: string;
   data: {
     speakerAssignments?: Tables<"speaker_assignments">[];
@@ -13,10 +13,10 @@ type WeeksProps = {
   };
 };
 
-export const Weeks = ({
+export const Weekends = ({
   week_id = "",
   data: { speakerAssignments, weekendAssignments, outgoingSpeakers },
-}: WeeksProps): React.ReactElement => {
+}: WeekendsProps): React.ReactElement => {
   const speakerAssignmentsDetails = speakerAssignments?.find(
     (assignment: Tables<"speaker_assignments">) =>
       assignment.week_id === week_id

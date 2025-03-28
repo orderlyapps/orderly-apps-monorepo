@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "../../supabase/client.js";
+import { supabase } from "../../../supabase/client.js";
 
 /**
  * Fetches public talks from the database.

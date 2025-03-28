@@ -19,6 +19,7 @@ import {
 import { useState } from "react";
 import { SpeakerOptions } from "./components/speaker-options/SpeakerOptions.js";
 import { DeleteAssignmentButton } from "./components/delete-assignment-button/DeleteAssignmentButton.js";
+import { usePublicTalkDetailsQuery } from "@amodeo/data/react-query/weekend-meeting/views/use-public-talk-details-query";
 
 export const SpeakerSelect = ({
   modalProps,
@@ -27,15 +28,7 @@ export const SpeakerSelect = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { week_id } = useOrderlyPageParams("weekend_meeting_details");
-  const { data: speakerAssignments } = useSpeakerAssignmentsQuery(
-    { startDate: week_id, endDate: week_id },
-    { enabled: !!week_id }
-  );
-  const { data: publishers } = usePublishersQuery(!!speakerAssignments);
-
-  const speaker = formatName(
-    publishers?.find((p) => p.id === speakerAssignments?.[0]?.speaker_id)
-  );
+  const { data } = usePublicTalkDetailsQuery(week_id);
 
   return (
     <>
@@ -43,7 +36,7 @@ export const SpeakerSelect = ({
         <IonLabel>
           <strong>Speaker:</strong>
         </IonLabel>
-        <IonText>{speaker}</IonText>
+        <IonText>{formatName(data?.speaker as any)}</IonText>
       </IonItem>
       <IonModal {...modalProps} isOpen={isOpen}>
         <IonHeader>

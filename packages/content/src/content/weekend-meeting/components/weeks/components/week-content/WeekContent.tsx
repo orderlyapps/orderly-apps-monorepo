@@ -32,10 +32,10 @@ export const WeekContent = ({
   const { data: congregations } = useCongregationsQuery();
 
   const chairman = formatName(
-    publishers?.find((p) => p.id === weekendAssignmentsDetails?.chairman_id)
+    publishers?.find((p) => p.id === weekendAssignmentsDetails?.chairman.id)
   );
   const reader = formatName(
-    publishers?.find((p) => p.id === weekendAssignmentsDetails?.reader_id)
+    publishers?.find((p) => p.id === weekendAssignmentsDetails?.reader.id)
   );
 
   const outgoingSpeakers = outgoingSpeakersDetails?.outgoing_speakers.filter(
@@ -48,7 +48,7 @@ export const WeekContent = ({
         <IonLabel>
           <IonGrid>
             {publishers?.find(
-              (p) => p.id === weekendAssignmentsDetails?.chairman_id
+              (p) => p.id === weekendAssignmentsDetails?.chairman.id
             ) && (
               <>
                 <IonRow>
@@ -64,7 +64,7 @@ export const WeekContent = ({
               </>
             )}
             {publishers?.find(
-              (p) => p.id === weekendAssignmentsDetails?.reader_id
+              (p) => p.id === weekendAssignmentsDetails?.reader.id
             ) && (
               <>
                 <IonRow>

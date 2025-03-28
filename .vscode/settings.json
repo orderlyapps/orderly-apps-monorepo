@@ -134,6 +134,7 @@
             {
               "command": "commands.runInTerminal",
               "args": {
+                "reuse": "newest",
                 "icon": "circle-filled",
                 "iconColor": "charts.green",
                 "text": "turbo gen",
@@ -156,8 +157,8 @@
           "args": {
             "icon": "circle-filled",
             "iconColor": "charts.green",
-            "name": "supabase",
             "reuse": "newest",
+            "name": "supabase",
             "reveal": true,
             "text": "supabase gen types typescript --project-id qwshevjczcvmibztktuc > packages/data/src/supabase/exported-types-remote.ts"
           },
@@ -242,5 +243,23 @@
     "packages/config": true
   },
   "editor.linkedEditing": true,
-  "workbench.editor.limit.enabled": true
+  "workbench.editor.limit.enabled": true,
+  "sqltools.connections": [
+    {
+      "pgOptions": {
+        "ssl": {
+          "rejectUnauthorized": true,
+          "ca": "/Users/damianamodeo/Downloads/Miscellaneous/2025/03/prod-ca-2021.crt"
+        }
+      },
+      "previewLimit": 50,
+      "server": "aws-0-ap-southeast-2.pooler.supabase.com",
+      "port": 6543,
+      "driver": "PostgreSQL",
+      "name": "orderly-dev",
+      "password": "81a4Qe4ci0lVRmxF",
+      "username": "postgres.qwshevjczcvmibztktuc",
+      "database": "postgres"
+    }
+  ]
 }

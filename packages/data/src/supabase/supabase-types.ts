@@ -76,6 +76,28 @@ export type Database = MergeDeep<
             outlines: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"][];
           };
         };
+        _view_public_talk_details: {
+          Row: {
+            speaker: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
+            congregation: DatabaseGenerated["public"]["Tables"]["congregations"]["Row"];
+            outline: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"];
+          };
+        };
+        _view_weekend_assignments: {
+          Row: {
+            reader: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
+            chairman: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
+          };
+        };
+        _view_weekend_participants: {
+          Row: {
+            assignments: {
+              assignment: "chairman" | "reader";
+              week_id: string;
+            }[];
+            participation: ("chairman" | "reader")[];
+          };
+        };
       };
     };
   }
