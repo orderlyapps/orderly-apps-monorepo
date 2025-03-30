@@ -98,6 +98,14 @@ export type Database = MergeDeep<
             participation: ("chairman" | "reader")[];
           };
         };
+        _view_midweek_assignments: {
+          Row: {
+            assignments: Record<
+              DatabaseGenerated["public"]["Enums"]["midweek_assignment"],
+              DatabaseGenerated["public"]["Tables"]["publishers"]["Row"]
+            >;
+          };
+        };
       };
     };
   }

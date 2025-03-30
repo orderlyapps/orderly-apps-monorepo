@@ -1352,6 +1352,78 @@ export type Database = {
         }
         Relationships: []
       }
+      _view_midweek_assignments: {
+        Row: {
+          assignments: Json | null
+          congregation_id: string | null
+          week_id: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "midweek_assignments_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_available_speakers"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "midweek_assignments_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_midweek_meeting_schedule"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "midweek_assignments_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_outgoing_speakers"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "midweek_assignments_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_outgoing_speakers_2"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "midweek_assignments_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_schedule"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "midweek_assignments_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_weekend_meeting_schedule"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "midweek_assignments_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_weekend_meeting_schedule2"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "midweek_assignments_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "congregation_week_view"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "midweek_assignments_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "congregations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       _view_midweek_meeting_schedule: {
         Row: {
           congregation_id: string | null

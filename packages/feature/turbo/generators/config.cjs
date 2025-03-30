@@ -13,7 +13,7 @@ module.exports = (plop) => {
     actions: [
       {
         type: "add",
-        path: "src/pdf/{{kebabCase name}}/{{pascalCase name}}.tsx",
+        path: "src/pdf/{{kebabCase name}}/{{pascalCase name}}PDF.tsx",
         templateFile: "templates/pdf-template.hbs",
       },
     ],

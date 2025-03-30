@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../../../supabase/client.js";
 import { useStore } from "../../../zustand/stores/use-store.js";
 
-export const useMidweekMeetingScheduleDetailsQuery = (week_id: string) =>
+export const useMidweekMeetingScheduleDetailsQuery_xxx = (week_id: string) =>
   useQuery({
     queryKey: ["_view_midweek_meeting_schedule", week_id],
     queryFn: async () => {

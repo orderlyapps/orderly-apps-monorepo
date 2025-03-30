@@ -3,9 +3,9 @@ import {
   Page,
   PDFDownloadLink,
   PDFViewer,
-  Text,
   View,
 } from "@react-pdf/renderer";
+import { TemplatePDFTitle } from "./components/template-pdf-title/TemplatePDFTitle.js";
 
 type PDFData = {
   data?: any;
@@ -18,7 +18,7 @@ function TemplatePDF({ data }: PDFData) {
     <Document>
       <Page size={"A4"} style={{ padding: 12, fontSize: 12 }}>
         <View>
-          <Text>Template PDF</Text>
+          <TemplatePDFTitle />
         </View>
       </Page>
     </Document>
