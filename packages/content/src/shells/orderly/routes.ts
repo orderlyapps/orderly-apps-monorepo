@@ -14,6 +14,13 @@ import {
 } from "@amodeo/ui/util/ionic/icons/icons";
 
 export const ORDERLY_PAGES = {
+  pdf_exports:{
+    path: '/schedules/pdf-exports',
+    // params: { id: '' },
+    Component: lazy(
+      () => import('./pages/schedules/pdf-exports/PdfExportsPage.js')
+    ),
+  },
   weekend_meeting: {
     path: "/schedules/weekend-meeting",
     Component: lazy(
