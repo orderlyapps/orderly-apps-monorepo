@@ -1,51 +1,65 @@
-import { getClosestNegativeNumberToZero } from "@amodeo/util/array/getClosestNegativeNumberToZero";
-import { getClosestPositiveNumberToZero } from "@amodeo/util/array/getClosestPositiveNumberToZero";
+import {
+  getClosestNegativeNumberToZero,
+  getClosestNegativeNumberToZeroFromObject,
+} from "@amodeo/util/array/getClosestNegativeNumberToZero";
+import {
+  getClosestPositiveNumberToZero,
+  getClosestPositiveNumberToZeroFromObject,
+} from "@amodeo/util/array/getClosestPositiveNumberToZero";
 import { getDifferenceBetweenNumbers } from "@amodeo/util/math/getDifferencBetweenNumbers";
 
 export const getAssignmentStats = <T extends Record<string, number>>(
   calculatedAssignments: {
     assignment: keyof T;
-    weeksFromCurrentDate: number;
+    weeksValue: number;
   }[],
   assignment: keyof T | "combined"
 ) => {
   const filteredAssignments =
     assignment === "combined"
-      ? calculatedAssignments.map((a) => {
-          return a.weeksFromCurrentDate;
-        })
-      : (calculatedAssignments
-          .map((a) => {
-            return a.assignment === assignment ? a.weeksFromCurrentDate : null;
-          })
-          .filter((a) => a !== null) as number[] | null);
+      ? calculatedAssignments
+      : calculatedAssignments.filter((a) => a.assignment === assignment);
 
   const firstAssignment = filteredAssignments?.[0];
 
   const lastAssignment = filteredAssignments?.[filteredAssignments.length - 1];
 
-  const differenceBetweenFirstAndLastAssignment =
-    (lastAssignment && firstAssignment && lastAssignment - firstAssignment) ||
-    null;
+  const differenceBetweenFirstAndLastAssignment = {
+    weeksValue:
+      (lastAssignment &&
+        firstAssignment &&
+        lastAssignment.weeksValue - firstAssignment.weeksValue) ||
+      null,
+  };
 
-  const averageAssignments =
-    filteredAssignments &&
-    differenceBetweenFirstAndLastAssignment &&
-    filteredAssignments?.length > 1 &&
-    differenceBetweenFirstAndLastAssignment /
-      (filteredAssignments.length - 1 || 0);
+  const averageAssignments = {
+    weeksValue:
+      filteredAssignments &&
+      differenceBetweenFirstAndLastAssignment.weeksValue &&
+      filteredAssignments?.length > 1 &&
+      differenceBetweenFirstAndLastAssignment.weeksValue /
+        (filteredAssignments.length - 1 || 0),
+  };
 
-  const previousAssignment =
-    getClosestNegativeNumberToZero(filteredAssignments);
-
-  const nextAssignment = getClosestPositiveNumberToZero(filteredAssignments);
-
-  const weeksBetweenPreviousAndNextAssignment = getDifferenceBetweenNumbers(
-    nextAssignment,
-    previousAssignment
+  const previousAssignment = getClosestNegativeNumberToZeroFromObject(
+    filteredAssignments as any
   );
+  // console.log("🚀 ~ previousAssignment:", previousAssignment?.weeksValue)
 
-  const currentWeek = filteredAssignments?.includes(0);
+  const nextAssignment = getClosestPositiveNumberToZeroFromObject(
+    filteredAssignments as any
+  );
+  // console.log("🚀 ~ nextAssignment:", nextAssignment?.weeksValue)
+
+  const weeksBetweenPreviousAndNextAssignment = {
+    weeksValue: getDifferenceBetweenNumbers(
+      nextAssignment?.weeksValue || null,
+      (previousAssignment?.weeksValue && previousAssignment?.weeksValue * -1) ||
+        null
+    ),
+  };
+
+  const currentWeek = filteredAssignments?.some((a) => a.weeksValue === 0);
 
   return {
     allAssignments: filteredAssignments,
