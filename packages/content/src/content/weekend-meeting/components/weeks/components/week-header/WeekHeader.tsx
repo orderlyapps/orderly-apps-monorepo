@@ -39,8 +39,7 @@ export const WeekHeader = ({
   )?.theme;
 
   return (
-    <IonList slot="header" lines="none">
-      <IonItem>
+      <>
         {week_id !== "2025-06-02" && week_id !== "2025-07-21" && (
           <>
             <IonLabel>
@@ -80,7 +79,6 @@ export const WeekHeader = ({
             </IonText>
           </IonLabel>
         )}
-      </IonItem>
-    </IonList>
+      </>
   );
 };

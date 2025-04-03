@@ -1,8 +1,9 @@
 import React from "react";
-import { IonAccordion } from "@ionic/react";
+import { IonAccordion, IonItem } from "@ionic/react";
 import { Tables } from "@amodeo/data/supabase/supabase-types";
 import { WeekHeader } from "./components/week-header/WeekHeader.js";
 import { WeekContent } from "./components/week-content/WeekContent.js";
+import { chevronExpandOutline } from "ionicons/icons";
 
 type WeekendsProps = {
   week_id?: string;
@@ -32,11 +33,16 @@ export const Weekends = ({
   );
 
   return (
-    <IonAccordion value={week_id}>
-      <WeekHeader
-        week_id={week_id}
-        speakerAssignmentsDetails={speakerAssignmentsDetails}
-      />
+    <IonAccordion
+      value={week_id}
+      toggleIcon={chevronExpandOutline}
+    >
+      <IonItem slot="header" lines="none">
+        <WeekHeader
+          week_id={week_id}
+          speakerAssignmentsDetails={speakerAssignmentsDetails}
+        />
+      </IonItem>
       <WeekContent
         week_id={week_id}
         weekendAssignmentsDetails={weekendAssignmentsDetails}

@@ -46,7 +46,7 @@ export const ChairmanSelect = ({
         <IonLabel>
           <strong>Chairman:</strong>
         </IonLabel>
-        <IonText>{formatName(data?.chairman)}</IonText>
+        <IonText>{data?.chairman && formatName(data?.chairman)}</IonText>
       </IonItem>
       <IonModal {...modalProps} isOpen={isOpen}>
         <IonHeader>
@@ -59,15 +59,15 @@ export const ChairmanSelect = ({
         </IonHeader>
         <IonContent>
           <IonList inset>
-            <FilterControls 
-              filters={filters} 
-              updateFilter={updateFilter} 
-              setFilters={setFilters} 
+            <FilterControls
+              filters={filters}
+              updateFilter={updateFilter}
+              setFilters={setFilters}
             />
-            <ParticipantList 
-              participants={participantsWithStats} 
-              filters={filters} 
-              onSelectParticipant={handleSelectParticipant} 
+            <ParticipantList
+              participants={participantsWithStats}
+              filters={filters}
+              onSelectParticipant={handleSelectParticipant}
             />
           </IonList>
         </IonContent>

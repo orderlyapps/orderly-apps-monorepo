@@ -85,8 +85,8 @@ export type Database = MergeDeep<
         };
         _view_weekend_assignments: {
           Row: {
-            reader: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
-            chairman: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
+            reader: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"] | null;
+            chairman: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"] | null;
           };
         };
         _view_weekend_participants: {

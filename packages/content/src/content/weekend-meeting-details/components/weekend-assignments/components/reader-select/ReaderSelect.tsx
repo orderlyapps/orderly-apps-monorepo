@@ -30,7 +30,7 @@ export const ReaderSelect = ({
         <IonLabel>
           <strong>Reader:</strong>
         </IonLabel>
-        <IonText>{formatName(data?.reader)}</IonText>
+        <IonText>{data?.reader && formatName(data?.reader)}</IonText>
       </IonItem>
       <IonModal {...modalProps} isOpen={isOpen}>
         <IonHeader>
