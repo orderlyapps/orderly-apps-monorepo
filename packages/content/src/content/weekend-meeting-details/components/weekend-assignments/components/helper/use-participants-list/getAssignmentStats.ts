@@ -44,12 +44,10 @@ export const getAssignmentStats = <T extends Record<string, number>>(
   const previousAssignment = getClosestNegativeNumberToZeroFromObject(
     filteredAssignments as any
   );
-  // console.log("🚀 ~ previousAssignment:", previousAssignment?.weeksValue)
 
   const nextAssignment = getClosestPositiveNumberToZeroFromObject(
     filteredAssignments as any
   );
-  // console.log("🚀 ~ nextAssignment:", nextAssignment?.weeksValue)
 
   const weeksBetweenPreviousAndNextAssignment = {
     weeksValue: getDifferenceBetweenNumbers(

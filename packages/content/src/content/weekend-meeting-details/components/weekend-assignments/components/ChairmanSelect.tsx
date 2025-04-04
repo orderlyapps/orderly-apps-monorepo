@@ -1,5 +1,4 @@
 import { useCardModal } from "@amodeo/ui/util/ionic/use-card-modal/useCardModal";
-import { formatName } from "@amodeo/util/formatters/formatName";
 import {
   IonButton,
   IonButtons,
@@ -14,13 +13,12 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { useState } from "react";
+import { formatName } from "@amodeo/util/formatters/formatName";
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { useWeekendAssignmentDetailsQuery } from "@amodeo/data/react-query/weekend-meeting/views/use-weekend-assignment-details-query";
-import { FilterControls } from "./components/filter-controls/FilterControls.js";
-import { ParticipantList } from "./components/participant-list/ParticipantList.js";
-import { useChairmanFilters } from "./components/hooks/useChairmanFilters.js";
-import { useParticipantStats } from "./components/hooks/useParticipantStats.js";
-import { ParticipantWithStats } from "./components/types/ChairmanSelectTypes.js";
+import { AssignmentSortSelect } from "./helper/assignment-sort-select/AssignmentSortSelect.js";
+import { AssignmentFilters } from "./components/assignment-filters/AssignmentFilters.js";
+import { AssignmentOptions } from "./components/assignment-options/AssignmentOptions.js";
 
 export const ChairmanSelect = ({
   modalProps,
@@ -30,16 +28,6 @@ export const ChairmanSelect = ({
   const [isOpen, setIsOpen] = useState(false);
   const { week_id } = useOrderlyPageParams("weekend_meeting_details");
   const { data } = useWeekendAssignmentDetailsQuery(week_id);
-  const { filters, updateFilter, setFilters } = useChairmanFilters();
-  const { participantsWithStats } = useParticipantStats(week_id);
-
-  const handleSelectParticipant = (participant: ParticipantWithStats) => {
-    // Here you would implement the logic to update the chairman assignment
-    // This is just a placeholder for now
-    console.log("Selected participant:", participant);
-    setIsOpen(false);
-  };
-
   return (
     <>
       <IonItem onClick={() => setIsOpen(true)}>
@@ -51,7 +39,7 @@ export const ChairmanSelect = ({
       <IonModal {...modalProps} isOpen={isOpen}>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>ChairmanSelect</IonTitle>
+            <IonTitle>Chairman</IonTitle>
             <IonButtons slot="end">
               <IonButton onClick={() => setIsOpen(false)}>Close</IonButton>
             </IonButtons>
@@ -59,16 +47,11 @@ export const ChairmanSelect = ({
         </IonHeader>
         <IonContent>
           <IonList inset>
-            <FilterControls
-              filters={filters}
-              updateFilter={updateFilter}
-              setFilters={setFilters}
-            />
-            <ParticipantList
-              participants={participantsWithStats}
-              filters={filters}
-              onSelectParticipant={handleSelectParticipant}
-            />
+            <AssignmentSortSelect assignmentType="chairman" />
+            <AssignmentFilters assignmentType="chairman" />
+          </IonList>
+          <IonList inset>
+            <AssignmentOptions assignmentType="chairman" />
           </IonList>
         </IonContent>
       </IonModal>

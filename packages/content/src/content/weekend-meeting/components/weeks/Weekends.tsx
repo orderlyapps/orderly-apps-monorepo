@@ -33,11 +33,11 @@ export const Weekends = ({
   );
 
   return (
-    <IonAccordion
-      value={week_id}
-      toggleIcon={chevronExpandOutline}
-    >
-      <IonItem slot="header" lines="none">
+    <IonAccordion value={week_id} toggleIcon={chevronExpandOutline}>
+      <IonItem
+        slot="header"
+        //lines="none"
+      >
         <WeekHeader
           week_id={week_id}
           speakerAssignmentsDetails={speakerAssignmentsDetails}

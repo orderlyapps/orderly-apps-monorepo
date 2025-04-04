@@ -6,6 +6,7 @@ import {
   IonHeader,
   IonItem,
   IonLabel,
+  IonList,
   IonModal,
   IonText,
   IonTitle,
@@ -15,6 +16,9 @@ import { useState } from "react";
 import { formatName } from "@amodeo/util/formatters/formatName";
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { useWeekendAssignmentDetailsQuery } from "@amodeo/data/react-query/weekend-meeting/views/use-weekend-assignment-details-query";
+import { AssignmentSortSelect } from "./helper/assignment-sort-select/AssignmentSortSelect.js";
+import { AssignmentFilters } from "./components/assignment-filters/AssignmentFilters.js";
+import { AssignmentOptions } from "./components/assignment-options/AssignmentOptions.js";
 
 export const ReaderSelect = ({
   modalProps,
@@ -42,7 +46,13 @@ export const ReaderSelect = ({
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <div className="full centered">This is a Modal</div>
+          <IonList inset>
+            <AssignmentSortSelect assignmentType="reader" />
+            <AssignmentFilters assignmentType="reader" />
+          </IonList>
+          <IonList inset>
+            <AssignmentOptions assignmentType="reader" />
+          </IonList>
         </IonContent>
       </IonModal>
     </>

@@ -28,7 +28,7 @@ export const WeekList = ({ children, setScheduleDates }: WeekListProps) => {
   const [oldDates, setOldDates] = useState<string[]>([]);
   const [currentWeeks, setCurrentWeeks] = useState(26);
 
-  const start = previousMonday(new Date());
+  const start = previousMonday(new Date()).setUTCHours(0, 0, 0, 0);
   const dates = Array.from({ length: currentWeeks }).map((_, i) => {
     const date = addWeeks(start, i);
     return formatDate(date, "yyyy-MM-dd");
@@ -67,7 +67,7 @@ export const WeekList = ({ children, setScheduleDates }: WeekListProps) => {
       <IonRefresher slot="fixed" onIonRefresh={generateOldDates}>
         <IonRefresherContent></IonRefresherContent>
       </IonRefresher>
-      <IonList >
+      <IonList>
         {allDates.map((week_id, index) => {
           const weekDate = new Date(week_id);
           const isFirstWeekOfMonth = weekDate.getDate() <= 7;

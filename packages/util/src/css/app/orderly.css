@@ -10,7 +10,7 @@
 @import "../ionic/colors/jw_brown_light.css";
 @import "../ionic/colors/jw_slate_light.css";
 @import "../ionic/colors/jw_red_light.css";
-@import "../ionic/ion-content/padding-bottom.css";
+/* @import "../ionic/ion-content/padding-bottom.css"; */
 
 :root {
   --ion-color-primary: #bf2f13;
