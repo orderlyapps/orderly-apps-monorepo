@@ -36,9 +36,14 @@ export const getAssignmentStats = <T extends Record<string, number>>(
     weeksValue:
       filteredAssignments &&
       differenceBetweenFirstAndLastAssignment.weeksValue &&
-      filteredAssignments?.length > 1 &&
-      differenceBetweenFirstAndLastAssignment.weeksValue /
-        (filteredAssignments.length - 1 || 0),
+      filteredAssignments?.length > 1
+        ? Number(
+            (
+              differenceBetweenFirstAndLastAssignment.weeksValue /
+              (filteredAssignments.length - 1 || 0)
+            ).toFixed(1)
+          )
+        : null,
   };
 
   const previousAssignment = getClosestNegativeNumberToZeroFromObject(

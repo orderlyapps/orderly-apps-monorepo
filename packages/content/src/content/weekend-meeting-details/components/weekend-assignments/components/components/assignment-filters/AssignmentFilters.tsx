@@ -4,9 +4,10 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonRange
+  IonRange,
 } from "@ionic/react";
 import { useFilters } from "../../helper/use-filters/useFilters.js";
+import { assignmentTypes } from "../../helper/assignment-types/assignmentTypes.js";
 
 export const AssignmentFilters = ({
   assignmentType,
@@ -27,14 +28,16 @@ export const AssignmentFilters = ({
             <IonRange
               labelPlacement="stacked"
               pin
-              label={`Average Assignments ${filters.averageAssignments} Week${
-                filters.averageAssignments > 1 ? "s" : ""
-              }`}
+              label={`${filters.averageAssignments} week${
+                filters.averageAssignments === 1 ? "" : "s"
+              } average assignments`}
               min={0}
               max={6}
               value={filters.averageAssignments}
               onIonChange={({ detail }) =>
-                updateFilter("averageAssignments", detail.value as number)
+                updateFilter({
+                  averageAssignments: detail.value as number,
+                })
               }
               ticks={true}
               snaps={true}
@@ -44,14 +47,16 @@ export const AssignmentFilters = ({
             <IonRange
               labelPlacement="stacked"
               pin
-              label={`Last Assignment ${filters.lastAssignment} Week${
-                filters.lastAssignment > 1 ? "s" : ""
-              }`}
+              label={`${filters.lastAssignment} week${
+                filters.lastAssignment === 1 ? "" : "s"
+              } since last assignment`}
               min={0}
               max={6}
               value={filters.lastAssignment}
               onIonChange={({ detail }) =>
-                updateFilter("lastAssignment", detail.value as number)
+                updateFilter({
+                  lastAssignment: detail.value as number,
+                })
               }
               ticks={true}
               snaps={true}
@@ -61,14 +66,16 @@ export const AssignmentFilters = ({
             <IonRange
               labelPlacement="stacked"
               pin
-              label={`Last Chairman Assignment ${filters.lastChairmanAssignment} Week${
-                filters.lastChairmanAssignment > 1 ? "s" : ""
-              }`}
+              label={`${filters.lastChairmanAssignment} week${
+                filters.lastChairmanAssignment === 1 ? "" : "s"
+              } since last ${assignmentTypes[assignmentType]} assignment`}
               min={0}
               max={6}
               value={filters.lastChairmanAssignment}
               onIonChange={({ detail }) =>
-                updateFilter("lastChairmanAssignment", detail.value as number)
+                updateFilter({
+                  lastChairmanAssignment: detail.value as number,
+                })
               }
               ticks={true}
               snaps={true}
@@ -78,14 +85,16 @@ export const AssignmentFilters = ({
             <IonRange
               labelPlacement="stacked"
               pin
-              label={`Between Assignments ${filters.betweenAssignments} Week${
-                filters.betweenAssignments > 1 ? "s" : ""
-              }`}
+              label={`${filters.betweenAssignments} week${
+                filters.betweenAssignments === 1 ? "s" : ""
+              } between assignments`}
               min={0}
               max={6}
               value={filters.betweenAssignments}
               onIonChange={({ detail }) =>
-                updateFilter("betweenAssignments", detail.value as number)
+                updateFilter({
+                  betweenAssignments: detail.value as number,
+                })
               }
               ticks={true}
               snaps={true}

@@ -19,6 +19,7 @@ import { useWeekendAssignmentDetailsQuery } from "@amodeo/data/react-query/weeke
 import { AssignmentSortSelect } from "./helper/assignment-sort-select/AssignmentSortSelect.js";
 import { AssignmentFilters } from "./components/assignment-filters/AssignmentFilters.js";
 import { AssignmentOptions } from "./components/assignment-options/AssignmentOptions.js";
+import { AssignmentSelectAlert } from "./components/assignment-options/components/AssignmentSelectAlert.js";
 
 export const ReaderSelect = ({
   modalProps,
@@ -53,6 +54,7 @@ export const ReaderSelect = ({
           <IonList inset>
             <AssignmentOptions assignmentType="reader" />
           </IonList>
+          <AssignmentSelectAlert assignmentType="reader"/>
         </IonContent>
       </IonModal>
     </>

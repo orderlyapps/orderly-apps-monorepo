@@ -1,5 +1,6 @@
 import { useLocalStorage, useReadLocalStorage } from "usehooks-ts";
 import { getAssignmentStats } from "../use-participants-list/getAssignmentStats.js";
+import { TablesUpdate } from "@amodeo/data/supabase/supabase-types";
 
 export const initialFilters = {
   sortValue: {
@@ -13,6 +14,10 @@ export const initialFilters = {
   lastAssignment: 0,
   lastChairmanAssignment: 0,
   betweenAssignments: 0,
+  selectAlert: false,
+  assignmentData: {} as TablesUpdate<"weekend_assignments">,
+  alertMessage: "",
+  mutationType: "upsert" as "upsert" | "delete",
 };
 
 export const useFilters = (assignmentType: "reader" | "chairman") => {
@@ -22,26 +27,18 @@ export const useFilters = (assignmentType: "reader" | "chairman") => {
   );
 
   const updateFilter = <K extends keyof typeof initialFilters>(
-    key: K,
-    value: (typeof initialFilters)[K]
+    newValues: Record<K, (typeof initialFilters)[K]>
   ) => {
     setFilters({
       ...filters,
-      [key]: value,
+      ...newValues,
     });
   };
 
   return {
     filters: {
-      sortValue: filters?.sortValue || initialFilters.sortValue,
-      averageAssignments:
-        filters?.averageAssignments || initialFilters.averageAssignments,
-      lastAssignment: filters?.lastAssignment || initialFilters.lastAssignment,
-      lastChairmanAssignment:
-        filters?.lastChairmanAssignment ||
-        initialFilters.lastChairmanAssignment,
-      betweenAssignments:
-        filters?.betweenAssignments || initialFilters.betweenAssignments,
+      ...initialFilters,
+      ...filters,
     },
     updateFilter,
   };
@@ -52,13 +49,7 @@ export const useReadFilters = (assignmentType: "reader" | "chairman") => {
     "select-weekend-" + assignmentType + "-filters"
   ) as typeof initialFilters;
   return {
-    sortValue: filters?.sortValue || initialFilters.sortValue,
-    averageAssignments:
-      filters?.averageAssignments || initialFilters.averageAssignments,
-    lastAssignment: filters?.lastAssignment || initialFilters.lastAssignment,
-    lastChairmanAssignment:
-      filters?.lastChairmanAssignment || initialFilters.lastChairmanAssignment,
-    betweenAssignments:
-      filters?.betweenAssignments || initialFilters.betweenAssignments,
+    ...initialFilters,
+    ...filters,
   };
 };

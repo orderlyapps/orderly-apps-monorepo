@@ -19,6 +19,7 @@ import { useWeekendAssignmentDetailsQuery } from "@amodeo/data/react-query/weeke
 import { AssignmentSortSelect } from "./helper/assignment-sort-select/AssignmentSortSelect.js";
 import { AssignmentFilters } from "./components/assignment-filters/AssignmentFilters.js";
 import { AssignmentOptions } from "./components/assignment-options/AssignmentOptions.js";
+import { AssignmentSelectAlert } from "./components/assignment-options/components/AssignmentSelectAlert.js";
 
 export const ChairmanSelect = ({
   modalProps,
@@ -53,6 +54,7 @@ export const ChairmanSelect = ({
           <IonList inset>
             <AssignmentOptions assignmentType="chairman" />
           </IonList>
+          <AssignmentSelectAlert assignmentType="chairman"/>
         </IonContent>
       </IonModal>
     </>

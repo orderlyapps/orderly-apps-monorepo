@@ -18,7 +18,7 @@ export const AssignmentSortSelect = ({
       <IonSelect
         placeholder="Select"
         onIonChange={({ detail }) => {
-          updateFilter("sortValue", detail.value);
+          updateFilter({ sortValue: detail.value });
         }}
         compareWith={compareWith}
         value={filters.sortValue}
