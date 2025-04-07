@@ -1,0 +1,828 @@
+create view public._view_weekend_meeting_schedule as
+with
+  weeks as (
+    select distinct
+      speaker_assignments.week_id
+    from
+      speaker_assignments
+    union
+    select distinct
+      weekend_assignments.week_id
+    from
+      weekend_assignments
+    union
+    select distinct
+      weekend_meeting_data.w_study_date as week_id
+    from
+      weekend_meeting_data
+  )
+select
+  w.week_id,
+  c.id as congregation_id,
+  row_to_json(c.*) as congregation,
+  row_to_json(wmd.*) as weekend_meeting_data,
+  row_to_json(pc.*) as chairman,
+  row_to_json(pr.*) as reader,
+  COALESCE(
+    array_agg(
+      distinct jsonb_build_object(
+        'speaker',
+        row_to_json(op.*),
+        'outline',
+        row_to_json(oo.*),
+        'congregation',
+        row_to_json(oc.*)
+      )
+    ) filter (
+      where
+        op.id is not null
+    ),
+    null::jsonb[]
+  ) as speakers
+from
+  congregations c
+  cross join weeks w
+  left join weekend_meeting_data wmd on w.week_id = wmd.w_study_date
+  left join speaker_assignments os on w.week_id = os.week_id
+  left join _view_publishers_simple op on os.speaker_id = op.id
+  left join congregations oc on oc.id = os.congregation_id
+  left join outlines oo on oo.id = os.outline_id
+  left join weekend_assignments wac on wac.congregation_id = c.id
+  and wac.week_id = w.week_id
+  and wac.assignment = 'chairman'::weekend_assignment
+  left join publishers pc on pc.id = wac.participant_id
+  left join weekend_assignments war on war.congregation_id = c.id
+  and war.week_id = w.week_id
+  and war.assignment = 'reader'::weekend_assignment
+  left join publishers pr on pr.id = war.participant_id
+group by
+  w.week_id,
+  wmd.*,
+  pc.*,
+  pr.*,
+  c.id;
+
+  create drop view public._midweek_meeting_participants as
+select
+  p.id,
+  p.first_name,
+  p.last_name,
+  p.congregation_id,
+  json_agg(distinct mp.assignment) as participation,
+  case
+    when count(ma.*) = 0 then null::json
+    else json_agg(
+      jsonb_build_object(
+        'week_id',
+        ma.week_id,
+        'assignment',
+        ma.assignment
+      )
+    )
+  end as midweek_assignments
+from
+  publishers p
+  join midweek_participants mp on mp.participant_id = p.id
+  join midweek_assignments ma on p.id = ma.participant_id
+where
+  ma.week_id >= (CURRENT_DATE - '1 year'::interval)
+group by
+  p.id,
+  p.first_name,
+  p.last_name,
+  p.congregation_id;
+
+  create drop view public._view_publishers_simple as
+select
+  p.id,
+  p.first_name,
+  p.last_name,
+  p.congregation_id,
+  c.name as congregation_name
+from
+  publishers p
+  left join congregations c on c.id = p.congregation_id;
+
+
+
+
+
+
+  create drop view public._view_schedule as
+select
+  c.id as congregation_id,
+  c.name as congregation_name,
+  weeks.week_id,
+  row_to_json(mmd.*) as midweek_meeting_data,
+  json_build_object(
+    'chairman',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'chairman'::midweek_assignment
+    ),
+    'counselor_2',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'counselor_2'::midweek_assignment
+    ),
+    'prayer_opening',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'prayer_opening'::midweek_assignment
+    ),
+    'treasures',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'treasures'::midweek_assignment
+    ),
+    'gems',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'gems'::midweek_assignment
+    ),
+    'school_1_bible_reading',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_1_bible_reading'::midweek_assignment
+    ),
+    'school_2_bible_reading',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_2_bible_reading'::midweek_assignment
+    ),
+    'school_1_apply_1',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_1_apply_1'::midweek_assignment
+    ),
+    'school_1_assistant_1',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_1_assistant_1'::midweek_assignment
+    ),
+    'school_1_apply_2',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_1_apply_2'::midweek_assignment
+    ),
+    'school_1_assistant_2',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_1_assistant_2'::midweek_assignment
+    ),
+    'school_1_apply_3',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_1_apply_3'::midweek_assignment
+    ),
+    'school_1_assistant_3',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_1_assistant_3'::midweek_assignment
+    ),
+    'school_1_apply_4',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_1_apply_4'::midweek_assignment
+    ),
+    'school_1_assistant_4',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_1_assistant_4'::midweek_assignment
+    ),
+    'school_2_apply_1',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_2_apply_1'::midweek_assignment
+    ),
+    'school_2_assistant_1',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_2_assistant_1'::midweek_assignment
+    ),
+    'school_2_apply_2',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_2_apply_2'::midweek_assignment
+    ),
+    'school_2_assistant_2',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_2_assistant_2'::midweek_assignment
+    ),
+    'school_2_apply_3',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_2_apply_3'::midweek_assignment
+    ),
+    'school_2_assistant_3',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_2_assistant_3'::midweek_assignment
+    ),
+    'school_2_apply_4',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_2_apply_4'::midweek_assignment
+    ),
+    'school_2_assistant_4',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'school_2_assistant_4'::midweek_assignment
+    ),
+    'living_1',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'living_1'::midweek_assignment
+    ),
+    'living_2',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'living_2'::midweek_assignment
+    ),
+    'cbs_conductor',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'cbs_conductor'::midweek_assignment
+    ),
+    'cbs_reader',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'cbs_reader'::midweek_assignment
+    ),
+    'prayer_closing',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join midweek_assignments ma on p.id = ma.participant_id
+        and ma.congregation_id = c.id
+        and ma.week_id = weeks.week_id
+        and ma.assignment = 'prayer_closing'::midweek_assignment
+    )
+  ) as midweek_assignments,
+  row_to_json(wmd.*) as weekend_meeting_data,
+  json_build_object(
+    'chairman',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join weekend_assignments wa on p.id = wa.participant_id
+        and wa.congregation_id = c.id
+        and wa.week_id = weeks.week_id
+        and wa.assignment = 'chairman'::weekend_assignment
+    ),
+    'reader',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        publishers p
+        join weekend_assignments wa on p.id = wa.participant_id
+        and wa.congregation_id = c.id
+        and wa.week_id = weeks.week_id
+        and wa.assignment = 'reader'::weekend_assignment
+    )
+  ) as weekend_assignments,
+  json_build_object(
+    'speaker',
+    (
+      select
+        row_to_json(p.*) as row_to_json
+      from
+        _view_publishers p
+        join speaker_assignments sa_1 on p.id = sa_1.speaker_id
+        and sa_1.congregation_id = c.id
+        and sa_1.week_id = weeks.week_id
+    ),
+    'outline',
+    (
+      select
+        row_to_json(o_1.*) as row_to_json
+      from
+        outlines o_1
+        join speaker_assignments sa_1 on o_1.id = sa_1.outline_id
+        and sa_1.congregation_id = c.id
+        and sa_1.week_id = weeks.week_id
+    )
+  ) as public_talk_details,
+  COALESCE(
+    array_agg(
+      distinct jsonb_build_object(
+        'speaker',
+        row_to_json(vp.*),
+        'outline',
+        (
+          select
+            row_to_json(o.*) as row_to_json
+          from
+            outlines o
+            join speaker_assignments sa_1 on o.id = sa_1.outline_id
+            and vp.id = sa_1.speaker_id
+            and sa_1.week_id = weeks.week_id
+        ),
+        'congregation',
+        (
+          select
+            row_to_json(co.*) as row_to_json
+          from
+            congregations co
+            join speaker_assignments sa_1 on vp.id = sa_1.speaker_id
+            and sa_1.congregation_id = co.id
+            and sa_1.week_id = weeks.week_id
+        )
+      )
+    ) filter (
+      where
+        vp.id is not null
+    ),
+    null::jsonb[]
+  ) as speaker_assignments
+from
+  congregations c
+  left join (
+    select distinct
+      midweek_assignments.week_id
+    from
+      midweek_assignments
+    union
+    select distinct
+      midweek_meeting_data.mwb_week_date as week_id
+    from
+      midweek_meeting_data
+    union
+    select distinct
+      speaker_assignments.week_id
+    from
+      speaker_assignments
+    union
+    select distinct
+      weekend_assignments.week_id
+    from
+      weekend_assignments
+    union
+    select distinct
+      weekend_meeting_data.w_study_date as week_id
+    from
+      weekend_meeting_data
+  ) weeks on true
+  left join midweek_meeting_data mmd on mmd.mwb_week_date = weeks.week_id
+  left join weekend_meeting_data wmd on wmd.w_study_date = weeks.week_id
+  left join speaker_assignments sa on sa.week_id = weeks.week_id
+  left join _view_publishers vp on (vp.congregation ->> 'id'::text) = c.id::text
+  and sa.speaker_id = vp.id
+group by
+  c.id,
+  weeks.week_id,
+  mmd.*,
+  wmd.*;
+
+
+
+
+
+
+create drop view public._view_publishers as
+select
+  p.id,
+  row_to_json(p.*) as publisher,
+  row_to_json(c.*) as congregation,
+  COALESCE(
+    array_agg(
+      distinct jsonb_build_object('id', o.id, 'theme', o.theme)
+    ) filter (
+      where
+        o.id is not null
+    ),
+    null::jsonb[]
+  ) as outlines,
+  COALESCE(
+    array_agg(
+      distinct jsonb_build_object(
+        'week_id',
+        ma.week_id,
+        'assignment',
+        ma.assignment
+      )
+    ) filter (
+      where
+        ma.week_id is not null
+    ),
+    null::jsonb[]
+  ) as midweek_assignments,
+  COALESCE(
+    array_agg(
+      distinct jsonb_build_object(
+        'week_id',
+        we.week_id,
+        'assignment',
+        we.assignment
+      )
+    ) filter (
+      where
+        we.week_id is not null
+    ),
+    null::jsonb[]
+  ) as weekend_assignments,
+  COALESCE(
+    array_agg(distinct wp.assignment) filter (
+      where
+        wp.assignment is not null
+    ),
+    '{}'::weekend_assignment[]
+  ) as weekend_participation,
+  COALESCE(
+    array_agg(distinct mp.assignment) filter (
+      where
+        mp.assignment is not null
+    ),
+    '{}'::midweek_assignment[]
+  ) as midweek_participation,
+  COALESCE(
+    array_agg(
+      distinct jsonb_build_object(
+        'week_id',
+        sa.week_id,
+        'congregation',
+        row_to_json(sac.*),
+        'outline',
+        row_to_json(sao.*)
+      )
+    ) filter (
+      where
+        sa.week_id is not null
+    ),
+    null::jsonb[]
+  ) as speaker_assignments,
+  COALESCE(sav.availability, - 1::smallint) as speaker_availability
+from
+  publishers p
+  left join speaker_availability sav on sav.speaker_id = p.id
+  left join congregations c on p.congregation_id = c.id
+  left join speaker_outlines so on p.id = so.speaker_id
+  left join outlines o on so.outline_id = o.id
+  left join midweek_assignments ma on p.id = ma.participant_id
+  left join weekend_assignments we on p.id = we.participant_id
+  left join midweek_participants mp on p.id = mp.participant_id
+  left join weekend_participants wp on p.id = wp.participant_id
+  left join speaker_assignments sa on p.id = sa.speaker_id
+  left join congregations sac on sa.congregation_id = sac.id
+  left join outlines sao on sa.outline_id = sao.id
+group by
+  p.id,
+  p.*,
+  c.*,
+  sav.availability;
+
+
+
+
+
+
+
+
+create drop view public.weekend_schedule_view as
+with
+  unified_weeks as (
+    select
+      speaker_assignments.week_id
+    from
+      speaker_assignments
+    union
+    select
+      weekend_meeting_data.w_study_date as week_id
+    from
+      weekend_meeting_data
+    union
+    select
+      weekend_assignments.week_id
+    from
+      weekend_assignments
+  )
+select
+  uw.week_id,
+  wmd.w_study_date,
+  wmd.w_study_date_locale,
+  wmd.w_study_title,
+  wmd.w_study_opening_song,
+  wmd.w_study_concluding_song,
+  sa.congregation_id as speaker_congregation_id,
+  sa.speaker_id,
+  sa.outline_id,
+  (p_speaker.first_name || ' '::text) || p_speaker.last_name as speaker_name,
+  c_speaker.name as speaker_congregation_name,
+  wa.congregation_id as assignments_congregation_id,
+  (
+    select
+      jsonb_object_agg(
+        wa_inner.assignment,
+        (p_participant.first_name || ' '::text) || p_participant.last_name
+      ) as jsonb_object_agg
+    from
+      weekend_assignments wa_inner
+      left join publishers p_participant on wa_inner.participant_id = p_participant.id
+    where
+      wa_inner.week_id = uw.week_id
+      and wa_inner.congregation_id = wa.congregation_id
+    group by
+      wa_inner.week_id,
+      wa_inner.congregation_id
+  ) as assignments,
+  c_assignments.name as assignments_congregation_name
+from
+  unified_weeks uw
+  left join weekend_meeting_data wmd on uw.week_id = wmd.w_study_date
+  left join speaker_assignments sa on uw.week_id = sa.week_id
+  left join publishers p_speaker on sa.speaker_id = p_speaker.id
+  left join congregations c_speaker on sa.congregation_id = c_speaker.id
+  left join (
+    select distinct
+      weekend_assignments.week_id,
+      weekend_assignments.congregation_id
+    from
+      weekend_assignments
+  ) wa on uw.week_id = wa.week_id
+  left join congregations c_assignments on wa.congregation_id = c_assignments.id
+order by
+  uw.week_id desc;
+
+
+
+
+
+
+
+
+create drop view public.congregation_week_view as
+with
+  weeks as (
+    select distinct
+      speaker_assignments.week_id
+    from
+      speaker_assignments
+    union
+    select distinct
+      weekend_meeting_data.w_study_date as week_id
+    from
+      weekend_meeting_data
+  )
+select
+  c.id as congregation_id,
+  c.name as congregation_name,
+  w.week_id,
+  row_to_json(wmd.*) as weekend_meeting_data,
+  row_to_json(p.*) as speaker,
+  row_to_json(o.*) as outline,
+  array_agg(os.*) as outgoing_speakers
+from
+  congregations c
+  cross join weeks w
+  left join weekend_meeting_data wmd on w.week_id = wmd.w_study_date
+  left join speaker_assignments s on w.week_id = s.week_id
+  and c.id = s.congregation_id
+  left join _view_publishers_simple p on p.id = s.speaker_id
+  left join outlines o on s.outline_id = o.id
+  left join speaker_assignments os on (
+    (
+      select
+        p_1.congregation_id
+      from
+        publishers p_1
+      where
+        p_1.id = os.speaker_id
+    )
+  ) = c.id
+group by
+  c.id,
+  w.week_id,
+  wmd.*,
+  p.*,
+  o.*;
+
+
+
+
+
+
+create drop view public._view_outgoing_speakers as
+select
+  c.id as congregation_id,
+  sa.week_id,
+  json_agg(
+    json_build_object(
+      'speaker',
+      p.*,
+      'congregation',
+      co.*,
+      'outline',
+      o.*
+    )
+  ) as outgoing_speakers
+from
+  congregations c
+  right join speaker_assignments sa on c.id = (
+    (
+      select
+        p_1.congregation_id
+      from
+        publishers p_1
+      where
+        p_1.id = sa.speaker_id
+    )
+  )
+  left join publishers p on p.id = sa.speaker_id
+  left join congregations co on co.id = sa.congregation_id
+  left join outlines o on o.id = sa.outline_id
+group by
+  sa.week_id,
+  c.id;
+
+
+
+
+
+  create drop view public._view_outgoing_speakers_2 as
+select
+  c.id as congregation_id,
+  sa.week_id,
+  json_agg(sa.*) as outgoing_speakers
+from
+  congregations c
+  right join speaker_assignments sa on c.id = (
+    (
+      select
+        p.congregation_id
+      from
+        publishers p
+      where
+        p.id = sa.speaker_id
+    )
+  )
+group by
+  sa.week_id,
+  c.id;

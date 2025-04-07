@@ -6,7 +6,9 @@ import { supabase } from "../../../supabase/client.js";
  * @param week The week id in the format "yyyy-MM-dd".
  * @returns The outgoing speakers for the given week.
  */
-export const useOutgoingSpeakerDetailsQuery = (
+
+// TODO Delete
+export const useOutgoingSpeakerDetailsQuery_DELETE = (
   week_id: string,
   options: { enabled: boolean }
 ) =>

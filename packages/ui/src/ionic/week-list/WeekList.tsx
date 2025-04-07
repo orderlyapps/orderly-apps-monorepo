@@ -9,7 +9,7 @@ import {
   IonRefresherContent,
   RefresherCustomEvent,
 } from "@ionic/react";
-import { addWeeks, formatDate, previousMonday, subWeeks } from "date-fns";
+import { addWeeks, formatDate, startOfWeek, subWeeks } from "date-fns";
 import React, { Dispatch, useEffect, Fragment, SetStateAction } from "react";
 import { useState } from "react";
 
@@ -28,7 +28,7 @@ export const WeekList = ({ children, setScheduleDates }: WeekListProps) => {
   const [oldDates, setOldDates] = useState<string[]>([]);
   const [currentWeeks, setCurrentWeeks] = useState(26);
 
-  const start = previousMonday(new Date()).setUTCHours(0, 0, 0, 0);
+  const start = startOfWeek(new Date(), { weekStartsOn: 1 });
   const dates = Array.from({ length: currentWeeks }).map((_, i) => {
     const date = addWeeks(start, i);
     return formatDate(date, "yyyy-MM-dd");

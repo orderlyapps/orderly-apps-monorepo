@@ -7,7 +7,7 @@ import { supabase } from "../../supabase/client.js";
  * @param endDate The end date in the format "yyyy-MM-dd".
  * @returns The public talks between the given start and end dates.
  */
-export const useWeekendMeetingDetailsQuery = (
+export const useWeekendMeetingDetailsQuery_DELETE = (
   week: string,
   options: { enabled: boolean }
 ) =>

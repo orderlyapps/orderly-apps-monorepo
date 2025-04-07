@@ -240,7 +240,8 @@
     "**/.vscode": true,
     "**/.wrangler": true,
     "**/.files": true,
-    "packages/config": true
+    "packages/config": true,
+    "**/.zed": true
   },
   "editor.linkedEditing": true,
   "workbench.editor.limit.enabled": true,

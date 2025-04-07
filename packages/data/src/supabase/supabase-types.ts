@@ -1,6 +1,86 @@
 import { Database as DatabaseGenerated } from "./exported-types-remote.js";
 import { MergeDeep } from "type-fest";
 
+type Week_ID =
+  `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
+
+type UUID = `${string}-${string}-${string}-${string}-${string}`;
+
+type Point = [number, number];
+
+type BBox = [number, number, number, number];
+
+type DatabaseNarrowed = MergeDeep<
+  DatabaseGenerated,
+  {
+    public: {
+      Tables: {
+        congregations: {
+          Row: {
+            id: UUID;
+          };
+        };
+        publishers: {
+          Row: {
+            id: UUID;
+            congregation_id: UUID;
+          };
+        };
+        outlines: {
+          Row: {
+            id: UUID;
+          };
+        };
+        speaker_assignments: {
+          Row: {
+            week_id: Week_ID;
+            congregation_id: UUID;
+            outline_id: UUID | null;
+            speaker_id: UUID;
+          };
+        };
+      };
+    };
+  }
+>;
+
+// Type definitions for all tables in the database
+export type AuthUser = DatabaseGenerated["public"]["Tables"]["auth_users"]["Row"];
+
+export type Congregation = DatabaseGenerated["public"]["Tables"]["congregations"]["Row"];
+
+export type MidweekAssignment = DatabaseGenerated["public"]["Tables"]["midweek_assignments"]["Row"];
+
+export type MidweekMeetingData = DatabaseGenerated["public"]["Tables"]["midweek_meeting_data"]["Row"];
+
+export type MidweekParticipant = DatabaseGenerated["public"]["Tables"]["midweek_participants"]["Row"];
+
+export type NotAtHome = DatabaseGenerated["public"]["Tables"]["not_at_homes"]["Row"];
+
+export type Outline = DatabaseGenerated["public"]["Tables"]["outlines"]["Row"];
+
+export type Publisher = DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
+
+export type SpeakerAssignment = DatabaseGenerated["public"]["Tables"]["speaker_assignments"]["Row"];
+
+export type SpeakerAvailability = DatabaseGenerated["public"]["Tables"]["speaker_availability"]["Row"];
+
+export type SpeakerOutline = DatabaseGenerated["public"]["Tables"]["speaker_outlines"]["Row"];
+
+export type Street = DatabaseGenerated["public"]["Tables"]["streets"]["Row"];
+
+export type Suburb = DatabaseGenerated["public"]["Tables"]["suburbs"]["Row"];
+
+export type Suburb2 = DatabaseGenerated["public"]["Tables"]["suburbs_2"]["Row"];
+
+export type WeekendAssignment = DatabaseGenerated["public"]["Tables"]["weekend_assignments"]["Row"];
+
+export type WeekendMeetingData = DatabaseGenerated["public"]["Tables"]["weekend_meeting_data"]["Row"];
+
+export type WeekendParticipant = DatabaseGenerated["public"]["Tables"]["weekend_participants"]["Row"];
+
+
+
 // Override the type for a specific column in a view:
 export type Database = MergeDeep<
   DatabaseGenerated,
@@ -34,6 +114,15 @@ export type Database = MergeDeep<
         };
       };
       Views: {
+        _view_available_speakers: {};
+        _view_midweek_assignments: {
+          Row: {
+            assignments: Record<
+              DatabaseGenerated["public"]["Enums"]["midweek_assignment"],
+              Publisher
+            >;
+          };
+        };
         _view_midweek_meeting_schedule: {
           Row: {
             midweek_meeting_data: Tables<"midweek_meeting_data">;
@@ -43,52 +132,45 @@ export type Database = MergeDeep<
             >;
           };
         };
-        _view_public_talks: {
-          Row: {
-            outline: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"];
-            speaker: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
-            chairman: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
-            reader: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
-          };
-        };
         _view_outgoing_speakers: {
           Row: {
-            outgoing_speakers: {
-              speaker: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
-              congregation: DatabaseGenerated["public"]["Tables"]["congregations"]["Row"];
-              outline: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"];
-            }[];
-          };
-        };
-        _view_outgoing_speakers_2: {
-          Row: {
-            outgoing_speakers: DatabaseGenerated["public"]["Tables"]["speaker_assignments"]["Row"][];
-          };
-        };
-        _view_speakers: {
-          Row: {
-            assignments: {
-              outline: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"];
-              congregation: DatabaseGenerated["public"]["Tables"]["congregations"]["Row"];
-              week_id: string;
-            }[];
-            congregation: DatabaseGenerated["public"]["Tables"]["congregations"]["Row"];
-            outlines: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"][];
+            outgoing_speakers: SpeakerAssignment[];
           };
         };
         _view_public_talk_details: {
           Row: {
-            speaker: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
-            congregation: DatabaseGenerated["public"]["Tables"]["congregations"]["Row"];
-            outline: DatabaseGenerated["public"]["Tables"]["outlines"]["Row"];
+            speaker: Publisher;
+            congregation: Congregation;
+            outline: Outline;
+          };
+        };
+        _view_public_talks: {
+          Row: {
+            outline: Outline;
+            speaker: Publisher;
+            chairman: Publisher;
+            reader: Publisher;
+          };
+        };
+        _view_publishers_simple: {};
+        _view_speakers: {
+          Row: {
+            assignments: {
+              outline: Outline;
+              congregation: Congregation;
+              week_id: string;
+            }[];
+            congregation: Congregation;
+            outlines: Outline[];
           };
         };
         _view_weekend_assignments: {
           Row: {
-            reader: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"] | null;
-            chairman: DatabaseGenerated["public"]["Tables"]["publishers"]["Row"] | null;
+            reader: Publisher | null;
+            chairman: Publisher | null;
           };
         };
+        _view_weekend_meeting_schedule2: {};
         _view_weekend_participants: {
           Row: {
             assignments: {
@@ -96,14 +178,6 @@ export type Database = MergeDeep<
               week_id: string;
             }[];
             participation: ("chairman" | "reader")[];
-          };
-        };
-        _view_midweek_assignments: {
-          Row: {
-            assignments: Record<
-              DatabaseGenerated["public"]["Enums"]["midweek_assignment"],
-              DatabaseGenerated["public"]["Tables"]["publishers"]["Row"]
-            >;
           };
         };
       };

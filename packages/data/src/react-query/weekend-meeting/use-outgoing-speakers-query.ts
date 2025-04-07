@@ -18,7 +18,7 @@ export const useOutgoingSpeakersQuery = (
     queryKey: ["outgoing-speakers", schedule.startDate, schedule.endDate],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("_view_outgoing_speakers_2")
+        .from("_view_outgoing_speakers")
         .select("*")
         .gte("week_id", schedule.startDate)
         .lte("week_id", schedule.endDate)
