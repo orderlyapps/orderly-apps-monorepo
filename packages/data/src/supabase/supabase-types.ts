@@ -45,27 +45,37 @@ type DatabaseNarrowed = MergeDeep<
 >;
 
 // Type definitions for all tables in the database
-export type AuthUser = DatabaseGenerated["public"]["Tables"]["auth_users"]["Row"];
+export type AuthUser =
+  DatabaseGenerated["public"]["Tables"]["auth_users"]["Row"];
 
-export type Congregation = DatabaseGenerated["public"]["Tables"]["congregations"]["Row"];
+export type Congregation =
+  DatabaseGenerated["public"]["Tables"]["congregations"]["Row"];
 
-export type MidweekAssignment = DatabaseGenerated["public"]["Tables"]["midweek_assignments"]["Row"];
+export type MidweekAssignment =
+  DatabaseGenerated["public"]["Tables"]["midweek_assignments"]["Row"];
 
-export type MidweekMeetingData = DatabaseGenerated["public"]["Tables"]["midweek_meeting_data"]["Row"];
+export type MidweekMeetingData =
+  DatabaseGenerated["public"]["Tables"]["midweek_meeting_data"]["Row"];
 
-export type MidweekParticipant = DatabaseGenerated["public"]["Tables"]["midweek_participants"]["Row"];
+export type MidweekParticipant =
+  DatabaseGenerated["public"]["Tables"]["midweek_participants"]["Row"];
 
-export type NotAtHome = DatabaseGenerated["public"]["Tables"]["not_at_homes"]["Row"];
+export type NotAtHome =
+  DatabaseGenerated["public"]["Tables"]["not_at_homes"]["Row"];
 
 export type Outline = DatabaseGenerated["public"]["Tables"]["outlines"]["Row"];
 
-export type Publisher = DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
+export type Publisher =
+  DatabaseGenerated["public"]["Tables"]["publishers"]["Row"];
 
-export type SpeakerAssignment = DatabaseGenerated["public"]["Tables"]["speaker_assignments"]["Row"];
+export type SpeakerAssignment =
+  DatabaseGenerated["public"]["Tables"]["speaker_assignments"]["Row"];
 
-export type SpeakerAvailability = DatabaseGenerated["public"]["Tables"]["speaker_availability"]["Row"];
+export type SpeakerAvailability =
+  DatabaseGenerated["public"]["Tables"]["speaker_availability"]["Row"];
 
-export type SpeakerOutline = DatabaseGenerated["public"]["Tables"]["speaker_outlines"]["Row"];
+export type SpeakerOutline =
+  DatabaseGenerated["public"]["Tables"]["speaker_outlines"]["Row"];
 
 export type Street = DatabaseGenerated["public"]["Tables"]["streets"]["Row"];
 
@@ -73,13 +83,14 @@ export type Suburb = DatabaseGenerated["public"]["Tables"]["suburbs"]["Row"];
 
 export type Suburb2 = DatabaseGenerated["public"]["Tables"]["suburbs_2"]["Row"];
 
-export type WeekendAssignment = DatabaseGenerated["public"]["Tables"]["weekend_assignments"]["Row"];
+export type WeekendAssignment =
+  DatabaseGenerated["public"]["Tables"]["weekend_assignments"]["Row"];
 
-export type WeekendMeetingData = DatabaseGenerated["public"]["Tables"]["weekend_meeting_data"]["Row"];
+export type WeekendMeetingData =
+  DatabaseGenerated["public"]["Tables"]["weekend_meeting_data"]["Row"];
 
-export type WeekendParticipant = DatabaseGenerated["public"]["Tables"]["weekend_participants"]["Row"];
-
-
+export type WeekendParticipant =
+  DatabaseGenerated["public"]["Tables"]["weekend_participants"]["Row"];
 
 // Override the type for a specific column in a view:
 export type Database = MergeDeep<
@@ -184,6 +195,8 @@ export type Database = MergeDeep<
     };
   }
 >;
+
+type test = Tables<"_view_outgoing_speakers_2">["outgoing_speakers"];
 
 // TYPE FACTORIES
 

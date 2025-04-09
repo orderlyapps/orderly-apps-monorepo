@@ -8,7 +8,7 @@ import { supabase } from "../../../supabase/client.js";
  */
 
 // TODO Delete
-export const useOutgoingSpeakerDetailsQuery_DELETE = (
+export const useOutgoingSpeakerDetailsQuery = (
   week_id: string,
   options: { enabled: boolean }
 ) =>

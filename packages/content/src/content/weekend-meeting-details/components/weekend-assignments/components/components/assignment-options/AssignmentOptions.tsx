@@ -43,10 +43,6 @@ export const AssignmentOptions = ({
                   participant={participant}
                   assignmentType={assignmentType}
                 />
-                <AssignmentDeleteButton
-                  participant={participant}
-                  assignmentType={assignmentType}
-                />
               </IonItem>
             </IonList>
           </IonAccordion>

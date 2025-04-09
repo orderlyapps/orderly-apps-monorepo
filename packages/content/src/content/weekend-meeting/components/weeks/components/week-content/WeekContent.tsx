@@ -17,7 +17,7 @@ import { orderlyPath } from "#shells/orderly/routes.js";
 
 type WeekContentProps = {
   weekendAssignmentsDetails?: Tables<"_view_weekend_assignments">;
-  outgoingSpeakersDetails?: Tables<"_view_outgoing_speakers_2">;
+  outgoingSpeakersDetails?: Tables<"_view_outgoing_speakers">;
   week_id: string;
 };
 
@@ -28,6 +28,7 @@ export const WeekContent = ({
   outgoingSpeakersDetails,
   week_id,
 }: WeekContentProps): React.ReactElement => {
+  console.log("🚀 ~ outgoingSpeakersDetails:", outgoingSpeakersDetails)
   const { data: publishers } = usePublishersQuery();
   const { data: congregations } = useCongregationsQuery();
 
@@ -38,7 +39,7 @@ export const WeekContent = ({
     publishers?.find((p) => p.id === weekendAssignmentsDetails?.reader?.id)
   );
 
-  const outgoingSpeakers = outgoingSpeakersDetails?.outgoing_speakers.filter(
+  const outgoingSpeakers = outgoingSpeakersDetails?.outgoing_speakers?.filter(
     (s) => s.congregation_id !== weekendAssignmentsDetails?.congregation_id
   );
 

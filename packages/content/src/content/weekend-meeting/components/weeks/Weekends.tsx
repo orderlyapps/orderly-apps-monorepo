@@ -10,7 +10,7 @@ type WeekendsProps = {
   data: {
     speakerAssignments?: Tables<"speaker_assignments">[];
     weekendAssignments?: Tables<"_view_weekend_assignments">[];
-    outgoingSpeakers?: Tables<"_view_outgoing_speakers_2">[];
+    outgoingSpeakers?: Tables<"_view_outgoing_speakers">[];
   };
 };
 
