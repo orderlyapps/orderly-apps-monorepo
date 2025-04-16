@@ -96,28 +96,7 @@ export type Database = {
             foreignKeyName: "midweek_assignments_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "midweek_assignments_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "midweek_assignments_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
             referencedRelation: "congregations"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "midweek_assignments_participant_id_fkey1"
-            columns: ["participant_id"]
-            isOneToOne: false
-            referencedRelation: "_view_publishers_simple"
             referencedColumns: ["id"]
           },
           {
@@ -287,13 +266,6 @@ export type Database = {
             foreignKeyName: "midweek_participants_participant_id_fkey1"
             columns: ["participant_id"]
             isOneToOne: false
-            referencedRelation: "_view_publishers_simple"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "midweek_participants_participant_id_fkey1"
-            columns: ["participant_id"]
-            isOneToOne: false
             referencedRelation: "_view_speakers"
             referencedColumns: ["id"]
           },
@@ -388,20 +360,6 @@ export type Database = {
             foreignKeyName: "not_at_homes_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "not_at_homes_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "not_at_homes_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
             referencedRelation: "congregations"
             referencedColumns: ["id"]
           },
@@ -467,20 +425,6 @@ export type Database = {
             foreignKeyName: "publishers_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
             referencedRelation: "congregations"
             referencedColumns: ["id"]
           },
@@ -531,20 +475,6 @@ export type Database = {
             foreignKeyName: "outgoing_speakers_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
             referencedRelation: "congregations"
             referencedColumns: ["id"]
           },
@@ -571,13 +501,6 @@ export type Database = {
           speaker_id?: string
         }
         Relationships: [
-          {
-            foreignKeyName: "speaker_availability_speaker_id_fkey"
-            columns: ["speaker_id"]
-            isOneToOne: true
-            referencedRelation: "_view_publishers_simple"
-            referencedColumns: ["id"]
-          },
           {
             foreignKeyName: "speaker_availability_speaker_id_fkey"
             columns: ["speaker_id"]
@@ -619,14 +542,14 @@ export type Database = {
             foreignKeyName: "speaker_outlines_outline_id_fkey"
             columns: ["outline_id"]
             isOneToOne: false
-            referencedRelation: "outlines"
-            referencedColumns: ["id"]
+            referencedRelation: "_view_weekend_meeting_pdf"
+            referencedColumns: ["outline_id"]
           },
           {
-            foreignKeyName: "speaker_outlines_speaker_d_fkey"
-            columns: ["speaker_id"]
+            foreignKeyName: "speaker_outlines_outline_id_fkey"
+            columns: ["outline_id"]
             isOneToOne: false
-            referencedRelation: "_view_publishers_simple"
+            referencedRelation: "outlines"
             referencedColumns: ["id"]
           },
           {
@@ -700,20 +623,6 @@ export type Database = {
             foreignKeyName: "fk_congregation"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "fk_congregation"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "fk_congregation"
-            columns: ["congregation_id"]
-            isOneToOne: false
             referencedRelation: "congregations"
             referencedColumns: ["id"]
           },
@@ -762,20 +671,6 @@ export type Database = {
             columns: ["congregation_id"]
             isOneToOne: false
             referencedRelation: "_view_outgoing_speakers"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "fk_congregation"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "fk_congregation"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
             referencedColumns: ["congregation_id"]
           },
           {
@@ -835,20 +730,6 @@ export type Database = {
             foreignKeyName: "suburbs_2_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "suburbs_2_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "suburbs_2_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
             referencedRelation: "congregations"
             referencedColumns: ["id"]
           },
@@ -899,28 +780,7 @@ export type Database = {
             foreignKeyName: "weekend_assignments_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "weekend_assignments_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "weekend_assignments_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
             referencedRelation: "congregations"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "weekend_assignments_participant_id_fkey"
-            columns: ["participant_id"]
-            isOneToOne: false
-            referencedRelation: "_view_publishers_simple"
             referencedColumns: ["id"]
           },
           {
@@ -988,13 +848,6 @@ export type Database = {
             foreignKeyName: "weekend_participants_participant_id_fkey"
             columns: ["participant_id"]
             isOneToOne: false
-            referencedRelation: "_view_publishers_simple"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "weekend_participants_participant_id_fkey"
-            columns: ["participant_id"]
-            isOneToOne: false
             referencedRelation: "_view_speakers"
             referencedColumns: ["id"]
           },
@@ -1057,20 +910,6 @@ export type Database = {
             foreignKeyName: "midweek_assignments_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "midweek_assignments_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "midweek_assignments_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
             referencedRelation: "congregations"
             referencedColumns: ["id"]
           },
@@ -1086,14 +925,6 @@ export type Database = {
         Relationships: []
       }
       _view_outgoing_speakers: {
-        Row: {
-          congregation_id: string | null
-          outgoing_speakers: Json | null
-          week_id: string | null
-        }
-        Relationships: []
-      }
-      _view_outgoing_speakers_2: {
         Row: {
           congregation_id: string | null
           outgoing_speakers: Json | null
@@ -1135,137 +966,6 @@ export type Database = {
             foreignKeyName: "outgoing_speakers_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "congregations"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      _view_public_talks: {
-        Row: {
-          chairman: Json | null
-          congregation_id: string | null
-          home_congregation: string | null
-          outline: Json | null
-          outline_id: string | null
-          reader: Json | null
-          speaker: Json | null
-          speaker_id: string | null
-          week_id: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_available_speakers"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_midweek_meeting_schedule"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "congregations"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "outgoing_speakers_outline_id_speaker_id_fkey"
-            columns: ["outline_id", "speaker_id"]
-            isOneToOne: false
-            referencedRelation: "speaker_outlines"
-            referencedColumns: ["outline_id", "speaker_id"]
-          },
-        ]
-      }
-      _view_publishers_simple: {
-        Row: {
-          congregation_id: string | null
-          congregation_name: string | null
-          first_name: string | null
-          id: string | null
-          last_name: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_available_speakers"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_midweek_meeting_schedule"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
             referencedRelation: "congregations"
             referencedColumns: ["id"]
           },
@@ -1301,20 +1001,6 @@ export type Database = {
             columns: ["congregation_id"]
             isOneToOne: false
             referencedRelation: "_view_outgoing_speakers"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
             referencedColumns: ["congregation_id"]
           },
           {
@@ -1359,36 +1045,56 @@ export type Database = {
             foreignKeyName: "weekend_assignments_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
+            referencedRelation: "congregations"
+            referencedColumns: ["id"]
           },
+        ]
+      }
+      _view_weekend_meeting_pdf: {
+        Row: {
+          chairman_first_name: string | null
+          chairman_last_name: string | null
+          congregation_id: string | null
+          outgoing_speakers: Json | null
+          outline_id: string | null
+          outline_theme: string | null
+          reader_first_name: string | null
+          reader_last_name: string | null
+          speaker_first_name: string | null
+          speaker_last_name: string | null
+          speakers_congregation_name: string | null
+          week_id: string | null
+        }
+        Relationships: [
           {
-            foreignKeyName: "weekend_assignments_congregation_id_fkey"
+            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
+            referencedRelation: "_view_available_speakers"
             referencedColumns: ["congregation_id"]
           },
           {
-            foreignKeyName: "weekend_assignments_congregation_id_fkey"
+            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_midweek_meeting_schedule"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_outgoing_speakers"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "outgoing_speakers_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
             referencedRelation: "congregations"
             referencedColumns: ["id"]
           },
         ]
-      }
-      _view_weekend_meeting_schedule2: {
-        Row: {
-          chairman: Json | null
-          congregation: Json | null
-          congregation_id: string | null
-          reader: Json | null
-          speakers: Json[] | null
-          week_id: string | null
-          weekend_meeting_data: Json | null
-        }
-        Relationships: []
       }
       _view_weekend_participants: {
         Row: {
@@ -1425,20 +1131,6 @@ export type Database = {
             foreignKeyName: "publishers_congregation_id_fkey"
             columns: ["congregation_id"]
             isOneToOne: false
-            referencedRelation: "_view_outgoing_speakers_2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
-            referencedRelation: "_view_weekend_meeting_schedule2"
-            referencedColumns: ["congregation_id"]
-          },
-          {
-            foreignKeyName: "publishers_congregation_id_fkey"
-            columns: ["congregation_id"]
-            isOneToOne: false
             referencedRelation: "congregations"
             referencedColumns: ["id"]
           },
@@ -1447,9 +1139,7 @@ export type Database = {
     }
     Functions: {
       get_not_at_homes_with_coordinates: {
-        Args: {
-          p_congregation_id: string
-        }
+        Args: { p_congregation_id: string }
         Returns: {
           id: string
           created_at: string
@@ -1469,9 +1159,7 @@ export type Database = {
         }[]
       }
       get_streets_by_congregation: {
-        Args: {
-          p_congregation_id: string
-        }
+        Args: { p_congregation_id: string }
         Returns: {
           id: number
           street_name: string
@@ -1506,10 +1194,7 @@ export type Database = {
         Returns: undefined
       }
       update_speaker_outlines: {
-        Args: {
-          p_speaker_id: string
-          p_assignments: Json[]
-        }
+        Args: { p_speaker_id: string; p_assignments: Json[] }
         Returns: undefined
       }
       update_weekend_participants: {
@@ -1559,27 +1244,29 @@ export type Database = {
   }
 }
 
-type PublicSchema = Database[Extract<keyof Database, "public">]
+type DefaultSchema = Database[Extract<keyof Database, "public">]
 
 export type Tables<
-  PublicTableNameOrOptions extends
-    | keyof (PublicSchema["Tables"] & PublicSchema["Views"])
+  DefaultSchemaTableNameOrOptions extends
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
     | { schema: keyof Database },
-  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
-    ? keyof (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
-        Database[PublicTableNameOrOptions["schema"]]["Views"])
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
     : never = never,
-> = PublicTableNameOrOptions extends { schema: keyof Database }
-  ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
-      Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+> = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
+  ? (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
       Row: infer R
     }
     ? R
     : never
-  : PublicTableNameOrOptions extends keyof (PublicSchema["Tables"] &
-        PublicSchema["Views"])
-    ? (PublicSchema["Tables"] &
-        PublicSchema["Views"])[PublicTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
         Row: infer R
       }
       ? R
@@ -1587,20 +1274,22 @@ export type Tables<
     : never
 
 export type TablesInsert<
-  PublicTableNameOrOptions extends
-    | keyof PublicSchema["Tables"]
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
     | { schema: keyof Database },
-  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
-    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never = never,
-> = PublicTableNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+> = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
+  ? Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Insert: infer I
     }
     ? I
     : never
-  : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
-    ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
         Insert: infer I
       }
       ? I
@@ -1608,20 +1297,22 @@ export type TablesInsert<
     : never
 
 export type TablesUpdate<
-  PublicTableNameOrOptions extends
-    | keyof PublicSchema["Tables"]
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
     | { schema: keyof Database },
-  TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
-    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never = never,
-> = PublicTableNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+> = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
+  ? Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Update: infer U
     }
     ? U
     : never
-  : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
-    ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
         Update: infer U
       }
       ? U
@@ -1629,21 +1320,23 @@ export type TablesUpdate<
     : never
 
 export type Enums<
-  PublicEnumNameOrOptions extends
-    | keyof PublicSchema["Enums"]
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema["Enums"]
     | { schema: keyof Database },
-  EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
-    ? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
+  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
     : never = never,
-> = PublicEnumNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
-  : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
-    ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+> = DefaultSchemaEnumNameOrOptions extends { schema: keyof Database }
+  ? Database[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
     : never
 
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
-    | keyof PublicSchema["CompositeTypes"]
+    | keyof DefaultSchema["CompositeTypes"]
     | { schema: keyof Database },
   CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
     schema: keyof Database
@@ -1652,6 +1345,45 @@ export type CompositeTypes<
     : never = never,
 > = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
   ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
-  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
-    ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
+
+export const Constants = {
+  public: {
+    Enums: {
+      _0ld: ["chairman", "prayer_opening", "prayer_closing", "assistant"],
+      midweek_assignment: [
+        "chairman",
+        "prayer_opening",
+        "treasures",
+        "gems",
+        "school_1_bible_reading",
+        "school_1_apply_1",
+        "school_1_assistant_1",
+        "school_1_apply_2",
+        "school_1_assistant_2",
+        "school_1_apply_3",
+        "school_1_assistant_3",
+        "school_1_apply_4",
+        "school_1_assistant_4",
+        "school_2_bible_reading",
+        "school_2_apply_1",
+        "school_2_assistant_1",
+        "school_2_apply_2",
+        "school_2_assistant_2",
+        "school_2_apply_3",
+        "school_2_assistant_3",
+        "school_2_apply_4",
+        "school_2_assistant_4",
+        "living_1",
+        "living_2",
+        "cbs_conductor",
+        "cbs_reader",
+        "prayer_closing",
+        "counselor_2",
+      ],
+      weekend_assignment: ["chairman", "reader"],
+    },
+  },
+} as const

@@ -8,7 +8,10 @@
  * @param {string} dateString - The date string to format
  * @returns {string} The formatted date string
  */
-export function formatWeekDate(dateString: string): string {
+export function formatWeekDate(dateString: string | null | undefined): string {
+  if (!dateString) {
+    return "";
+  }
   const date = new Date(Date.parse(dateString));
   const endDate = new Date(
     date.getFullYear(),

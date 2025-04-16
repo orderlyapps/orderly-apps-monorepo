@@ -27,6 +27,10 @@ export const WeekendMeeting = () => {
     enabled: !!weekendAssignments,
   });
 
+  // console.log("🚀 ~ WeekendMeeting ~ speakerAssignments:", speakerAssignments);
+  // console.log("🚀 ~ WeekendMeeting ~ weekendAssignments:\n", weekendAssignments);
+  // console.log("🚀 ~ WeekendMeeting ~ outgoingSpeakers:", outgoingSpeakers);
+
   return (
     <IonAccordionGroup>
       <WeekList setScheduleDates={setScheduleDates}>

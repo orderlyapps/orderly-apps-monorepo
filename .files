@@ -826,3 +826,125 @@ from
 group by
   sa.week_id,
   c.id;
+
+
+  create drop view public._view_public_talks as
+select
+  sa.week_id,
+  sa.congregation_id,
+  sa.speaker_id,
+  sa.outline_id,
+  row_to_json(p.*) as speaker,
+  row_to_json(o.*) as outline,
+  c.name as home_congregation,
+  row_to_json(ch.*) as chairman,
+  row_to_json(re.*) as reader
+from
+  speaker_assignments sa
+  left join publishers p on sa.speaker_id = p.id
+  left join outlines o on sa.outline_id = o.id
+  left join congregations c on p.congregation_id = c.id
+  left join publishers ch on ch.id = (
+    (
+      select
+        wa.participant_id
+      from
+        weekend_assignments wa
+      where
+        wa.congregation_id = sa.congregation_id
+        and wa.week_id = sa.week_id
+        and wa.assignment = 'chairman'::weekend_assignment
+    )
+  )
+  left join publishers re on re.id = (
+    (
+      select
+        wa.participant_id
+      from
+        weekend_assignments wa
+      where
+        wa.congregation_id = sa.congregation_id
+        and wa.week_id = sa.week_id
+        and wa.assignment = 'reader'::weekend_assignment
+    )
+  );
+
+
+
+
+
+  create drop view public._view_publishers_simple as
+select
+  p.id,
+  p.first_name,
+  p.last_name,
+  p.congregation_id,
+  c.name as congregation_name
+from
+  publishers p
+  left join congregations c on c.id = p.congregation_id;
+
+
+  create drop view public._view_weekend_meeting_schedule2 as
+with
+  weeks as (
+    select distinct
+      speaker_assignments.week_id
+    from
+      speaker_assignments
+    union
+    select distinct
+      weekend_assignments.week_id
+    from
+      weekend_assignments
+    union
+    select distinct
+      weekend_meeting_data.w_study_date as week_id
+    from
+      weekend_meeting_data
+  )
+select
+  w.week_id,
+  c.id as congregation_id,
+  row_to_json(c.*) as congregation,
+  row_to_json(wmd.*) as weekend_meeting_data,
+  row_to_json(pc.*) as chairman,
+  row_to_json(pr.*) as reader,
+  COALESCE(
+    array_agg(
+      distinct jsonb_build_object(
+        'speaker',
+        row_to_json(op.*),
+        'outline',
+        row_to_json(oo.*),
+        'congregation',
+        row_to_json(oc.*)
+      )
+    ) filter (
+      where
+        op.id is not null
+    ),
+    null::jsonb[]
+  ) as speakers
+from
+  congregations c
+  cross join weeks w
+  left join weekend_meeting_data wmd on w.week_id = wmd.w_study_date
+  left join speaker_assignments os on w.week_id = os.week_id
+  left join _view_publishers_simple op on os.speaker_id = op.id
+  left join congregations oc on oc.id = os.congregation_id
+  left join outlines oo on oo.id = os.outline_id
+  left join weekend_assignments wac on wac.congregation_id = c.id
+  and wac.week_id = w.week_id
+  and wac.assignment = 'chairman'::weekend_assignment
+  left join publishers pc on pc.id = wac.participant_id
+  left join weekend_assignments war on war.congregation_id = c.id
+  and war.week_id = w.week_id
+  and war.assignment = 'reader'::weekend_assignment
+  left join publishers pr on pr.id = war.participant_id
+group by
+  w.week_id,
+  wmd.*,
+  pc.*,
+  pr.*,
+  c.id;

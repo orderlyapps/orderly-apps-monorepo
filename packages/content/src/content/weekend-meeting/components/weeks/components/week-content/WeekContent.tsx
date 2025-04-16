@@ -28,7 +28,6 @@ export const WeekContent = ({
   outgoingSpeakersDetails,
   week_id,
 }: WeekContentProps): React.ReactElement => {
-  console.log("🚀 ~ outgoingSpeakersDetails:", outgoingSpeakersDetails)
   const { data: publishers } = usePublishersQuery();
   const { data: congregations } = useCongregationsQuery();
 

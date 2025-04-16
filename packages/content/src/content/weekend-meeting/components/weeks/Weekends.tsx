@@ -28,16 +28,13 @@ export const Weekends = ({
   );
 
   const outgoingSpeakersDetails = outgoingSpeakers?.find(
-    (assignment: Tables<"_view_outgoing_speakers_2">) =>
+    (assignment: Tables<"_view_outgoing_speakers">) =>
       assignment.week_id === week_id
   );
 
   return (
     <IonAccordion value={week_id} toggleIcon={chevronExpandOutline}>
-      <IonItem
-        slot="header"
-        //lines="none"
-      >
+      <IonItem slot="header">
         <WeekHeader
           week_id={week_id}
           speakerAssignmentsDetails={speakerAssignmentsDetails}

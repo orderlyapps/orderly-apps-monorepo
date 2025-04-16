@@ -155,15 +155,6 @@ export type Database = MergeDeep<
             outline: Outline;
           };
         };
-        _view_public_talks: {
-          Row: {
-            outline: Outline;
-            speaker: Publisher;
-            chairman: Publisher;
-            reader: Publisher;
-          };
-        };
-        _view_publishers_simple: {};
         _view_speakers: {
           Row: {
             assignments: {
@@ -181,7 +172,6 @@ export type Database = MergeDeep<
             chairman: Publisher | null;
           };
         };
-        _view_weekend_meeting_schedule2: {};
         _view_weekend_participants: {
           Row: {
             assignments: {
@@ -191,12 +181,23 @@ export type Database = MergeDeep<
             participation: ("chairman" | "reader")[];
           };
         };
+        _view_weekend_meeting_pdf: {
+          Row: {
+            outgoing_speakers: {
+              first_name: string;
+              last_name: string;
+              congregation: string;
+              outline_theme: string;
+              outline_id: string;
+            }[];
+          };
+        };
       };
     };
   }
 >;
 
-type test = Tables<"_view_outgoing_speakers_2">["outgoing_speakers"];
+type test = Database["public"]["Views"]["_view_weekend_meeting_pdf"]["Row"];
 
 // TYPE FACTORIES
 

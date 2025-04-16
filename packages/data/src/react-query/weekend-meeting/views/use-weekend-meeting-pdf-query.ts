@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../../../supabase/client.js";
+import { useStore } from "../../../zustand/stores/use-store.js";
 
-export const useMidweekAssignmentsQuery = (
+export const useWeekendMeetingPdfQuery = (
   schedule: {
     startDate: string;
     endDate: string;
@@ -9,13 +10,14 @@ export const useMidweekAssignmentsQuery = (
   options?: { enabled: boolean }
 ) =>
   useQuery({
-    queryKey: ["midweek_assignments", schedule.startDate, schedule.endDate],
+    queryKey: ["weekend-meeting-pdf", schedule.startDate, schedule.endDate],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("_view_midweek_assignments")
+        .from("_view_weekend_meeting_pdf")
         .select("*")
         .gte("week_id", schedule.startDate)
         .lte("week_id", schedule.endDate)
+        .eq("congregation_id", useStore.getState().congregation_id)
         .order("week_id", { ascending: true });
 
       if (error) {
