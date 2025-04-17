@@ -11,7 +11,10 @@
  */
 export function formatStartEndDate(
   startDateString: string | null | undefined,
-  endDateString: string | null | undefined
+  endDateString: string | null | undefined,
+  options?: {
+    uppercase?: boolean;
+  }
 ): string {
   if (!startDateString || !endDateString) {
     return "";
@@ -30,6 +33,9 @@ export function formatStartEndDate(
     day: "numeric",
     month: "short",
   });
+  if (options?.uppercase) {
+    return `${start.toUpperCase()} to ${end.toUpperCase()}`;
+  }
 
   return `${start} to ${end}`;
 }
