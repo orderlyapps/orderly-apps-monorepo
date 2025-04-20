@@ -7,28 +7,15 @@ import { chevronExpandOutline } from "ionicons/icons";
 
 type WeekendsProps = {
   week_id?: string;
-  data: {
-    speakerAssignments?: Tables<"speaker_assignments">[];
-    weekendAssignments?: Tables<"_view_weekend_assignments">[];
-    outgoingSpeakers?: Tables<"_view_outgoing_speakers">[];
-  };
+  weekendMeetingData?: Tables<"_view_weekend_meeting_pdf">[];
 };
 
 export const Weekends = ({
   week_id = "",
-  data: { speakerAssignments, weekendAssignments, outgoingSpeakers },
+  weekendMeetingData,
 }: WeekendsProps): React.ReactElement => {
-  const speakerAssignmentsDetails = speakerAssignments?.find(
-    (assignment: Tables<"speaker_assignments">) =>
-      assignment.week_id === week_id
-  );
-  const weekendAssignmentsDetails = weekendAssignments?.find(
-    (assignment: Tables<"_view_weekend_assignments">) =>
-      assignment.week_id === week_id
-  );
-
-  const outgoingSpeakersDetails = outgoingSpeakers?.find(
-    (assignment: Tables<"_view_outgoing_speakers">) =>
+  const weekendMeetingDetails = weekendMeetingData?.find(
+    (assignment: Tables<"_view_weekend_meeting_pdf">) =>
       assignment.week_id === week_id
   );
 
@@ -37,13 +24,12 @@ export const Weekends = ({
       <IonItem slot="header">
         <WeekHeader
           week_id={week_id}
-          speakerAssignmentsDetails={speakerAssignmentsDetails}
+          weekendMeetingDetails={weekendMeetingDetails}
         />
       </IonItem>
       <WeekContent
         week_id={week_id}
-        weekendAssignmentsDetails={weekendAssignmentsDetails}
-        outgoingSpeakersDetails={outgoingSpeakersDetails}
+        weekendMeetingDetails={weekendMeetingDetails}
       />
     </IonAccordion>
   );

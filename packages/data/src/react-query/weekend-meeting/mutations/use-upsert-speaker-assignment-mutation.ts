@@ -18,7 +18,7 @@ export const useUpsertSpeakerAssignmentMutation = () => {
         .from("speaker_assignments")
         .upsert({
           ...assignmentData,
-          congregation_id: useStore.getState().congregation_id,
+          congregation_id: useStore.getState().congregation.id,
         })
         .select();
 

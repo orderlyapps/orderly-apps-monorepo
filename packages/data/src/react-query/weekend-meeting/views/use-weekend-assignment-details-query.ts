@@ -12,7 +12,7 @@ export const useWeekendAssignmentDetailsQuery = (
       const { data, error } = await supabase
         .from("_view_weekend_assignments")
         .select("*")
-        .eq("congregation_id", useStore.getState().congregation_id)
+        .eq("congregation_id", useStore.getState().congregation.id)
         .eq("week_id", week_id)
         .single();
 

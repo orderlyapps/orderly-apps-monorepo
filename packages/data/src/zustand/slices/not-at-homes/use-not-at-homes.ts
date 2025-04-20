@@ -69,6 +69,7 @@ export const setNotAtHomes = (
         },
       });
     },
+    
     toggleUpdateNotAtHomesActionSheetOpen: () => {
       const notAtHomes = get().notAtHomes;
       set({
@@ -79,6 +80,7 @@ export const setNotAtHomes = (
         },
       });
     },
+
     onHouseMarkerClick: (address: Tables<"not_at_homes">) => {
       const notAtHomes = get().notAtHomes;
       set({
@@ -90,6 +92,7 @@ export const setNotAtHomes = (
         },
       });
     },
+
     onUnitsMarkerClick: (units: Tables<"not_at_homes">[]) => {
       const notAtHomes = get().notAtHomes;
       set({
@@ -110,6 +113,7 @@ export const setNotAtHomes = (
         },
       });
     },
+
     handleUnitNumberInput: (e: IonInputCustomEvent<InputInputEventDetail>) => {
       const notAtHomes = get().notAtHomes;
       set({
@@ -119,6 +123,7 @@ export const setNotAtHomes = (
         },
       });
     },
+
     handleLetterListToggleInput: (
       e: IonToggleCustomEvent<ToggleChangeEventDetail<any>>
     ) => {

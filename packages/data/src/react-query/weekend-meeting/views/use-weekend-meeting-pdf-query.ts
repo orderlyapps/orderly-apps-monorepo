@@ -17,7 +17,7 @@ export const useWeekendMeetingPdfQuery = (
         .select("*")
         .gte("week_id", schedule.startDate)
         .lte("week_id", schedule.endDate)
-        .eq("congregation_id", useStore.getState().congregation_id)
+        .eq("congregation_id", useStore.getState().congregation.id)
         .order("week_id", { ascending: true });
 
       if (error) {

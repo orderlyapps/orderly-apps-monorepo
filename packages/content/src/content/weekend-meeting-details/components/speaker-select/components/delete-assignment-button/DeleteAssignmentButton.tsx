@@ -7,7 +7,7 @@ export const DeleteAssignmentButton = () => {
   const { mutate } = useDeleteSpeakerAssignmentMutation();
 
   const { week_id } = useOrderlyPageParams("weekend_meeting_details");
-  const congregation_id = useStore.getState().congregation_id;
+  const congregation_id = useStore.getState().congregation.id;
 
   return (
     <IonButton

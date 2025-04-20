@@ -8,7 +8,8 @@ import {
   MapView,
 } from "../slices/map-view/use-map-view.js";
 import {
-  congregation_id,
+  Congregation,
+  congregation,
   setCongregation,
 } from "../slices/congregation/use-congregation.js";
 import {
@@ -25,7 +26,7 @@ import {
 const initialState = {
   theme,
   mapView,
-  congregation_id,
+  congregation,
   notAtHomes,
   weekendMeeting,
 };
@@ -34,9 +35,8 @@ const actions = (set: (state: any) => void, get: () => any) => {
   return {
     setTheme: setTheme(set as (state: { theme: ThemeOption }) => void),
     setMapView: setMapView(set as (state: { mapView: MapView }) => void),
-    setCongregation: setCongregation(
-      set as (state: { congregation_id: string }) => void
-    ),
+
+    ...setCongregation(set as (state: { congregation: Congregation }) => void),
     ...setNotAtHomes(
       set as (state: { notAtHomes: NotAtHomes }) => void,
       get as () => { notAtHomes: NotAtHomes }

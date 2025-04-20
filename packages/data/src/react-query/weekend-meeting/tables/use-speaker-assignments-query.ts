@@ -15,7 +15,7 @@ export const useSpeakerAssignmentsQuery = (
       const { data, error } = await supabase
         .from("speaker_assignments")
         .select("*")
-        .eq("congregation_id", useStore.getState().congregation_id)
+        .eq("congregation_id", useStore.getState().congregation.id)
         .gte("week_id", schedule.startDate)
         .lte("week_id", schedule.endDate)
         .order("week_id", { ascending: true });

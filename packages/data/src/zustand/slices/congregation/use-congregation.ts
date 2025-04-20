@@ -1,9 +1,16 @@
-export const congregation_id = "a42cc43a-562f-4ed4-ac74-73dfdb42aaa5";
+export const congregation = {
+  id: "a42cc43a-562f-4ed4-ac74-73dfdb42aaa5",
+  name: "Maitland",
+};
+
+export type Congregation = typeof congregation;
 
 export const setCongregation = (
-  set: (state: { congregation_id: string }) => void
+  set: (state: { congregation: Congregation }) => void
 ) => {
-  return (congregation_id: string) => {
-    set({ congregation_id });
+  return {
+    setCongregation: (congregation: Congregation) => {
+      set({ congregation });
+    },
   };
 };
