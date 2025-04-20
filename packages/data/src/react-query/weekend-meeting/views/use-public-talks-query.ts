@@ -12,7 +12,7 @@ export const usePublicTalksQuery = (startDate: string, endDate: string) =>
     queryKey: ["public-talks"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("_view_public_talks")
+        .from("_view_public_talk_details")
         .select("*")
         .gte("week_id", startDate)
         .lte("week_id", endDate)

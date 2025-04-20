@@ -15,7 +15,7 @@ export const useWeekendMeetingDetailsQuery_DELETE = (
     queryKey: ["weekend-meeting", week],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("_view_public_talks")
+        .from("_view_public_talk_details")
         .select("*")
         .eq("week_id", week)
         .eq("congregation_id", "a42cc43a-562f-4ed4-ac74-73dfdb42aaa5")

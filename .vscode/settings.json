@@ -202,6 +202,20 @@
                   "options": ["-Ionic Modal"]
                 }
               ]
+            },
+            "react-pdf": {
+              "command": "editor.action.insertSnippet",
+              "args": {
+                "name": "${input:snippet}"
+              },
+              "inputs": [
+                {
+                  "type": "pickString",
+                  "id": "snippet",
+                  "description": "Which wrap in fragment to use?",
+                  "options": ["-React PDF Component"]
+                }
+              ]
             }
           }
         }

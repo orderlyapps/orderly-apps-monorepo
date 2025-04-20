@@ -1,23 +1,22 @@
 import { Tables } from "@amodeo/data/supabase/supabase-types";
-import { formatStartEndDate } from "@amodeo/util/dateTime/format-start-end-date/formatStartEndDate";
-import { formatWeekDate } from "@amodeo/util/dateTime/format-week-dat/formatWeekDate";
 import {
   Document,
   Page,
   PDFDownloadLink,
   PDFViewer,
-  Text,
   View,
   StyleSheet,
 } from "@react-pdf/renderer";
+import { Title } from "./components/Title.js";
+import { Schedule } from "./Schedule.js";
 
-type WeekendMeetingPDFData = {
-  data?: Tables<"_view_weekend_meeting_pdf">[];
+export type WeekendMeetingPDFData = {
+  data: Tables<"_view_weekend_meeting_pdf">[];
 };
 
 const styles = StyleSheet.create({
   page: {
-    padding: 12,
+    padding: 15,
     fontSize: 12,
   },
 });
@@ -30,10 +29,8 @@ function WeekendMeetingPDF({ data }: WeekendMeetingPDFData) {
     <Document>
       <Page size={"A4"} style={styles.page}>
         <View>
-          <Text>
-            Weekend Meeting Schedule for{" "}
-            {formatStartEndDate(data[0].week_id, data[data.length - 1]?.week_id)}
-          </Text>
+          <Title data={data} />
+          <Schedule data={data} />
         </View>
       </Page>
     </Document>

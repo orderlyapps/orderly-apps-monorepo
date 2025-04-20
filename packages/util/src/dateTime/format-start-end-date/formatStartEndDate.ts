@@ -14,6 +14,7 @@ export function formatStartEndDate(
   endDateString: string | null | undefined,
   options?: {
     uppercase?: boolean;
+    month?: "long" | "short";
   }
 ): string {
   if (!startDateString || !endDateString) {
@@ -26,13 +27,14 @@ export function formatStartEndDate(
 
   const start = startDate.toLocaleString("en-US", {
     day: "numeric",
-    month: "short",
+    month: options?.month || "short",
   });
 
   const end = endDate.toLocaleString("en-US", {
     day: "numeric",
-    month: "short",
+    month: options?.month || "short",
   });
+  
   if (options?.uppercase) {
     return `${start.toUpperCase()} to ${end.toUpperCase()}`;
   }
