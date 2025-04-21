@@ -1,6 +1,4 @@
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
-import { useOutlinesQuery } from "@amodeo/data/react-query/weekend-meeting/tables/use-outlines-query";
-import { useSpeakerAssignmentsQuery } from "@amodeo/data/react-query/weekend-meeting/tables/use-speaker-assignments-query";
 import { usePublicTalkDetailsQuery } from "@amodeo/data/react-query/weekend-meeting/views/use-public-talk-details-query";
 import { useCardModal } from "@amodeo/ui/util/ionic/use-card-modal/useCardModal";
 import {

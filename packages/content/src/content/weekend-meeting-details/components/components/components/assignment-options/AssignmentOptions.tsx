@@ -9,7 +9,6 @@ import { AssignmentOptionsHeader } from "./components/AssignmentOptionsHeader.js
 import { AssignmentOptionsContent } from "./components/AssignmentOptionsContent.js";
 import { useFilterAndSortParticipants } from "../../helper/use-filter-and-sort-participants/useFilterAndSortParticipants.js";
 import { AssignmentSelectButton } from "./components/AssignmentSelectButton.js";
-import { AssignmentDeleteButton } from "./components/AssignmentDeleteButton.js";
 
 export const AssignmentOptions = ({
   assignmentType,

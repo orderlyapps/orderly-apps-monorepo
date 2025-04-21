@@ -1,35 +1,33 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "../../../supabase/client.js";
-import { TablesUpdate } from "../../../supabase/supabase-types.js";
+import { useStore } from "../../../zustand/stores/use-store.js";
 
 export const useUpsertWeekendAssignmentMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (newData: TablesUpdate<"weekend_assignments">) => {
+    mutationFn: async (week_id: string) => {
+      const { assignment, participant_id } = useStore.getState().weekendMeeting;
+      const congregation_id = useStore.getState().congregation.id;
+
       const { data, error } = await supabase
         .from("weekend_assignments")
         .upsert({
-          ...newData,
-          congregation_id: "a42cc43a-562f-4ed4-ac74-73dfdb42aaa5",
+          congregation_id,
+          week_id,
+          assignment,
+          participant_id,
         } as any)
         .select();
 
-      console.log("🚀 ~ mutationFn: ~ data:", data);
-      console.log("🚀 ~ mutationFn: ~ error:", error);
       if (error) {
         throw new Error(error.message);
       }
       return data;
     },
     onSuccess: (_data, variables, _context) => {
-      console.log(
-        "🚀 ~ useUpsertWeekendAssignmentMutation ~ variables:",
-        variables
-      );
-
       queryClient.invalidateQueries({
-        queryKey: ["weekend-meeting-details"],
+        queryKey: ["weekend-meeting", variables],
       });
     },
   });

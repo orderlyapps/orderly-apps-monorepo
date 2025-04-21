@@ -1,6 +1,7 @@
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { useUpsertSpeakerAssignmentMutation } from "@amodeo/data/react-query/weekend-meeting/mutations/use-upsert-speaker-assignment-mutation";
 import { useSpeakersQuery } from "@amodeo/data/react-query/weekend-meeting/views/use-speakers-query";
+import { useStore } from "@amodeo/data/zustand/stores/use-store";
 import {
   IonAccordion,
   IonAccordionGroup,
@@ -10,17 +11,9 @@ import {
 
 export const SpeakerOptions = () => {
   const { data: speakers } = useSpeakersQuery();
-  const { week_id } = useOrderlyPageParams("weekend_meeting_details");
-  const { mutate: upsertSpeakerAssignment } =
-    useUpsertSpeakerAssignmentMutation();
+  const handleSpeakerSelectClick =
+    useStore.use.handleSelectSpeakerAssignmentClick();
 
-  const handleSelect = (speaker_id: string, outline_id: string) => {
-    upsertSpeakerAssignment({
-      speaker_id,
-      outline_id,
-      week_id,
-    });
-  };
   return (
     <IonAccordionGroup>
       {speakers?.map((speaker) => (
@@ -34,7 +27,12 @@ export const SpeakerOptions = () => {
                 return (
                   <IonItem
                     key={o.id}
-                    onClick={() => handleSelect(speaker.id || "", o.id)}
+                    onClick={() =>
+                      handleSpeakerSelectClick({
+                        speaker_id: speaker.id || "",
+                        outline_id: o.id,
+                      })
+                    }
                   >
                     {o.id} - {o.theme}
                   </IonItem>

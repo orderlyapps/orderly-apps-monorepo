@@ -16,11 +16,10 @@ import { useState } from "react";
 import { formatName } from "@amodeo/util/formatters/formatName";
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { useWeekendAssignmentDetailsQuery } from "@amodeo/data/react-query/weekend-meeting/views/use-weekend-assignment-details-query";
-import { AssignmentSortSelect } from "./helper/assignment-sort-select/AssignmentSortSelect.js";
-import { AssignmentFilters } from "./components/assignment-filters/AssignmentFilters.js";
-import { AssignmentOptions } from "./components/assignment-options/AssignmentOptions.js";
-import { AssignmentSelectAlert } from "./components/assignment-options/components/AssignmentSelectAlert.js";
-import { AssignmentDeleteButton } from "./components/assignment-options/components/AssignmentDeleteButton.js";
+import { AssignmentSortSelect } from "../components/helper/assignment-sort-select/AssignmentSortSelect.js";
+import { AssignmentFilters } from "../components/components/assignment-filters/AssignmentFilters.js";
+import { AssignmentOptions } from "../components/components/assignment-options/AssignmentOptions.js";
+import { AssignmentDeleteButton } from "../components/components/assignment-options/components/AssignmentDeleteButton.js";
 
 export const ChairmanSelect = ({
   modalProps,
@@ -31,9 +30,6 @@ export const ChairmanSelect = ({
   const { week_id } = useOrderlyPageParams("weekend_meeting_details");
   const { data } = useWeekendAssignmentDetailsQuery(week_id);
 
-  // if (!data) {
-  //   return null;
-  // }
   return (
     <>
       <IonItem onClick={() => setIsOpen(true)}>
@@ -55,15 +51,11 @@ export const ChairmanSelect = ({
           <IonList inset>
             <AssignmentSortSelect assignmentType="chairman" />
             <AssignmentFilters assignmentType="chairman" />
-            <AssignmentDeleteButton
-              participant={data?.chairman}
-              assignmentType="chairman"
-            />
+            <AssignmentDeleteButton assignmentType="chairman" />
           </IonList>
           <IonList inset>
             <AssignmentOptions assignmentType="chairman" />
           </IonList>
-          <AssignmentSelectAlert assignmentType="chairman" />
         </IonContent>
       </IonModal>
     </>

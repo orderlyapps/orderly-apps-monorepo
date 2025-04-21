@@ -57,7 +57,7 @@ export const ORDERLY_PAGES = {
   },
   midweek_meeting_details: {
     path: "/schedules/midweek-meeting-details",
-    params: { week: "" },
+    params: { week_id: "" },
     Component: lazy(
       () =>
         import(

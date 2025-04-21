@@ -1,20 +1,20 @@
-import { TablesInsert } from "../../../supabase/supabase-types.js";
-
 export const weekendMeeting = {
-  assignmentDetails: {
-    week_id: "",
-    congregation_id: "",
-    outline_id: "" as string | null,
-    speaker_id: "",
-  } as TablesInsert<"speaker_assignments">,
+  isWeekendMeetingAlertOpen: false,
 
-  isSelectSpeakerModalOpen: false,
-  speakerSearchQuery: "",
-  isConfirmDeleteAssignmentAlertOpen: false,
-  isConfirmUpsertAssignmentAlertOpen: false,
-  confirmUpsertAssignmentAlertMessage: "",
-  isSelectOutlineModalOpen: false,
-  outlineSearchQuery: "",
+  isWeekendMeetingToastOpen: false,
+  weekendMeetingToastColor: "success" as "success" | "danger" | "warning",
+  weekendMeetingToastMessage: "",
+
+  speaker_id: "",
+  outline_id: "",
+  participant_id: "",
+  assignment: "" as "reader" | "chairman",
+
+  mutationType: "" as
+    | "Delete Speaker"
+    | "Update Speaker"
+    | "Delete Assignment"
+    | "Update Assignment",
 };
 
 export type WeekendMeeting = typeof weekendMeeting;
@@ -24,55 +24,100 @@ export const setWeekendMeeting = (
   get: () => { weekendMeeting: WeekendMeeting }
 ) => {
   return {
-    setSelectSpeakerModalOpen: (open: boolean) => {
+    handleWeekendMeetingAlertCancellation: () => {
       const weekendMeeting = get().weekendMeeting;
       set({
         weekendMeeting: {
           ...weekendMeeting,
-          isSelectSpeakerModalOpen: open,
+          isWeekendMeetingAlertOpen: false,
         },
       });
     },
-
-    setSpeakerSearchQuery: (query: string) => {
-      const weekendMeeting = get().weekendMeeting;
-      set({
-        weekendMeeting: {
-          ...weekendMeeting,
-          speakerSearchQuery: query,
-        },
-      });
-    },
-
-    confirmUpsertSpeakerAssignment: ({
-      speaker_id,
-      alertMessage,
+    handleWeekendMeetingAlertConfirmation: ({
+      weekendMeetingToastMessage,
+      weekendMeetingToastColor,
     }: {
-      speaker_id: string;
-      alertMessage: string;
+      weekendMeetingToastMessage: string;
+      weekendMeetingToastColor: (typeof weekendMeeting)["weekendMeetingToastColor"];
     }) => {
       const weekendMeeting = get().weekendMeeting;
       set({
         weekendMeeting: {
           ...weekendMeeting,
-          assignmentDetails: {
-            ...weekendMeeting.assignmentDetails,
-            speaker_id,
-          },
-          isConfirmUpsertAssignmentAlertOpen: true,
-          confirmUpsertAssignmentAlertMessage: alertMessage,
+          weekendMeetingToastMessage,
+          weekendMeetingToastColor,
+          isWeekendMeetingAlertOpen: false,
+          isWeekendMeetingToastOpen: true,
         },
       });
     },
-
-    confirmDeleteSpeakerAssignment: () => {
-      console.log("confirmDeleteSpeakerAssignment");
+    onWeekendMeetingToastClose: () => {
       const weekendMeeting = get().weekendMeeting;
       set({
         weekendMeeting: {
           ...weekendMeeting,
-          isConfirmDeleteAssignmentAlertOpen: false,
-          isSelectOutlineModalOpen: false,
+          isWeekendMeetingToastOpen: false,
+        },
+      });
+    },
+    handleDeleteSpeakerAssignmentClick: () => {
+      const weekendMeeting = get().weekendMeeting;
+      set({
+        weekendMeeting: {
+          ...weekendMeeting,
+          isWeekendMeetingAlertOpen: true,
+          mutationType: "Delete Speaker",
+        },
+      });
+    },
+    handleSelectSpeakerAssignmentClick: ({
+      speaker_id,
+      outline_id,
+    }: {
+      speaker_id: string;
+      outline_id: string;
+    }) => {
+      const weekendMeeting = get().weekendMeeting;
+      set({
+        weekendMeeting: {
+          ...weekendMeeting,
+          isWeekendMeetingAlertOpen: true,
+          speaker_id,
+          outline_id,
+          mutationType: "Update Speaker",
+        },
+      });
+    },
+    handleDeleteWeekendAssignmentClick: ({
+      assignment,
+    }: {
+      assignment: "reader" | "chairman";
+    }) => {
+      const weekendMeeting = get().weekendMeeting;
+      set({
+        weekendMeeting: {
+          ...weekendMeeting,
+          isWeekendMeetingAlertOpen: true,
+          assignment,
+          mutationType: `Delete Assignment`,
+        },
+      });
+    },
+    handleSelectWeekendAssignmentClick: ({
+      participant_id,
+      assignment,
+    }: {
+      participant_id: string;
+      assignment: "reader" | "chairman";
+    }) => {
+      const weekendMeeting = get().weekendMeeting;
+      set({
+        weekendMeeting: {
+          ...weekendMeeting,
+          isWeekendMeetingAlertOpen: true,
+          participant_id,
+          assignment,
+          mutationType: `Update Assignment`,
         },
       });
     },
