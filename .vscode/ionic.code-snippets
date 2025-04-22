@@ -11,7 +11,7 @@
     "isFileTemplate": true,
     "prefix": "ionic",
     "body": [
-      "import { useCardModal } from \"@amodeo/ui/util/ionic/use-card-modal/useCardModal\";",
+      "import { ModalProps } from \"@amodeo/ui/util/ionic/use-card-modal/useCardModal\";",
       "import {",
       "  IonButton,",
       "  IonButtons,",
@@ -28,7 +28,7 @@
       "export const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} = ({",
       "  modalProps,",
       "}: {",
-      "  modalProps: ReturnType<typeof useCardModal>[\"modalProps\"];",
+      "  modalProps: ModalProps;",
       "}) => {",
       "  const [isOpen, setIsOpen] = useState(false);",
       "",

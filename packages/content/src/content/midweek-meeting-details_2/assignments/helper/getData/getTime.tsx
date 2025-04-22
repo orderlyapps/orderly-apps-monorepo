@@ -1,4 +1,4 @@
-import { GetAssignmentDataProps } from "./types.js";
+import { GetAssignmentDataProps } from "../types.js";
 
 const fixedTimingParts = {
   treasures: "10",

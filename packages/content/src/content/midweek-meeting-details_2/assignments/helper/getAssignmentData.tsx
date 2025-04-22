@@ -1,11 +1,13 @@
 import { formatWeekDate } from "@amodeo/util/dateTime/format-week-dat/formatWeekDate";
 import { AssignmentProps } from "../Assignment.js";
-import { getAssignmentAssistant } from "./getAssignmentAssistant.js";
-import { getAssignmentColor } from "./getAssignmentColor.js";
-import { getAssignmentDetails } from "./getAssignmentDetails.js";
-import { getAssignmentLabel } from "./getAssignmentLabel.js";
-import { getAssignmentParticipant } from "./getAssignmentParticipant.js";
-import { getAssignmentTime } from "./getAssignmentTime.js";
+import { getAssignmentAssistant } from "./getData/getAssistant.js";
+import { getAssignmentColor } from "./getData/getColor.js";
+import { getAssignmentDetails } from "./getData/getDetails.js";
+import { getAssignmentLabel } from "./getData/getLabel.js";
+import { getAssignmentParticipant } from "./getData/getParticipant.js";
+import { getSchool } from "./getData/getSchool.js";
+import { getCounsellor } from "./getData/getCounsellor.js";
+import { getAssignmentTime } from "./getData/getTime.js";
 
 export const getAssignmentData = ({ assignment, data }: AssignmentProps) => {
   const schoolNumber = assignment.match(/school_(\d+).*/)?.[1] || null;
@@ -61,5 +63,29 @@ export const getAssignmentData = ({ assignment, data }: AssignmentProps) => {
   const date = formatWeekDate(data.meeting_data.mwb_week_date);
 
   const padding = "0.2rem";
-  return { time, details, assistant, label, color, participant, padding, date };
+
+  const school = {
+    ...getSchool(schoolNumber),
+    hasSecondSchool: !!data.participants.counselor_2,
+  };
+
+  const counsellor = getCounsellor({
+    data,
+    schoolNumber,
+    assignment,
+  });
+
+  return {
+    time,
+    details,
+    assistant,
+    label,
+    color,
+    participant,
+    padding,
+    date,
+    school,
+    counsellor,
+    assignment,
+  };
 };

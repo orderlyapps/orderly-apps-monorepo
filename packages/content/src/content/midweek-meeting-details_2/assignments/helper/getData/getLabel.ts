@@ -2,7 +2,7 @@ import {
   MidweekAssignments,
   Tables,
 } from "@amodeo/data/supabase/supabase-types";
-import { GetAssignmentDataProps } from "./types.js";
+import { GetAssignmentDataProps } from "../types.js";
 
 const extraData = {
   chairman: "Chairman",
@@ -45,6 +45,7 @@ export const getAssignmentLabel = ({
 }: GetAssignmentDataProps) => {
   const extended_meeting_data = { ...data.meeting_data, ...extraData };
   const label =
-    labelKeys[assignment] && extended_meeting_data[labelKeys[assignment]];
+    (labelKeys[assignment] && extended_meeting_data[labelKeys[assignment]]) ||
+    null;
   return label;
 };

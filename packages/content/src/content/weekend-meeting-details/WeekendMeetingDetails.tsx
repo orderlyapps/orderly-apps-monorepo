@@ -1,4 +1,4 @@
-import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
+import { ModalProps } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 import { SpeakerSelect } from "./components/speaker-select/SpeakerSelect.js";
 import { OutlineSelect } from "./components/outline-select/OutlineSelect.js";
 import { OutgoingSpeakers } from "./components/outgoing-speakers/OutgoingSpeakers.js";
@@ -10,7 +10,7 @@ import { ReaderSelect } from "./components/reader-select/ReaderSelect.js";
 export const WeekendMeetingEdit = ({
   modalProps,
 }: {
-  modalProps: ReturnType<typeof useCardModal>["modalProps"];
+  modalProps: ModalProps;
 }) => {
   return (
     <>

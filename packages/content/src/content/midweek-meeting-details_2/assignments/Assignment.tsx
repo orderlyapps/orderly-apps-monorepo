@@ -7,7 +7,6 @@ import {
   IonCol,
   IonGrid,
   IonItem,
-  IonLabel,
   IonList,
   IonRow,
 } from "@ionic/react";
@@ -33,15 +32,14 @@ export const Assignment = ({ assignment, data }: AssignmentProps) => {
   return (
     <IonAccordion value={assignment}>
       <IonList slot="header">
-        <SchoolHeader assignment={assignment} data={data} />
+        <SchoolHeader assignmentData={assignmentData} />
         <IonItem lines="none">
           <Label assignmentData={assignmentData} />
           <Participant assignmentData={assignmentData} />
         </IonItem>
       </IonList>
-
       <IonItem slot="content" color={"medium"}>
-        <IonGrid>
+        <IonGrid className={assignmentData.time && "ion-margin-top"}>
           <IonRow>
             <IonCol>
               <Assistant assignmentData={assignmentData} />

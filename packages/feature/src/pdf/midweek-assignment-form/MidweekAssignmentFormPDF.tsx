@@ -3,13 +3,40 @@ import {
   Page,
   PDFDownloadLink,
   PDFViewer,
-  Text,
   View,
   StyleSheet,
 } from "@react-pdf/renderer";
+import { Note } from "./Note.js";
+import { Content } from "./Content.js";
+import { Title } from "./Title.js";
+
+type Data = {
+  time: string;
+  details: string | null;
+  assistant: {
+    assistantsName: string;
+    show: boolean;
+    label: string;
+  } | null;
+  label: string | null;
+  color: string;
+  participant: {
+    name: string;
+    first_name: string;
+  } | null;
+  padding: string;
+  date: string;
+  school: {
+    number: string | null;
+    label: string;
+  };
+  counsellor: {
+    name: string;
+  };
+};
 
 type MidweekAssignmentFormPDFData = {
-  data?: any;
+  data: Data;
 };
 
 const styles = StyleSheet.create({
@@ -19,14 +46,40 @@ const styles = StyleSheet.create({
   },
 });
 
-function MidweekAssignmentFormPDF({ data }: MidweekAssignmentFormPDFData) {
-
+function MidweekAssignmentFormPDF({
+  data: {
+    label,
+    time,
+    participant,
+    date,
+    school,
+    assistant,
+    counsellor,
+    details,
+  },
+}: MidweekAssignmentFormPDFData) {
   return (
     <Document>
-      <Page size={"A4"} style={styles.page}>
+      <Page size={"A6"} style={styles.page}>
         <View>
-          <Text>MidweekAssignmentForm PDF</Text>
+          <Title />
+          <Content label={"Student"} info={participant?.name || null} />
+          <Content label={"Date"} info={date || null} />
+          <Content
+            label={"Assignment"}
+            info={label + " (" + time + " min)" || null}
+          />
+          <Content label={"School"} info={school?.label || null} />
+          {assistant?.show && (
+            <Content
+              label={"Assistant"}
+              info={assistant?.assistantsName || null}
+            />
+          )}
+          <Content label={"Counsellor"} info={counsellor.name || null} />
+          <Content label={"Material"} info={details || null} />
         </View>
+        <Note />
       </Page>
     </Document>
   );

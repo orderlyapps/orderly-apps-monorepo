@@ -1,4 +1,4 @@
-import { GetAssignmentDataProps } from "./types.js";
+import { GetAssignmentDataProps } from "../types.js";
 
 export const getAssignmentAssistant = ({
   assignment, data: { participants, meeting_data }, applyAssignmentNumber, schoolNumber,
@@ -7,7 +7,7 @@ export const getAssignmentAssistant = ({
     const reader = `${participants["cbs_reader"]?.first_name || ""} ${participants["cbs_reader"]?.last_name || ""}`;
 
     return { assistantsName: reader, show: true, label: "Reader: " };
-  }
+  } 
 
   if (assignment.includes("apply")) {
     const meeting_data_key = `mwb_ayf_part${applyAssignmentNumber}_type` as keyof typeof meeting_data;

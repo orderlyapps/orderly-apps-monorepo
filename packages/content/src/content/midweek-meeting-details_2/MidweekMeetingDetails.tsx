@@ -1,9 +1,15 @@
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { useMidweekMeetingDetailsQuery } from "@amodeo/data/react-query/midweek-meeting_2/use-midweek-meeting-details-query";
-import { Assignment } from "./components/Assignment.js";
+import { Assignment } from "./assignments/Assignment.js";
 import { IonAccordionGroup } from "@ionic/react";
+import { ModalProps } from "@amodeo/ui/util/ionic/use-card-modal/useCardModal";
+import { MidweekMeetingEditModal } from "./midweek-meeting-edit-modal/MidweekMeetingEditModal.js";
 
-export const MidweekMeetingDetails = () => {
+export const MidweekMeetingDetails = ({
+  modalProps,
+}: {
+  modalProps: ModalProps;
+}) => {
   const { week_id } = useOrderlyPageParams("midweek_meeting_details");
   const { data } = useMidweekMeetingDetailsQuery({ week_id });
 
@@ -13,26 +19,29 @@ export const MidweekMeetingDetails = () => {
   const weekData = data[0];
 
   return (
-    <IonAccordionGroup>
-      <Assignment assignment="chairman" data={weekData} />
-      <Assignment assignment="prayer_opening" data={weekData} />
-      <Assignment assignment="treasures" data={weekData} />
-      <Assignment assignment="gems" data={weekData} />
-      <Assignment assignment="school_1_bible_reading" data={weekData} />
-      <Assignment assignment="school_1_apply_1" data={weekData} />
-      <Assignment assignment="school_1_apply_2" data={weekData} />
-      <Assignment assignment="school_1_apply_3" data={weekData} />
-      <Assignment assignment="school_1_apply_4" data={weekData} />
-      <Assignment assignment="counselor_2" data={weekData} />
-      <Assignment assignment="school_2_bible_reading" data={weekData} />
-      <Assignment assignment="school_2_apply_1" data={weekData} />
-      <Assignment assignment="school_2_apply_2" data={weekData} />
-      <Assignment assignment="school_2_apply_3" data={weekData} />
-      <Assignment assignment="school_2_apply_4" data={weekData} />
-      <Assignment assignment="living_1" data={weekData} />
-      <Assignment assignment="living_2" data={weekData} />
-      <Assignment assignment="cbs_conductor" data={weekData} />
-      <Assignment assignment="prayer_closing" data={weekData} />
-    </IonAccordionGroup>
+    <>
+      <IonAccordionGroup>
+        <Assignment assignment="chairman" data={weekData} />
+        <Assignment assignment="prayer_opening" data={weekData} />
+        <Assignment assignment="treasures" data={weekData} />
+        <Assignment assignment="gems" data={weekData} />
+        <Assignment assignment="school_1_bible_reading" data={weekData} />
+        <Assignment assignment="school_1_apply_1" data={weekData} />
+        <Assignment assignment="school_1_apply_2" data={weekData} />
+        <Assignment assignment="school_1_apply_3" data={weekData} />
+        <Assignment assignment="school_1_apply_4" data={weekData} />
+        <Assignment assignment="counselor_2" data={weekData} />
+        <Assignment assignment="school_2_bible_reading" data={weekData} />
+        <Assignment assignment="school_2_apply_1" data={weekData} />
+        <Assignment assignment="school_2_apply_2" data={weekData} />
+        <Assignment assignment="school_2_apply_3" data={weekData} />
+        <Assignment assignment="school_2_apply_4" data={weekData} />
+        <Assignment assignment="living_1" data={weekData} />
+        <Assignment assignment="living_2" data={weekData} />
+        <Assignment assignment="cbs_conductor" data={weekData} />
+        <Assignment assignment="prayer_closing" data={weekData} />
+      </IonAccordionGroup>
+      <MidweekMeetingEditModal modalProps={modalProps} />
+    </>
   );
 };

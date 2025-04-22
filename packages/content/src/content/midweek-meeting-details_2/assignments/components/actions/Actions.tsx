@@ -5,21 +5,24 @@ import { PDF } from "./components/PDF.js";
 import { Edit } from "./components/Edit.js";
 
 type MessageProps = {
-  children?: React.ReactNode;
   assignmentData: GetAssignmentDataReturnType;
 };
 
-export const Actions = ({ children, assignmentData }: MessageProps) => {
-  if (children) return <div>{children}</div>;
+export const Actions = ({ assignmentData }: MessageProps) => {
+  const isSchoolAssignment = assignmentData.assignment.startsWith("school");
   return (
-    <IonGrid>
+    <IonGrid className={assignmentData.time && "ion-margin-top"}>
       <IonRow>
         <IonCol>
           <Message assignmentData={assignmentData} />
         </IonCol>
-        <IonCol>
-          <PDF assignmentData={assignmentData} />
-        </IonCol>
+        {isSchoolAssignment && (
+          <>
+            <IonCol>
+              <PDF assignmentData={assignmentData} />
+            </IonCol>
+          </>
+        )}
         <IonCol>
           <Edit assignmentData={assignmentData} />
         </IonCol>

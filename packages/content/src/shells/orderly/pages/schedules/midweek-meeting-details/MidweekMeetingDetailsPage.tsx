@@ -11,14 +11,16 @@ import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
 import { MidweekMeetingDetails } from "../../../../../content/midweek-meeting-details_2/MidweekMeetingDetails.js";
+import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { formatWeekDate } from "@amodeo/util/dateTime/format-week-dat/formatWeekDate";
 
 export default function MidweekMeetingDetailsPage() {
+  const { modalProps, pageProps } = useCardModal();
   const { week_id } = useOrderlyPageParams("midweek_meeting_details");
 
   return (
-    <IonPage>
+    <IonPage {...pageProps}>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
@@ -30,7 +32,7 @@ export default function MidweekMeetingDetailsPage() {
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <MidweekMeetingDetails />
+            <MidweekMeetingDetails modalProps={modalProps} />
           </ErrorBoundary>
         </Suspense>
       </IonContent>

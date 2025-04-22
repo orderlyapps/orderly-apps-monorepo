@@ -26,13 +26,13 @@
   "-React Component": {
     "prefix": "react",
     "body": [
-      "type ${TM_FILENAME_BASE}Props = {",
+      "type ${1:${TM_FILENAME_BASE}}Props = {",
       "  children?: React.ReactNode;",
       "};",
       "",
-      "export const ${TM_FILENAME_BASE} = ({ children }: ${TM_FILENAME_BASE}Props) => {",
+      "export const ${1:${TM_FILENAME_BASE}} = ({ children }: ${1:${TM_FILENAME_BASE}}Props) => {",
       "  if (children) return <div>{children}</div>;",
-      "  return <div>${TM_FILENAME_BASE}</div>;",
+      "  return <div>${1:${TM_FILENAME_BASE}}</div>;",
       "}",
     ],
     "description": "Creates a React Arrow Function Component with ES7 module system and TypeScript interface",

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+export type ModalProps = ReturnType<typeof useCardModal>["modalProps"];
+
 export const useCardModal = () => {
   const modalRef = useRef<HTMLIonModalElement>(null);
   const pageRef = useRef(null);

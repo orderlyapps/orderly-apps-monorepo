@@ -2,7 +2,7 @@ import {
   MidweekAssignments,
   Tables,
 } from "@amodeo/data/supabase/supabase-types";
-import { GetAssignmentDataProps } from "./types.js";
+import { GetAssignmentDataProps } from "../types.js";
 
 const colors = (assignment: MidweekAssignments) => {
   if (assignment.includes("treasures")) return "jw_slate_light";
@@ -14,5 +14,5 @@ const colors = (assignment: MidweekAssignments) => {
 };
 
 export const getAssignmentColor = ({ assignment }: GetAssignmentDataProps) => {
-  return colors(assignment);
+  return colors(assignment) || "medium";
 };
