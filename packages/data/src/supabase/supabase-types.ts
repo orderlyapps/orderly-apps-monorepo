@@ -1,6 +1,7 @@
 import { Database as DatabaseGenerated } from "./exported-types-remote.js";
-import { MergeDeep } from "type-fest";
+import { MergeDeep, SetNonNullable } from "type-fest";
 
+// Primitives
 type Week_ID =
   `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
 
@@ -9,6 +10,36 @@ type UUID = `${string}-${string}-${string}-${string}-${string}`;
 type Point = [number, number];
 
 type BBox = [number, number, number, number];
+
+export type MidweekAssignments =
+  | "chairman"
+  | "prayer_opening"
+  | "treasures"
+  | "gems"
+  | "school_1_bible_reading"
+  | "school_1_apply_1"
+  | "school_1_assistant_1"
+  | "school_1_apply_2"
+  | "school_1_assistant_2"
+  | "school_1_apply_3"
+  | "school_1_assistant_3"
+  | "school_1_apply_4"
+  | "school_1_assistant_4"
+  | "school_2_bible_reading"
+  | "school_2_apply_1"
+  | "school_2_assistant_1"
+  | "school_2_apply_2"
+  | "school_2_assistant_2"
+  | "school_2_apply_3"
+  | "school_2_assistant_3"
+  | "school_2_apply_4"
+  | "school_2_assistant_4"
+  | "living_1"
+  | "living_2"
+  | "cbs_conductor"
+  | "cbs_reader"
+  | "prayer_closing"
+  | "counselor_2";
 
 type DatabaseNarrowed = MergeDeep<
   DatabaseGenerated,
@@ -190,6 +221,19 @@ export type Database = MergeDeep<
               outline_theme: string;
               outline_id: string;
             }[];
+          };
+        };
+        _view_midweek_meeting_details: {
+          Row: {
+            meeting_data: SetNonNullable<MidweekMeetingData>;
+            participants: Record<
+              MidweekAssignments,
+              {
+                id: string;
+                first_name: string;
+                last_name: string;
+              }
+            >;
           };
         };
       };

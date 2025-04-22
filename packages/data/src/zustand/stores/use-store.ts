@@ -22,6 +22,11 @@ import {
   setWeekendMeeting,
   WeekendMeeting,
 } from "../slices/weekend-meeting/use-weekend-meeting.js";
+import {
+  midweekMeeting,
+  setMidweekMeeting,
+  MidweekMeeting,
+} from "../slices/midweek-meeting/use-midweek-meeting.js";
 
 const initialState = {
   theme,
@@ -29,6 +34,7 @@ const initialState = {
   congregation,
   notAtHomes,
   weekendMeeting,
+  midweekMeeting,
 };
 
 const actions = (set: (state: any) => void, get: () => any) => {
@@ -44,6 +50,10 @@ const actions = (set: (state: any) => void, get: () => any) => {
     ...setWeekendMeeting(
       set as (state: { weekendMeeting: WeekendMeeting }) => void,
       get as () => { weekendMeeting: WeekendMeeting }
+    ),
+    ...setMidweekMeeting(
+      set as (state: { midweekMeeting: MidweekMeeting }) => void,
+      get as () => { midweekMeeting: MidweekMeeting }
     ),
   };
 };

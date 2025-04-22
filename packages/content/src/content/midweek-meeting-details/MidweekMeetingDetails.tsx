@@ -12,10 +12,10 @@ export type MidweekMeetingData = ReturnType<
   typeof useMidweekMeetingScheduleDetailsQuery
 >["data"];
 
-export const MidweekMeetingDetails = ({ week }: { week: string }) => {
-  const { data: thisWeek } = useMidweekMeetingScheduleDetailsQuery(week);
+export const MidweekMeetingDetails = ({ week_id }: { week_id: string }) => {
+  const { data: thisWeek } = useMidweekMeetingScheduleDetailsQuery(week_id);
   const { data: nextWeek } = useMidweekMeetingScheduleDetailsQuery(
-    getNextWeek(week)
+    getNextWeek(week_id)
   );
 
   return thisWeek ? (

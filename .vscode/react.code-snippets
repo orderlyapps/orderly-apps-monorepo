@@ -2,7 +2,7 @@
   "-Wrap in Fragment": {
     "prefix": "react",
     "body": [
-      "<${1|IonList,IonItem,div,strong,Fragment,IonAccordionGroup,IonAccordion,IonText|}$0 >",
+      "<${1|IonList,IonItem,div,strong,Fragment,IonAccordionGroup,IonAccordion,IonText,IonGrid,IonRow,IonCol|} >$0",
       "\t${TM_SELECTED_TEXT}",
       "</$1>",
     ],
@@ -26,7 +26,12 @@
   "-React Component": {
     "prefix": "react",
     "body": [
-      "export const ${TM_FILENAME_BASE} = () => {",
+      "type ${TM_FILENAME_BASE}Props = {",
+      "  children?: React.ReactNode;",
+      "};",
+      "",
+      "export const ${TM_FILENAME_BASE} = ({ children }: ${TM_FILENAME_BASE}Props) => {",
+      "  if (children) return <div>{children}</div>;",
       "  return <div>${TM_FILENAME_BASE}</div>;",
       "}",
     ],

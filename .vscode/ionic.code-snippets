@@ -107,7 +107,6 @@
     "description": "description",
     "scope": "typescript,typescriptreact,javascript,javascriptreact",
   },
-  
   "-Ionic Toast": {
     "prefix": "ionic",
     "body": [
