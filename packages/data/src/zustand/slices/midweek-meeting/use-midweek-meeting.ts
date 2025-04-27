@@ -1,5 +1,6 @@
 export const midweekMeeting = {
   isMidweekMeetingEditModalOpen: false,
+  isMidweekMeetingAlertOpen: false,
 };
 
 export type MidweekMeeting = typeof midweekMeeting;
@@ -15,6 +16,15 @@ export const setMidweekMeeting = (
         midweekMeeting: {
           ...midweekMeeting,
           isMidweekMeetingEditModalOpen: isOpen,
+        },
+      });
+    },
+    setMidweekMeetingAlertOpen: (isOpen: boolean) => {
+      const midweekMeeting = get().midweekMeeting;
+      set({
+        midweekMeeting: {
+          ...midweekMeeting,
+          isMidweekMeetingAlertOpen: isOpen,
         },
       });
     },

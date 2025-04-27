@@ -3,6 +3,7 @@ import { GetAssignmentDataReturnType } from "../../helper/types.js";
 import { Message } from "./components/Message.js";
 import { PDF } from "./components/PDF.js";
 import { Edit } from "./components/Edit.js";
+import { useSelectModal } from "#content/midweek-meeting-details_2/midweek-meeting-edit-modal/SelectModal.js";
 
 type MessageProps = {
   assignmentData: GetAssignmentDataReturnType;
@@ -10,6 +11,7 @@ type MessageProps = {
 
 export const Actions = ({ assignmentData }: MessageProps) => {
   const isSchoolAssignment = assignmentData.assignment.startsWith("school");
+  const { openModal } = useSelectModal("test");
   return (
     <IonGrid className={assignmentData.time && "ion-margin-top"}>
       <IonRow>
@@ -23,7 +25,7 @@ export const Actions = ({ assignmentData }: MessageProps) => {
             </IonCol>
           </>
         )}
-        <IonCol>
+        <IonCol onClick={() => openModal()}>
           <Edit assignmentData={assignmentData} />
         </IonCol>
       </IonRow>

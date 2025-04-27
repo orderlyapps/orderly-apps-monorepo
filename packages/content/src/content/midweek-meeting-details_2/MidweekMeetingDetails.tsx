@@ -3,7 +3,8 @@ import { useMidweekMeetingDetailsQuery } from "@amodeo/data/react-query/midweek-
 import { Assignment } from "./assignments/Assignment.js";
 import { IonAccordionGroup } from "@ionic/react";
 import { ModalProps } from "@amodeo/ui/util/ionic/use-card-modal/useCardModal";
-import { MidweekMeetingEditModal } from "./midweek-meeting-edit-modal/MidweekMeetingEditModal.js";
+import { SelectModal } from "./midweek-meeting-edit-modal/SelectModal.js";
+import { Test } from "./AssignmentOptions.js";
 
 export const MidweekMeetingDetails = ({
   modalProps,
@@ -20,6 +21,19 @@ export const MidweekMeetingDetails = ({
 
   return (
     <>
+      <SelectModal
+        modalProps={modalProps}
+        id="test"
+        onSelect={() =>
+          new Promise<
+            | { successMessage: string; errorMessage: null }
+            | { successMessage: null; errorMessage: string }
+          >((resolve) => resolve({ successMessage: null, errorMessage: "error" }))
+        }
+      >
+        <Test></Test>
+      </SelectModal>
+
       <IonAccordionGroup>
         <Assignment assignment="chairman" data={weekData} />
         <Assignment assignment="prayer_opening" data={weekData} />
@@ -41,7 +55,6 @@ export const MidweekMeetingDetails = ({
         <Assignment assignment="cbs_conductor" data={weekData} />
         <Assignment assignment="prayer_closing" data={weekData} />
       </IonAccordionGroup>
-      <MidweekMeetingEditModal modalProps={modalProps} />
     </>
   );
 };
