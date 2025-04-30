@@ -9,6 +9,8 @@ import { getSchool } from "./getData/getSchool.js";
 import { getCounsellor } from "./getData/getCounsellor.js";
 import { getAssignmentTime } from "./getData/getTime.js";
 
+export type AssigmentData = ReturnType<typeof getAssignmentData>;
+
 export const getAssignmentData = ({ assignment, data }: AssignmentProps) => {
   const schoolNumber = assignment.match(/school_(\d+).*/)?.[1] || null;
 

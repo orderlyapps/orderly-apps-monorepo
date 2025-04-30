@@ -1,0 +1,173 @@
+export const properAssignments = [
+  "chairman",
+  // "prayer_opening",
+  "treasures",
+  "gems",
+  "school_1_bible_reading",
+  "school_1_apply_1",
+  // "school_1_assistant_1",
+  "school_1_apply_2",
+  // "school_1_assistant_2",
+  "school_1_apply_3",
+  // "school_1_assistant_3",
+  "school_1_apply_4",
+  // "school_1_assistant_4",
+  "school_2_bible_reading",
+  "school_2_apply_1",
+  // "school_2_assistant_1",
+  "school_2_apply_2",
+  // "school_2_assistant_2",
+  "school_2_apply_3",
+  // "school_2_assistant_3",
+  "school_2_apply_4",
+  // "school_2_assistant_4",
+  "living_1",
+  "living_2",
+  "cbs_conductor",
+  // "cbs_reader",
+  // "prayer_closing",
+  "counselor_2",
+];
+
+export const assignmentData = {
+  chairman: {
+    id: "chairman",
+    type: "Chairman",
+    tags: ["chairman"],
+  },
+  prayer_opening: {
+    id: "prayer_opening",
+    type: "Prayer",
+    tags: ["minor"],
+  },
+  treasures: {
+    id: "treasures",
+    type: "Treasures",
+    tags: ["treasures"],
+  },
+  gems: {
+    id: "gems",
+    type: "Gems",
+    tags: ["treasures"],
+  },
+  school_1_bible_reading: {
+    id: "school_1_bible_reading",
+    type: "Main Hall Bible Reading",
+    tags: ["school", "reading", "treasures"],
+  },
+  school_1_apply_1: {
+    id: "school_1_apply_1",
+    type: "Main Hall Apply",
+    tags: ["school", "apply"],
+  },
+  school_1_assistant_1: {
+    id: "school_1_assistant_1",
+    type: "Main Hall Assistant",
+    tags: ["school", "assistant"],
+  },
+  school_1_apply_2: {
+    id: "school_1_apply_2",
+    type: "Main Hall Apply",
+    tags: ["school", "apply"],
+  },
+  school_1_assistant_2: {
+    id: "school_1_assistant_2",
+    type: "Main Hall Assistant",
+    tags: ["school", "assistant"],
+  },
+  school_1_apply_3: {
+    id: "school_1_apply_3",
+    type: "Main Hall Apply",
+    tags: ["school", "apply"],
+  },
+  school_1_assistant_3: {
+    id: "school_1_assistant_3",
+    type: "Main Hall Assistant",
+    tags: ["school", "assistant"],
+  },
+  school_1_apply_4: {
+    id: "school_1_apply_4",
+    type: "Main Hall Apply",
+    tags: ["school", "apply"],
+  },
+  school_1_assistant_4: {
+    id: "school_1_assistant_4",
+    type: "Main Hall Assistant",
+    tags: ["school", "assistant"],
+  },
+  school_2_bible_reading: {
+    id: "school_2_bible_reading",
+    type: "Second School Bible Reading",
+    tags: ["school", "reading"],
+  },
+  school_2_apply_1: {
+    id: "school_2_apply_1",
+    type: "Second School Apply",
+    tags: ["school", "apply"],
+  },
+  school_2_assistant_1: {
+    id: "school_2_assistant_1",
+    type: "Second School Assistant",
+    tags: ["school", "assistant"],
+  },
+  school_2_apply_2: {
+    id: "school_2_apply_2",
+    type: "Second School Apply",
+    tags: ["school", "apply"],
+  },
+  school_2_assistant_2: {
+    id: "school_2_assistant_2",
+    type: "Second School Assistant",
+    tags: ["school", "assistant"],
+  },
+  school_2_apply_3: {
+    id: "school_2_apply_3",
+    type: "Second School Apply",
+    tags: ["school", "apply"],
+  },
+  school_2_assistant_3: {
+    id: "school_2_assistant_3",
+    type: "Second School Assistant",
+    tags: ["school", "assistant"],
+  },
+  school_2_apply_4: {
+    id: "school_2_apply_4",
+    type: "Second School Apply",
+    tags: ["school", "apply"],
+  },
+  school_2_assistant_4: {
+    id: "school_2_assistant_4",
+    type: "Second School Assistant",
+    tags: ["school", "assistant"],
+  },
+  living_1: {
+    id: "living_1",
+    type: "Living As Christians",
+    tags: ["living"],
+  },
+  living_2: {
+    id: "living_2",
+    type: "Living As Christians",
+    tags: ["living"],
+  },
+  cbs_conductor: {
+    id: "cbs_conductor",
+    type: "CBS Conductor",
+    tags: ["living"],
+  },
+  cbs_reader: {
+    id: "cbs_reader",
+    type: "CBS Reader",
+    tags: ["living", "minor"],
+  },
+  prayer_closing: {
+    id: "prayer_closing",
+    type: "Prayer",
+    tags: ["living", "minor"],
+  },
+  counselor_2: {
+    id: "counselor_2",
+    type: "Second School Counselor",
+    tags: ["any"],
+  },
+};

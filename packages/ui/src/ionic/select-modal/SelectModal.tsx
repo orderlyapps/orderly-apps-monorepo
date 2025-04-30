@@ -18,13 +18,17 @@ const initialState = {
   isToastOpen: false,
   toastMessage: "",
   alertMessage: "",
+  modalTitle: "",
 };
 
 export const useSelectModal = (id: string) => {
-  const [modalState, setModalState] = useLocalStorage(id, initialState);
+  const [modalState, setModalState] = useLocalStorage(
+    `select-modal-[${id}]`,
+    initialState
+  );
 
-  const openModal = () => {
-    setModalState({ ...modalState, isModalOpen: true });
+  const openModal = (modalTitle: string) => {
+    setModalState({ ...modalState, modalTitle, isModalOpen: true });
   };
 
   const closeModal = () => {
@@ -47,19 +51,14 @@ export const useSelectModal = (id: string) => {
     setModalState({ ...modalState, isAlertOpen: true, alertMessage });
   };
 
-  const alertMessage = modalState.alertMessage;
-  const toastMessage = modalState.toastMessage;
-
   return {
-    modalState,
+    ...modalState,
     openModal,
     closeModal,
     onSelect,
     onAlertDismissed,
     closeToast,
-    alertMessage,
     showToast,
-    toastMessage,
   };
 };
 
@@ -86,13 +85,16 @@ export const SelectModal = ({
   onSelect,
 }: SelectModalProps) => {
   const {
-    modalState,
     closeModal,
     onAlertDismissed,
     closeToast,
     showToast,
     alertMessage,
     toastMessage,
+    modalTitle,
+    isModalOpen,
+    isAlertOpen,
+    isToastOpen,
   } = useSelectModal(id);
 
   const handleConfirm = async () => {
@@ -102,10 +104,10 @@ export const SelectModal = ({
 
   return (
     <>
-      <IonModal {...modalProps} isOpen={modalState.isModalOpen}>
+      <IonModal {...modalProps} isOpen={isModalOpen}>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>{"title"}</IonTitle>
+            <IonTitle>{modalTitle}</IonTitle>
             <IonButtons slot="end">
               <IonButton onClick={closeModal}>Close</IonButton>
             </IonButtons>
@@ -114,7 +116,7 @@ export const SelectModal = ({
         <IonContent>{children}</IonContent>
       </IonModal>
       <IonAlert
-        isOpen={modalState.isAlertOpen}
+        isOpen={isAlertOpen}
         message={alertMessage}
         buttons={[
           { text: "Close", role: "cancel" },
@@ -123,7 +125,7 @@ export const SelectModal = ({
         onDidDismiss={onAlertDismissed}
       ></IonAlert>
       <IonToast
-        isOpen={modalState.isToastOpen}
+        isOpen={isToastOpen}
         message={toastMessage}
         duration={1000}
         position="bottom"

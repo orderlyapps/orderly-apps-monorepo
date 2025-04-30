@@ -203,6 +203,15 @@ export type Database = MergeDeep<
             chairman: Publisher | null;
           };
         };
+        _view_midweek_participants: {
+          Row: {
+            assignments: {
+              assignment: MidweekAssignments;
+              week_id: string;
+            }[];
+            participation: MidweekAssignments[];
+          };
+        };
         _view_weekend_participants: {
           Row: {
             assignments: {

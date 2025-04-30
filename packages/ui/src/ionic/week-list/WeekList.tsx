@@ -14,7 +14,8 @@ import React, { Dispatch, useEffect, Fragment, SetStateAction } from "react";
 import { useState } from "react";
 
 type WeekChildProps = {
-  week_id?: string;
+  week_id: string;
+  isCurrentWeek: boolean;
 };
 
 type WeekListProps = {
@@ -71,6 +72,7 @@ export const WeekList = ({ children, setScheduleDates }: WeekListProps) => {
         {allDates.map((week_id, index) => {
           const weekDate = new Date(week_id);
           const isFirstWeekOfMonth = weekDate.getDate() <= 7;
+          const isCurrentWeek = week_id === formatDate(start, "yyyy-MM-dd");
 
           if (isFirstWeekOfMonth || index === 0) {
             return (
@@ -86,7 +88,7 @@ export const WeekList = ({ children, setScheduleDates }: WeekListProps) => {
                   {React.isValidElement(children)
                     ? React.cloneElement(
                         children as React.ReactElement<WeekChildProps>,
-                        { week_id }
+                        { week_id, isCurrentWeek }
                       )
                     : children}
                 </Fragment>
@@ -99,7 +101,7 @@ export const WeekList = ({ children, setScheduleDates }: WeekListProps) => {
               {React.isValidElement(children)
                 ? React.cloneElement(
                     children as React.ReactElement<WeekChildProps>,
-                    { week_id }
+                    { week_id, isCurrentWeek }
                   )
                 : children}
             </Fragment>
