@@ -2,9 +2,8 @@ import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { useMidweekMeetingDetailsQuery } from "@amodeo/data/react-query/midweek-meeting_2/use-midweek-meeting-details-query";
 import { Assignment } from "./assignments/Assignment.js";
 import { IonAccordionGroup } from "@ionic/react";
-import { ModalProps } from "@amodeo/ui/util/ionic/use-card-modal/useCardModal";
 
-export const MidweekMeetingDetails = ({}: { modalProps?: ModalProps }) => {
+export const MidweekMeetingDetails = () => {
   const { week_id } = useOrderlyPageParams("midweek_meeting_details");
   const { data } = useMidweekMeetingDetailsQuery({ week_id });
 
