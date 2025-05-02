@@ -8,9 +8,9 @@ import {
 } from "@ionic/react";
 import { chatboxOutline } from "ionicons/icons";
 import { useState } from "react";
-import { sendSMS } from "../../../helper/sendSMS.js";
+import { sendSMS } from "../../../../../helpers/sendSMS.js";
 import { GetAssignmentDataReturnType } from "../../../helper/types.js";
-import { getSMSContent } from "../../../helper/getSMSContent.js";
+import { getSMSContent } from "../../../../../helpers/getSMSContent.js";
 
 export const Message = ({
   assignmentData,

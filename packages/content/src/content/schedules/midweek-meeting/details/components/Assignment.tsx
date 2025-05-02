@@ -16,9 +16,9 @@ import { Participant } from "./components/Participant.js";
 import { Time } from "./components/Time.js";
 import { Details } from "./components/Details.js";
 import { Assistant } from "./components/Assistant.js";
-import { shouldHide } from "./helper/shouldHide.js";
-import { getAssignmentData } from "./helper/getAssignmentData.js";
 import { Actions } from "./components/actions/Actions.js";
+import { shouldHide } from "../../helpers/shouldHide.js";
+import { getAssignmentData } from "../../helpers/getAssignmentData.js";
 
 export type AssignmentProps = {
   assignment_id: MidweekAssignments;
@@ -35,6 +35,7 @@ export const Assignment = ({ assignment_id, data }: AssignmentProps) => {
         <SchoolHeader assignmentData={assignmentData} />
         <IonItem lines="none">
           <Label assignmentData={assignmentData} />
+          
           <Participant assignmentData={assignmentData} />
         </IonItem>
       </IonList>
