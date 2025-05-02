@@ -10,7 +10,7 @@ import {
 import { Suspense } from 'react';
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { MidweekMeeting } from "../../../../../content/midweek-meeting/MidweekMeeting.js";
+import { MidweekMeeting } from "../../../../../content/schedules/midweek-meeting/list/MidweekMeeting.js";
 
 export default function MidweekMeetingPage() {
   return (

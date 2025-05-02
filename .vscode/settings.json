@@ -246,8 +246,6 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
     "**/node_modules": true,
     "**/.turbo": true,
     "**/dist": true,
@@ -280,5 +278,6 @@
       "database": "postgres"
     }
   ],
-  "editor.foldingImportsByDefault": true
+  "editor.foldingImportsByDefault": true,
+  "explorer.sortOrder": "filesFirst"
 }

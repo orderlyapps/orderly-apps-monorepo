@@ -10,7 +10,7 @@ import {
 import { Suspense } from 'react';
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { PdfExports } from "../../../../../content/pdf-exports/PdfExports.js";
+import { PdfExports } from "../../../../../content/schedules/pdf-exports/PdfExports.js";
 import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 
 export default function PdfExportsPage() {

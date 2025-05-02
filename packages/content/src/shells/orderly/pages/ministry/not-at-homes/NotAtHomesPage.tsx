@@ -10,7 +10,7 @@ import {
 import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { NotAtHomes } from "../../../../../content/not-at-homes/NotAtHomes.js";
+import { NotAtHomes } from "../../../../../content/ministry/not-at-homes/NotAtHomes.js";
 import { useCardModal } from "@amodeo/ui/util/ionic/use-card-modal/useCardModal";
 
 export default function NotAtHomesPage() {

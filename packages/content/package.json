@@ -13,8 +13,8 @@
     }
   },
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc"
+    "dev": "rm -rf dist && tsc --watch",
+    "build": "rm -rf dist && tsc"
   },
   "devDependencies": {
     "@amodeo/config": "workspace:^",

@@ -10,7 +10,7 @@ import {
 import { Suspense } from 'react';
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { LetterWriting } from "../../../../../content/letter-writing/LetterWriting.js";
+import { LetterWriting } from "../../../../../content/ministry/letter-writing/LetterWriting.js";
 
 export default function LetterWritingPage() {
   return (

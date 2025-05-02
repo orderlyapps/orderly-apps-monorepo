@@ -10,7 +10,7 @@ import {
 import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { MapDetails } from "../../../../../content/map-details/MapDetails.js";
+import { MapDetails } from "../../../../../content/ministry/map-details/MapDetails.js";
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 
 export default function MapDetailsPage() {
