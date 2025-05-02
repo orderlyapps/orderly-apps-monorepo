@@ -1,7 +1,7 @@
 import { MidweekAssignments } from "@amodeo/data/supabase/supabase-types";
 import { useLocalStorage } from "usehooks-ts";
-import { AssigmentData } from "../../../assignments/helper/getAssignmentData.js";
 import { useSelectModal } from "@amodeo/ui/ionic/select-modal/SelectModal";
+import { AssigmentData } from "#content/midweek-meeting-details_2/assignments/helper/getAssignmentData.js";
 
 export type MidweekAssignmentFilters = keyof typeof filterValues;
 
@@ -30,7 +30,7 @@ export const useMidweekAssignmentsFormState = () => {
     initialMidweekAssignmentsFormState
   );
 
-  const { openModal, onSelect } = useSelectModal("midweek-meeting-assignments");
+  const { openModal } = useSelectModal("midweek-meeting-assignments");
 
   const openSelectParticipantModal = ({
     currentAssignment,
@@ -65,22 +65,5 @@ export const useMidweekAssignmentsFormState = () => {
     });
   };
 
-  const onSelectParticipant = ({
-    alertMessage,
-    newAssignmentDetails,
-  }: {
-    alertMessage: string;
-    newAssignmentDetails: typeof state.newAssignmentDetails;
-  }) => {
-    setState({ ...state, newAssignmentDetails });
-    onSelect({ alertMessage });
-  };
-
-  return {
-    ...state,
-    openSelectParticipantModal,
-    updateFilter,
-    setSortValue,
-    onSelectParticipant,
-  };
+  return { ...state, openSelectParticipantModal, updateFilter, setSortValue };
 };

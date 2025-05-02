@@ -17,9 +17,9 @@ export const useMidweekMeetingDetailsQuery = ({
       const { data, error } = await supabase
         .from("_view_midweek_meeting_details")
         .select("*")
+        .eq("congregation_id", useStore.getState().congregation.id)
         .gte("week_id", startDate || week_id)
         .lte("week_id", endDate || week_id)
-        .eq("congregation_id", useStore.getState().congregation.id)
         .order("week_id", { ascending: true });
 
       if (error) {

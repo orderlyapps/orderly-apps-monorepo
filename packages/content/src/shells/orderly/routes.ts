@@ -12,13 +12,24 @@ import {
   // publishers,
   settings,
 } from "@amodeo/ui/util/ionic/icons/icons";
+import { MidweekAssignments } from "@amodeo/data/supabase/supabase-types";
 
 export const ORDERLY_PAGES = {
-  pdf_exports:{
-    path: '/schedules/pdf-exports',
+  midweek_meeting_edit: {
+    path: "/schedules/midweek-meeting-edit",
+    params: { assignment_id: "" as MidweekAssignments, week_id: "" },
+    Component: lazy(
+      () =>
+        import(
+          "./pages/schedules/midweek-meeting-edit/MidweekMeetingEditPage.js"
+        )
+    ),
+  },
+  pdf_exports: {
+    path: "/schedules/pdf-exports",
     // params: { id: '' },
     Component: lazy(
-      () => import('./pages/schedules/pdf-exports/PdfExportsPage.js')
+      () => import("./pages/schedules/pdf-exports/PdfExportsPage.js")
     ),
   },
   weekend_meeting: {

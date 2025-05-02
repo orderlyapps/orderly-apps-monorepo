@@ -19,6 +19,7 @@ const initialState = {
   toastMessage: "",
   alertMessage: "",
   modalTitle: "",
+  closeOnSuccess: false,
 };
 
 export const useSelectModal = (id: string) => {
@@ -39,15 +40,30 @@ export const useSelectModal = (id: string) => {
     setModalState({ ...modalState, isAlertOpen: false });
   };
 
-  const showToast = ({ toastMessage }: { toastMessage: string }) => {
-    setModalState({ ...modalState, isToastOpen: true, toastMessage });
+  const showToast = ({
+    toastMessage,
+    closeOnSuccess,
+  }: {
+    toastMessage: string;
+    closeOnSuccess: boolean;
+  }) => {
+    setModalState({
+      ...modalState,
+      isToastOpen: true,
+      toastMessage,
+      closeOnSuccess,
+    });
   };
 
-  const closeToast = () => {
-    setModalState({ ...modalState, isToastOpen: false });
+  const onToastClose = () => {
+    setModalState({
+      ...modalState,
+      isToastOpen: false,
+      isModalOpen: !modalState.closeOnSuccess,
+    });
   };
 
-  const onSelect = async ({ alertMessage }: { alertMessage: string }) => {
+  const onSelect = ({ alertMessage }: { alertMessage: string }) => {
     setModalState({ ...modalState, isAlertOpen: true, alertMessage });
   };
 
@@ -57,7 +73,7 @@ export const useSelectModal = (id: string) => {
     closeModal,
     onSelect,
     onAlertDismissed,
-    closeToast,
+    onToastClose,
     showToast,
   };
 };
@@ -70,10 +86,12 @@ type SelectModalProps = {
     | {
         successMessage: string;
         errorMessage: null;
+        closeOnSuccess: boolean;
       }
     | {
         successMessage: null;
         errorMessage: string;
+        closeOnSuccess: boolean;
       }
   >;
 };
@@ -87,7 +105,7 @@ export const SelectModal = ({
   const {
     closeModal,
     onAlertDismissed,
-    closeToast,
+    onToastClose,
     showToast,
     alertMessage,
     toastMessage,
@@ -98,8 +116,11 @@ export const SelectModal = ({
   } = useSelectModal(id);
 
   const handleConfirm = async () => {
-    const { successMessage, errorMessage } = await onSelect();
-    showToast({ toastMessage: successMessage ?? errorMessage });
+    const { successMessage, errorMessage, closeOnSuccess } = await onSelect();
+    showToast({
+      toastMessage: successMessage ?? errorMessage,
+      closeOnSuccess: !!successMessage && closeOnSuccess,
+    });
   };
 
   return (
@@ -115,6 +136,7 @@ export const SelectModal = ({
         </IonHeader>
         <IonContent>{children}</IonContent>
       </IonModal>
+
       <IonAlert
         isOpen={isAlertOpen}
         message={alertMessage}
@@ -123,14 +145,16 @@ export const SelectModal = ({
           { text: "Confirm", handler: handleConfirm, role: "destructive" },
         ]}
         onDidDismiss={onAlertDismissed}
-      ></IonAlert>
+      />
+
       <IonToast
         isOpen={isToastOpen}
         message={toastMessage}
         duration={1000}
-        position="bottom"
-        onDidDismiss={() => closeToast()}
-      ></IonToast>
+        position="top"
+        onDidDismiss={onToastClose}
+        onWillPresent={() => console.log("Toast will present")}
+      />
     </>
   );
 };

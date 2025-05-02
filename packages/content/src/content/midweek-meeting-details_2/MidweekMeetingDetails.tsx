@@ -20,7 +20,7 @@ export const MidweekMeetingDetails = ({
 
   return (
     <>
-      <MidweekParticipantSelectModal modalProps={modalProps} />
+      {/* <MidweekParticipantSelectModal modalProps={modalProps} /> */}
       <IonAccordionGroup>
         <Assignment assignment="chairman" data={weekData} />
         <Assignment assignment="prayer_opening" data={weekData} />

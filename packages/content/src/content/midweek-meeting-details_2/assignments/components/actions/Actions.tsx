@@ -11,7 +11,6 @@ type MessageProps = {
 
 export const Actions = ({ assignmentData }: MessageProps) => {
   const isSchoolAssignment = assignmentData.assignment.startsWith("school");
-  const { openSelectParticipantModal } = useMidweekAssignmentsFormState();
   return (
     <IonGrid className={assignmentData.time && "ion-margin-top"}>
       <IonRow>
@@ -25,15 +24,7 @@ export const Actions = ({ assignmentData }: MessageProps) => {
             </IonCol>
           </>
         )}
-        <IonCol
-          onClick={() =>
-            openSelectParticipantModal({
-              currentAssignment: assignmentData.assignment,
-              modalTitle: assignmentData.label || "",
-              assignmentData,
-            })
-          }
-        >
+        <IonCol>
           <Edit assignmentData={assignmentData} />
         </IonCol>
       </IonRow>
