@@ -1,6 +1,6 @@
 import { IonItem, IonLabel, IonText } from "@ionic/react";
 import { useMidweekAssignmentsFormState } from "../midweek-meeting-select-modal/hooks/use-midweek-assignments-form-state/use-midweek-assignments-form-state.js";
-import { AssigmentData } from "#content/schedules/midweek-meeting/details/assignments/helper/getAssignmentData.js";
+import { AssigmentData } from "#content/schedules/midweek-meeting/details/components/helper/getAssignmentData.js";
 
 export function ParticipantSelect({
   assignmentData,

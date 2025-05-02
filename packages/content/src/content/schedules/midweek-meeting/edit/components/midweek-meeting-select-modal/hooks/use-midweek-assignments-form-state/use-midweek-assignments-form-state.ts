@@ -1,7 +1,7 @@
 import { MidweekAssignments } from "@amodeo/data/supabase/supabase-types";
 import { useLocalStorage } from "usehooks-ts";
 import { useSelectModal } from "@amodeo/ui/ionic/select-modal/SelectModal";
-import { AssigmentData } from "#content/schedules/midweek-meeting/details/assignments/helper/getAssignmentData.js";
+import { AssigmentData } from "#content/schedules/midweek-meeting/details/components/helper/getAssignmentData.js";
 
 export type MidweekAssignmentFilters = keyof typeof filterValues;
 

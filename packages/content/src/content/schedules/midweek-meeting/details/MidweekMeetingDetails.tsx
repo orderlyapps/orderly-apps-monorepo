@@ -1,6 +1,6 @@
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { useMidweekMeetingDetailsQuery } from "@amodeo/data/react-query/midweek-meeting_2/use-midweek-meeting-details-query";
-import { Assignment } from "./assignments/Assignment.js";
+import { Assignment } from "./components/Assignment.js";
 import { IonAccordionGroup } from "@ionic/react";
 
 export const MidweekMeetingDetails = () => {

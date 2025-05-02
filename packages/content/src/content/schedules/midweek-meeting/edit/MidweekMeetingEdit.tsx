@@ -9,9 +9,9 @@ import { ParticipantSelect } from "./components/participant-select/ParticipantSe
 import {
   AssigmentData,
   getAssignmentData,
-} from "../details/assignments/helper/getAssignmentData.js";
-import { Time } from "../details/assignments/components/Time.js";
-import { Details } from "../details/assignments/components/Details.js";
+} from "../details/components/helper/getAssignmentData.js";
+import { Time } from "../details/components/components/Time.js";
+import { Details } from "../details/components/components/Details.js";
 
 function AssignmentDetails({
   assignmentData,
