@@ -4,11 +4,7 @@ import { Assignment } from "./assignments/Assignment.js";
 import { IonAccordionGroup } from "@ionic/react";
 import { ModalProps } from "@amodeo/ui/util/ionic/use-card-modal/useCardModal";
 
-export const MidweekMeetingDetails = ({
-  modalProps,
-}: {
-  modalProps: ModalProps;
-}) => {
+export const MidweekMeetingDetails = ({}: { modalProps?: ModalProps }) => {
   const { week_id } = useOrderlyPageParams("midweek_meeting_details");
   const { data } = useMidweekMeetingDetailsQuery({ week_id });
 
@@ -19,7 +15,6 @@ export const MidweekMeetingDetails = ({
 
   return (
     <>
-      {/* <MidweekParticipantSelectModal modalProps={modalProps} /> */}
       <IonAccordionGroup>
         <Assignment assignment_id="chairman" data={weekData} />
         <Assignment assignment_id="prayer_opening" data={weekData} />
@@ -44,5 +39,3 @@ export const MidweekMeetingDetails = ({
     </>
   );
 };
-
-

@@ -21,7 +21,7 @@ export const NewSuburbAlert = () => {
     });
 
     try {
-      const selectedSuburb = await mutateAsync(addSuburb);
+      await mutateAsync(addSuburb);
       set("notAtHomes", {
         isNewSuburbLoading: false,
         isNewSuburbToastOpen: true,

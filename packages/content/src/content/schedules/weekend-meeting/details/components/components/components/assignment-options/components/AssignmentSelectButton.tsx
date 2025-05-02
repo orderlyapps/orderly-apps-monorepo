@@ -1,10 +1,5 @@
 import { IonButton } from "@ionic/react";
-import { useFilters } from "../../../helper/use-filters/useFilters.js";
 import { useParticipantsList } from "../../../helper/use-participants-list/useParticipantsList.js";
-import { useOrderlyPageParams } from "#shells/orderly/routes.js";
-import { formatName } from "@amodeo/util/formatters/formatName";
-import { assignmentTypes } from "../../../helper/assignment-types/assignmentTypes.js";
-import { formatWeekDate } from "@amodeo/util/dateTime/format-week-dat/formatWeekDate";
 import { useStore } from "@amodeo/data/zustand/stores/use-store";
 
 export const AssignmentSelectButton = ({

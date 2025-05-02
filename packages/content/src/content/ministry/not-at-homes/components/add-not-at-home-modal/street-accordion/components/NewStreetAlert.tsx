@@ -21,7 +21,7 @@ export const NewStreetAlert = () => {
       showNewStreetLoading: true,
     });
     try {
-      const selectedStreet = await mutateAsync({
+      await mutateAsync({
         p_congregation_id: "a42cc43a-562f-4ed4-ac74-73dfdb42aaa5",
         p_longitude: addStreet.longitude,
         p_latitude: addStreet.latitude,

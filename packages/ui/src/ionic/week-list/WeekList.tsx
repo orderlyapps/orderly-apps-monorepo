@@ -1,13 +1,10 @@
 import {
-  IonAccordionGroup,
-  IonButton,
-  IonItem,
-  IonItemDivider,
+  IonButton, IonItemDivider,
   IonLabel,
   IonList,
   IonRefresher,
   IonRefresherContent,
-  RefresherCustomEvent,
+  RefresherCustomEvent
 } from "@ionic/react";
 import { addWeeks, formatDate, startOfWeek, subWeeks } from "date-fns";
 import React, { Dispatch, useEffect, Fragment, SetStateAction } from "react";

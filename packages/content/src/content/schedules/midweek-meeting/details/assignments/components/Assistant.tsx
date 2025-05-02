@@ -1,4 +1,4 @@
-import { IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
+import { IonCol, IonGrid, IonRow } from "@ionic/react";
 import { GetAssignmentDataReturnType } from "../helper/types.js";
 
 export const Assistant = ({

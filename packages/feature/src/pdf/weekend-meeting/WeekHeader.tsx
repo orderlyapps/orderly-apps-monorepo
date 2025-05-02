@@ -1,5 +1,5 @@
 import { formatWeekDate } from "@amodeo/util/dateTime/format-week-dat/formatWeekDate";
-import { StyleSheet, Text, View } from "@react-pdf/renderer";
+import { StyleSheet, Text } from "@react-pdf/renderer";
 import { WeekendMeetingPDFData } from "./WeekendMeetingPDF.js";
 import { Row } from "../util/Row.js";
 import { JW_BLUE } from "@amodeo/util/colors/jw-colors";

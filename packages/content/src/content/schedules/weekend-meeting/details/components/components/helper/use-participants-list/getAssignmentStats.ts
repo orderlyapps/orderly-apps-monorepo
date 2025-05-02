@@ -1,10 +1,8 @@
 import {
-  getClosestNegativeNumberToZero,
-  getClosestNegativeNumberToZeroFromObject,
+  getClosestNegativeNumberToZeroFromObject
 } from "@amodeo/util/array/getClosestNegativeNumberToZero";
 import {
-  getClosestPositiveNumberToZero,
-  getClosestPositiveNumberToZeroFromObject,
+  getClosestPositiveNumberToZeroFromObject
 } from "@amodeo/util/array/getClosestPositiveNumberToZero";
 import { getDifferenceBetweenNumbers } from "@amodeo/util/math/getDifferencBetweenNumbers";
 

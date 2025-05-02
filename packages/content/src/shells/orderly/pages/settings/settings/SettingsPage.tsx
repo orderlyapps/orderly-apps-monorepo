@@ -3,12 +3,10 @@ import {
   IonButton,
   IonButtons,
   IonContent,
-  IonHeader,
-  IonIcon,
-  IonList,
+  IonHeader, IonList,
   IonPage,
   IonTitle,
-  IonToolbar,
+  IonToolbar
 } from "@ionic/react";
 import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
@@ -16,7 +14,6 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ThemeSelect } from "@amodeo/ui/ionic/theme-select/ThemeSelect";
 import { BuildTime } from "@amodeo/ui/ionic/build-time/BuildTime";
 import { CongregationSelect } from "@amodeo/ui/ionic/congregation-select/CongregationSelect";
-import { chatboxOutline } from "ionicons/icons";
 
 export default function SettingsPage() {
   return (

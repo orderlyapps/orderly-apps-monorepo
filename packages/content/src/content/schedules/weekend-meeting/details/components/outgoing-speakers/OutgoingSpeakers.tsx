@@ -1,5 +1,4 @@
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
-import { usePublishersQuery } from "@amodeo/data/react-query/publishers/tables/use-publishers-query";
 import { useOutgoingSpeakerDetailsQuery } from "@amodeo/data/react-query/weekend-meeting/views/use-outgoing-speaker-details-query";
 import { formatName } from "@amodeo/util/formatters/formatName";
 import { IonItem } from "@ionic/react";

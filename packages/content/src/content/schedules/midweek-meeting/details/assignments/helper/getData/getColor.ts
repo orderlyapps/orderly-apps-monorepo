@@ -1,6 +1,5 @@
 import {
-  MidweekAssignments,
-  Tables,
+  MidweekAssignments
 } from "@amodeo/data/supabase/supabase-types";
 import { GetAssignmentDataProps } from "../types.js";
 

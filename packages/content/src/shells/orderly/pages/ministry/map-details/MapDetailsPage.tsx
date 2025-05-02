@@ -14,7 +14,7 @@ import { MapDetails } from "../../../../../content/ministry/map-details/MapDetai
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 
 export default function MapDetailsPage() {
-  const { mapID, fileType } = useOrderlyPageParams("map_details");
+  const { mapID } = useOrderlyPageParams("map_details");
   return (
     <IonPage>
       <IonHeader>

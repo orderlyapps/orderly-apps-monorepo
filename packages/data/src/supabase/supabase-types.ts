@@ -2,14 +2,14 @@ import { Database as DatabaseGenerated } from "./exported-types-remote.js";
 import { MergeDeep, SetNonNullable } from "type-fest";
 
 // Primitives
-type Week_ID =
-  `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
+// type Week_ID =
+//   `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
 
-type UUID = `${string}-${string}-${string}-${string}-${string}`;
+// type UUID = `${string}-${string}-${string}-${string}-${string}`;
 
-type Point = [number, number];
+// type Point = [number, number];
 
-type BBox = [number, number, number, number];
+// type BBox = [number, number, number, number];
 
 export type MidweekAssignments =
   | "chairman"
@@ -41,39 +41,39 @@ export type MidweekAssignments =
   | "prayer_closing"
   | "counselor_2";
 
-type DatabaseNarrowed = MergeDeep<
-  DatabaseGenerated,
-  {
-    public: {
-      Tables: {
-        congregations: {
-          Row: {
-            id: UUID;
-          };
-        };
-        publishers: {
-          Row: {
-            id: UUID;
-            congregation_id: UUID;
-          };
-        };
-        outlines: {
-          Row: {
-            id: UUID;
-          };
-        };
-        speaker_assignments: {
-          Row: {
-            week_id: Week_ID;
-            congregation_id: UUID;
-            outline_id: UUID | null;
-            speaker_id: UUID;
-          };
-        };
-      };
-    };
-  }
->;
+// type DatabaseNarrowed = MergeDeep<
+//   DatabaseGenerated,
+//   {
+//     public: {
+//       Tables: {
+//         congregations: {
+//           Row: {
+//             id: UUID;
+//           };
+//         };
+//         publishers: {
+//           Row: {
+//             id: UUID;
+//             congregation_id: UUID;
+//           };
+//         };
+//         outlines: {
+//           Row: {
+//             id: UUID;
+//           };
+//         };
+//         speaker_assignments: {
+//           Row: {
+//             week_id: Week_ID;
+//             congregation_id: UUID;
+//             outline_id: UUID | null;
+//             speaker_id: UUID;
+//           };
+//         };
+//       };
+//     };
+//   }
+// >;
 
 // Type definitions for all tables in the database
 export type AuthUser =
@@ -250,7 +250,7 @@ export type Database = MergeDeep<
   }
 >;
 
-type test = Database["public"]["Views"]["_view_weekend_meeting_pdf"]["Row"];
+// type test = Database["public"]["Views"]["_view_weekend_meeting_pdf"]["Row"];
 
 // TYPE FACTORIES
 

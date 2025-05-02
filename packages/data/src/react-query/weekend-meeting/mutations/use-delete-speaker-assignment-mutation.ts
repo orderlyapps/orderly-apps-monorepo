@@ -17,7 +17,7 @@ export const useDeleteSpeakerAssignmentMutation = () => {
         throw new Error(error.message);
       }
     },
-    onSuccess: (_data, variables, _context) => {
+    onSuccess: (_data, _variables, _context) => {
       queryClient.invalidateQueries({
         queryKey: ["public-talks"],
       });

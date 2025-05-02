@@ -2,7 +2,7 @@ import { MidweekAssignments } from "@amodeo/data/supabase/supabase-types";
 import { IonGrid, IonRow, IonCol, IonButton } from "@ionic/react";
 import { assignmentData } from "../../../hooks/use-midweek-participants-list/helper/get-extra-data/helper/assignmentData.js";
 import { ParticipantType } from "../../../hooks/use-midweek-participants-list/use-midweek-participants-list.js";
-import { useMidweekAssignmentsFormState } from "#content/schedules/midweek-meeting/details/select-modal/hooks/use-midweek-assignments-form-state/use-midweek-assignments-form-state.js";
+import { useMidweekAssignmentsFormState } from "../../../hooks/use-midweek-assignments-form-state/use-midweek-assignments-form-state.js";
 
 export function MidweekParticipantOptionsContent({
   participant,

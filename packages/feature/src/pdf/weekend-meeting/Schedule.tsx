@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "@react-pdf/renderer";
+import { StyleSheet, View } from "@react-pdf/renderer";
 import { WeekendMeetingPDFData } from "./WeekendMeetingPDF.js";
 import { WeekHeader } from "./WeekHeader.js";
 import { Assignment } from "./Assignments.js";

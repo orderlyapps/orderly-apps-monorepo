@@ -1,5 +1,3 @@
-import { useOrderlyPageParams } from "#shells/orderly/routes.js";
-import { useUpsertSpeakerAssignmentMutation } from "@amodeo/data/react-query/weekend-meeting/mutations/use-upsert-speaker-assignment-mutation";
 import { useSpeakersQuery } from "@amodeo/data/react-query/weekend-meeting/views/use-speakers-query";
 import { useStore } from "@amodeo/data/zustand/stores/use-store";
 import {

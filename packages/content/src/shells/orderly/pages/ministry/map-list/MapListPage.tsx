@@ -5,17 +5,14 @@ import {
   IonContent,
   IonHeader,
   IonIcon,
-  IonPage,
-  IonSearchbar,
-  IonTitle,
-  IonToolbar,
+  IonPage, IonTitle,
+  IonToolbar
 } from "@ionic/react";
 import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
 import { MapList } from "../../../../../content/ministry/map-list/MapList.js";
 import { orderlyPath } from "#shells/orderly/routes.js";
-import { useState } from "react";
 import { Searchbar } from "@amodeo/ui/ionic/searchbar/Searchbar";
 import { filterCircle, filterCircleOutline } from "ionicons/icons";
 import { useLocalStorage } from "usehooks-ts";
@@ -59,7 +56,7 @@ export default function MapListPage() {
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <MapList pathFunction={orderlyPath}></MapList>
+            <MapList pathFunction={orderlyPath as any}></MapList>
           </ErrorBoundary>
         </Suspense>
       </IonContent>

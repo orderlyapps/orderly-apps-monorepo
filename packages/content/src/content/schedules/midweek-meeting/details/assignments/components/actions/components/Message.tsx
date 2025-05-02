@@ -4,8 +4,7 @@ import {
   IonPopover,
   IonContent,
   IonList,
-  IonItem,
-  IonText,
+  IonItem
 } from "@ionic/react";
 import { chatboxOutline } from "ionicons/icons";
 import { useState } from "react";

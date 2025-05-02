@@ -3,16 +3,9 @@ import { useMidweekAssignmentsQuery } from "@amodeo/data/react-query/midweek-mee
 import { useWeekendMeetingPdfQuery } from "@amodeo/data/react-query/weekend-meeting/views/use-weekend-meeting-pdf-query";
 import MidweekMeetingPDF from "@amodeo/feature/pdf/midweek-meeting/MidweekMeetingPDF";
 import WeekendMeetingPDF from "@amodeo/feature/pdf/weekend-meeting/WeekendMeetingPDF";
-import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 import { IonButton } from "@ionic/react";
 
-export const PdfExports = ({
-  children,
-  modalProps,
-}: {
-  children?: React.ReactNode;
-  modalProps: ReturnType<typeof useCardModal>["modalProps"];
-}) => {
+export const PdfExports = () => {
   const { data: midweek_meeting_data } = useMidweekMeetingDataQuery({
     startDate: "2025-05-01",
     endDate: "2025-07-01",

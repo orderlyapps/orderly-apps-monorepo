@@ -1,23 +1,20 @@
-import { getPaths } from "@amodeo/ui/util/ionic/tabs-app/utils/pathFunctions";
+// import { getPaths } from "@amodeo/ui/util/ionic/tabs-app/utils/pathFunctions";
 import {
-  IonButton,
   IonCheckbox,
   IonCol,
   IonGrid,
   IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
+  IonItem, IonList,
   IonRow,
-  IonText,
+  IonText
 } from "@ionic/react";
-import { chevronForwardOutline, mapOutline } from "ionicons/icons";
+import { mapOutline } from "ionicons/icons";
 import { useLocalStorage, useReadLocalStorage } from "usehooks-ts";
 
 export const MapList = ({
   pathFunction,
 }: {
-  pathFunction: ReturnType<typeof getPaths>;
+  pathFunction: any //ReturnType<typeof getPaths>;
 }) => {
   const showFavourites = useReadLocalStorage("filterFavourites");
 

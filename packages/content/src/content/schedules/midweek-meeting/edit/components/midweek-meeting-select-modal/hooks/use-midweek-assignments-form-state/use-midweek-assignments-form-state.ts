@@ -30,7 +30,7 @@ export const useMidweekAssignmentsFormState = () => {
     initialMidweekAssignmentsFormState
   );
 
-  const { openModal } = useSelectModal("midweek-meeting-assignments");
+  const { openModal, onSelect } = useSelectModal("midweek-meeting-assignments");
 
   const openSelectParticipantModal = ({
     currentAssignment,
@@ -65,5 +65,22 @@ export const useMidweekAssignmentsFormState = () => {
     });
   };
 
-  return { ...state, openSelectParticipantModal, updateFilter, setSortValue };
+  const onSelectParticipant = ({
+    alertMessage,
+    newAssignmentDetails,
+  }: {
+    alertMessage: string;
+    newAssignmentDetails: typeof state.newAssignmentDetails;
+  }) => {
+    setState({ ...state, newAssignmentDetails });
+    onSelect({ alertMessage });
+  };
+
+  return {
+    ...state,
+    openSelectParticipantModal,
+    updateFilter,
+    setSortValue,
+    onSelectParticipant,
+  };
 };
