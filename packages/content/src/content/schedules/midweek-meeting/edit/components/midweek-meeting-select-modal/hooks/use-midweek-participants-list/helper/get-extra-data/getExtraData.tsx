@@ -5,9 +5,10 @@ import {
 import { getAverageAssignments } from "./helper/getAverageAssignments.js";
 import { getIsCurrrentAssignee } from "./helper/getIsCurrrentAssignee.js";
 import { prepareSeedData } from "./helper/prepareSeedData.js";
-import { getPastAssignments } from "./helper/getPastAssignments.js";
+import { getPreviousAssignments } from "./helper/getPreviousAssignments.js";
 import { getWeeksBetweenPreviousAndNextAssignments } from "./helper/getWeeksBetweenPreviousAndNextAssignments.js";
 import { getLastSpecificAssignment } from "./helper/getLastSpecificAssignment.js";
+import { getNextAssignments } from "./helper/getNextAssignments.js";
 
 export const getExtraData = ({
   participants,
@@ -29,19 +30,23 @@ export const getExtraData = ({
     const { averageWeeksBetweenAssignments } = getAverageAssignments(seedData);
     const { lastSpecificAssignment, weeksSinceLastSpecificAssignment } =
       getLastSpecificAssignment({ ...seedData, rest });
-    const { pastAssignments, weeksSinceLastAssignment } =
-      getPastAssignments(seedData);
+    const { previousAssignments, weeksSinceLastAssignment } =
+      getPreviousAssignments(seedData);
+    const { nextAssignments, weeksUntillNextAssignment } =
+      getNextAssignments(seedData);
     const weeksBetweenPreviousAndNextAssignments =
       getWeeksBetweenPreviousAndNextAssignments(seedData);
 
     return {
       ...rest,
       isCurrentAssignee,
-      pastAssignments,
+      previousAssignments,
       lastSpecificAssignment,
       averageWeeksBetweenAssignments,
       weeksSinceLastSpecificAssignment,
       weeksSinceLastAssignment,
+      weeksUntillNextAssignment,
+      nextAssignments,
       weeksBetweenPreviousAndNextAssignments,
     };
   });

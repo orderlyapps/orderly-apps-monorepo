@@ -5,9 +5,9 @@ import {
   IonList,
 } from "@ionic/react";
 import { useMidweekParticipantsList } from "../../hooks/use-midweek-participants-list/use-midweek-participants-list.js";
-import { MidweekParticipantOptionsContent } from "./components/MidweekParticipantOptionsContent.js";
+import { MidweekParticipantOptionsContent } from "./components/content/MidweekParticipantOptionsContent.js";
 import { useMidweekAssignmentsFormState } from "../../hooks/use-midweek-assignments-form-state/use-midweek-assignments-form-state.js";
-import { MidweekParticipantOptionsHeader } from "./components/MidweekParticipantOptionsHeader.js";
+import { MidweekParticipantOptionsHeader } from "./components/header/MidweekParticipantOptionsHeader.js";
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 
 export const MidweekParticipantOptions = () => {

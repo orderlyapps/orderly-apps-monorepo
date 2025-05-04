@@ -1,6 +1,6 @@
 import { IonText } from "@ionic/react";
-import { filterValues } from "../../../hooks/use-midweek-assignments-form-state/use-midweek-assignments-form-state.js";
-import { ParticipantType } from "../../../hooks/use-midweek-participants-list/use-midweek-participants-list.js";
+import { filterValues } from "../../../../hooks/use-midweek-assignments-form-state/use-midweek-assignments-form-state.js";
+import { ParticipantType } from "../../../../hooks/use-midweek-participants-list/use-midweek-participants-list.js";
 
 export function MidweekParticipantOptionsHeader({
   participant,

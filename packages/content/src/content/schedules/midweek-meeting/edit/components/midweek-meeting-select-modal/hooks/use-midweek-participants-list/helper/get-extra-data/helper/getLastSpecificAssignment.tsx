@@ -5,7 +5,6 @@ export const getLastSpecificAssignment = ({
   assignments,
   currentWeek,
   currentAssignmentData,
-  rest,
 }: SeedData) => {
   const lastSpecificAssignments = assignments
     .filter((assignment) => assignment.time < currentWeek.getTime())
@@ -14,18 +13,10 @@ export const getLastSpecificAssignment = ({
       return {
         ...assignment,
         weeksSinceAssignment: Math.round(
-          (currentWeek.getTime() - assignment.time) / 1000 / 60 / 60 / 24 / 7
+          (assignment.time - currentWeek.getTime()) / 1000 / 60 / 60 / 24 / 7
         ),
       };
     });
-
-  if (rest.first_name === "Lauchlan") {
-    console.log(
-      rest.first_name,
-      assignments,
-      lastSpecificAssignments[lastSpecificAssignments.length - 1]
-    );
-  }
 
   return {
     lastSpecificAssignment: lastSpecificAssignments[
