@@ -2,23 +2,11 @@ import {
   MidweekAssignments,
   Tables,
 } from "@amodeo/data/supabase/supabase-types";
-import {
-  IonAccordion,
-  IonCol,
-  IonGrid,
-  IonItem,
-  IonList,
-  IonRow,
-} from "@ionic/react";
-import { SchoolHeader } from "./components/SchoolHeader.js";
-import { Label } from "./components/Label.js";
-import { Participant } from "./components/Participant.js";
-import { Time } from "./components/Time.js";
-import { Details } from "./components/Details.js";
-import { Assistant } from "./components/Assistant.js";
-import { Actions } from "./components/actions/Actions.js";
-import { shouldHide } from "../../helpers/shouldHide.js";
-import { getAssignmentData } from "../../helpers/getAssignmentData.js";
+import { IonAccordion, IonItem, IonList } from "@ionic/react";
+import { getAssignmentData } from "../../.shared/getData/getAssignmentData.js";
+import { shouldHide } from "../../.shared/shouldHide.js";
+import { AssignmentHeader } from "./components/assignment-header/AssignmentHeader.js";
+import { AssignmentContent } from "./components/assignment-content/AssignmentContent.js";
 
 export type AssignmentProps = {
   assignment_id: MidweekAssignments;
@@ -32,24 +20,10 @@ export const Assignment = ({ assignment_id, data }: AssignmentProps) => {
   return (
     <IonAccordion value={assignment_id}>
       <IonList slot="header">
-        <SchoolHeader assignmentData={assignmentData} />
-        <IonItem lines="none">
-          <Label assignmentData={assignmentData} />
-          
-          <Participant assignmentData={assignmentData} />
-        </IonItem>
+        <AssignmentHeader assignmentData={assignmentData} />
       </IonList>
       <IonItem slot="content" color={"medium"}>
-        <IonGrid className={assignmentData.time && "ion-margin-top"}>
-          <IonRow>
-            <IonCol>
-              <Assistant assignmentData={assignmentData} />
-              <Time assignmentData={assignmentData} />
-              <Details assignmentData={assignmentData} />
-              <Actions assignmentData={assignmentData} />
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+        <AssignmentContent assignmentData={assignmentData}></AssignmentContent>
       </IonItem>
     </IonAccordion>
   );

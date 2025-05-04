@@ -1,13 +1,13 @@
 import { formatWeekDate } from "@amodeo/util/dateTime/format-week-dat/formatWeekDate";
-import { AssignmentProps } from "../Assignment.js";
-import { getAssignmentAssistant } from "../../../helpers/getData/getAssistant.js";
-import { getAssignmentColor } from "../../../helpers/getData/getColor.js";
-import { getAssignmentDetails } from "../../../helpers/getData/getDetails.js";
-import { getAssignmentLabel } from "../../../helpers/getData/getLabel.js";
-import { getAssignmentParticipant } from "../../../helpers/getData/getParticipant.js";
-import { getSchool } from "../../../helpers/getData/getSchool.js";
-import { getCounsellor } from "../../../helpers/getData/getCounsellor.js";
-import { getAssignmentTime } from "../../../helpers/getData/getTime.js";
+import { AssignmentProps } from "../../details/components/Assignment.js";
+import { getAssignmentAssistant } from "./getAssistant.js";
+import { getAssignmentColor } from "./getColor.js";
+import { getCounsellor } from "./getCounsellor.js";
+import { getAssignmentDetails } from "./getDetails.js";
+import { getAssignmentLabel } from "./getLabel.js";
+import { getAssignmentParticipant } from "./getParticipant.js";
+import { getSchool } from "./getSchool.js";
+import { getAssignmentTime } from "./getTime.js";
 
 export type AssigmentData = ReturnType<typeof getAssignmentData>;
 

@@ -7,9 +7,9 @@ import { useMidweekMeetingDetailsQuery } from "@amodeo/data/react-query/midweek-
 import { AssistantSelect } from "./components/assistant-select/AssistantSelect.js";
 import { ParticipantSelect } from "./components/participant-select/ParticipantSelect.js";
 
-import { Time } from "../details/components/components/Time.js";
-import { Details } from "../details/components/components/Details.js";
-import { AssigmentData, getAssignmentData } from "../helpers/getAssignmentData.js";
+import { Time } from "../details/components/components/assignment-content/components/time/Time.js";
+import { Details } from "../details/components/components/assignment-content/components/details/Details.js";
+import { AssigmentData, getAssignmentData } from "../.shared/getData/getAssignmentData.js";
 
 function AssignmentDetails({
   assignmentData,

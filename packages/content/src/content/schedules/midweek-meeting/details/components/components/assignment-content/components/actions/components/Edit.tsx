@@ -1,7 +1,7 @@
 import { IonButton, IonIcon } from "@ionic/react";
 import { createOutline } from "ionicons/icons";
-import { GetAssignmentDataReturnType } from "../../../helper/types.js";
 import { orderlyPath, useOrderlyPageParams } from "#shells/orderly/routes.js";
+import { GetAssignmentDataReturnType } from "#content/schedules/midweek-meeting/.shared/types.js";
 
 export const Edit = ({
   assignmentData,

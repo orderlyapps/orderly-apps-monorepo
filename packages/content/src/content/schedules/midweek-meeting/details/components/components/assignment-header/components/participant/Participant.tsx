@@ -1,4 +1,4 @@
-import { GetAssignmentDataReturnType } from "../helper/types.js";
+import { GetAssignmentDataReturnType } from "#content/schedules/midweek-meeting/.shared/types.js";
 
 export const Participant = ({
   assignmentData: { participant },

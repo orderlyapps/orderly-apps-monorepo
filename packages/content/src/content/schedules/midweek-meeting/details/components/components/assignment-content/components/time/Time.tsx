@@ -1,5 +1,5 @@
+import { GetAssignmentDataReturnType } from "#content/schedules/midweek-meeting/.shared/types.js";
 import { IonCol, IonGrid, IonRow } from "@ionic/react";
-import { GetAssignmentDataReturnType } from "../helper/types.js";
 
 export const Time = ({
   assignmentData: { time, padding },

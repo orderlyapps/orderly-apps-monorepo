@@ -1,4 +1,4 @@
-import { AssigmentData } from "#content/schedules/midweek-meeting/details/components/helper/getAssignmentData.js";
+import { AssigmentData } from "#content/schedules/midweek-meeting/.shared/getData/getAssignmentData.js";
 import { IonLabel, IonText } from "@ionic/react";
 
 export function AssignmentDetailsHeader({

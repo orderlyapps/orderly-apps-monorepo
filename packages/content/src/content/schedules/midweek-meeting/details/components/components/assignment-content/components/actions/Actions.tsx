@@ -1,8 +1,8 @@
 import { IonCol, IonGrid, IonRow } from "@ionic/react";
-import { GetAssignmentDataReturnType } from "../../helper/types.js";
 import { Message } from "./components/Message.js";
 import { PDF } from "./components/PDF.js";
 import { Edit } from "./components/Edit.js";
+import { GetAssignmentDataReturnType } from "#content/schedules/midweek-meeting/.shared/types.js";
 
 type MessageProps = {
   assignmentData: GetAssignmentDataReturnType;

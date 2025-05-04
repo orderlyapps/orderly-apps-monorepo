@@ -278,6 +278,9 @@
       "database": "postgres"
     }
   ],
-  "editor.foldingImportsByDefault": false,
-  "explorer.sortOrder": "filesFirst"
+  "editor.foldingImportsByDefault": true,
+  "explorer.sortOrder": "filesFirst",
+  "workbench.editor.pinnedTabSizing": "normal",
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "editor.useTabStops": true
 }

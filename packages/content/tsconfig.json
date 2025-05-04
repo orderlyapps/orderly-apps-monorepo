@@ -4,6 +4,6 @@
     "outDir": "dist",
     "rootDir": "src"
   },
-  "include": ["src", "vite-env.d.ts"],
+  "include": ["src", "vite-env.d.ts", "src/content/schedules/midweek-meeting/.shared/applyAssignmentDoesNotExist.tsx", "src/content/schedules/midweek-meeting/.shared/getData/getAssignmentData.tsx", "src/content/schedules/midweek-meeting/.shared/livingAssignmentDoesNotExist.tsx", "src/content/schedules/midweek-meeting/.shared/schoolDoesNotExist.tsx", "src/content/schedules/midweek-meeting/.shared/sendSMS.tsx", "src/content/schedules/midweek-meeting/.shared/getData"],
   "exclude": ["node_modules"]
 }

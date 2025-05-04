@@ -1,5 +1,5 @@
-import { AssignmentProps } from "../Assignment.js";
-import { getAssignmentData } from "./getAssignmentData.js";
+import { getAssignmentData } from "./getData/getAssignmentData.js";
+import { AssignmentProps } from "../details/components/Assignment.js";
 
 export type GetAssignmentDataProps = AssignmentProps & {
   applyAssignmentNumber?: string | null;
