@@ -17,9 +17,8 @@ export function LastSpecificAssignment({
       </IonCol>
       <IonCol>
         {participant.lastSpecificAssignment?.weeksSinceAssignment
-          ? participant.lastSpecificAssignment.weeksSinceAssignment
+          ? `${participant.lastSpecificAssignment.weeksSinceAssignment} week${participant.lastSpecificAssignment.weeksSinceAssignment === 1 ? "" : "s"}`
           : "N/A"}
-        weeks
       </IonCol>
     </IonRow>
   );

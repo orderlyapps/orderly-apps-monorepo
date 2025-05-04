@@ -13,7 +13,7 @@ export const getLastSpecificAssignment = ({
       return {
         ...assignment,
         weeksSinceAssignment: Math.round(
-          (assignment.time - currentWeek.getTime()) / 1000 / 60 / 60 / 24 / 7
+          (currentWeek.getTime() - assignment.time) / 1000 / 60 / 60 / 24 / 7
         ),
       };
     });
