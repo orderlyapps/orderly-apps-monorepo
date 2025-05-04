@@ -6,7 +6,7 @@ import { AssigmentData } from "#content/schedules/midweek-meeting/.shared/getDat
 export type MidweekAssignmentFilters = keyof typeof filterValues;
 
 export const filterValues = {
-  averageAssignments: 0,
+  averageWeeksBetweenAssignments: 0,
   weeksSinceLastSpecificAssignment: 0,
   weeksSinceLastAssignment: 0,
   weeksBetweenPreviousAndNextAssignments: 0,

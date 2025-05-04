@@ -27,5 +27,7 @@ export const getAverageAssignments = ({ assignments }: SeedData) => {
       )
     : null;
 
-  return averageWeeksBetweenAssignments;
+  return {
+    averageWeeksBetweenAssignments
+  };
 };

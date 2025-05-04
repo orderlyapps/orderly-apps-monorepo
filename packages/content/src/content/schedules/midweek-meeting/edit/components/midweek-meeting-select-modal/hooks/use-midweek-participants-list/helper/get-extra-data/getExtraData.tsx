@@ -26,20 +26,20 @@ export const getExtraData = ({
     });
 
     const isCurrentAssignee = getIsCurrrentAssignee(seedData);
-    const averageAssignments = getAverageAssignments(seedData);
+    const { averageWeeksBetweenAssignments } = getAverageAssignments(seedData);
     const { lastSpecificAssignment, weeksSinceLastSpecificAssignment } =
-      getLastSpecificAssignment(seedData);
+      getLastSpecificAssignment({ ...seedData, rest });
     const { pastAssignments, weeksSinceLastAssignment } =
       getPastAssignments(seedData);
     const weeksBetweenPreviousAndNextAssignments =
       getWeeksBetweenPreviousAndNextAssignments(seedData);
+
     return {
       ...rest,
       isCurrentAssignee,
       pastAssignments,
       lastSpecificAssignment,
-      // filters
-      averageAssignments,
+      averageWeeksBetweenAssignments,
       weeksSinceLastSpecificAssignment,
       weeksSinceLastAssignment,
       weeksBetweenPreviousAndNextAssignments,

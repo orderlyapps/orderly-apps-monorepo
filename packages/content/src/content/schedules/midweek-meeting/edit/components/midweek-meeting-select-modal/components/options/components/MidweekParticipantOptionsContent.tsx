@@ -17,10 +17,10 @@ export function MidweekParticipantOptionsContent({
       <IonRow>
         <IonCol size="8">Average Assignments:</IonCol>
         <IonCol>
-          {participant.averageAssignments
-            ? participant.averageAssignments
+          {participant.averageWeeksBetweenAssignments
+            ? participant.averageWeeksBetweenAssignments
             : "N/A"}{" "}
-          {participant.averageAssignments === 1 ? "week" : "weeks"}
+          {participant.averageWeeksBetweenAssignments === 1 ? "week" : "weeks"}
         </IonCol>
       </IonRow>
 
@@ -57,7 +57,7 @@ export function MidweekParticipantOptionsContent({
         <IonCol>
           {participant.pastAssignments.map((assignment) => {
             return (
-              <IonRow>
+              <IonRow key={assignment.week_id + assignment.assignment}>
                 <IonCol size="8">
                   {assignmentData[assignment.assignment].type}:
                 </IonCol>

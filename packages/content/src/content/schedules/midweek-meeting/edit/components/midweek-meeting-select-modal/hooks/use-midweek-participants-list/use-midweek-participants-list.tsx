@@ -13,7 +13,7 @@ export type ParticipantType = NonNullable<
   MidweekParticipantsList["data"]
 >[number];
 
-export const useMidweekParticipantsList = () => {
+export const useMidweekParticipantsList = (week_id: string) => {
   const { data, ...rest } = useMidweekParticipantsQuery();
   if (!data)
     return {
@@ -25,7 +25,7 @@ export const useMidweekParticipantsList = () => {
   const { currentAssignment, shouldFilterAssignmentParticipants } =
     useMidweekAssignmentsFormState();
 
-  const currentWeek = startOfWeek(new Date(), { weekStartsOn: 1 });
+  const currentWeek = startOfWeek(week_id, { weekStartsOn: 1 });
 
   const participants = filterAssignmentParticipants([
     data,

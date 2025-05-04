@@ -26,6 +26,7 @@ export const prepareSeedData = ({
       .sort((a, b) => a.time - b.time),
     currentWeek,
     currentAssignmentData: assignmentData[currentAssignment],
+    rest: null as any | undefined
   };
   return seedData;
 };

@@ -26,7 +26,7 @@ export const MidweekParticipantFilters = () => {
         <IonList slot="content" lines="none">
           <SortSelect setSortValue={setSortValue} sortValue={sortValue} />
 
-          <MidweekParticipantFilterRanges filterName="averageAssignments" />
+          <MidweekParticipantFilterRanges filterName="averageWeeksBetweenAssignments" />
 
           <MidweekParticipantFilterRanges filterName="weeksSinceLastSpecificAssignment" />
 

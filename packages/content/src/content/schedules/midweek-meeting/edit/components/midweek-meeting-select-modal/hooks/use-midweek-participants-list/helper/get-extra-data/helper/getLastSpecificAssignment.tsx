@@ -1,9 +1,11 @@
+import { formatDate } from "date-fns";
 import { SeedData } from "./prepareSeedData.js";
 
 export const getLastSpecificAssignment = ({
   assignments,
   currentWeek,
   currentAssignmentData,
+  rest,
 }: SeedData) => {
   const lastSpecificAssignments = assignments
     .filter((assignment) => assignment.time < currentWeek.getTime())
@@ -17,14 +19,24 @@ export const getLastSpecificAssignment = ({
       };
     });
 
+  if (rest.first_name === "Lauchlan") {
+    console.log(
+      rest.first_name,
+      assignments,
+      lastSpecificAssignments[lastSpecificAssignments.length - 1]
+    );
+  }
+
   return {
-    lastSpecificAssignment: lastSpecificAssignments[0]
+    lastSpecificAssignment: lastSpecificAssignments[
+      lastSpecificAssignments.length - 1
+    ]
       ? {
-          ...lastSpecificAssignments[0],
-          // assignmentType: currentAssignmentData.type,
+          ...lastSpecificAssignments[lastSpecificAssignments.length - 1],
         }
       : null,
     weeksSinceLastSpecificAssignment:
-      lastSpecificAssignments[0]?.weeksSinceAssignment || null,
+      lastSpecificAssignments[lastSpecificAssignments.length - 1]
+        ?.weeksSinceAssignment || null,
   };
 };
