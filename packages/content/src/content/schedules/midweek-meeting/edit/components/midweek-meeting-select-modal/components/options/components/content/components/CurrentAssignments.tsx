@@ -22,11 +22,11 @@ export function CurrentAssignments({
               </>
             )}
 
-            {participant.currentAssignments.map((assignment) => {
+            {participant.currentAssignments.map((assignment, index) => {
               return (
                 <IonCol
                   size="8"
-                  key={assignment.week_id + assignment.assignment}
+                  key={assignment.week_id + assignment.assignment + index}
                 >
                   {assignmentData[assignment.assignment].type}
                 </IonCol>

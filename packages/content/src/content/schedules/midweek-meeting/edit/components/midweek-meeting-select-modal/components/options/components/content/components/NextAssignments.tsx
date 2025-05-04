@@ -17,9 +17,9 @@ export function NextAssignments({
 
       <IonRow>
         <IonCol>
-          {participant.nextAssignments.map((assignment) => {
+          {participant.nextAssignments.map((assignment, index) => {
             return (
-              <IonRow key={assignment.week_id + assignment.assignment}>
+              <IonRow key={assignment.week_id + assignment.assignment + index}>
                 <IonCol size="8">
                   {assignmentData[assignment.assignment].type}:
                 </IonCol>

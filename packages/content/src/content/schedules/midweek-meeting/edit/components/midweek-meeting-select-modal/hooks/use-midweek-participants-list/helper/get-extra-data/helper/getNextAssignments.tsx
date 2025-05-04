@@ -5,7 +5,7 @@ export const getNextAssignments = ({ assignments, currentWeek }: SeedData) => {
     (assignment) => assignment.time > currentWeek.getTime()
   );
 
-  const nextThreeAssignments = filteredLaterAssignments.slice(0, 3);
+  const nextThreeAssignments = filteredLaterAssignments.slice(0, 5);
 
   const filteredProperAssignments = nextThreeAssignments.map(
     (assignment) => {

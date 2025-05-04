@@ -8,7 +8,7 @@ export const getPreviousAssignments = ({
     (assignment) => assignment.time < currentWeek.getTime()
   );
 
-  const previousThreeAssignments = filteredEarlierAssignments.slice(-3);
+  const previousThreeAssignments = filteredEarlierAssignments.slice(-5);
 
   const previousAssignments = previousThreeAssignments.map((assignment) => {
     return {

@@ -17,9 +17,13 @@ export function PreviousAssignments({
 
       <IonRow>
         <IonCol>
-          {participant.previousAssignments.map((assignment) => {
+          {participant.previousAssignments.map((assignment, index) => {
+            if (!assignmentData[assignment.assignment]) {
+              return null;
+            }
+
             return (
-              <IonRow key={assignment.week_id + assignment.assignment}>
+              <IonRow key={assignment.week_id + assignment.assignment + index}>
                 <IonCol size="8">
                   {assignmentData[assignment.assignment].type}:
                 </IonCol>

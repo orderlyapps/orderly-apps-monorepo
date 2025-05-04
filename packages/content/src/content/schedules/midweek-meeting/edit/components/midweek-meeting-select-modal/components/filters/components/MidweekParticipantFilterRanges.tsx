@@ -1,5 +1,8 @@
 import { IonItem, IonRange } from "@ionic/react";
-import { MidweekAssignmentFilters, useMidweekAssignmentsFormState } from "../../../hooks/use-midweek-assignments-form-state/use-midweek-assignments-form-state.js";
+import {
+  MidweekAssignmentFilters,
+  useMidweekAssignmentsFormState,
+} from "../../../hooks/use-midweek-assignments-form-state/use-midweek-assignments-form-state.js";
 
 export const MidweekParticipantFilterRanges = ({
   filterName,
@@ -17,13 +20,15 @@ export const MidweekParticipantFilterRanges = ({
         min={0}
         max={6}
         value={filterValues[filterName]}
-        onIonChange={({ detail }) => updateFilter({
-          filterName,
-          value: detail.value as number,
-        })}
+        onIonChange={({ detail }) =>
+          updateFilter({
+            filterName,
+            value: detail.value as number,
+          })
+        }
         ticks={true}
         snaps={true}
-      ></IonRange>
+      />
     </IonItem>
   );
 };

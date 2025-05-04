@@ -19,7 +19,7 @@ export function SortSelect({
         interface="action-sheet"
       >
         <IonLabel slot={"label"}>Sort by:</IonLabel>
-        <IonSelectOption value="averageAssignments">
+        <IonSelectOption value="averageWeeksBetweenAssignments">
           Average Assignments
         </IonSelectOption>
         <IonSelectOption value="weeksSinceLastSpecificAssignment">
