@@ -1,5 +1,6 @@
 import { formatDate } from "date-fns";
 import { SeedData } from "./prepareSeedData.js";
+import { assignmentData } from "./assignmentData.js";
 
 export const getLastSpecificAssignment = ({
   assignments,
@@ -8,7 +9,17 @@ export const getLastSpecificAssignment = ({
 }: SeedData) => {
   const lastSpecificAssignments = assignments
     .filter((assignment) => assignment.time < currentWeek.getTime())
-    .filter((assignment) => assignment.assignment === currentAssignmentData.id)
+    .filter((assignment) => {
+      if (!assignment.assignment) {
+        return true;
+      }
+      return (
+        assignmentData[assignment.assignment as keyof typeof assignmentData]
+          .type ===
+        assignmentData[currentAssignmentData.id as keyof typeof assignmentData]
+          .type
+      );
+    })
     .map((assignment) => {
       return {
         ...assignment,

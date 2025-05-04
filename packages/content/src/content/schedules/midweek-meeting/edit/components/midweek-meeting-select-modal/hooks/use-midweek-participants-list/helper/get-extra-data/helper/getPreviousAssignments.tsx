@@ -22,6 +22,6 @@ export const getPreviousAssignments = ({
   return {
     previousAssignments,
     weeksSinceLastAssignment:
-      previousAssignments[0]?.weeksSinceAssignment || null,
+      previousAssignments[previousAssignments.length - 1]?.weeksSinceAssignment || null,
   };
 };
