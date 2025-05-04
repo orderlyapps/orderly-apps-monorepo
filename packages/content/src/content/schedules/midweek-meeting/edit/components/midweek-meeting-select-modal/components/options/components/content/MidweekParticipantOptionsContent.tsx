@@ -7,6 +7,7 @@ import { AssignmentGap } from "./components/AssignmentGap.js";
 import { PreviousAssignments } from "./components/PreviousAssignments.js";
 import { SelectParticipant } from "./components/SelectParticipant.js";
 import { NextAssignments } from "./components/NextAssignments.js";
+import { CurrentAssignments } from "./components/CurrentAssignments.js";
 
 export function MidweekParticipantOptionsContent({
   participant,
@@ -27,6 +28,8 @@ export function MidweekParticipantOptionsContent({
       <AssignmentGap participant={participant} />
 
       <PreviousAssignments participant={participant} />
+
+      <CurrentAssignments participant={participant} />
 
       <NextAssignments participant={participant} />
 
