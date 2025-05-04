@@ -35,7 +35,7 @@ export const useUpsertMidweekAssignmentMutation = () => {
     },
     onSuccess: (_data, variables, _context) => {
       queryClient.invalidateQueries({
-        queryKey: ["midweek-meeting", variables],
+        queryKey: ["midweek-meeting-details", variables.week_id],
       });
     },
   });
