@@ -10,7 +10,7 @@ export function MidweekParticipantOptionsHeader({
   sortValue: keyof typeof filterValues;
 }) {
   return (
-    <div>
+    <>
       <IonText
         slot="start"
         color={participant.isCurrentAssignee ? "primary" : ""}
@@ -23,6 +23,6 @@ export function MidweekParticipantOptionsHeader({
       <IonText slot="end" className="ion-margin-end">
         <strong>{participant[sortValue]}</strong>
       </IonText>
-    </div>
+    </>
   );
 }
