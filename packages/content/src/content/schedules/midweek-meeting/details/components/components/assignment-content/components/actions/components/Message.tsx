@@ -11,6 +11,7 @@ import { useState } from "react";
 import { GetAssignmentDataReturnType } from "#content/schedules/midweek-meeting/.shared/types.js";
 import { MidweekAssignments } from "@amodeo/data/supabase/supabase-types";
 import { sendSMS } from "#content/schedules/midweek-meeting/.shared/sendSMS.js";
+import { getSMSContent } from "#content/schedules/midweek-meeting/.shared/getSMSContent.js";
 
 export const Message = ({
   assignmentData,
@@ -18,41 +19,6 @@ export const Message = ({
   assignmentData: GetAssignmentDataReturnType;
 }) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
-  function getSMSContent(
-    assignmentData: {
-      time: any;
-      details: any;
-      assistant:
-        | {
-            assistantsName: string;
-            show: boolean;
-            label: string;
-            assignment_id?: undefined;
-          }
-        | {
-            assistantsName: string;
-            show: boolean;
-            label: string;
-            assignment_id: string | number | symbol;
-          }
-        | null;
-      label: any;
-      color: string;
-      participant: { name: string; first_name: any } | null;
-      padding: string;
-      date: string;
-      school: {
-        hasSecondSchool: boolean;
-        number: string | null;
-        label: string;
-      };
-      counsellor: { name: string };
-      assignment_id: MidweekAssignments;
-    },
-    arg1: string
-  ): any {
-    throw new Error("Function not implemented.");
-  }
 
   return (
     <>

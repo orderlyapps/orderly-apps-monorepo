@@ -1,5 +1,5 @@
 import { formatWeekDate } from "@amodeo/util/dateTime/format-week-dat/formatWeekDate";
-import { AssignmentProps } from "../../details/components/Assignment.js";
+import { AssignmentProps } from "../../details/components/assignment/Assignment.js";
 import { getAssignmentAssistant } from "./getAssistant.js";
 import { getAssignmentColor } from "./getColor.js";
 import { getCounsellor } from "./getCounsellor.js";

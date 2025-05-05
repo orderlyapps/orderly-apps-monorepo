@@ -1,4 +1,4 @@
-import { AssignmentProps } from "../details/components/Assignment.js";
+import { AssignmentProps } from "../details/components/assignment/Assignment.js";
 
 export const livingAssignmentDoesNotExist = ({
   assignment_id,

@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@amodeo/data": "workspace:^",
+    "@amodeo/epub": "workspace:^",
     "@amodeo/feature": "workspace:^",
     "@amodeo/ui": "workspace:^",
     "@amodeo/util": "workspace:^",

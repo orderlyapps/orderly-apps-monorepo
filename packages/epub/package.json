@@ -1,0 +1,68 @@
+{
+	"name": "@amodeo/epub",
+	"version": "3.30.0",
+	"type": "module",
+	"description": "This tool will help you to parse and extract the needed source materials from Meeting Workbook EPUB file. Support for parsing Watchtower Study will be added in future release.",
+	"keywords": [
+		"epub parse",
+		"jw",
+		"jw.org",
+		"epub"
+	],
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"files": [
+		"dist/*"
+	],
+	"homepage": "https://github.com/sws2apps/jw-epub-parser#readme",
+	"author": "Scheduling Workbox System <sws2apps.notification@gmail.com>",
+	"bugs": {
+		"url": "https://github.com/sws2apps/jw-epub-parser/issues",
+		"email": "sws2apps.notification@gmail.com"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sws2apps/jw-epub-parser.git"
+	},
+	"funding": {
+		"type": "buymeacoffee",
+		"url": "https://www.buymeacoffee.com/sws2apps"
+	},
+	"scripts": {
+		"test": "mocha",
+		"parse": "tsx example/index.ts",
+		"setup:client": "cd client && npm install",
+		"start:client": "cd client && npm run dev",
+		"cypress:open": "cypress open",
+		"cypress:run": "cypress run --browser chrome"
+	},
+	"devDependencies": {
+		"@babel/preset-env": "^7.16.11",
+		"@rollup/plugin-babel": "^6.0.0",
+		"@rollup/plugin-commonjs": "^28.0.0",
+		"@rollup/plugin-json": "^6.0.0",
+		"@rollup/plugin-node-resolve": "^16.0.0",
+		"@rollup/plugin-terser": "^0.4.3",
+		"@rollup/plugin-typescript": "^12.1.0",
+		"@semantic-release/changelog": "^6.0.1",
+		"@semantic-release/exec": "^6.0.3",
+		"@semantic-release/git": "^10.0.1",
+		"@types/node": "^22.0.0",
+		"@types/path-browserify": "^1.0.2",
+		"chai": "^5.0.0",
+		"cypress": "^13.2.0",
+		"mocha": "^11.0.1",
+		"rimraf": "^6.0.0",
+		"rollup": "^4.0.0",
+		"semantic-release": "^24.0.0",
+		"tslib": "^2.8.1",
+		"tsx": "^4.7.0",
+		"typescript": "^5.7.2"
+	},
+	"dependencies": {
+		"jszip": "^3.9.1",
+		"node-html-parser": "^7.0.1",
+		"path-browserify": "^1.0.1"
+	}
+}
