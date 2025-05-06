@@ -54,12 +54,14 @@ export const extractSourceEnhanced = (src: string, lang: string) => {
 
   const langPattern = firstPattern[lang] || firstPattern.common;
 
+		// @ts-ignore
   const matchFirstPattern = finalSrc.match(langPattern);
 
   if (!matchFirstPattern) {
     throw new JWEPUBParserError('jw-epub-parser', `Parsing failed. The input was: ${finalSrc}`);
   }
 
+		// @ts-ignore
   const groupsFirstPattern = Array.from(langPattern.exec(finalSrc)!);
 
   const fulltitle = groupsFirstPattern.at(1)!.trim();

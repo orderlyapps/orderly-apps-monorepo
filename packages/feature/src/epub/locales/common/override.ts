@@ -1,4 +1,4 @@
-import { Override } from '../types';
+import { Override } from '../../types/index.js';
 
 const overrides: Override = {
   PGW: {

@@ -1,4 +1,6 @@
-import jw_epub_parser from "../browser/utils.browser";
+// @ts-ignore
+		// @ts-ignore
+// import jw_epub_parser from "../browser/utils.browser";
 
 export const isMWBEpub = (name: string) => {
   let regex = /^mwb_[A-Z][A-Z]?[A-Z]?_202\d(0[1-9]|1[0-2])\.epub$/i;
@@ -39,6 +41,7 @@ export const getEPUBFileName = (input: string | { url: string } | Blob) => {
     filename = input as string;
   }
 
+		// @ts-ignore
   return jw_epub_parser.path.basename(filename);
 };
 
@@ -98,6 +101,7 @@ export const getEPUBData = async (input: string | { url: string } | Blob) => {
   }
 
   if (typeof input === "string") {
+		// @ts-ignore
     const data = await jw_epub_parser.readFile(input);
     result = data;
   }

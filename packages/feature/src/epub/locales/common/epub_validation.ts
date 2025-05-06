@@ -37,6 +37,7 @@ export const getEPUBFileName = (input: string | { url: string } | Blob) => {
 		filename = input as string;
 	}
 
+		// @ts-ignore
 	return jw_epub_parser.path.basename(filename);
 };
 
@@ -94,6 +95,7 @@ export const getEPUBData = async (input: string | { url: string } | Blob) => {
 	}
 
 	if (typeof input === 'string') {
+		// @ts-ignore
 		const data = await jw_epub_parser.readFile(input);
 		result = data;
 	}

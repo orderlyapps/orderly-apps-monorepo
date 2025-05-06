@@ -1,7 +1,13 @@
-import JSZip from 'jszip';
-import { HTMLElement } from 'node-html-parser';
-import languages from '../locales/languages.js';
-import { extractEPUBFiles, getHTMLDocs, getHTMLWTArticleDoc, validateEPUBContents } from './epub_jszip.js';
+import JSZip from "jszip";
+// @ts-ignore
+import { HTMLElement } from "node-html-parser";
+import languages from "../../locales/languages.js";
+import {
+  extractEPUBFiles,
+  getHTMLDocs,
+  getHTMLWTArticleDoc,
+  validateEPUBContents,
+} from "./epub_jszip.js";
 import {
   getEPUBData,
   getEPUBFileName,
@@ -11,7 +17,7 @@ import {
   isValidEPUB,
   isValidEPUBIssue,
   isWEpub,
-} from './epub_validation.js';
+} from "./epub_validation.js";
 import {
   getMWBAYFCount,
   getMWBLCCount,
@@ -22,23 +28,26 @@ import {
   getWStudyArticles,
   getWStudyDate,
   getWStudyTitle,
-} from './html_utils.js';
-import { extractSongNumber, extractSourceEnhanced } from './parsing_rules.js';
-import { MWBSchedule, WSchedule } from '../types/index.js';
-import { extractMWBDate, extractWTStudyDate } from './date_parser.js';
+} from "./html_utils.js";
+import { extractSongNumber, extractSourceEnhanced } from "./parsing_rules.js";
+// @ts-ignore
+import { MWBSchedule, WSchedule } from "../types/index.js";
+import { extractMWBDate, extractWTStudyDate } from "./date_parser.js";
 
-export const startParse = async (epubInput: string | Blob | { url: string }) => {
+export const startParse = async (
+  epubInput: string | Blob | { url: string }
+) => {
   let result = {};
 
   const isValidName = isValidEPUB(epubInput);
   if (!isValidName) {
-    throw new Error('The selected epub file has an incorrect naming.');
+    throw new Error("The selected epub file has an incorrect naming.");
   }
 
   const isValiIssue = isValidEPUBIssue(epubInput);
   if (!isValiIssue) {
     throw new Error(
-      'EPUB import is only supported for Meeting Workbook starting on July 2022, and for Watchtower Study starting on April 2023.'
+      "EPUB import is only supported for Meeting Workbook starting on July 2022, and for Watchtower Study starting on April 2023."
     );
   }
 
@@ -46,15 +55,17 @@ export const startParse = async (epubInput: string | Blob | { url: string }) => 
   const epubCheck = await validateEPUBContents(epubBuffer);
 
   if (epubCheck.isBig) {
-    throw new Error('EPUB file seems to be large. Extract aborted.');
+    throw new Error("EPUB file seems to be large. Extract aborted.");
   }
 
   if (epubCheck.isMore) {
-    throw new Error('EPUB file seems to contain more files than expected. Extract aborted.');
+    throw new Error(
+      "EPUB file seems to contain more files than expected. Extract aborted."
+    );
   }
 
   if (epubCheck.isSuspicious) {
-    throw new Error('EPUB file seems to be suspicious. Extract aborted.');
+    throw new Error("EPUB file seems to be suspicious. Extract aborted.");
   }
 
   const epubFilename = getEPUBFileName(epubInput);
@@ -68,7 +79,7 @@ export const startParse = async (epubInput: string | Blob | { url: string }) => 
   if (htmlDocs.length === 0) {
     throw new Error(
       `The file you provided is not a valid ${
-        isMWB ? 'Meeting Workbook' : 'Watchtower Study'
+        isMWB ? "Meeting Workbook" : "Watchtower Study"
       } EPUB file. Please make sure that the file is correct.`
     );
   }
@@ -88,6 +99,7 @@ export const startParse = async (epubInput: string | Blob | { url: string }) => 
 
   if (isW) {
     result = await parseWEpub({
+      // @ts-ignore
       htmlItem: htmlDocs[0],
       epubLang,
       epubContents,
@@ -97,8 +109,14 @@ export const startParse = async (epubInput: string | Blob | { url: string }) => 
   return result;
 };
 
-export const parseMWBSchedule = (htmlItem: HTMLElement, mwbYear: number, mwbLang: string) => {
-  const isEnhancedParsing = languages.find((language) => language.code === mwbLang);
+export const parseMWBSchedule = (
+  htmlItem: HTMLElement,
+  mwbYear: number,
+  mwbLang: string
+) => {
+  const isEnhancedParsing = languages.find(
+    (language) => language.code === mwbLang
+  );
 
   const weekItem = {} as MWBSchedule;
 
@@ -118,14 +136,15 @@ export const parseMWBSchedule = (htmlItem: HTMLElement, mwbYear: number, mwbLang
 
   // compile all sources
   const src = getMWBSources(htmlItem);
-  let splits = src.split('@');
+  let splits = src.split("@") as any;
 
-  let tmpSrc = '';
+  let tmpSrc = "";
 
   // First song
   weekItem.mwb_song_first = extractSongNumber(splits[1]) as number;
 
   // 10min TGW Source
+  // @ts-ignore
   tmpSrc = splits[3].trim();
   if (isEnhancedParsing) {
     const enhanced = extractSourceEnhanced(tmpSrc, mwbLang);
@@ -136,6 +155,7 @@ export const parseMWBSchedule = (htmlItem: HTMLElement, mwbYear: number, mwbLang
   }
 
   // 10min Spiritual Gems
+  // @ts-ignore
   tmpSrc = splits[4].trim();
   if (isEnhancedParsing) {
     const enhanced = extractSourceEnhanced(tmpSrc, mwbLang);
@@ -233,7 +253,7 @@ export const parseMWBSchedule = (htmlItem: HTMLElement, mwbYear: number, mwbLang
     weekItem.mwb_lc_part1 = lcEnhanced.type;
     weekItem.mwb_lc_part1_time = lcEnhanced.time;
     weekItem.mwb_lc_part1_title = lcEnhanced.fulltitle;
-    if (lcEnhanced.src && lcEnhanced.src !== '') {
+    if (lcEnhanced.src && lcEnhanced.src !== "") {
       weekItem.mwb_lc_part1_content = lcEnhanced.src;
     }
   } else {
@@ -250,7 +270,7 @@ export const parseMWBSchedule = (htmlItem: HTMLElement, mwbYear: number, mwbLang
       weekItem.mwb_lc_part2 = lcEnhanced.type;
       weekItem.mwb_lc_part2_time = lcEnhanced.time;
       weekItem.mwb_lc_part2_title = lcEnhanced.fulltitle;
-      if (lcEnhanced.src && lcEnhanced.src !== '') {
+      if (lcEnhanced.src && lcEnhanced.src !== "") {
         weekItem.mwb_lc_part2_content = lcEnhanced.src;
       }
     } else {
@@ -279,8 +299,14 @@ export const parseMWBSchedule = (htmlItem: HTMLElement, mwbYear: number, mwbLang
   return weekItem;
 };
 
-export const parseWSchedule = (article: HTMLElement, content: HTMLElement, wLang: string) => {
-  const isEnhancedParsing = languages.find((language) => language.code === wLang);
+export const parseWSchedule = (
+  article: HTMLElement,
+  content: HTMLElement,
+  wLang: string
+) => {
+  const isEnhancedParsing = languages.find(
+    (language) => language.code === wLang
+  );
 
   const weekItem = {} as WSchedule;
 
@@ -340,7 +366,9 @@ const parseWEpub = async ({
   const studyArticles = getWStudyArticles(htmlItem);
 
   for (const [_, studyArticle] of studyArticles.entries()) {
-    const articleLink = studyArticle.nextElementSibling!.querySelector('a')!.getAttribute('href') as string;
+    const articleLink = studyArticle
+      .nextElementSibling!.querySelector("a")!
+      .getAttribute("href") as string;
     const content = await getHTMLWTArticleDoc(epubContents, articleLink);
 
     const weekItem = parseWSchedule(studyArticle, content, epubLang);

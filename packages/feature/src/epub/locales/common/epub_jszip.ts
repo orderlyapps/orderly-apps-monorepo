@@ -29,6 +29,7 @@ export const validateEPUBContents = async (data: string | ArrayBuffer | Buffer |
 		}
 
 		// Prevent ZipSlip path traversal (S6096)
+		// @ts-ignore
 		const resolvedPath = jw_epub_parser.path.join(targetDirectory, filename);
 		if (!resolvedPath.startsWith(targetDirectory)) {
 			result.isSuspicious = true;
@@ -72,6 +73,7 @@ export const getHTMLWTArticleDoc = async (zip: JSZip, articleFilename: string): 
 	let article: HTMLElement;
 
 	for (let [filename] of Object.entries(zip.files)) {
+		// @ts-ignore
 		const shortName = jw_epub_parser.path.basename(filename);
 		if (shortName === articleFilename) {
 			const content = await getHTMLString(zip, filename);

@@ -88,6 +88,8 @@ export const startParse = async (epubInput: string | Blob | { url: string }) => 
 
   if (isW) {
     result = await parseWEpub({
+
+		// @ts-ignore
       htmlItem: htmlDocs[0],
       epubLang,
       epubContents,
@@ -118,7 +120,7 @@ export const parseMWBSchedule = (htmlItem: HTMLElement, mwbYear: number, mwbLang
 
   // compile all sources
   const src = getMWBSources(htmlItem);
-  let splits = src.split('@');
+  let splits = src.split('@') as any;
 
   let tmpSrc = '';
 
@@ -273,6 +275,7 @@ export const parseMWBSchedule = (htmlItem: HTMLElement, mwbYear: number, mwbLang
   // Concluding Song
   nextIndex++;
   nextIndex++;
+  // @ts-ignore
   tmpSrc = splits[nextIndex].trim();
   weekItem.mwb_song_conclude = extractSongNumber(tmpSrc);
 

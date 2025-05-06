@@ -1,7 +1,7 @@
 import JSZip from 'jszip';
 import { HTMLElement, parse } from 'node-html-parser';
 
-export const isValidHTML = (name: string): boolean => {
+export const isValidHTML = (name: string | any): boolean => {
 	let valid = false;
 
 	if (name.startsWith('OEBPS') && name.endsWith('.xhtml') && name.indexOf('-extracted') === -1) {

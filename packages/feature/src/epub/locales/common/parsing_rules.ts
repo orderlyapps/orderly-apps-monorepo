@@ -1,7 +1,7 @@
-import { JWEPUBParserError } from '../classes/error.js';
-import { LangRegExp } from '../types/index.js';
-import { getPartMinutesSeparatorVariations } from './language_rules.js';
-import overrides from './override.js';
+import { JWEPUBParserError } from "../../classes/error.js";
+import { LangRegExp } from "../../types/index.js";
+import { getPartMinutesSeparatorVariations } from "./language_rules.js";
+import overrides from "./override.js";
 
 export const extractSongNumber = (src: string) => {
   const parseNum = src.match(/(\d+)/);
@@ -35,15 +35,18 @@ export const extractSourceEnhanced = (src: string, lang: string) => {
   // separate minutes from title
   const firstPatternCommon = new RegExp(
     `(.+?)(?:: )?[（(](\\d+)(?: |  )?(?:${variations})[）)](?: : | |. )?(.+?)?$`,
-    'giu'
+    "giu"
   );
 
   const firstPatternCommonPGW = new RegExp(
     `(.+?)(?:: )?[（(](\\d+)(?: |  )?(?:${variations})[）)]?(?: : | |. )?(.+?)?$`,
-    'giu'
+    "giu"
   );
 
-  const firstPatternTW = new RegExp(`(.+?)(?: )?\\(${variations}(?: )?(\\d+).?\\)(?: |.)?(.+?)?$`, 'giu');
+  const firstPatternTW = new RegExp(
+    `(.+?)(?: )?\\(${variations}(?: )?(\\d+).?\\)(?: |.)?(.+?)?$`,
+    "giu"
+  );
 
   const firstPattern: LangRegExp = {
     common: firstPatternCommon,
@@ -54,13 +57,18 @@ export const extractSourceEnhanced = (src: string, lang: string) => {
 
   const langPattern = firstPattern[lang] || firstPattern.common;
 
+  // @ts-ignore
   const matchFirstPattern = finalSrc.match(langPattern);
 
   if (!matchFirstPattern) {
-    throw new JWEPUBParserError('jw-epub-parser', `Parsing failed. The input was: ${finalSrc}`);
+    throw new JWEPUBParserError(
+      "jw-epub-parser",
+      `Parsing failed. The input was: ${finalSrc}`
+    );
   }
 
-  const groupsFirstPattern = Array.from(langPattern.exec(finalSrc)!);
+// @ts-ignore
+const groupsFirstPattern = Array.from(langPattern.exec(finalSrc)!) as any;
 
   const fulltitle = groupsFirstPattern.at(1)!.trim();
   const time = +groupsFirstPattern.at(2)!.trim();

@@ -1,7 +1,16 @@
-import { JWEPUBParserError } from '../classes/error.js';
-import { WDateParsing, WDateParsingResult, LangRegExp, MWBDateParsingResult, MWBDateParsing } from '../types/index.js';
-import { getMonthNames } from './language_rules.js';
-import overrides from './override.js';
+// @ts-ignore
+import { JWEPUBParserError } from "../classes/error.js";
+import {
+  WDateParsing,
+  WDateParsingResult,
+  LangRegExp,
+  MWBDateParsingResult,
+  MWBDateParsing,
+
+  // @ts-ignore
+} from "../types/index.js";
+import { getMonthNames } from "./language_rules.js";
+import overrides from "./override.js";
 
 const dateRangeSeparator = `\\s? bis |[-–—]| do | — | – \\s?`;
 const wordWithDiacritics = `\\p{L}+|\\p{L}+\\p{M}*`;
@@ -66,25 +75,25 @@ option3 = `(\\d{1,2}). (${wordWithDiacritics}) (\\d{4})`;
 const mwbDatePatternX = `${option1}|${option2}|${option3}`;
 
 const mwbDatePatterns: LangRegExp = {
-  common: new RegExp(mwbDatePatternCommon, 'giu'),
-  CH: new RegExp(mwbDatePatternJ, 'giu'),
-  CHS: new RegExp(mwbDatePatternJ, 'giu'),
-  E: new RegExp(mwbDatePatternE, 'giu'),
-  FI: new RegExp(mwbDatePatternX, 'giu'),
-  IL: new RegExp(mwbDatePatternE, 'giu'),
-  J: new RegExp(mwbDatePatternJ, 'giu'),
-  KO: new RegExp(mwbDatePatternKO, 'giu'),
-  P: new RegExp(mwbDatePatternP, 'giu'),
-  PGW: new RegExp(mwbDatePatternE, 'giu'),
-  S: new RegExp(mwbDatePatternS, 'giu'),
-  ST: new RegExp(mwbDatePatternX, 'giu'),
-  SV: new RegExp(mwbDatePatternX, 'giu'),
-  SW: new RegExp(mwbDatePatternE, 'giu'),
-  T: new RegExp(mwbDatePatternT, 'giu'),
-  TG: new RegExp(mwbDatePatternE, 'giu'),
-  TPO: new RegExp(mwbDatePatternTPO, 'giu'),
-  TW: new RegExp(mwbDatePatternE, 'giu'),
-  X: new RegExp(mwbDatePatternX, 'giu'),
+  common: new RegExp(mwbDatePatternCommon, "giu"),
+  CH: new RegExp(mwbDatePatternJ, "giu"),
+  CHS: new RegExp(mwbDatePatternJ, "giu"),
+  E: new RegExp(mwbDatePatternE, "giu"),
+  FI: new RegExp(mwbDatePatternX, "giu"),
+  IL: new RegExp(mwbDatePatternE, "giu"),
+  J: new RegExp(mwbDatePatternJ, "giu"),
+  KO: new RegExp(mwbDatePatternKO, "giu"),
+  P: new RegExp(mwbDatePatternP, "giu"),
+  PGW: new RegExp(mwbDatePatternE, "giu"),
+  S: new RegExp(mwbDatePatternS, "giu"),
+  ST: new RegExp(mwbDatePatternX, "giu"),
+  SV: new RegExp(mwbDatePatternX, "giu"),
+  SW: new RegExp(mwbDatePatternE, "giu"),
+  T: new RegExp(mwbDatePatternT, "giu"),
+  TG: new RegExp(mwbDatePatternE, "giu"),
+  TPO: new RegExp(mwbDatePatternTPO, "giu"),
+  TW: new RegExp(mwbDatePatternE, "giu"),
+  X: new RegExp(mwbDatePatternX, "giu"),
 };
 
 // #endregion
@@ -95,12 +104,16 @@ const mwbParsingCommon = (groups: string[]): MWBDateParsingResult => {
 
   if (groups[1]) {
     date = groups[1];
+    // @ts-ignore
     month = groups[2];
   } else if (groups[3]) {
     date = groups[3];
+    // @ts-ignore
     month = groups[4];
   } else {
+    // @ts-ignore
     date = groups[5];
+    // @ts-ignore
     month = groups[6];
   }
 
@@ -112,12 +125,16 @@ const mwbParsingE = (groups: string[]): MWBDateParsingResult => {
 
   if (groups[1]) {
     month = groups[1];
+    // @ts-ignore
     date = groups[2];
   } else if (groups[3]) {
     month = groups[3];
+    // @ts-ignore
     date = groups[4];
   } else {
+    // @ts-ignore
     month = groups[5];
+    // @ts-ignore
     date = groups[6];
   }
 
@@ -143,17 +160,20 @@ const mwbDateParsing: MWBDateParsing = {
 export const extractMWBDate = (src: string, year: number, lang: string) => {
   const srcClean = src
     .trim()
-    .replace('  ', ' ')
-    .replace('​', '')
-    .replace('⁠', '')
-    .replace(/\u200F/g, '');
+    .replace("  ", " ")
+    .replace("​", "")
+    .replace("⁠", "")
+    .replace(/\u200F/g, "");
 
   const datePattern = mwbDatePatterns[lang] || mwbDatePatterns.common;
 
   const match = srcClean.match(datePattern);
 
   if (!match) {
-    throw new JWEPUBParserError('mwb', `Parsing failed for Meeting Workbook Date. The input was: ${src}`);
+    throw new JWEPUBParserError(
+      "mwb",
+      `Parsing failed for Meeting Workbook Date. The input was: ${src}`
+    );
   }
 
   const groups = Array.from(datePattern.exec(srcClean)!);
@@ -164,12 +184,14 @@ export const extractMWBDate = (src: string, year: number, lang: string) => {
 
   if (isNaN(+month)) {
     const months = getMonthNames(lang);
-    const monthIndex = months.find((record) => record.name.toLocaleLowerCase().includes(month.toLowerCase()))!.index;
+    const monthIndex = months.find((record) =>
+      record.name.toLocaleLowerCase().includes(month.toLowerCase())
+    )!.index;
 
     month = String(monthIndex + 1);
   }
 
-  const result = `${year}/${String(month).padStart(2, '0')}/${String(date).padStart(2, '0')}`;
+  const result = `${year}/${String(month).padStart(2, "0")}/${String(date).padStart(2, "0")}`;
 
   return result;
 };
@@ -243,32 +265,32 @@ option3 = `(\\d{1,2}). (${wordWithDiacritics}) (\\d{4})`;
 const wDatePatternX = `${option1}|${option2}|${option3}`;
 
 // date like 1-) Tutkitaan 3.–9.2.2025 ; or 2) Tutkitaan 24.2.–2.3.2025. ; or 3) Tutkitaan 30.12.2024–5.1.2025.
-option1 = '(\\d{1,2}).[–](?:\\d{1,2}).(\\d{1,2}).(\\d{4})';
-option2 = '(\\d{1,2}).(\\d{1,2}).[–](?:\\d{1,2}).(?:\\d{1,2}).(\\d{4})';
-option3 = '(\\d{1,2}).(\\d{1,2}).(\\d{4})';
+option1 = "(\\d{1,2}).[–](?:\\d{1,2}).(\\d{1,2}).(\\d{4})";
+option2 = "(\\d{1,2}).(\\d{1,2}).[–](?:\\d{1,2}).(?:\\d{1,2}).(\\d{4})";
+option3 = "(\\d{1,2}).(\\d{1,2}).(\\d{4})";
 const wDatePatternFI = `${option1}|${option2}|${option3}`;
 
 const wDatePatterns: LangRegExp = {
-  common: new RegExp(wDatePatternCommon, 'giu'),
-  CH: new RegExp(wDatePatternJ, 'giu'),
-  CHS: new RegExp(wDatePatternJ, 'giu'),
-  E: new RegExp(wDatePatternE, 'giu'),
-  FI: new RegExp(wDatePatternFI, 'giu'),
-  IL: new RegExp(wDatePatternE, 'giu'),
-  J: new RegExp(wDatePatternJ, 'giu'),
-  KO: new RegExp(wDatePatternKO, 'giu'),
-  P: new RegExp(wDatePatternP, 'giu'),
-  PGW: new RegExp(wDatePatternE, 'giu'),
-  S: new RegExp(wDatePatternS, 'giu'),
-  ST: new RegExp(wDatePatternX, 'giu'),
-  SV: new RegExp(wDatePatternX, 'giu'),
-  SW: new RegExp(wDatePatternE, 'giu'),
-  T: new RegExp(wDatePatternT, 'giu'),
-  TPO: new RegExp(wDatePatternTPO, 'giu'),
-  TG: new RegExp(wDatePatternE, 'giu'),
-  TTM: new RegExp(wDatePatternTTM, 'giu'),
-  TW: new RegExp(wDatePatternTW, 'giu'),
-  X: new RegExp(wDatePatternX, 'giu'),
+  common: new RegExp(wDatePatternCommon, "giu"),
+  CH: new RegExp(wDatePatternJ, "giu"),
+  CHS: new RegExp(wDatePatternJ, "giu"),
+  E: new RegExp(wDatePatternE, "giu"),
+  FI: new RegExp(wDatePatternFI, "giu"),
+  IL: new RegExp(wDatePatternE, "giu"),
+  J: new RegExp(wDatePatternJ, "giu"),
+  KO: new RegExp(wDatePatternKO, "giu"),
+  P: new RegExp(wDatePatternP, "giu"),
+  PGW: new RegExp(wDatePatternE, "giu"),
+  S: new RegExp(wDatePatternS, "giu"),
+  ST: new RegExp(wDatePatternX, "giu"),
+  SV: new RegExp(wDatePatternX, "giu"),
+  SW: new RegExp(wDatePatternE, "giu"),
+  T: new RegExp(wDatePatternT, "giu"),
+  TPO: new RegExp(wDatePatternTPO, "giu"),
+  TG: new RegExp(wDatePatternE, "giu"),
+  TTM: new RegExp(wDatePatternTTM, "giu"),
+  TW: new RegExp(wDatePatternTW, "giu"),
+  X: new RegExp(wDatePatternX, "giu"),
 };
 
 // #endregion
@@ -279,15 +301,22 @@ const wParsingCommon = (groups: string[]): WDateParsingResult => {
 
   if (groups[1]) {
     date = groups[1];
+    // @ts-ignore
     month = groups[2];
+    // @ts-ignore
     year = groups[3];
   } else if (groups[4]) {
     date = groups[4];
+    // @ts-ignore
     month = groups[5];
+    // @ts-ignore
     year = groups[6];
   } else {
+    // @ts-ignore
     date = groups[7];
+    // @ts-ignore
     month = groups[8];
+    // @ts-ignore
     year = groups[9];
   }
 
@@ -299,15 +328,22 @@ const wParsingE = (groups: string[]): WDateParsingResult => {
 
   if (groups[1]) {
     month = groups[1];
+    // @ts-ignore
     date = groups[2];
+    // @ts-ignore
     year = groups[3];
   } else if (groups[4]) {
     month = groups[4];
+    // @ts-ignore
     date = groups[5];
+    // @ts-ignore
     year = groups[6];
   } else {
+    // @ts-ignore
     month = groups[7];
+    // @ts-ignore
     date = groups[8];
+    // @ts-ignore
     year = groups[9];
   }
 
@@ -319,11 +355,16 @@ const wParsingJ = (groups: string[]): WDateParsingResult => {
 
   if (groups[1]) {
     year = groups[1];
+    // @ts-ignore
     month = groups[2];
+    // @ts-ignore
     date = groups[3];
   } else {
+    // @ts-ignore
     year = groups[5];
+    // @ts-ignore
     month = groups[6];
+    // @ts-ignore
     date = groups[7];
   }
 
@@ -349,10 +390,10 @@ const wDateParsing: WDateParsing = {
 export const extractWTStudyDate = (src: string, lang: string) => {
   src = src
     .trim()
-    .replace('  ', ' ')
-    .replace('​', '')
-    .replace('⁠', '')
-    .replace(/\u200F/g, '');
+    .replace("  ", " ")
+    .replace("​", "")
+    .replace("⁠", "")
+    .replace(/\u200F/g, "");
 
   let finalSrc = src;
 
@@ -371,7 +412,10 @@ export const extractWTStudyDate = (src: string, lang: string) => {
   const match = finalSrc.match(datePattern);
 
   if (!match) {
-    throw new JWEPUBParserError('wtstudy', `Parsing failed for Watchtower Study Date. The input was: ${finalSrc}`);
+    throw new JWEPUBParserError(
+      "wtstudy",
+      `Parsing failed for Watchtower Study Date. The input was: ${finalSrc}`
+    );
   }
 
   const groups = Array.from(datePattern.exec(finalSrc)!);
@@ -382,12 +426,14 @@ export const extractWTStudyDate = (src: string, lang: string) => {
 
   if (isNaN(+month)) {
     const months = getMonthNames(lang);
-    const monthIndex = months.find((record) => record.name.toLocaleLowerCase().includes(month.toLowerCase()))!.index;
+    const monthIndex = months.find((record) =>
+      record.name.toLocaleLowerCase().includes(month.toLowerCase())
+    )!.index;
 
     month = String(monthIndex + 1);
   }
 
-  const result = `${year}/${String(month).padStart(2, '0')}/${String(date).padStart(2, '0')}`;
+  const result = `${year}/${String(month).padStart(2, "0")}/${String(date).padStart(2, "0")}`;
 
   return result;
 };
