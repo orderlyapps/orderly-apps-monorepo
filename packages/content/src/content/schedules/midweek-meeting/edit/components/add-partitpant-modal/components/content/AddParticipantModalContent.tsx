@@ -18,7 +18,7 @@ export const AddParticipantModalContent = ({
   return (
     <>
       <IonToolbar>
-        <IonSegment value="new" className="ion-margin-dd">
+        <IonSegment value="new">
           <IonSegmentButton value="new" contentId="new">
             <IonLabel>New</IonLabel>
           </IonSegmentButton>
