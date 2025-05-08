@@ -1,34 +1,14 @@
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 import { MidweekParticipantSelectModal } from "./components/midweek-meeting-select-modal/MidweekParticipantSelectModal.js";
-import { IonCol, IonGrid, IonItem, IonRow } from "@ionic/react";
 import { useMidweekMeetingDetailsQuery } from "@amodeo/data/react-query/midweek-meeting_2/use-midweek-meeting-details-query";
 
 import { AssistantSelect } from "./components/assistant-select/AssistantSelect.js";
 import { ParticipantSelect } from "./components/participant-select/ParticipantSelect.js";
 
-import { Time } from "../details/components/components/assignment-content/components/time/Time.js";
-import { Details } from "../details/components/components/assignment-content/components/details/Details.js";
-import { AssigmentData, getAssignmentData } from "../.shared/getData/getAssignmentData.js";
-
-function AssignmentDetails({
-  assignmentData,
-}: {
-  assignmentData: AssigmentData;
-}) {
-  return (
-    <IonItem className="ion-margin-top" lines="none">
-      <IonGrid className={assignmentData.time && "ion-margin-top"}>
-        <IonRow>
-          <IonCol>
-            <Time assignmentData={assignmentData} />
-            <Details assignmentData={assignmentData} />
-          </IonCol>
-        </IonRow>
-      </IonGrid>
-    </IonItem>
-  );
-}
+import { getAssignmentData } from "../.shared/getData/getAssignmentData.js";
+import { AssignmentDetails } from "./components/assignment-details/AssignmentDetails.js";
+import { AddParticipantModal } from "./components/add-partitpant-modal/AddParticipantModal.js";
 
 export const MidweekMeetingEdit = ({
   modalProps,
@@ -60,6 +40,8 @@ export const MidweekMeetingEdit = ({
       <AssignmentDetails assignmentData={assignmentData} />
 
       <MidweekParticipantSelectModal modalProps={modalProps} />
+
+      <AddParticipantModal modalProps={modalProps} assignmentData={assignmentData}  />
     </>
   );
 };
