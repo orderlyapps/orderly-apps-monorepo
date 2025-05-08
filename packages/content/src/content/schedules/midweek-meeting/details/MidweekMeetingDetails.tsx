@@ -26,6 +26,7 @@ export const MidweekMeetingDetails = () => {
         <Assignment assignment_id="school_1_apply_2" data={weekData} />
         <Assignment assignment_id="school_1_apply_3" data={weekData} />
         <Assignment assignment_id="school_1_apply_4" data={weekData} />
+        <Assignment assignment_id="counselor_2" data={weekData} />
         <Assignment assignment_id="school_2_bible_reading" data={weekData} />
         <Assignment assignment_id="school_2_apply_1" data={weekData} />
         <Assignment assignment_id="school_2_apply_2" data={weekData} />
@@ -35,7 +36,6 @@ export const MidweekMeetingDetails = () => {
         <Assignment assignment_id="living_2" data={weekData} />
         <Assignment assignment_id="cbs_conductor" data={weekData} />
         <Assignment assignment_id="prayer_closing" data={weekData} />
-        <Assignment assignment_id="counselor_2" data={weekData} />
       </IonAccordionGroup>
     </>
   );
