@@ -4,7 +4,8 @@ import {
   useSelectModal,
 } from "@amodeo/ui/ionic/select-modal/SelectModal";
 import { ModalProps } from "@amodeo/ui/util/ionic/use-card-modal/useCardModal";
-import { IonItem, IonButton } from "@ionic/react";
+import { IonButton } from "@ionic/react";
+import { AddParticipantModalContent } from "./components/content/AddParticipantModalContent.js";
 
 export const ADD_PARTICIPANT_MODAL_ID = "add-midweek-participant";
 
@@ -30,7 +31,7 @@ export const AddParticipantModal = ({
           };
         }}
       >
-        <AddParticipantModalContent />
+        <AddParticipantModalContent assignmentData={assignmentData} />
       </SelectModal>
 
       <IonButton
@@ -41,15 +42,5 @@ export const AddParticipantModal = ({
         Add Participant
       </IonButton>
     </>
-  );
-};
-
-const AddParticipantModalContent = () => {
-  const { closeModal } = useSelectModal(ADD_PARTICIPANT_MODAL_ID);
-
-  return (
-    <IonItem onClick={() => closeModal()}>
-      Add Participant Modal Content
-    </IonItem>
   );
 };
