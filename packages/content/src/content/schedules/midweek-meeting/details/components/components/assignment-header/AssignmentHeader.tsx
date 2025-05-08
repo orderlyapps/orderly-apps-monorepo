@@ -10,13 +10,13 @@ export function AssignmentHeader({
   assignmentData: ReturnType<typeof getAssignmentData>;
 }) {
   return (
-    <div>
+    <>
       <SchoolHeader assignmentData={assignmentData} />
       <IonItem lines="none">
         <Label assignmentData={assignmentData} />
 
         <Participant assignmentData={assignmentData} />
       </IonItem>
-    </div>
+    </>
   );
 }

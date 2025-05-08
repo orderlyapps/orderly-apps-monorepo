@@ -21,10 +21,6 @@ export const MidweekParticipantOptions = () => {
   if (isPending) return null;
   if (isError) return null;
 
-  const filteredData = data?.filter((participant) => {
-    return participant.isCurrentAssignee;
-  });
-
   const sortedData = data?.sort((a, b) => {
     return (b[sortValue] || Infinity) - (a[sortValue] || Infinity);
   });
