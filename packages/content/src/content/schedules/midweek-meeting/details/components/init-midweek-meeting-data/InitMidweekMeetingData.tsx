@@ -14,7 +14,7 @@ import { pushOutline } from "ionicons/icons";
 import { useState } from "react";
 import { loadEPUB } from "@amodeo/feature/util/epub/browser/loadEpub";
 
-import { useUpsertMidweekMeetingDataMutation } from "@amodeo/data/react-query/midweek-meeting_2/use-upsert-midweek-meeting-data-mutation";
+import { useUpsertMidweekMeetingDataMutation } from "@amodeo/data/react-query/midweek-meeting/use-upsert-midweek-meeting-data-mutation";
 // import { useUpsertWeekendMeetingDataMutation } from "@amodeo/data/react-query/weekend-meeting_2/use-upsert-weekend-meeting-data-mutation";
 
 export const InitMidweekMeetingData = ({

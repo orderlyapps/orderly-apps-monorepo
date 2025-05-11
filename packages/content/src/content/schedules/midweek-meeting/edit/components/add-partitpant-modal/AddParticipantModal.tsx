@@ -4,8 +4,8 @@ import { ModalProps } from "@amodeo/ui/util/ionic/use-card-modal/useCardModal";
 import { IonButton } from "@ionic/react";
 import { AddParticipantModalContent } from "./components/content/AddParticipantModalContent.js";
 import { useAddParticipantForm } from "./hooks/use-add-participant-form.js";
-import { useInsertPublisherMutation } from "@amodeo/data/react-query/midweek-meeting_2/use-insert-publisher-mutation";
-import { useInsertParticipantMutation } from "@amodeo/data/react-query/midweek-meeting_2/use-insert-participant-mutation";
+import { useInsertPublisherMutation } from "@amodeo/data/react-query/midweek-meeting/use-insert-publisher-mutation";
+import { useInsertParticipantMutation } from "@amodeo/data/react-query/midweek-meeting/use-insert-participant-mutation";
 import { tryCatch } from "@amodeo/util/errors/try-catch";
 
 export const AddParticipantModal = ({

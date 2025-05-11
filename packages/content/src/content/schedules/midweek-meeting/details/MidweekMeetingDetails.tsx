@@ -1,5 +1,5 @@
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
-import { useMidweekMeetingDetailsQuery } from "@amodeo/data/react-query/midweek-meeting_2/use-midweek-meeting-details-query";
+import { useMidweekMeetingDetailsQuery } from "@amodeo/data/react-query/midweek-meeting/use-midweek-meeting-details-query";
 import { Assignment } from "./components/assignment/Assignment.js";
 import { IonAccordionGroup } from "@ionic/react";
 import { InitMidweekMeetingData } from "./components/init-midweek-meeting-data/InitMidweekMeetingData.js";

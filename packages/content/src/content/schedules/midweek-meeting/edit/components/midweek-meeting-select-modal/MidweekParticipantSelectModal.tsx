@@ -4,7 +4,7 @@ import { MidweekParticipantFilters } from "./components/filters/MidweekParticipa
 import { MidweekAssignmentDetails } from "./components/details/MidweekAssignmentDetails.js";
 import { SelectModal } from "@amodeo/ui/ionic/select-modal/SelectModal";
 import { useMidweekAssignmentsFormState } from "./hooks/use-midweek-assignments-form-state/use-midweek-assignments-form-state.js";
-import { useUpsertMidweekAssignmentMutation } from "@amodeo/data/react-query/midweek-meeting_2/use-upsert-midweek-assignment-mutation";
+import { useUpsertMidweekAssignmentMutation } from "@amodeo/data/react-query/midweek-meeting/use-upsert-midweek-assignment-mutation";
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { tryCatch } from "@amodeo/util/errors/try-catch";
 

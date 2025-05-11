@@ -1,7 +1,7 @@
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 import { MidweekParticipantSelectModal } from "./components/midweek-meeting-select-modal/MidweekParticipantSelectModal.js";
-import { useMidweekMeetingDetailsQuery } from "@amodeo/data/react-query/midweek-meeting_2/use-midweek-meeting-details-query";
+import { useMidweekMeetingDetailsQuery } from "@amodeo/data/react-query/midweek-meeting/use-midweek-meeting-details-query";
 
 import { AssistantSelect } from "./components/assistant-select/AssistantSelect.js";
 import { ParticipantSelect } from "./components/participant-select/ParticipantSelect.js";

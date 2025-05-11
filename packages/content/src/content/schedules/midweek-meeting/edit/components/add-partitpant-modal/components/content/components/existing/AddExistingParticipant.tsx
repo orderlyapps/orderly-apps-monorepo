@@ -1,7 +1,7 @@
 import { AssigmentData } from "#content/schedules/midweek-meeting/.shared/getData/getAssignmentData.js";
 import { IonItem, IonList } from "@ionic/react";
 import { useAddParticipantForm } from "../../../../hooks/use-add-participant-form.js";
-import { useMidweekParticipantsQuery } from "@amodeo/data/react-query/midweek-meeting_2/use-midweek-participants-query";
+import { useMidweekParticipantsQuery } from "@amodeo/data/react-query/midweek-meeting/use-midweek-participants-query";
 
 export const AddExistingParticipant = ({
   assignmentData,

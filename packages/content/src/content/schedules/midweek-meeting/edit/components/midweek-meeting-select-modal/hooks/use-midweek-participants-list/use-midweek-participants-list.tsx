@@ -1,4 +1,4 @@
-import { useMidweekParticipantsQuery } from "@amodeo/data/react-query/midweek-meeting_2/use-midweek-participants-query";
+import { useMidweekParticipantsQuery } from "@amodeo/data/react-query/midweek-meeting/use-midweek-participants-query";
 import { useMidweekAssignmentsFormState } from "../use-midweek-assignments-form-state/use-midweek-assignments-form-state.js";
 import { startOfWeek } from "date-fns";
 import { getExtraData } from "./helper/get-extra-data/getExtraData.js";
