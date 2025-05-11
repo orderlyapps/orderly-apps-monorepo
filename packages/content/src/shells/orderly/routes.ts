@@ -9,12 +9,33 @@ import {
   schedules,
   // home,
   ministry,
-  // publishers,
+  publishers,
   settings,
 } from "@amodeo/ui/util/ionic/icons/icons";
 import { MidweekAssignments } from "@amodeo/data/supabase/supabase-types";
 
 export const ORDERLY_PAGES = {
+  visiting_speakers:{
+    path: '/publishers/visiting-speakers',
+    // params: { id: '' },
+    Component: lazy(
+      () => import('./pages/publishers/visiting-speakers/VisitingSpeakersPage.js')
+    ),
+  },
+  congregation:{
+    path: '/publishers/congregation',
+    // params: { id: '' },
+    Component: lazy(
+      () => import('./pages/publishers/congregation/CongregationPage.js')
+    ),
+  },
+  // publishers:{
+  //   path: '/publishers/publishers',
+  //   // params: { id: '' },
+  //   Component: lazy(
+  //     () => import('./pages/publishers/publishers/PublishersPage.js')
+  //   ),
+  // },
   midweek_meeting_edit: {
     path: "/schedules/midweek-meeting-edit",
     params: { assignment_id: "" as MidweekAssignments, week_id: "" },
@@ -97,18 +118,18 @@ export const ORDERLY_PAGES = {
   //   ),
   //   redirect: true,
   // },
-  // publishers: {
-  //   path: "/publishers",
-  //   tab: "Publishers",
-  //   icon: publishers,
-  //   Component: lazy(
-  //     () =>
-  //       import(
-  //         "../pages/orderly/publishers/orderly-publishers/OrderlyPublishersPage"
-  //       )
-  //   ),
-  //   redirect: true,
-  // },
+  publishers: {
+    path: "/publishers",
+    tab: "Publishers",
+    icon: publishers,
+    Component: lazy(
+      () =>
+        import(
+          "./pages/publishers/publishers/PublishersPage.js"
+        )
+    ),
+    redirect: true,
+  },
   ministry: {
     path: "/ministry",
     tab: "Ministry",
