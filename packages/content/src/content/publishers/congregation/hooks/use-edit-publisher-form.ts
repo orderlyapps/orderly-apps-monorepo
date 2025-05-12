@@ -6,7 +6,9 @@ const EDIT_PUBLISHER_FORM_ID = "edit-publisher-form";
 
 export const useEditPublisherForm = () => {
   const publisher = usePublisherData();
-  const [state, setState] = useLocalStorage(EDIT_PUBLISHER_FORM_ID, publisher);
+  const [state, setState] = useLocalStorage(EDIT_PUBLISHER_FORM_ID, publisher, {
+    initializeWithValue: false,
+  });
 
   const { openModal, onSelect } = useSelectModal(EDIT_PUBLISHER_FORM_ID);
 

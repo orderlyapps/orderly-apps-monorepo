@@ -41,7 +41,7 @@ export default function CongregationPage() {
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
             <AddPublisherModal modalProps={modalProps}></AddPublisherModal>
-            <Congregation modalProps={modalProps}></Congregation>
+            <Congregation />
           </ErrorBoundary>
         </Suspense>
       </IonContent>
