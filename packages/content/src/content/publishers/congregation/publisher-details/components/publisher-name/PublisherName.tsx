@@ -14,7 +14,7 @@ export const PublisherName = () => {
           </strong>
         </IonText>
 
-        <EditButton onClick={openModal} />
+        <EditButton onClick={() => openModal({ detailsToEdit: "name" })} />
       </IonItem>
     </IonList>
   );

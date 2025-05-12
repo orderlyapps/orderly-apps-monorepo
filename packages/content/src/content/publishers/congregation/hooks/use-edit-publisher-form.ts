@@ -4,11 +4,19 @@ import { usePublisherData } from "../publisher-details/components/publisher-data
 
 const EDIT_PUBLISHER_FORM_ID = "edit-publisher-form";
 
+const initialState = {
+  detailsToEdit: "" as "name",
+};
+
 export const useEditPublisherForm = () => {
   const publisher = usePublisherData();
-  const [state, setState] = useLocalStorage(EDIT_PUBLISHER_FORM_ID, publisher, {
-    initializeWithValue: false,
-  });
+  const [state, setState] = useLocalStorage(
+    EDIT_PUBLISHER_FORM_ID,
+    { ...initialState, ...publisher },
+    {
+      initializeWithValue: false,
+    }
+  );
 
   const { openModal, onSelect } = useSelectModal(EDIT_PUBLISHER_FORM_ID);
 
@@ -29,7 +37,12 @@ export const useEditPublisherForm = () => {
     setFirstName,
     setLastName,
     setState,
-    openModal: () => {
+    openModal: ({
+      detailsToEdit,
+    }: {
+      detailsToEdit: typeof initialState.detailsToEdit;
+    }) => {
+      setState({ ...state, detailsToEdit });
       openModal("Edit Publisher");
     },
     modalID: EDIT_PUBLISHER_FORM_ID,
