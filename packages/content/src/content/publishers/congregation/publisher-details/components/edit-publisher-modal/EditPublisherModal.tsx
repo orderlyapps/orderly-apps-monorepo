@@ -1,15 +1,14 @@
 import { SelectModal } from "@amodeo/ui/ionic/select-modal/SelectModal";
 import { ModalProps } from "@amodeo/ui/util/ionic/use-card-modal/useCardModal";
-import { usePublisherData } from "../publisher-data-provider/PublisherDataProvider.js";
 import { useEditPublisherForm } from "../../../hooks/use-edit-publisher-form.js";
+import { EditName } from "./components/edit-name/EditName.js";
 
 export const EditPublisherModal = ({
   modalProps,
 }: {
   modalProps: ModalProps;
 }) => {
-  const publisher = usePublisherData();
-  const { modalID } = useEditPublisherForm(publisher);
+  const { modalID } = useEditPublisherForm();
 
   const handleUpdate = async () => {
     return {
@@ -21,7 +20,7 @@ export const EditPublisherModal = ({
 
   return (
     <SelectModal modalProps={modalProps} id={modalID} onSelect={handleUpdate}>
-      <h1>Edit Publisher</h1>
+      <EditName />
     </SelectModal>
   );
 };
