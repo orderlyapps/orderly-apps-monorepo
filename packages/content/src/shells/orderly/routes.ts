@@ -15,32 +15,37 @@ import {
 import { MidweekAssignments } from "@amodeo/data/supabase/supabase-types";
 
 export const ORDERLY_PAGES = {
-  visiting_speaker_details:{
-    path: '/publishers/visiting-speaker-details',
+  visiting_speaker_details: {
+    path: "/publishers/visiting-speaker-details",
     // params: { id: '' },
     Component: lazy(
-      () => import('./pages/publishers/visiting-speaker-details/VisitingSpeakerDetailsPage.js')
+      () =>
+        import(
+          "./pages/publishers/visiting-speaker-details/VisitingSpeakerDetailsPage.js"
+        )
     ),
   },
-  publisher_details:{
-    path: '/publishers/publisher-details',
-    // params: { id: '' },
+  publisher_details: {
+    path: "/publishers/publisher-details",
+    params: { publisher_id: "" },
     Component: lazy(
-      () => import('./pages/publishers/publisher-details/PublisherDetailsPage.js')
+      () =>
+        import("./pages/publishers/publisher-details/PublisherDetailsPage.js")
     ),
   },
-  visiting_speakers:{
-    path: '/publishers/visiting-speakers',
+  visiting_speakers: {
+    path: "/publishers/visiting-speakers",
     // params: { id: '' },
     Component: lazy(
-      () => import('./pages/publishers/visiting-speakers/VisitingSpeakersPage.js')
+      () =>
+        import("./pages/publishers/visiting-speakers/VisitingSpeakersPage.js")
     ),
   },
-  congregation:{
-    path: '/publishers/congregation',
+  congregation: {
+    path: "/publishers/congregation",
     // params: { id: '' },
     Component: lazy(
-      () => import('./pages/publishers/congregation/CongregationPage.js')
+      () => import("./pages/publishers/congregation/CongregationPage.js")
     ),
   },
   // publishers:{
@@ -137,10 +142,7 @@ export const ORDERLY_PAGES = {
     tab: "Publishers",
     icon: publishers,
     Component: lazy(
-      () =>
-        import(
-          "./pages/publishers/publishers/PublishersPage.js"
-        )
+      () => import("./pages/publishers/publishers/PublishersPage.js")
     ),
     redirect: true,
   },

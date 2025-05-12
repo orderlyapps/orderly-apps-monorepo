@@ -10,7 +10,7 @@ import {
 import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { VisitingSpeakerDetails } from "../../../../../content/publishers/visiting-speaker-details/VisitingSpeakerDetails.js";
+import { VisitingSpeakerDetails } from "../../../../../content/publishers/visiting-speakers/visiting-speaker-details/VisitingSpeakerDetails.js";
 import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 
 export default function VisitingSpeakerDetailsPage() {

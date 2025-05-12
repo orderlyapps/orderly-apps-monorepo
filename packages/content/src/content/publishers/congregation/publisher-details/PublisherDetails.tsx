@@ -1,16 +1,17 @@
-import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
+import { ModalProps } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
+import { PublisherDataProvider } from "./components/publisher-data-provider/PublisherDataProvider.js";
+import { PublisherName } from "./components/publisher-name/PublisherName.js";
+import { EditPublisherModal } from "./components/edit-publisher-modal/EditPublisherModal.js";
 
-export const PublisherDetails = ({ 
-  children,
+export const PublisherDetails = ({
   modalProps,
-}: { 
-  children?: React.ReactNode, 
-  modalProps: ReturnType<typeof useCardModal>['modalProps'];
+}: {
+  modalProps: ModalProps;
 }) => {
   return (
-    <div className="full centered">
-      <h1>Publisher Details Component</h1>
-      {children}
-    </div>
+    <PublisherDataProvider>
+      <EditPublisherModal modalProps={modalProps} />
+      <PublisherName />
+    </PublisherDataProvider>
   );
 };
