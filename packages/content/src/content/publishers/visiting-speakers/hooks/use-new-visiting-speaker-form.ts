@@ -6,6 +6,7 @@ const NEW_VISITING_SPEAKER_FORM_ID = "new-visiting-speaker-form";
 const initialState = {
   first_name: "",
   last_name: "",
+  congregation_id: "",
 };
 
 export const useNewVisitingSpeakerForm = () => {
@@ -15,6 +16,22 @@ export const useNewVisitingSpeakerForm = () => {
   );
 
   const { openModal, onSelect } = useSelectModal(NEW_VISITING_SPEAKER_FORM_ID);
+
+  const setFirstName = (first_name: string) => {
+    setState({ ...state, first_name });
+  };
+
+  const setLastName = (last_name: string) => {
+    setState({ ...state, last_name });
+  };
+
+  const setCongregation = (congregation_id: string) => {
+    setState({ ...state, congregation_id });
+  };
+
+  const addNewVisitingSpeaker = () => {
+    onSelect({ alertMessage: "Please confirm" });
+  };
 
   return {
     ...state,
@@ -26,5 +43,9 @@ export const useNewVisitingSpeakerForm = () => {
       onSelect({ alertMessage: "Please confirm" });
     },
     modalID: NEW_VISITING_SPEAKER_FORM_ID,
+    setFirstName,
+    setLastName,
+    setCongregation,
+    addNewVisitingSpeaker,
   };
 };
