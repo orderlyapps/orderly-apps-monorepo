@@ -16,15 +16,27 @@ export const useNewPublisherForm = () => {
 
   const { openModal, onSelect } = useSelectModal(NEW_PUBLISHER_FORM_ID);
 
+  const setFirstName = (first_name: string) => {
+    setState({ ...state, first_name });
+  };
+
+  const setLastName = (last_name: string) => {
+    setState({ ...state, last_name });
+  };
+
+  const addNewPublisher = () => {
+    onSelect({ alertMessage: "Please confirm" });
+  };
+
   return {
     ...state,
+    setFirstName,
+    setLastName,
     setState,
     openModal: () => {
       openModal("Add Publisher");
     },
-    closeModal: () => {
-      onSelect({ alertMessage: "Please confirm" });
-    },
     modalID: NEW_PUBLISHER_FORM_ID,
+    addNewPublisher,
   };
 };

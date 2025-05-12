@@ -24,7 +24,7 @@ const initialState = {
 
 export const useSelectModal = (id: string) => {
   const [modalState, setModalState] = useLocalStorage(
-    `select-modal-[${id}]`,
+    `modal-[${id}]`,
     initialState,
     { initializeWithValue: false }
   );
