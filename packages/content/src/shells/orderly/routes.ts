@@ -15,6 +15,20 @@ import {
 import { MidweekAssignments } from "@amodeo/data/supabase/supabase-types";
 
 export const ORDERLY_PAGES = {
+  visiting_speaker_details:{
+    path: '/publishers/visiting-speaker-details',
+    // params: { id: '' },
+    Component: lazy(
+      () => import('./pages/publishers/visiting-speaker-details/VisitingSpeakerDetailsPage.js')
+    ),
+  },
+  publisher_details:{
+    path: '/publishers/publisher-details',
+    // params: { id: '' },
+    Component: lazy(
+      () => import('./pages/publishers/publisher-details/PublisherDetailsPage.js')
+    ),
+  },
   visiting_speakers:{
     path: '/publishers/visiting-speakers',
     // params: { id: '' },

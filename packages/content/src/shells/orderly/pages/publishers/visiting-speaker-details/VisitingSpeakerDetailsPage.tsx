@@ -1,10 +1,8 @@
 import {
   IonBackButton,
-  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
-  IonIcon,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -12,16 +10,11 @@ import {
 import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { Congregation } from "../../../../../content/publishers/congregation/publisher-list/CongregationList.js";
+import { VisitingSpeakerDetails } from "../../../../../content/publishers/visiting-speaker-details/VisitingSpeakerDetails.js";
 import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
-import { useNewPublisherForm } from "../../../../../content/publishers/congregation/hooks/use-new-publisher-form.js";
-import { AddPublisherModal } from "#content/publishers/congregation/add-publisher-modal/AddPublisherModal.js";
-import { add } from "ionicons/icons";
 
-export default function CongregationPage() {
+export default function VisitingSpeakerDetailsPage() {
   const { modalProps, pageProps } = useCardModal();
-
-  const { openModal } = useNewPublisherForm();
   return (
     <IonPage {...pageProps}>
       <IonHeader>
@@ -29,19 +22,13 @@ export default function CongregationPage() {
           <IonButtons slot="start">
             <IonBackButton></IonBackButton>
           </IonButtons>
-          <IonTitle>Congregation</IonTitle>
-          <IonButtons slot="end">
-            <IonButton onClick={() => openModal()}>
-              <IonIcon icon={add} size="large" color="primary"></IonIcon>
-            </IonButton>
-          </IonButtons>
+          <IonTitle>Visiting Speaker Details</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <AddPublisherModal modalProps={modalProps}></AddPublisherModal>
-            <Congregation modalProps={modalProps}></Congregation>
+            <VisitingSpeakerDetails modalProps={modalProps}></VisitingSpeakerDetails>
           </ErrorBoundary>
         </Suspense>
       </IonContent>
