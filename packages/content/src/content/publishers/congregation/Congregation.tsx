@@ -1,16 +1,22 @@
 import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
+import { usePublishersQuery } from "@amodeo/data/react-query/publishers/congregation/use-publishers-query";
+import { IonItem, IonList, IonText } from "@ionic/react";
 
-export const Congregation = ({ 
-  children,
+export const Congregation = ({
   modalProps,
-}: { 
-  children?: React.ReactNode, 
-  modalProps: ReturnType<typeof useCardModal>['modalProps'];
+}: {
+  modalProps: ReturnType<typeof useCardModal>["modalProps"];
 }) => {
+  const { data } = usePublishersQuery();
   return (
-    <div className="full centered">
-      <h1>Congregation Component</h1>
-      {children}
-    </div>
+    <IonList>
+      {data?.map((publisher) => (
+        <IonItem key={publisher.id}>
+          <IonText>
+            {publisher.last_name}, {publisher.first_name}
+          </IonText>
+        </IonItem>
+      ))}
+    </IonList>
   );
 };
