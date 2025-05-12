@@ -10,7 +10,7 @@ import {
 import { Suspense } from 'react';
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
-import { {{ pascalCase name }} } from "../../../../../content/{{ kebabCase name }}/{{ pascalCase name }}.js";
+import { {{ pascalCase name }} } from "../../../../../content/{{ section }}/{{#if folder}}{{folder}}/{{/if}}{{kebabCase name}}/{{pascalCase name}}.js";
 import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 
 export default function {{ pascalCase name }}Page() {

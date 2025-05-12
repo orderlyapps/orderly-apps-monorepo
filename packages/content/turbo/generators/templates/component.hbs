@@ -1,11 +1,11 @@
-import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
+import { ModalProps } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 
 export const {{ pascalCase name }} = ({ 
   children,
   modalProps,
 }: { 
   children?: React.ReactNode, 
-  modalProps: ReturnType<typeof useCardModal>['modalProps'];
+  modalProps: ModalProps;
 }) => {
   return (
     <div className="full centered">
