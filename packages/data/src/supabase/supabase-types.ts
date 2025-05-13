@@ -1,8 +1,44 @@
 import { Database as DatabaseGenerated } from "./exported-types-remote.js";
 import { MergeDeep, SetNonNullable } from "type-fest";
 
+export const MIDWEEK_ASSIGNMENT_IDS = [
+  "chairman",
+  "prayer_opening",
+  "treasures",
+  "gems",
+  "school_1_bible_reading",
+  "school_1_apply_1",
+  "school_1_assistant_1",
+  "school_1_apply_2",
+  "school_1_assistant_2",
+  "school_1_apply_3",
+  "school_1_assistant_3",
+  "school_1_apply_4",
+  "school_1_assistant_4",
+  "school_2_bible_reading",
+  "school_2_apply_1",
+  "school_2_assistant_1",
+  "school_2_apply_2",
+  "school_2_assistant_2",
+  "school_2_apply_3",
+  "school_2_assistant_3",
+  "school_2_apply_4",
+  "school_2_assistant_4",
+  "living_1",
+  "living_2",
+  "cbs_conductor",
+  "cbs_reader",
+  "prayer_closing",
+  "counselor_2",
+] as const;
+
+export type MidweekAssignmentID = (typeof MIDWEEK_ASSIGNMENT_IDS)[number];
+
+export type PublisherDetails =
+  Database["public"]["Views"]["_view_publisher_details"]["Row"];
+
 // Primitives
-// type Week_ID =
+// export type WeekID =
 //   `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
 
 // type UUID = `${string}-${string}-${string}-${string}-${string}`;
@@ -11,35 +47,7 @@ import { MergeDeep, SetNonNullable } from "type-fest";
 
 // type BBox = [number, number, number, number];
 
-export type MidweekAssignments =
-  | "chairman"
-  | "prayer_opening"
-  | "treasures"
-  | "gems"
-  | "school_1_bible_reading"
-  | "school_1_apply_1"
-  | "school_1_assistant_1"
-  | "school_1_apply_2"
-  | "school_1_assistant_2"
-  | "school_1_apply_3"
-  | "school_1_assistant_3"
-  | "school_1_apply_4"
-  | "school_1_assistant_4"
-  | "school_2_bible_reading"
-  | "school_2_apply_1"
-  | "school_2_assistant_1"
-  | "school_2_apply_2"
-  | "school_2_assistant_2"
-  | "school_2_apply_3"
-  | "school_2_assistant_3"
-  | "school_2_apply_4"
-  | "school_2_assistant_4"
-  | "living_1"
-  | "living_2"
-  | "cbs_conductor"
-  | "cbs_reader"
-  | "prayer_closing"
-  | "counselor_2";
+export type MidweekAssignments = MidweekAssignmentID;
 
 // type DatabaseNarrowed = MergeDeep<
 //   DatabaseGenerated,
@@ -243,6 +251,20 @@ export type Database = MergeDeep<
                 last_name: string;
               }
             >;
+          };
+        };
+        _view_publisher_details: {
+          Row: {
+            id: string;
+            first_name: string;
+            last_name: string;
+            midweek_participantion: MidweekAssignmentID[] | null;
+            midweek_assignments:
+              | {
+                  assignment_id: MidweekAssignmentID;
+                  week_id: string;
+                }[]
+              | null;
           };
         };
       };

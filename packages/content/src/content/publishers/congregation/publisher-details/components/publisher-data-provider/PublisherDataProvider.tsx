@@ -1,14 +1,9 @@
 import { createContext, use } from "react";
-import { usePublisherQuery } from "@amodeo/data/react-query/publishers/congregation/use-publisher-query";
+import { usePublisherDetailsQuery } from "@amodeo/data/react-query/publishers/congregation/use-publisher-details-query";
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
+import { PublisherDetails } from "@amodeo/data/supabase/supabase-types";
 
-export type PublisherData = {
-  id: string;
-  first_name: string;
-  last_name: string;
-};
-
-const PublisherContext = createContext<PublisherData | undefined>(undefined);
+const PublisherContext = createContext<PublisherDetails | undefined>(undefined);
 
 export const PublisherDataProvider = ({
   children,
@@ -16,7 +11,7 @@ export const PublisherDataProvider = ({
   children: React.ReactNode;
 }) => {
   const { publisher_id } = useOrderlyPageParams("publisher_details");
-  const { data } = usePublisherQuery(publisher_id);
+  const { data } = usePublisherDetailsQuery(publisher_id);
 
   if (!data) {
     return null;
