@@ -14,7 +14,7 @@ import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner"
 import { ErrorBoundary } from "react-error-boundary";
 import { Congregation } from "../../../../../content/publishers/congregation/publisher-list/CongregationList.js";
 import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
-import { useNewPublisherForm } from "../../../../../content/publishers/congregation/hooks/use-new-publisher-form.js";
+import { useNewPublisherForm } from "../../../../../content/publishers/congregation/add-publisher-modal/hooks/use-add-publisher-form.js";
 import { AddPublisherModal } from "#content/publishers/congregation/add-publisher-modal/AddPublisherModal.js";
 import { add } from "ionicons/icons";
 

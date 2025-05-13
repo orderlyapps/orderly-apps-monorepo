@@ -1,9 +1,9 @@
 import { IonButton, IonActionSheet, IonToast } from "@ionic/react";
 import { useState } from "react";
-import { useEditPublisherForm } from "../../../hooks/use-edit-publisher-form.js";
 import { useDeletePublisherMutation } from "@amodeo/data/react-query/publishers/congregation/use-delete-publisher-mutation";
 import { tryCatch } from "@amodeo/util/errors/try-catch";
 import { useIonRouter } from "@ionic/react";
+import { useEditPublisherForm } from "../edit-publisher-modal/hooks/use-edit-publisher-form.js";
 
 export const PublisherDelete = () => {
   const [showActionSheet, setShowActionSheet] = useState(false);

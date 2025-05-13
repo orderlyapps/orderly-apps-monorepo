@@ -1,6 +1,6 @@
 import { SelectModal } from "@amodeo/ui/ionic/select-modal/SelectModal";
 import { ModalProps } from "@amodeo/ui/util/ionic/use-card-modal/useCardModal";
-import { useNewPublisherForm } from "../hooks/use-new-publisher-form.js";
+import { useNewPublisherForm } from "./hooks/use-add-publisher-form.js";
 import { IonButton, IonInput, IonItem, IonList } from "@ionic/react";
 import { useInsertPublisherMutation } from "@amodeo/data/react-query/publishers/congregation/use-insert-publisher-mutation";
 import { tryCatch } from "@amodeo/util/errors/try-catch";
