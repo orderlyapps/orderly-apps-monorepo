@@ -1,6 +1,6 @@
 import { useSelectModal } from "@amodeo/ui/ionic/select-modal/SelectModal";
-import { useLocalStorage } from "usehooks-ts";
 import { usePublisherData } from "../publisher-details/components/publisher-data-provider/PublisherDataProvider.js";
+import { useState } from "react";
 
 const EDIT_PUBLISHER_FORM_ID = "edit-publisher-form";
 
@@ -10,14 +10,7 @@ const initialState = {
 
 export const useEditPublisherForm = () => {
   const publisher = usePublisherData();
-  const [state, setState] = useLocalStorage(
-    EDIT_PUBLISHER_FORM_ID,
-    { ...initialState, ...publisher },
-    {
-      initializeWithValue: false,
-    }
-  );
-
+  const [state, setState] = useState({ ...initialState, ...publisher });
   const { openModal, onSelect } = useSelectModal(EDIT_PUBLISHER_FORM_ID);
 
   const setFirstName = (first_name: string) => {
