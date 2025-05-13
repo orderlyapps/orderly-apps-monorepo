@@ -1,6 +1,6 @@
-import { useEditPublisherForm } from "#content/publishers/congregation/hooks/use-edit-publisher-form.js";
 import { IonList, IonItem, IonText } from "@ionic/react";
 import { EditButton } from "@amodeo/ui/util/ionic/edit-button/EditButton";
+import { useEditPublisherForm } from "../edit-publisher-modal/hooks/use-edit-publisher-form.js";
 
 export const PublisherName = () => {
   const { first_name, last_name, openModal } = useEditPublisherForm();

@@ -1,5 +1,5 @@
-import { useEditPublisherForm } from "#content/publishers/congregation/hooks/use-edit-publisher-form.js";
 import { IonList, IonItem, IonInput, IonButton } from "@ionic/react";
+import { useEditPublisherForm } from "../../hooks/use-edit-publisher-form.js";
 
 export const EditName = () => {
   const { first_name, last_name, setFirstName, setLastName, detailsToEdit } =
