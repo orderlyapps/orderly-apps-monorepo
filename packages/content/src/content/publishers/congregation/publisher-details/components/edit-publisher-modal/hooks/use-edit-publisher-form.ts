@@ -1,6 +1,6 @@
 import { useSelectModal } from "@amodeo/ui/ionic/select-modal/SelectModal";
-import { usePublisherData } from "../publisher-details/components/publisher-data-provider/PublisherDataProvider.js";
 import { useState } from "react";
+import { usePublisherData } from "../../publisher-data-provider/PublisherDataProvider.js";
 
 const EDIT_PUBLISHER_FORM_ID = "edit-publisher-form";
 
