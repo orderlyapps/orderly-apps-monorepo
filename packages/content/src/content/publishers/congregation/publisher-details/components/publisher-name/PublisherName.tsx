@@ -1,9 +1,9 @@
 import { IonList, IonItem, IonText } from "@ionic/react";
 import { EditButton } from "@amodeo/ui/util/ionic/edit-button/EditButton";
-import { useEditPublisherForm } from "../edit-publisher-modal/hooks/use-edit-publisher-form.js";
+import { usePublisherData } from "../publisher-data-provider/PublisherDataProvider.js";
 
 export const PublisherName = () => {
-  const { first_name, last_name, openModal } = useEditPublisherForm();
+  const { first_name, last_name, openEditModal } = usePublisherData();
 
   return (
     <IonList inset>
@@ -14,7 +14,7 @@ export const PublisherName = () => {
           </strong>
         </IonText>
 
-        <EditButton onClick={() => openModal({ detailsToEdit: "name" })} />
+        <EditButton onClick={() => openEditModal({ detailsToEdit: "name" })} />
       </IonItem>
     </IonList>
   );

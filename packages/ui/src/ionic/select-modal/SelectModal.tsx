@@ -22,10 +22,10 @@ const initialState = {
   closeOnSuccess: false,
 };
 
-export const useSelectModal = (id: string) => {
+export const useSelectModal = (modalID: string) => {
   const [modalState, setModalState] = useLocalStorage(
-    `modal-[${id}]`,
-    initialState,
+    `modal-[${modalID}]`,
+    {...initialState, modalID},
     { initializeWithValue: false }
   );
 
@@ -81,7 +81,7 @@ export const useSelectModal = (id: string) => {
 
 type SelectModalProps = {
   modalProps: ModalProps;
-  id: string;
+  modalID: string;
   children: React.ReactNode;
   onSelect: () => Promise<
     | {
@@ -99,7 +99,7 @@ type SelectModalProps = {
 
 export const SelectModal = ({
   modalProps,
-  id,
+  modalID,
   children,
   onSelect,
 }: SelectModalProps) => {
@@ -114,7 +114,7 @@ export const SelectModal = ({
     isModalOpen,
     isAlertOpen,
     isToastOpen,
-  } = useSelectModal(id);
+  } = useSelectModal(modalID);
 
   const handleConfirm = async () => {
     const { successMessage, errorMessage, closeOnSuccess } = await onSelect();

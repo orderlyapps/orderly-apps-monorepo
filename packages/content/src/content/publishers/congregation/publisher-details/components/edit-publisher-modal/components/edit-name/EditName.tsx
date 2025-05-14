@@ -1,9 +1,12 @@
 import { IonList, IonItem, IonInput, IonButton } from "@ionic/react";
 import { useEditPublisherForm } from "../../hooks/use-edit-publisher-form.js";
+import { usePublisherData } from "../../../publisher-data-provider/PublisherDataProvider.js";
 
 export const EditName = () => {
+  const publisher = usePublisherData();
+
   const { first_name, last_name, setFirstName, setLastName, detailsToEdit } =
-    useEditPublisherForm();
+    useEditPublisherForm(publisher);
 
   if (detailsToEdit !== "name") {
     return null;

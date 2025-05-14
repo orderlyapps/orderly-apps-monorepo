@@ -78,7 +78,7 @@ export const AddParticipantModal = ({
 
   return (
     <>
-      <SelectModal modalProps={modalProps} id={modalID} onSelect={handleSelect}>
+      <SelectModal modalProps={modalProps} modalID={modalID} onSelect={handleSelect}>
         <AddParticipantModalContent assignmentData={assignmentData} />
       </SelectModal>
 

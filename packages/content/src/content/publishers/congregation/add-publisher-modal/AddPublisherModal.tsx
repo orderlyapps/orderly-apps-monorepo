@@ -39,7 +39,7 @@ export const AddPublisherModal = ({ modalProps }: AddPublisherModalProps) => {
     };
   };
   return (
-    <SelectModal modalProps={modalProps} id={modalID} onSelect={onSelect}>
+    <SelectModal modalProps={modalProps} modalID={modalID} onSelect={onSelect}>
       <IonList inset>
         <IonItem>
           <IonInput

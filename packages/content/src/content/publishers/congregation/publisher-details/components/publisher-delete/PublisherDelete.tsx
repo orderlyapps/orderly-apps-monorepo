@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDeletePublisherMutation } from "@amodeo/data/react-query/publishers/congregation/use-delete-publisher-mutation";
 import { tryCatch } from "@amodeo/util/errors/try-catch";
 import { useIonRouter } from "@ionic/react";
-import { useEditPublisherForm } from "../edit-publisher-modal/hooks/use-edit-publisher-form.js";
+import { usePublisherData } from "../publisher-data-provider/PublisherDataProvider.js";
 
 export const PublisherDelete = () => {
   const [showActionSheet, setShowActionSheet] = useState(false);
@@ -11,7 +11,8 @@ export const PublisherDelete = () => {
     isOpen: false,
     message: "",
   });
-  const { id } = useEditPublisherForm();
+  const { id } = usePublisherData();
+
   const router = useIonRouter();
 
   const { mutateAsync } = useDeletePublisherMutation();

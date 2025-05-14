@@ -50,7 +50,7 @@ export function MidweekParticipantSelectModal({
   return (
     <SelectModal
       modalProps={modalProps}
-      id="midweek-meeting-assignments"
+      modalID="midweek-meeting-assignments"
       onSelect={handleSelect}
     >
       <MidweekAssignmentDetails></MidweekAssignmentDetails>

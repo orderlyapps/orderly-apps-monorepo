@@ -55,7 +55,7 @@ export const AddVisitingSpeakerModal = ({
     };
   };
   return (
-    <SelectModal modalProps={modalProps} id={modalID} onSelect={onSelect}>
+    <SelectModal modalProps={modalProps} modalID={modalID} onSelect={onSelect}>
       <IonList inset>
         <IonItem>
           <IonInput
