@@ -1,9 +1,9 @@
 import { ModalProps } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 import { PublisherDataProvider } from "./components/publisher-data-provider/PublisherDataProvider.js";
-import { PublisherName } from "./components/publisher-name/PublisherName.js";
+import { Name } from "./components/name/Name.js";
 import { EditPublisherModal } from "./components/edit-publisher-modal/EditPublisherModal.js";
 import { IonItem } from "@ionic/react";
-import { PublisherDelete } from "./components/publisher-delete/PublisherDelete.js";
+import { Delete } from "./components/delete/Delete.js";
 
 export const PublisherDetails = ({
   modalProps,
@@ -13,10 +13,13 @@ export const PublisherDetails = ({
   return (
     <PublisherDataProvider>
       <EditPublisherModal modalProps={modalProps} />
-      <PublisherName />
-      <PublisherDelete />
+      <Name />
+      <Participation />
+      <Delete />
     </PublisherDataProvider>
   );
 };
 
-
+export const Participation = () => {
+  return <div>Participation</div>;
+};

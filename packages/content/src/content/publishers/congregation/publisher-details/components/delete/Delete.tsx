@@ -5,7 +5,7 @@ import { tryCatch } from "@amodeo/util/errors/try-catch";
 import { useIonRouter } from "@ionic/react";
 import { usePublisherData } from "../publisher-data-provider/PublisherDataProvider.js";
 
-export const PublisherDelete = () => {
+export const Delete = () => {
   const [showActionSheet, setShowActionSheet] = useState(false);
   const [toast, setToast] = useState({
     isOpen: false,
