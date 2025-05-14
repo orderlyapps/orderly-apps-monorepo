@@ -258,7 +258,7 @@ export type Database = MergeDeep<
             id: string;
             first_name: string;
             last_name: string;
-            midweek_participantion: MidweekAssignmentID[] | null;
+            midweek_participation: MidweekAssignmentID[] | null;
             midweek_assignments:
               | {
                   assignment_id: MidweekAssignmentID;
