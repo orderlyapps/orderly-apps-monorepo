@@ -13,12 +13,13 @@ type PublisherDetailsWithDetailsToEdit = PublisherDetails &
 
 const initialState = {
   detailsToEdit: "" as "name",
+  isConfirmUpdateAlertOpen: false,
 };
 
 const EDIT_PUBLISHER_FORM_ID = "edit-publisher-form";
 
 const useProviderState = (publisher: PublisherDetails | undefined) => {
-  const [{ detailsToEdit }, setState] = useState({
+  const [state, setState] = useState({
     ...initialState,
     ...publisher,
   });
@@ -29,12 +30,12 @@ const useProviderState = (publisher: PublisherDetails | undefined) => {
   }: {
     detailsToEdit: typeof initialState.detailsToEdit;
   }) => {
-    setState({ detailsToEdit });
+    setState((state) => ({ ...state, detailsToEdit }));
     openModal("Edit Publisher");
   };
 
   return {
-    detailsToEdit,
+    ...state,
     setState,
     openEditModal,
     modalID,

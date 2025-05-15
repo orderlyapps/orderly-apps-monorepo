@@ -1,8 +1,18 @@
-import { IonItemSliding, IonItem, IonLabel, IonItemOptions, IonItemOption, IonIcon } from "@ionic/react";
+import {
+  IonItemSliding,
+  IonItem,
+  IonLabel,
+  IonItemOptions,
+  IonItemOption,
+  IonIcon,
+} from "@ionic/react";
 import { trash } from "ionicons/icons";
+import { usePublisherData } from "../../../publisher-data-provider/PublisherDataProvider.js";
 
 export const MidweekParticipationItem = ({
-  children, searchString, searchQuery,
+  children,
+  searchString,
+  searchQuery,
 }: {
   children: React.ReactNode;
   searchString: string;
@@ -11,6 +21,9 @@ export const MidweekParticipationItem = ({
   if (!searchString.includes(searchQuery)) {
     return null;
   }
+
+  const { setState } = usePublisherData();
+
   return (
     <IonItemSliding>
       <IonItem>
@@ -21,7 +34,7 @@ export const MidweekParticipationItem = ({
         <IonItemOption
           color="danger"
           onClick={() => {
-            alert(`delete ${children}`);
+            setState((state) => ({ ...state, isConfirmUpdateAlertOpen: true }));
           }}
         >
           <IonIcon slot="icon-only" icon={trash}></IonIcon>
