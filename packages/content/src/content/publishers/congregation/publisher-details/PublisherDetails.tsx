@@ -1,9 +1,9 @@
 import { ModalProps } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 import { PublisherDataProvider } from "./components/publisher-data-provider/PublisherDataProvider.js";
-import { Name } from "./components/name/Name.js";
+import { Name } from "./components/details/name/Name.js";
 import { EditPublisherModal } from "./components/edit-publisher-modal/EditPublisherModal.js";
 import { Delete } from "./components/delete/Delete.js";
-import { MidweekParticipation } from "./components/midweek-participation/MidweekParticipation.js";
+import { MidweekParticipation } from "./components/details/midweek-participation/MidweekParticipation.js";
 import { ConfirmUpdateAlert } from "./components/confirm-update-alert/ConfirmUpdateAlert.js";
 import { useSettings } from "#shells/orderly/pages/settings/settings/SettingsPage.js";
 

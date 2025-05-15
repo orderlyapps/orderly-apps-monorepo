@@ -7,7 +7,7 @@ import {
   IonIcon,
 } from "@ionic/react";
 import { trash } from "ionicons/icons";
-import { usePublisherData } from "../../../publisher-data-provider/PublisherDataProvider.js";
+import { usePublisherData } from "../../../../publisher-data-provider/PublisherDataProvider.js";
 
 export const MidweekParticipationItem = ({
   children,
@@ -18,11 +18,12 @@ export const MidweekParticipationItem = ({
   searchString: string;
   searchQuery: string;
 }) => {
+  const { updateState } = usePublisherData();
+  
   if (!searchString.includes(searchQuery)) {
     return null;
   }
 
-  const { setState } = usePublisherData();
 
   return (
     <IonItemSliding>
@@ -34,7 +35,7 @@ export const MidweekParticipationItem = ({
         <IonItemOption
           color="danger"
           onClick={() => {
-            setState((state) => ({ ...state, isConfirmUpdateAlertOpen: true }));
+            updateState({ isConfirmUpdateAlertOpen: true });
           }}
         >
           <IonIcon slot="icon-only" icon={trash}></IonIcon>

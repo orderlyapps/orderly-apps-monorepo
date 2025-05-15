@@ -1,12 +1,9 @@
 import { IonList, IonItem, IonInput, IonButton } from "@ionic/react";
-import { useEditPublisherForm } from "../../hooks/use-edit-publisher-form.js";
 import { usePublisherData } from "../../../publisher-data-provider/PublisherDataProvider.js";
 
 export const EditName = () => {
-  const publisher = usePublisherData();
-
-  const { first_name, last_name, setFirstName, setLastName, detailsToEdit } =
-    useEditPublisherForm(publisher);
+  const { first_name, last_name, detailsToEdit, updateState } =
+    usePublisherData();
 
   if (detailsToEdit !== "name") {
     return null;
@@ -19,7 +16,7 @@ export const EditName = () => {
           label="First Name"
           placeholder="Enter First Name"
           value={first_name}
-          onIonChange={(e) => setFirstName(e.detail.value!)}
+          onIonChange={(e) => updateState({ first_name: e.detail.value! })}
         />
       </IonItem>
 
@@ -28,7 +25,7 @@ export const EditName = () => {
           label="Last Name"
           placeholder="Enter Last Name"
           value={last_name}
-          onIonChange={(e) => setLastName(e.detail.value!)}
+          onIonChange={(e) => updateState({ last_name: e.detail.value! })}
         />
       </IonItem>
 
