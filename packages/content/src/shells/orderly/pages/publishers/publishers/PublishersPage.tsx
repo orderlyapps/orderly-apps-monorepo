@@ -11,8 +11,12 @@ import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
 import { ErrorBoundary } from "react-error-boundary";
 import { Publishers } from "../../../../../content/publishers/publishers/Publishers.js";
+import { useSettings } from "../../settings/settings/SettingsPage.js";
+import { PasswordProtect } from "../../PasswordProtect.js";
 
 export default function PublishersPage() {
+  const { hasAccess } = useSettings();
+
   return (
     <IonPage>
       <IonHeader>
@@ -26,7 +30,7 @@ export default function PublishersPage() {
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <Publishers />
+            {hasAccess ? <Publishers /> : <PasswordProtect />}
           </ErrorBoundary>
         </Suspense>
       </IonContent>

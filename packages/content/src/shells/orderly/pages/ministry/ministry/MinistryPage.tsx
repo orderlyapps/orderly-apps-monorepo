@@ -14,8 +14,12 @@ import { CardNav } from "@amodeo/ui/ionic/card-nav/CardNav";
 import { notAtHomes } from "@amodeo/ui/util/ionic/icons/icons";
 import { orderlyPath } from "#shells/orderly/routes.js";
 import { locationOutline, mapOutline } from "ionicons/icons";
+import { useSettings } from "../../settings/settings/SettingsPage.js";
+import { PasswordProtect } from "../../PasswordProtect.js";
 
 export default function MinistryPage() {
+  const { hasAccess } = useSettings();
+
   return (
     <IonPage>
       <IonHeader>
@@ -29,21 +33,27 @@ export default function MinistryPage() {
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <CardNav
-              label="Maps"
-              path={orderlyPath("map_list")}
-              icon={mapOutline}
-            />
-            <CardNav
-              label="Not At Homes"
-              path={orderlyPath("not_at_homes")}
-              icon={locationOutline}
-            />
-            <CardNav
-              label="Letter Writing"
-              path={orderlyPath("letter_writing")}
-              icon={notAtHomes}
-            />
+            {hasAccess ? (
+              <>
+                <CardNav
+                  label="Maps"
+                  path={orderlyPath("map_list")}
+                  icon={mapOutline}
+                />
+                <CardNav
+                  label="Not At Homes"
+                  path={orderlyPath("not_at_homes")}
+                  icon={locationOutline}
+                />
+                <CardNav
+                  label="Letter Writing"
+                  path={orderlyPath("letter_writing")}
+                  icon={notAtHomes}
+                />
+              </>
+            ) : (
+              <PasswordProtect />
+            )}
           </ErrorBoundary>
         </Suspense>
       </IonContent>

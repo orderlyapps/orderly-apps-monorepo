@@ -17,9 +17,12 @@ import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 import { useNewPublisherForm } from "../../../../../content/publishers/congregation/add-publisher-modal/hooks/use-add-publisher-form.js";
 import { AddPublisherModal } from "#content/publishers/congregation/add-publisher-modal/AddPublisherModal.js";
 import { add } from "ionicons/icons";
+import { useSettings } from "../../settings/settings/SettingsPage.js";
 
 export default function CongregationPage() {
   const { modalProps, pageProps } = useCardModal();
+
+  const { canEdit } = useSettings();
 
   const { openModal } = useNewPublisherForm();
   return (
@@ -30,11 +33,15 @@ export default function CongregationPage() {
             <IonBackButton></IonBackButton>
           </IonButtons>
           <IonTitle>Congregation</IonTitle>
-          <IonButtons slot="end">
-            <IonButton onClick={() => openModal()}>
-              <IonIcon icon={add} size="large" color="primary"></IonIcon>
-            </IonButton>
-          </IonButtons>
+          {canEdit && (
+            <>
+              <IonButtons slot="end">
+                <IonButton onClick={() => openModal()}>
+                  <IonIcon icon={add} size="large" color="primary"></IonIcon>
+                </IonButton>
+              </IonButtons>
+            </>
+          )}
         </IonToolbar>
       </IonHeader>
       <IonContent>

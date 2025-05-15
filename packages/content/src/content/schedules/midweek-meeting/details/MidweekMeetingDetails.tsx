@@ -14,7 +14,7 @@ export const MidweekMeetingDetails = () => {
 
   const weekData = data[0];
 
-  return (
+  return ( 
     <>
       <IonAccordionGroup>
         <Assignment assignment_id="chairman" data={weekData} />

@@ -17,10 +17,13 @@ import { useCardModal } from "@amodeo/ui/ionic/use-card-modal/useCardModal";
 import { useNewVisitingSpeakerForm } from "#content/publishers/visiting-speakers/hooks/use-new-visiting-speaker-form.js";
 import { add } from "ionicons/icons";
 import { AddVisitingSpeakerModal } from "#content/publishers/visiting-speakers/modal/AddVisitingSpeakerModal.js";
+import { useSettings } from "../../settings/settings/SettingsPage.js";
 
 export default function VisitingSpeakersPage() {
   const { modalProps, pageProps } = useCardModal();
   const { openModal } = useNewVisitingSpeakerForm();
+  const { canEdit } = useSettings();
+
   return (
     <IonPage {...pageProps}>
       <IonHeader>
@@ -29,17 +32,21 @@ export default function VisitingSpeakersPage() {
             <IonBackButton></IonBackButton>
           </IonButtons>
           <IonTitle>Visiting Speakers</IonTitle>{" "}
-          <IonButtons slot="end">
-            <IonButton onClick={() => openModal()}>
-              <IonIcon icon={add} size="large" color="primary"></IonIcon>
-            </IonButton>
-          </IonButtons>
+          {canEdit && (
+            <IonButtons slot="end">
+              <IonButton onClick={() => openModal()}>
+                <IonIcon icon={add} size="large" color="primary"></IonIcon>
+              </IonButton>
+            </IonButtons>
+          )}
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <AddVisitingSpeakerModal modalProps={modalProps}></AddVisitingSpeakerModal>
+            <AddVisitingSpeakerModal
+              modalProps={modalProps}
+            ></AddVisitingSpeakerModal>
             <VisitingSpeakers modalProps={modalProps}></VisitingSpeakers>
           </ErrorBoundary>
         </Suspense>

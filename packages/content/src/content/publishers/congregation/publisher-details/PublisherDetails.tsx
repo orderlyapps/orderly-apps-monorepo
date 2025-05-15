@@ -5,21 +5,30 @@ import { EditPublisherModal } from "./components/edit-publisher-modal/EditPublis
 import { Delete } from "./components/delete/Delete.js";
 import { MidweekParticipation } from "./components/midweek-participation/MidweekParticipation.js";
 import { ConfirmUpdateAlert } from "./components/confirm-update-alert/ConfirmUpdateAlert.js";
+import { useSettings } from "#shells/orderly/pages/settings/settings/SettingsPage.js";
 
 export const PublisherDetails = ({
   modalProps,
 }: {
   modalProps: ModalProps;
 }) => {
+  const { canEdit } = useSettings();
+
   return (
     <PublisherDataProvider>
-      <EditPublisherModal modalProps={modalProps} />
+      {canEdit && (
+        <>
+          <EditPublisherModal modalProps={modalProps} />
+        </>
+      )}
       <ConfirmUpdateAlert />
       <Name />
       <MidweekParticipation />
-      <Delete />
+      {canEdit && (
+        <>
+          <Delete />
+        </>
+      )}
     </PublisherDataProvider>
   );
 };
-
-

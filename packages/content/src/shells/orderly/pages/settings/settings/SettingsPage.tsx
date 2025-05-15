@@ -15,14 +15,35 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ThemeSelect } from "@amodeo/ui/ionic/theme-select/ThemeSelect";
 import { BuildTime } from "@amodeo/ui/ionic/build-time/BuildTime";
 import { CongregationSelect } from "@amodeo/ui/ionic/congregation-select/CongregationSelect";
+import { PasswordInput } from "@amodeo/ui/ionic/inputs/password";
+import { useLocalStorage } from "usehooks-ts";
+
+export const useSettings = () => {
+  const [{ password }, setSettings] = useLocalStorage("settings", {
+    password: "",
+  });
+
+  const handlePasswordChange = (password: string) => {
+    setSettings((state) => ({ ...state, password }));
+  };
+
+  return {
+    password,
+    handlePasswordChange,
+    hasAccess: password === "kingdom" || password === "damian",
+    canEdit: password === "damian",
+  };
+};
 
 export default function SettingsPage() {
+  const { password, handlePasswordChange, hasAccess } = useSettings();
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton></IonBackButton>
+            <IonBackButton />
           </IonButtons>
           <IonTitle>Settings</IonTitle>
         </IonToolbar>
@@ -37,15 +58,24 @@ export default function SettingsPage() {
               <div style={{ marginTop: "3rem" }}></div>
               {IS_ORDERLY_APP && (
                 <>
-                  <IonButton
-                    fill="outline"
-                    expand="block"
-                    href={`sms://?&body=${encodeURIComponent(`Here is the link to the Proclaimer app 🙂\n\nhttps://proclaimer.pages.dev`)}`}
-                    slot="end"
-                    className="ion-margin"
-                  >
-                    Share Proclaimer App
-                  </IonButton>
+                  <PasswordInput
+                    label="Password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                  />
+                  {hasAccess && (
+                    <>
+                      <IonButton
+                        fill="outline"
+                        expand="block"
+                        href={`sms://?&body=${encodeURIComponent(`Here is the link to the Proclaimer app 🙂\n\nhttps://proclaimer.pages.dev`)}`}
+                        slot="end"
+                        className="ion-margin"
+                      >
+                        Share Proclaimer App
+                      </IonButton>
+                    </>
+                  )}
                 </>
               )}
             </IonList>

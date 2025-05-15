@@ -11,6 +11,7 @@ import {
 } from "@ionic/react";
 import { Tables } from "@amodeo/data/supabase/supabase-types";
 import { orderlyPath } from "#shells/orderly/routes.js";
+import { useSettings } from "#shells/orderly/pages/settings/settings/SettingsPage.js";
 
 type WeekContentProps = {
   week_id: string;
@@ -23,6 +24,8 @@ export const WeekContent = ({
   week_id,
   weekendMeetingDetails,
 }: WeekContentProps): React.ReactElement => {
+  const { canEdit } = useSettings();
+
   return (
     <IonList slot="content">
       <IonItem lines="none">
@@ -87,7 +90,7 @@ export const WeekContent = ({
           </IonGrid>
         </IonLabel>
       </IonItem>
-      {IS_ORDERLY_APP && (
+      {IS_ORDERLY_APP && canEdit && (
         <>
           <IonItem>
             <IonButton

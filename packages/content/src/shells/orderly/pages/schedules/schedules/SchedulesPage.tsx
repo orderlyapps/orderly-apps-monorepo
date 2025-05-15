@@ -17,8 +17,12 @@ import {
 } from "@amodeo/ui/util/ionic/icons/icons";
 import { orderlyPath } from "#shells/orderly/routes.js";
 import { CardNav } from "@amodeo/ui/ionic/card-nav/CardNav";
+import { useSettings } from "../../settings/settings/SettingsPage.js";
+import { PasswordProtect } from "../../PasswordProtect.js";
 
 export default function SchedulesPage() {
+  const { hasAccess } = useSettings();
+
   return (
     <IonPage>
       <IonHeader>
@@ -32,22 +36,28 @@ export default function SchedulesPage() {
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            <CardNav
-              label="Midweek Meeting"
-              path={orderlyPath("midweek_meeting")}
-              icon={midweekMeeting}
-            />
-            <CardNav
-              label="Weekend Meeting"
-              path={orderlyPath("weekend_meeting")}
-              icon={weekendMeeting}
-            />
-            {IS_ORDERLY_APP && (
-              <CardNav
-                label="PDF Exports"
-                path={orderlyPath("pdf_exports")}
-                icon={downloadPDF}
-              />
+            {hasAccess ? (
+              <>
+                <CardNav
+                  label="Midweek Meeting"
+                  path={orderlyPath("midweek_meeting")}
+                  icon={midweekMeeting}
+                />
+                <CardNav
+                  label="Weekend Meeting"
+                  path={orderlyPath("weekend_meeting")}
+                  icon={weekendMeeting}
+                />
+                {IS_ORDERLY_APP && (
+                  <CardNav
+                    label="PDF Exports"
+                    path={orderlyPath("pdf_exports")}
+                    icon={downloadPDF}
+                  />
+                )}
+              </>
+            ) : (
+              <PasswordProtect />
             )}
           </ErrorBoundary>
         </Suspense>
