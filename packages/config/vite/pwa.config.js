@@ -17,6 +17,7 @@ export const vitePWAConfigBase = (_filename, dirname) => {
       define: {
         BUILD_TIME: new Date(),
         "import.meta.env.BUILD_TIME": JSON.stringify(new Date().getTime()),
+        IS_ORDERLY_APP: ENV.VITE_APP_NAME === "orderly",
       },
       publicDir: "public/" + ENV.VITE_APP_NAME,
       plugins: [

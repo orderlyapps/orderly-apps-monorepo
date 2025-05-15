@@ -9,9 +9,7 @@ import "@amodeo/util/css/orderly";
 export function Orderly({ useRegisterSW }: { useRegisterSW?: any }) {
   return (
     <ReactQueryProvider>
-      <TabsApp
-      pages={ORDERLY_ROUTES}
-      ></TabsApp>
+      <TabsApp pages={ORDERLY_ROUTES} />
       <UpdateNotification useRegisterSW={useRegisterSW} />
     </ReactQueryProvider>
   );

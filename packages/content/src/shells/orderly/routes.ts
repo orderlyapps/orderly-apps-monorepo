@@ -139,7 +139,7 @@ export const ORDERLY_PAGES = {
   // },
   publishers: {
     path: "/publishers",
-    tab: "Publishers",
+    tab: IS_ORDERLY_APP ? "Publishers" : undefined,
     icon: publishers,
     Component: lazy(
       () => import("./pages/publishers/publishers/PublishersPage.js")

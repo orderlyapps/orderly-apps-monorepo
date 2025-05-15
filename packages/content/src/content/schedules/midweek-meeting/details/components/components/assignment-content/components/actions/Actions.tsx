@@ -11,7 +11,7 @@ type MessageProps = {
 export const Actions = ({ assignmentData }: MessageProps) => {
   const isSchoolAssignment = assignmentData.assignment_id.startsWith("school");
   return (
-    <IonGrid className={assignmentData.time && "ion-margin-top"}>
+    <IonGrid>
       <IonRow>
         <IonCol>
           <Message assignmentData={assignmentData} />

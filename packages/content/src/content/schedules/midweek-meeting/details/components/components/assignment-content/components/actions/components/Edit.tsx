@@ -9,6 +9,11 @@ export const Edit = ({
   assignmentData: GetAssignmentDataReturnType;
 }) => {
   const { week_id } = useOrderlyPageParams("midweek_meeting_details");
+
+  if (!IS_ORDERLY_APP) {
+    return null;
+  }
+
   return (
     <>
       <IonButton

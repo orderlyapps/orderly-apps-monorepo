@@ -87,15 +87,19 @@ export const WeekContent = ({
           </IonGrid>
         </IonLabel>
       </IonItem>
-      <IonItem>
-        <IonButton
-          slot="end"
-          fill="clear"
-          routerLink={orderlyPath("weekend_meeting_details", { week_id })}
-        >
-          <strong>Edit</strong>
-        </IonButton>
-      </IonItem>
+      {IS_ORDERLY_APP && (
+        <>
+          <IonItem>
+            <IonButton
+              slot="end"
+              fill="clear"
+              routerLink={orderlyPath("weekend_meeting_details", { week_id })}
+            >
+              <strong>Edit</strong>
+            </IonButton>
+          </IonItem>
+        </>
+      )}
     </IonList>
   );
 };

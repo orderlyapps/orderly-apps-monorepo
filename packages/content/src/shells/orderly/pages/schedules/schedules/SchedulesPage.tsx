@@ -42,11 +42,13 @@ export default function SchedulesPage() {
               path={orderlyPath("weekend_meeting")}
               icon={weekendMeeting}
             />
-            <CardNav
-              label="PDF Exports"
-              path={orderlyPath("pdf_exports")}
-              icon={downloadPDF}
-            />
+            {IS_ORDERLY_APP && (
+              <CardNav
+                label="PDF Exports"
+                path={orderlyPath("pdf_exports")}
+                icon={downloadPDF}
+              />
+            )}
           </ErrorBoundary>
         </Suspense>
       </IonContent>

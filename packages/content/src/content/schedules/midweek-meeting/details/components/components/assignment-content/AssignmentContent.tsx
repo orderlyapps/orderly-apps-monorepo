@@ -11,7 +11,7 @@ export function AssignmentContent({
   assignmentData: AssigmentData;
 }) {
   return (
-    <IonGrid className={assignmentData.time && "ion-margin-top"}>
+    <IonGrid>
       <IonRow>
         <IonCol>
           <Assistant assignmentData={assignmentData} />
@@ -20,7 +20,11 @@ export function AssignmentContent({
 
           <Details assignmentData={assignmentData} />
 
-          <Actions assignmentData={assignmentData} />
+          {IS_ORDERLY_APP && (
+            <>
+              <Actions assignmentData={assignmentData} />
+            </>
+          )}
         </IonCol>
       </IonRow>
     </IonGrid>

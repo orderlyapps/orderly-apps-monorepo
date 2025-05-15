@@ -1,23 +1,30 @@
-/* @import "../util/utilities.css";
+@import "../util/utilities.css";
 @import "../ionic/jw-library.css";
 @import "../ionic/ion-action-sheet/jw-blue.css";
 @import "../ionic/ion-refresher/scroll-override.css";
-@import "../ionic/colors/jw_blue.css"; */
+@import "../ionic/colors/jw_blue.css";
+@import "../ionic/colors/jw_brown.css";
+@import "../ionic/colors/jw_slate.css";
+@import "../ionic/colors/jw_red.css";
+@import "../ionic/colors/jw_red_light.css";
+@import "../ionic/colors/jw_brown_light.css";
+@import "../ionic/colors/jw_slate_light.css";
+@import "../ionic/colors/jw_red_light.css";
 
 :root {
-  --ion-color-primary: #bf2f13;
-  --ion-color-primary-rgb: 191, 47, 19;
+  --ion-color-primary: #4a6da7;
+  --ion-color-primary-rgb: 74, 109, 167;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #a82911;
-  --ion-color-primary-tint: #c5442b;
+  --ion-color-primary-shade: #416093;
+  --ion-color-primary-tint: #5c7cb0;
 
-  --ion-color-secondary: #4a6da7;
-  --ion-color-secondary-rgb: 74, 109, 167;
+  --ion-color-secondary: #bf2f13;
+  --ion-color-secondary-rgb: 191, 47, 19;
   --ion-color-secondary-contrast: #ffffff;
   --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #416093;
-  --ion-color-secondary-tint: #5c7cb0;
+  --ion-color-secondary-shade: #a82911;
+  --ion-color-secondary-tint: #c5442b;
 
   --ion-color-tertiary: #9b6d17;
   --ion-color-tertiary-rgb: 155, 109, 23;

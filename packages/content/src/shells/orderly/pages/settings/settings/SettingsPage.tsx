@@ -3,10 +3,11 @@ import {
   IonButton,
   IonButtons,
   IonContent,
-  IonHeader, IonList,
+  IonHeader,
+  IonList,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonToolbar,
 } from "@ionic/react";
 import { Suspense } from "react";
 import { LoadingSpinner } from "@amodeo/ui/ionic/loading-spinner/LoadingSpinner";
@@ -34,15 +35,19 @@ export default function SettingsPage() {
               <BuildTime />
               <CongregationSelect />
               <div style={{ marginTop: "3rem" }}></div>
-              <IonButton
-                fill="outline"
-                expand="block"
-                href={`sms://?&body=${encodeURIComponent(`Here is the link to the Proclaimer app 🙂\n\nhttps://proclaimer.pages.dev`)}`}
-                slot="end"
-                className="ion-margin"
-              >
-                Share Proclaimer App
-              </IonButton>
+              {IS_ORDERLY_APP && (
+                <>
+                  <IonButton
+                    fill="outline"
+                    expand="block"
+                    href={`sms://?&body=${encodeURIComponent(`Here is the link to the Proclaimer app 🙂\n\nhttps://proclaimer.pages.dev`)}`}
+                    slot="end"
+                    className="ion-margin"
+                  >
+                    Share Proclaimer App
+                  </IonButton>
+                </>
+              )}
             </IonList>
           </ErrorBoundary>
         </Suspense>

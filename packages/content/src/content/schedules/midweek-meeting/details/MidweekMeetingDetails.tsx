@@ -9,7 +9,7 @@ export const MidweekMeetingDetails = () => {
   const { data } = useMidweekMeetingDetailsQuery({ week_id });
 
   if (!data?.[0]) {
-    return <InitMidweekMeetingData />;
+    return IS_ORDERLY_APP ? <InitMidweekMeetingData /> : null;
   }
 
   const weekData = data[0];
