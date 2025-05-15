@@ -2,11 +2,10 @@ import { IonAlert } from "@ionic/react";
 import { usePublisherData } from "../publisher-data-provider/PublisherDataProvider.js";
 
 export const ConfirmUpdateAlert = () => {
-
-  const { isConfirmUpdateAlertOpen, setState } = usePublisherData();
+  const { isConfirmUpdateAlertOpen, updateState } = usePublisherData();
   const handleUpdate = () => {
     console.log("Update");
-    setState((state) => ({ ...state, isConfirmUpdateAlertOpen: false }));
+    updateState({ isConfirmUpdateAlertOpen: false });
   };
 
   return (
