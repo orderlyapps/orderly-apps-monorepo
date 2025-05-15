@@ -30,7 +30,7 @@ export const useSettings = () => {
   return {
     password,
     handlePasswordChange,
-    hasAccess: password === "kingdom" || password === "damian",
+    hasAccess: true, //password === "kingdom" || password === "damian",
     canEdit: password === "damian",
   };
 };

@@ -2,10 +2,19 @@
   "name": "turbo-test",
   "private": true,
   "scripts": {
-    "build:orderly": "VITE_APP_NAME='orderly' dotenv -- turbo run build",
-    "build:proclaimer": "VITE_APP_NAME='proclaimer' dotenv -- turbo run build",
-    "dev:orderly": "VITE_APP_NAME='orderly' dotenv -- turbo run dev",
-    "dev:proclaimer": "VITE_APP_NAME='proclaimer' dotenv -- turbo run dev",
+    "dev:orderly:alpha": "VITE_APP_VERSION='alpha' VITE_APP_NAME='orderly' dotenv -- turbo run dev",
+    "dev:orderly:beta": "VITE_APP_VERSION='beta' VITE_APP_NAME='orderly' dotenv -- turbo run dev",
+    "dev:orderly:production": "VITE_APP_VERSION='production' VITE_APP_NAME='orderly' dotenv -- turbo run dev",
+    "dev:proclaimer:alpha": "VITE_APP_VERSION='alpha' VITE_APP_NAME='proclaimer' dotenv -- turbo run dev",
+    "dev:proclaimer:beta": "VITE_APP_VERSION='beta' VITE_APP_NAME='proclaimer' dotenv -- turbo run dev",
+    "dev:proclaimer:production": "VITE_APP_VERSION='production' VITE_APP_NAME='proclaimer' dotenv -- turbo run dev",
+
+    "build:orderly:alpha": "VITE_APP_VERSION='alpha' VITE_APP_NAME='orderly' dotenv -- turbo run build",
+    "build:orderly:beta": "VITE_APP_VERSION='beta' VITE_APP_NAME='orderly' dotenv -- turbo run build",
+    "build:orderly:production": "VITE_APP_VERSION='production' VITE_APP_NAME='orderly' dotenv -- turbo run build",
+    "build:proclaimer:alpha": "VITE_APP_VERSION='alpha' VITE_APP_NAME='proclaimer' dotenv -- turbo run build",
+    "build:proclaimer:beta": "VITE_APP_VERSION='beta' VITE_APP_NAME='proclaimer' dotenv -- turbo run build",
+    "build:proclaimer:production": "VITE_APP_VERSION='production' VITE_APP_NAME='proclaimer' dotenv -- turbo run build",
 
     "deploy:orderly:alpha": "VITE_APP_NAME='orderly' dotenv -- turbo run deploy:orderly:alpha",
     "deploy:orderly:beta": "VITE_APP_NAME='orderly' dotenv -- turbo run deploy:orderly:beta",

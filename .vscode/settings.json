@@ -18,7 +18,7 @@
               "args": {
                 "icon": "circle-filled",
                 "iconColor": "charts.green",
-                "text": " pnpm run dev:${input:app}",
+                "text": " pnpm run dev:${input:app}:${input:branch}",
                 "reveal": true,
                 "name": "dev",
                 "reuse": "newest",
@@ -30,6 +30,12 @@
                   "id": "app",
                   "description": "Which app to start?",
                   "options": ["orderly", "proclaimer"]
+                },
+                {
+                  "type": "pickString",
+                  "id": "branch",
+                  "description": "Which branch to start?",
+                  "options": ["alpha", "beta", "production"]
                 }
               ]
             }
@@ -92,7 +98,7 @@
               "args": {
                 "icon": "circle-filled",
                 "iconColor": "charts.green",
-                "text": " pnpm run build:${input:app}",
+                "text": " pnpm run build:${input:app}:${input:branch}",
                 "reveal": true,
                 "name": "build",
                 "reuse": "newest",
@@ -104,6 +110,13 @@
                   "id": "app",
                   "description": "Which app to build?",
                   "options": ["orderly", "proclaimer"]
+                },
+
+                {
+                  "type": "pickString",
+                  "id": "branch",
+                  "description": "Which branch to build?",
+                  "options": ["alpha", "beta", "production"]
                 }
               ]
             }
