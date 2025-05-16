@@ -137,15 +137,17 @@ export const ORDERLY_PAGES = {
   //   ),
   //   redirect: true,
   // },
-  publishers: {
-    path: "/publishers",
-    tab: IS_ORDERLY_APP ? "Publishers" : undefined,
-    icon: publishers,
-    Component: lazy(
-      () => import("./pages/publishers/publishers/PublishersPage.js")
-    ),
-    redirect: true,
-  },
+  ...(IS_ORDERLY_APP && {
+    publishers: {
+      path: "/publishers",
+      tab: IS_ORDERLY_APP ? "Publishers" : undefined,
+      icon: publishers,
+      Component: lazy(
+        () => import("./pages/publishers/publishers/PublishersPage.js")
+      ),
+      redirect: true,
+    },
+  }),
   ministry: {
     path: "/ministry",
     tab: "Ministry",
@@ -153,15 +155,17 @@ export const ORDERLY_PAGES = {
     Component: lazy(() => import("./pages/ministry/ministry/MinistryPage.js")),
     redirect: true,
   },
-  schedules: {
-    path: "/schedules",
-    tab: "Schedules",
-    icon: schedules,
-    Component: lazy(
-      () => import("./pages/schedules/schedules/SchedulesPage.js")
-    ),
-    redirect: true,
-  },
+  ...(IS_ORDERLY_APP && {
+    schedules: {
+      path: "/schedules",
+      tab: "Schedules",
+      icon: schedules,
+      Component: lazy(
+        () => import("./pages/schedules/schedules/SchedulesPage.js")
+      ),
+      redirect: true,
+    },
+  }),
 
   settings: {
     path: "/settings",

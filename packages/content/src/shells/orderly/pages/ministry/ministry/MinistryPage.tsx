@@ -39,19 +39,19 @@ export default function MinistryPage() {
                   label="Maps"
                   path={orderlyPath("map_list")}
                   icon={mapOutline}
-                  color="jw_brown"
+                  // color="jw_brown"
                 />
                 <CardNav
                   label="Not At Homes"
                   path={orderlyPath("not_at_homes")}
                   icon={locationOutline}
-                  color="jw_brown"
+                  // color="jw_brown"
                 />
                 <CardNav
                   label="Letter Writing"
                   path={orderlyPath("letter_writing")}
                   icon={notAtHomes}
-                  color="jw_brown"
+                  // color="jw_brown"
                 />
               </>
             ) : (
