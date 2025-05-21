@@ -1,5 +1,6 @@
 import {
   CheckboxCustomEvent,
+  IonButton,
   IonCheckbox,
   IonItem,
   IonList,
@@ -12,8 +13,8 @@ import {
 } from "@amodeo/data/supabase/supabase-types";
 
 export function EditMidweekParticipation() {
-  const { midweek_participation, detailsToEdit, updateState } =
-  usePublisherData();
+  const { midweek_participation, detailsToEdit, updateState, onSelect } =
+    usePublisherData();
 
   const searchString = midweek_participation?.join("");
 
@@ -52,6 +53,12 @@ export function EditMidweekParticipation() {
     }
   };
 
+  const handleSave = () => {
+    onSelect({
+      alertMessage: "Please confirm your changes",
+    });
+  };
+
   return (
     <IonList>
       {assignmentTypes.map(({ id, label }) => {
@@ -66,6 +73,9 @@ export function EditMidweekParticipation() {
           </IonItem>
         );
       })}
+      <IonButton expand="block" onClick={handleSave}>
+        Save
+      </IonButton>
     </IonList>
   );
 }

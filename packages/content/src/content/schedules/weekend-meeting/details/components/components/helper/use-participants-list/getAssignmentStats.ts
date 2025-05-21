@@ -43,7 +43,6 @@ export const getAssignmentStats = <T extends Record<string, number>>(
           )
         : null,
   };
-  console.log("🚀 ~ averageAssignments:", averageAssignments)
 
   const previousAssignment = getClosestNegativeNumberToZeroFromObject(
     filteredAssignments as any

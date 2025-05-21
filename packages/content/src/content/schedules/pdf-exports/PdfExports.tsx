@@ -19,8 +19,8 @@ export const PdfExports = () => {
     isPending,
     isError,
   } = useWeekendMeetingPdfQuery({
-    startDate: "2025-04-21",
-    endDate: "2025-06-30",
+    startDate: "2025-05-19",
+    endDate: "2025-08-25",
   });
   if (isPending) {
     return null;

@@ -23,12 +23,11 @@ const useProviderState = (publisher: PublisherDetails | undefined) => {
     ...initialState,
     ...publisher,
   });
-  const { openModal, modalID } = useSelectModal(EDIT_PUBLISHER_FORM_ID);
+  const { openModal, modalID, onSelect } = useSelectModal(EDIT_PUBLISHER_FORM_ID);
 
   const updateState = (
     newState: Partial<typeof initialState & PublisherDetails>
   ) => {
-    console.log("🚀 ~ useProviderState ~ newState:", newState)
     setState((state) => ({ ...state, ...newState }));
   };
 
@@ -46,6 +45,7 @@ const useProviderState = (publisher: PublisherDetails | undefined) => {
     updateState,
     openEditModal,
     modalID,
+    onSelect,
   };
 };
 
