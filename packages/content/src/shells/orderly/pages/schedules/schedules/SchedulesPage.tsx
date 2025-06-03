@@ -48,6 +48,11 @@ export default function SchedulesPage() {
                   path={orderlyPath("weekend_meeting")}
                   icon={weekendMeeting}
                 />
+                <CardNav
+                  label="Field Service"
+                  path={orderlyPath("field_service")}
+                  icon={weekendMeeting}
+                />
                 {IS_ORDERLY_APP && (
                   <CardNav
                     label="PDF Exports"
