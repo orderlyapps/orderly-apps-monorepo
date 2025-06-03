@@ -155,18 +155,15 @@ export const ORDERLY_PAGES = {
     Component: lazy(() => import("./pages/ministry/ministry/MinistryPage.js")),
     redirect: true,
   },
-  ...(IS_ORDERLY_APP && {
-    schedules: {
-      path: "/schedules",
-      tab: "Schedules",
-      icon: schedules,
-      Component: lazy(
-        () => import("./pages/schedules/schedules/SchedulesPage.js")
-      ),
-      redirect: true,
-    },
-  }),
-
+  schedules: {
+    path: "/schedules",
+    tab: "Schedules",
+    icon: schedules,
+    Component: lazy(
+      () => import("./pages/schedules/schedules/SchedulesPage.js")
+    ),
+    redirect: true,
+  },
   settings: {
     path: "/settings",
     tab: "Settings",

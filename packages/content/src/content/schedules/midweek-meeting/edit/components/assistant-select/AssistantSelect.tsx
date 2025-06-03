@@ -14,14 +14,14 @@ export function AssistantSelect({
       {assignmentData.assistant?.show && (
         <>
           <IonItem
-            onClick={() =>
+            onClick={() => {
               openSelectParticipantModal({
                 currentAssignment: assignmentData.assistant
                   ?.assignment_id as MidweekAssignments,
                 modalTitle: "Modal Data",
                 assignmentData,
-              })
-            }
+              });
+            }}
           >
             <IonLabel>
               <strong>{assignmentData.assistant?.label}</strong>

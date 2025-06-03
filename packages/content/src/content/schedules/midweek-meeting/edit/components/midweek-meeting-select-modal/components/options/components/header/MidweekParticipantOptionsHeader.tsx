@@ -22,7 +22,7 @@ export function MidweekParticipantOptionsHeader({
           participant.isCurrentAssignee
             ? "primary"
             : hasAssignment
-              ? "medium"
+              ? "jw_brown_light"
               : ""
         }
       >

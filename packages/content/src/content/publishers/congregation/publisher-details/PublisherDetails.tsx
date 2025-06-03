@@ -4,7 +4,6 @@ import { Name } from "./components/details/name/Name.js";
 import { EditPublisherModal } from "./components/edit-publisher-modal/EditPublisherModal.js";
 import { Delete } from "./components/delete/Delete.js";
 import { MidweekParticipation } from "./components/details/midweek-participation/MidweekParticipation.js";
-import { ConfirmUpdateAlert } from "./components/confirm-update-alert/ConfirmUpdateAlert.js";
 import { useSettings } from "#shells/orderly/pages/settings/settings/SettingsPage.js";
 
 export const PublisherDetails = ({
@@ -21,7 +20,6 @@ export const PublisherDetails = ({
           <EditPublisherModal modalProps={modalProps} />
         </>
       )}
-      <ConfirmUpdateAlert />
       <Name />
       <MidweekParticipation />
       {canEdit && (

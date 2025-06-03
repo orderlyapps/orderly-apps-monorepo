@@ -49,6 +49,7 @@ export default function MidweekMeetingDetailsPage() {
               routerLink={orderlyPath("midweek_meeting_details", {
                 week_id: previousWeek,
               })}
+              routerDirection="back"
             >
               Previous
             </IonButton>

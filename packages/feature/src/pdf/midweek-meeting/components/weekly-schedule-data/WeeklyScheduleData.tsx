@@ -33,7 +33,7 @@ export const WeeklyScheduleData = ({
   return (
     <View style={styles.container}>
       {assignment.map(({ meeting_data, assignments }) => {
-        if (meeting_data.mwb_week_date === "2025-06-02") {
+        if (meeting_data.mwb_week_date === "2025-07-21") {
           return (
             <View
               key={meeting_data.mwb_week_date}
@@ -64,7 +64,7 @@ export const WeeklyScheduleData = ({
                     marginBottom: 30,
                   }}
                 >
-                  Circuit Assembly with Branch Representative
+                  REGIONAL CONVENTION (Pure Worship)
                 </Text>
               </View>
             </View>

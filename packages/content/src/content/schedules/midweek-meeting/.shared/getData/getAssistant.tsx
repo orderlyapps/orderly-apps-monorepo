@@ -9,7 +9,7 @@ export const getAssignmentAssistant = ({
   if (assignment_id === "cbs_conductor") {
     const reader = `${participants["cbs_reader"]?.first_name || ""} ${participants["cbs_reader"]?.last_name || ""}`;
 
-    return { assistantsName: reader, show: true, label: "Reader: " };
+    return { assistantsName: reader, show: true, label: "Reader: ", assignment_id: "cbs_reader" };
   }
 
   if (assignment_id.includes("apply")) {
