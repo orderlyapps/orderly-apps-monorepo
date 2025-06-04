@@ -13,6 +13,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import {
   downloadPDF,
   midweekMeeting,
+  ministry,
   weekendMeeting,
 } from "@amodeo/ui/util/ionic/icons/icons";
 import { orderlyPath } from "#shells/orderly/routes.js";
@@ -51,7 +52,7 @@ export default function SchedulesPage() {
                 <CardNav
                   label="Field Service"
                   path={orderlyPath("field_service")}
-                  icon={weekendMeeting}
+                  icon={ministry}
                 />
                 {IS_ORDERLY_APP && (
                   <CardNav
