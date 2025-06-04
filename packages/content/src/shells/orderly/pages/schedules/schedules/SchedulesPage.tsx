@@ -20,7 +20,7 @@ import { orderlyPath } from "#shells/orderly/routes.js";
 import { CardNav } from "@amodeo/ui/ionic/card-nav/CardNav";
 import { useSettings } from "../../settings/settings/SettingsPage.js";
 import { PasswordProtect } from "../../PasswordProtect.js";
-import { sparklesOutline } from "ionicons/icons";
+import { sparklesOutline, volumeMediumOutline } from "ionicons/icons";
 
 export default function SchedulesPage() {
   const { hasAccess } = useSettings();
@@ -59,6 +59,11 @@ export default function SchedulesPage() {
                   label="Cleaning"
                   path={orderlyPath("cleaning")}
                   icon={sparklesOutline}
+                />
+                <CardNav
+                  label="Audio Video"
+                  path={orderlyPath("audio_video")}
+                  icon={volumeMediumOutline}
                 />
                 {IS_ORDERLY_APP && (
                   <CardNav

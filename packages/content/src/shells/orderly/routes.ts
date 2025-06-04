@@ -15,6 +15,13 @@ import {
 import { MidweekAssignments } from "@amodeo/data/supabase/supabase-types";
 
 export const ORDERLY_PAGES = {
+  audio_video:{
+    path: '/schedules/audio-video',
+    // params: { id: '' },
+    Component: lazy(
+      () => import('./pages/schedules/audio-video/AudioVideoPage.js')
+    ),
+  },
   cleaning:{
     path: '/schedules/cleaning',
     // params: { id: '' },
