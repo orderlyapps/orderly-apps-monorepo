@@ -65,7 +65,7 @@ const scheduleData: ScheduleDay[] = [
   {
     day: "Saturday",
     details: [
-      { time: "9:15 AM", location: "Kingdom Hall", conductor: "John Doe" },
+      { time: "9:15 AM", location: "Kingdom Hall", conductor: "Group Overseers" },
     ],
   },
 ];
