@@ -58,11 +58,6 @@ export const Cleaning = ({ children, modalProps }: CleaningProps) => {
   return (
     <div className="ion-padding">
       <IonCard>
-        <IonCardHeader>
-          <IonCardTitle className="ion-text-center">
-            Cleaning Schedule
-          </IonCardTitle>
-        </IonCardHeader>
         <IonCardContent>
           <IonList>
             <IonListHeader>
