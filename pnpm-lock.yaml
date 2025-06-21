@@ -243,6 +243,9 @@ importers:
       ionicons:
         specifier: ^7.4.0
         version: 7.4.0
+      jw-epub-parser:
+        specifier: ^3.37.2
+        version: 3.37.2
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -7089,6 +7092,14 @@ packages:
       pako: 1.0.11
       readable-stream: 2.3.8
       setimmediate: 1.0.5
+    dev: false
+
+  /jw-epub-parser@3.37.2:
+    resolution: {integrity: sha512-4hlKo0D+f8hej2LNvhS9QNn5zOV1oe/74D2NKFG/fqHx46Faf4pw/JFNZcnQzHUl7dOfGK7kdf8a+Ug87jjHGw==}
+    dependencies:
+      jszip: 3.10.1
+      node-html-parser: 7.0.1
+      path-browserify: 1.0.1
     dev: false
 
   /kdbush@4.0.2:

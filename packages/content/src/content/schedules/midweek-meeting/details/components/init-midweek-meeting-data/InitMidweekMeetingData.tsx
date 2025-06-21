@@ -12,7 +12,7 @@ import {
 } from "@ionic/react";
 import { pushOutline } from "ionicons/icons";
 import { useState } from "react";
-import { loadEPUB } from "@amodeo/feature/util/epub/browser/loadEpub";
+import { loadEPUB } from "jw-epub-parser";
 
 import { useUpsertMidweekMeetingDataMutation } from "@amodeo/data/react-query/midweek-meeting/use-upsert-midweek-meeting-data-mutation";
 // import { useUpsertWeekendMeetingDataMutation } from "@amodeo/data/react-query/weekend-meeting_2/use-upsert-weekend-meeting-data-mutation";
