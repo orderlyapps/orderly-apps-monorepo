@@ -24,8 +24,8 @@ import { NextWeekParticipants } from "./components/next-week-participants/NextWe
 
 type ChairmanOutlinePDFData = {
   data: {
-    thisWeek: Tables<"_view_midweek_meeting_schedule">;
-    nextWeek?: Tables<"_view_midweek_meeting_schedule">;
+    thisWeek: Tables<"_view_midweek_meeting_details">;
+    nextWeek?: Tables<"_view_midweek_meeting_details"> | null;
   };
 };
 
@@ -69,7 +69,7 @@ function ChairmanOutlinePDF({ data }: ChairmanOutlinePDFData) {
       <Page size={"A4"} style={styles.page}>
         <Title style={{ color: "black" }}>
           {formatWeekDate(thisWeek.week_id || "")} CHAIRMANS OUTLINE (
-          {formatName(thisWeek.midweek_assignments.chairman, {
+          {formatName(thisWeek.participants.chairman as any, {
             format: "first last",
           })}
           )
@@ -80,10 +80,10 @@ function ChairmanOutlinePDF({ data }: ChairmanOutlinePDFData) {
         <Section>
           <Row style={{ width: "100%" }}>
             <Part>
-              Song {thisWeek.midweek_meeting_data.mwb_song_first || ""} & Prayer
+              Song {thisWeek.meeting_data.mwb_song_first || ""} & Prayer
             </Part>
             <Participant>
-              {formatName(thisWeek.midweek_assignments.prayer_opening, {
+              {formatName(thisWeek.participants.prayer_opening as any, {
                 format: "first last",
               })}
             </Participant>
@@ -110,10 +110,10 @@ function ChairmanOutlinePDF({ data }: ChairmanOutlinePDFData) {
         <Section>
           <Row>
             <Part>
-              {thisWeek.midweek_meeting_data.mwb_tgw_talk_title || ""} (10 min)
+              {thisWeek.meeting_data.mwb_tgw_talk_title || ""} (10 min)
             </Part>
             <Participant>
-              {formatName(thisWeek.midweek_assignments.treasures)}
+              {formatName(thisWeek.participants.treasures as any)}
             </Participant>
             <Time>{time(1)}</Time>
           </Row>
@@ -122,10 +122,10 @@ function ChairmanOutlinePDF({ data }: ChairmanOutlinePDFData) {
         <Section>
           <Row>
             <Part>
-              {thisWeek.midweek_meeting_data.mwb_tgw_gems_title || ""} (10 min)
+              {thisWeek.meeting_data.mwb_tgw_gems_title || ""} (10 min)
             </Part>
             <Participant>
-              {formatName(thisWeek.midweek_assignments.gems)}
+              {formatName(thisWeek.participants.gems as any)}
             </Participant>
             <Time>{time(10)}</Time>
           </Row>
@@ -134,16 +134,16 @@ function ChairmanOutlinePDF({ data }: ChairmanOutlinePDFData) {
         <Section>
           <Row style={{ fontFamily: "Helvetica-Bold" }}>
             <Part>
-              {thisWeek.midweek_meeting_data.mwb_tgw_bread_title || ""} (4 min)
+              {thisWeek.meeting_data.mwb_tgw_bread_title || ""} (4 min)
             </Part>
             <Participant>
-              {formatName(thisWeek.midweek_assignments.school_1_bible_reading)}
+              {formatName(thisWeek.participants.school_1_bible_reading as any)}
             </Participant>
             <Time style={{ fontFamily: "Helvetica" }}>{time(10)}</Time>
           </Row>
           <Row>
             <Part style={{ paddingHorizontal: 13 }}>
-              {thisWeek.midweek_meeting_data.mwb_tgw_bread || ""}
+              {thisWeek.meeting_data.mwb_tgw_bread || ""}
             </Part>
           </Row>
         </Section>
@@ -172,11 +172,10 @@ function ChairmanOutlinePDF({ data }: ChairmanOutlinePDFData) {
 
         <Row style={{ paddingTop: 20 }}>
           <Part>
-            Song {thisWeek.midweek_meeting_data.mwb_song_conclude || ""} &
-            Prayer
+            Song {thisWeek.meeting_data.mwb_song_conclude || ""} & Prayer
           </Part>
           <Participant>
-            {formatName(thisWeek.midweek_assignments.prayer_closing, {
+            {formatName(thisWeek.participants.prayer_closing as any, {
               format: "first last",
             })}
           </Participant>
@@ -195,7 +194,7 @@ ChairmanOutlinePDF.Download = ({
 } & ChairmanOutlinePDFData) => (
   <PDFDownloadLink
     document={<ChairmanOutlinePDF data={data} />}
-    fileName={`Chairman's Outline ~ ${formatWeekDate(data.thisWeek.week_id as string)} ~ ${formatName(data.thisWeek.midweek_assignments.chairman, { format: "first last" })}.pdf`}
+    fileName={`Chairman's Outline ~ ${formatWeekDate(data.thisWeek.week_id as string)} ~ ${formatName(data.thisWeek.participants.chairman as any, { format: "first last" })}.pdf`}
   >
     {children || "Download"}
   </PDFDownloadLink>

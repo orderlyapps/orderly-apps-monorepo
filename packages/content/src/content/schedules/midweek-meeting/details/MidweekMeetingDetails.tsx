@@ -1,12 +1,20 @@
 import { useOrderlyPageParams } from "#shells/orderly/routes.js";
 import { useMidweekMeetingDetailsQuery } from "@amodeo/data/react-query/midweek-meeting/use-midweek-meeting-details-query";
 import { Assignment } from "./components/assignment/Assignment.js";
-import { IonAccordionGroup } from "@ionic/react";
+import { IonAccordionGroup, IonButton } from "@ionic/react";
 import { InitMidweekMeetingData } from "./components/init-midweek-meeting-data/InitMidweekMeetingData.js";
+import ChairmanOutline from "@amodeo/feature/pdf/chairman-outline/ChairmanOutline";
 
 export const MidweekMeetingDetails = () => {
   const { week_id } = useOrderlyPageParams("midweek_meeting_details");
   const { data } = useMidweekMeetingDetailsQuery({ week_id });
+  // Convert week_id to a date, add 7 days, and format back to week_id string
+  const nextWeekId = new Date(week_id);
+  nextWeekId.setDate(nextWeekId.getDate() + 7);
+  const nextWeek = nextWeekId.toISOString().split("T")[0];
+  const { data: nextWeekData } = useMidweekMeetingDetailsQuery({
+    week_id: nextWeek || "",
+  });
 
   if (!data?.[0]) {
     return IS_ORDERLY_APP ? <InitMidweekMeetingData /> : null;
@@ -14,7 +22,7 @@ export const MidweekMeetingDetails = () => {
 
   const weekData = data[0];
 
-  return ( 
+  return (
     <>
       <IonAccordionGroup>
         <Assignment assignment_id="chairman" data={weekData} />
@@ -37,6 +45,17 @@ export const MidweekMeetingDetails = () => {
         <Assignment assignment_id="cbs_conductor" data={weekData} />
         <Assignment assignment_id="prayer_closing" data={weekData} />
       </IonAccordionGroup>
+
+      <ChairmanOutline.Download
+        data={{
+          thisWeek: weekData,
+          nextWeek: nextWeekData ? nextWeekData[0] : null,
+        }}
+      >
+        <IonButton expand="full" className="ion-padding">
+          Chairman's Outline
+        </IonButton>
+      </ChairmanOutline.Download>
     </>
   );
 };

@@ -19,7 +19,7 @@ export function SchoolParts({
   details,
   school,
 }: {
-  details: Tables<"_view_midweek_meeting_schedule">;
+  details: Tables<"_view_midweek_meeting_details">;
   school: 1 | 2;
 }) {
   return (
@@ -27,31 +27,28 @@ export function SchoolParts({
       <Row style={styles.row}>
         {school === 1 && <Text style={styles.part}>Bible Reading </Text>}
         <Text style={styles.participant}>
-          {formatName(
-            details.midweek_assignments[`school_${school}_bible_reading`],
-            {
-              format: "first last",
-            }
-          )}
+          {formatName(details.participants[`school_${school}_bible_reading`] as any, {
+            format: "first last",
+          })}
         </Text>
       </Row>
 
       <Row style={styles.row}>
         {school === 1 && (
           <Text style={styles.part}>
-            {details.midweek_meeting_data.mwb_ayf_part1_type}
+            {details.meeting_data.mwb_ayf_part1_type}
           </Text>
         )}
         <Text style={styles.participant}>
-          {formatName(details.midweek_assignments[`school_${school}_apply_1`], {
+          {formatName(details.participants[`school_${school}_apply_1`] as any, {
             format: "first last",
           })}
         </Text>
-        {/* {details.midweek_meeting_data.mwb_ayf_part1_type !== "Talk" && (
+        {/* {details.meeting_data.mwb_ayf_part1_type !== "Talk" && (
           <Text style={styles.assistant}>
             (
             {formatName(
-              details.midweek_assignments[`school_${school}_assistant_1`],
+              details.participants[`school_${school}_assistant_1`],
               {
                 format: "first last",
               }
@@ -61,26 +58,23 @@ export function SchoolParts({
         )} */}
       </Row>
 
-      {parseInt(details.midweek_meeting_data.mwb_ayf_count || "") > 1 && (
+      {parseInt(details.meeting_data.mwb_ayf_count || "") > 1 && (
         <Row style={styles.row}>
           {school === 1 && (
             <Text style={styles.part}>
-              {details.midweek_meeting_data.mwb_ayf_part2_type}
+              {details.meeting_data.mwb_ayf_part2_type}
             </Text>
           )}
           <Text style={styles.participant}>
-            {formatName(
-              details.midweek_assignments[`school_${school}_apply_2`],
-              {
-                format: "first last",
-              }
-            )}
+            {formatName(details.participants[`school_${school}_apply_2`] as any, {
+              format: "first last",
+            })}
           </Text>
-          {/* {details.midweek_meeting_data.mwb_ayf_part2_type !== "Talk" && (
+          {/* {details.meeting_data.mwb_ayf_part2_type !== "Talk" && (
             <Text style={styles.assistant}>
               (
               {formatName(
-                details.midweek_assignments[`school_${school}_assistant_2`],
+                details.participants[`school_${school}_assistant_2`],
                 {
                   format: "first last",
                 }
@@ -91,26 +85,23 @@ export function SchoolParts({
         </Row>
       )}
 
-      {parseInt(details.midweek_meeting_data.mwb_ayf_count || "") > 2 && (
+      {parseInt(details.meeting_data.mwb_ayf_count || "") > 2 && (
         <Row style={styles.row}>
           {school === 1 && (
             <Text style={styles.part}>
-              {details.midweek_meeting_data.mwb_ayf_part3_type}
+              {details.meeting_data.mwb_ayf_part3_type}
             </Text>
           )}
           <Text style={styles.participant}>
-            {formatName(
-              details.midweek_assignments[`school_${school}_apply_3`],
-              {
-                format: "first last",
-              }
-            )}
+            {formatName(details.participants[`school_${school}_apply_3`] as any, {
+              format: "first last",
+            })}
           </Text>
-          {/* {details.midweek_meeting_data.mwb_ayf_part3_type !== "Talk" && (
+          {/* {details.meeting_data.mwb_ayf_part3_type !== "Talk" && (
             <Text style={styles.assistant}>
               (
               {formatName(
-                details.midweek_assignments[`school_${school}_assistant_3`],
+                details.participants[`school_${school}_assistant_3`],
                 {
                   format: "first last",
                 }
@@ -121,26 +112,26 @@ export function SchoolParts({
         </Row>
       )}
 
-      {parseInt(details.midweek_meeting_data.mwb_ayf_count || "") > 3 && (
+      {parseInt(details.meeting_data.mwb_ayf_count || "") > 3 && (
         <Row style={styles.row}>
           {school === 1 && (
             <Text style={styles.part}>
-              {details.midweek_meeting_data.mwb_ayf_part4_type}
+              {details.meeting_data.mwb_ayf_part4_type}
             </Text>
           )}
           <Text style={styles.participant}>
             {formatName(
-              details.midweek_assignments[`school_${school}_apply_4`],
+              details.participants[`school_${school}_apply_4`] as any,
               {
                 format: "first last",
               }
             )}
           </Text>
-          {/* {details.midweek_meeting_data.mwb_ayf_part4_type !== "Talk" && (
+          {/* {details.meeting_data.mwb_ayf_part4_type !== "Talk" && (
             <Text style={styles.assistant}>
               (
               {formatName(
-                details.midweek_assignments[`school_${school}_assistant_4`],
+                details.participants[`school_${school}_assistant_4`],
                 {
                   format: "first last",
                 }

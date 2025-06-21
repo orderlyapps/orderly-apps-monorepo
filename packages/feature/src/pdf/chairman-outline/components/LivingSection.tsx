@@ -13,7 +13,7 @@ export function LivingSection({
   time,
   setTime,
 }: {
-  data: Tables<"_view_midweek_meeting_schedule">;
+  data: Tables<"_view_midweek_meeting_details">;
   time: (minutes: number) => string;
   setTime: (minutes: number) => string;
 }) {
@@ -30,53 +30,49 @@ export function LivingSection({
         Living as Christians
       </Text>
       <Text style={{ paddingVertical: 4, paddingLeft: 13 }}>
-        Song {data.midweek_meeting_data.mwb_song_middle}
+        Song {data.meeting_data.mwb_song_middle}
       </Text>
       <Section>
         <Row>
           <Part>
-            {data.midweek_meeting_data.mwb_lc_part1_title || ""} (
-            {data.midweek_meeting_data.mwb_lc_part1_time || ""} min)
+            {data.meeting_data.mwb_lc_part1_title || ""} (
+            {data.meeting_data.mwb_lc_part1_time || ""} min)
           </Part>
           <Participant>
-            {formatName(data.midweek_assignments.living_1)}
+            {formatName(data.participants.living_1 as any)}
           </Participant>
           <Time>{setTime(52)}</Time>
         </Row>
       </Section>
 
-      {parseInt(data.midweek_meeting_data.mwb_lc_count || "") > 1 && (
+      {parseInt(data.meeting_data.mwb_lc_count || "") > 1 && (
         <Section>
           <Row>
             <Part>
-              {data.midweek_meeting_data.mwb_lc_part2_title || ""} (
-              {data.midweek_meeting_data.mwb_lc_part2_time || ""} min)
+              {data.meeting_data.mwb_lc_part2_title || ""} (
+              {data.meeting_data.mwb_lc_part2_time || ""} min)
             </Part>
             <Participant>
-              {formatName(data.midweek_assignments.living_2)}
+              {formatName(data.participants.living_2 as any)}
             </Participant>
             <Time>
-              {time(
-                parseInt(data.midweek_meeting_data.mwb_lc_part1_time || "")
-              )}
+              {time(parseInt(data.meeting_data.mwb_lc_part1_time || ""))}
             </Time>
           </Row>
         </Section>
       )}
       <Section>
         <Row>
-          <Part>
-            {data.midweek_meeting_data.mwb_lc_cbs_title || ""} (30 min)
-          </Part>
+          <Part>{data.meeting_data.mwb_lc_cbs_title || ""} (30 min)</Part>
           <Participant>
-            {formatName(data.midweek_assignments.cbs_conductor)}
+            {formatName(data.participants.cbs_conductor as any)}
           </Participant>
           <Time>{setTime(67)}</Time>
         </Row>
         <Row>
           <Part style={{ textAlign: "right", color: "grey" }}>Reader:</Part>
           <Participant style={{ color: "grey" }}>
-            {formatName(data.midweek_assignments.cbs_reader)}
+            {formatName(data.participants.cbs_reader as any)}
           </Participant>
         </Row>
       </Section>

@@ -8,7 +8,7 @@ export function NextWeekParticipants({
   nextWeekDetails: details,
   style,
 }: {
-  nextWeekDetails: Tables<"_view_midweek_meeting_schedule">;
+  nextWeekDetails: Tables<"_view_midweek_meeting_details">;
   style?: ViewProps["style"];
 }) {
   return (
@@ -25,7 +25,7 @@ export function NextWeekParticipants({
           Next Weeks Assignments
         </Text>
 
-        {details.midweek_assignments.counselor_2 && (
+        {details.participants.counselor_2 as any && (
           <View style={{ paddingTop: 3 }}>
             <Row>
               <Text
