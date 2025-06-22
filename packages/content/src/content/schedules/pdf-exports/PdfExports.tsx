@@ -19,8 +19,8 @@ export const PdfExports = () => {
     isPending,
     isError,
   } = useWeekendMeetingPdfQuery({
-    startDate: "2025-05-19",
-    endDate: "2025-08-25",
+    startDate: "2025-07-01",
+    endDate: "2025-09-22",
   });
   if (isPending) {
     return null;
@@ -31,20 +31,20 @@ export const PdfExports = () => {
   return (
     <div className="full centered">
       <div>
-        {weekend_meeting_pdf && (
-          <WeekendMeetingPDF.Download data={weekend_meeting_pdf}>
-            <IonButton>Weekend Meeting</IonButton>
-          </WeekendMeetingPDF.Download>
-        )}
-      </div>
-      <br />
-      <div>
         {midweek_meeting_data && midweek_assignments && (
           <MidweekMeetingPDF.Download
             data={{ midweek_meeting_data, midweek_assignments }}
           >
             <IonButton>Midweek Meeting</IonButton>
           </MidweekMeetingPDF.Download>
+        )}
+      </div>
+      <br />
+      <div>
+        {weekend_meeting_pdf && (
+          <WeekendMeetingPDF.Download data={weekend_meeting_pdf}>
+            <IonButton>Weekend Meeting</IonButton>
+          </WeekendMeetingPDF.Download>
         )}
       </div>
     </div>

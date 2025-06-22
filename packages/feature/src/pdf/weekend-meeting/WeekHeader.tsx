@@ -40,6 +40,9 @@ export const WeekHeader = ({
       )}
       <Row style={styles.row}>
         <Text style={styles.date}>{formatWeekDate(data.week_id)}</Text>
+        {data.week_id === "2025-09-22" && (
+          <Text style={styles.theme}>SPECIAL TALK: </Text>
+        )}
         <Text style={styles.theme}>{data.outline_theme}</Text>
         <Text style={styles.id}>{data.outline_id}</Text>
       </Row>
