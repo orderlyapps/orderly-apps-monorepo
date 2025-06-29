@@ -65,7 +65,11 @@ const scheduleData: ScheduleDay[] = [
   {
     day: "Saturday",
     details: [
-      { time: "9:15 AM", location: "Kingdom Hall", conductor: "Group Overseers" },
+      {
+        time: "9:15 AM",
+        location: "Kingdom Hall",
+        conductor: "Group Overseers",
+      },
     ],
   },
 ];
@@ -140,8 +144,106 @@ export const FieldService = ({
           </IonCardContent>
         </IonCard>
       ))}
+      <IonCard className="ion-margin-bottom">
+        <IonCardHeader>
+          <IonCardTitle>Sunday</IonCardTitle>
+        </IonCardHeader>
 
-      {children}
+        <IonCardContent>
+          <IonList>
+            <IonItem>
+              <IonGrid>
+                <IonRow>
+                  <IonCol size="12">
+                    <IonChip color="primary">
+                      <IonIcon icon={timeOutline} />
+                      <IonLabel>9:15 AM</IonLabel>
+                    </IonChip>
+                  </IonCol>
+                </IonRow>
+                <IonRow>
+                  <IonCol size="12">
+                    <IonItem lines="none" className="ion-no-padding">
+                      <IonIcon
+                        icon={locationOutline}
+                        slot="start"
+                        color="medium"
+                      />
+                      <IonLabel>Kingdom Hall</IonLabel>
+                    </IonItem>
+                  </IonCol>
+                </IonRow>
+
+                {[
+                  {
+                    date: "Jul 6",
+                    detail: "Rural Witnessing",
+                  },
+                  {
+                    date: "Jul 13",
+                    detail: "Group 2",
+                  },
+                  {
+                    date: "Jul 20",
+                    detail: "Group 3",
+                  },
+                  {
+                    date: "Jul 27",
+                    detail: "Regional Convention",
+                  },
+                  {
+                    date: "Aug 3",
+                    detail: "Rural Witnessing",
+                  },
+                  {
+                    date: "Aug 10",
+                    detail: "Group 4",
+                  },
+                  {
+                    date: "Aug 17",
+                    detail: "Group 5",
+                  },
+                  {
+                    date: "Aug 24",
+                    detail: "Group 6",
+                  },
+                  {
+                    date: "Aug 31",
+                    detail: "Group 1",
+                  },
+                  {
+                    date: "Sep 7",
+                    detail: "Rural Witnessing",
+                  },
+                  {
+                    date: "Sep 14",
+                    detail: "Group 2",
+                  },
+                  {
+                    date: "Sep 21",
+                    detail: "Group 3",
+                  },
+                  {
+                    date: "Sep 28",
+                    detail: "Group 4",
+                  },
+                ].map((item, index) => (
+                  <IonRow key={index}>
+                    <IonCol size="12">
+                      <IonItem lines="none" className="ion-no-padding">
+                        <IonLabel>
+                          <strong>{item.date}</strong>
+                        </IonLabel>
+                        <IonText>{item.detail}</IonText>
+                      </IonItem>
+                    </IonCol>
+                  </IonRow>
+                ))}
+              </IonGrid>
+            </IonItem>
+          </IonList>
+        </IonCardContent>
+      </IonCard>
     </div>
   );
 };
