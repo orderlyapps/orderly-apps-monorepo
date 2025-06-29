@@ -44,7 +44,7 @@ export const WeekHeader = ({
           <Text style={styles.theme}>SPECIAL TALK: </Text>
         )}
         <Text style={styles.theme}>{data.outline_theme}</Text>
-        <Text style={styles.id}>{data.outline_id}</Text>
+        <Text style={styles.id}>{data.outline_id ?? " "}</Text>
       </Row>
     </>
   );

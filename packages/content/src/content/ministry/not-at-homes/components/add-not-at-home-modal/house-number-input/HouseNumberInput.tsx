@@ -11,7 +11,7 @@ export function HouseNumberInput() {
         <IonInput
           className="ion-text-right ion-margin-end ion-padding-end"
           onIonInput={useStore.getState().handleHouseNumberInput}
-          disabled={addStreet?.id === undefined}
+          // disabled={addStreet?.id === undefined}
           value={addHouseNumber}
         >
           <IonLabel slot="label">

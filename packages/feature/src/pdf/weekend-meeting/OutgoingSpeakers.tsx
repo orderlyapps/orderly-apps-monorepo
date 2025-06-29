@@ -22,7 +22,7 @@ export const OutgoingSpeakers = ({ data }: OutgoingSpeakersData) => {
           return (
             <Text
               key={item.congregation}
-            >{`${item.first_name} ${item.last_name} (${item.congregation}) ${item.outline_id}`}</Text>
+            >{`${item.first_name} ${item.last_name} (${item.congregation}) ${item.outline_id || " "}`}</Text>
           );
         })}
     </View>

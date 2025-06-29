@@ -6,7 +6,10 @@ type NotAtHome = {
   units?: any;
 } & NotAtHomes[number];
 
-export const notAtHomesToFeatureCollection = (notAtHomes: NotAtHomes) => {
+export const notAtHomesToFeatureCollection = (
+  notAtHomes: NotAtHomes,
+  doNotCall: NotAtHomes
+) => {
   const createFeature = ({
     longitude,
     latitude,
@@ -57,29 +60,35 @@ export const notAtHomesToFeatureCollection = (notAtHomes: NotAtHomes) => {
   }
 
   const returnHousesFeatures = notAtHomes
-    .filter((item : any) => !item.returned && !item.unit_number)
+    .filter((item: any) => !item.returned && !item.unit_number)
     .map(createFeature)
     .filter(
-      (feature : any): feature is NonNullable<ReturnType<typeof createFeature>> =>
+      (
+        feature: any
+      ): feature is NonNullable<ReturnType<typeof createFeature>> =>
         feature !== null
     );
 
   const letterHousesFeatures = notAtHomes
-    .filter((item : any) => item.returned && !item.unit_number)
+    .filter((item: any) => item.returned && !item.unit_number)
     .map(createFeature)
     .filter(
-      (feature : any): feature is NonNullable<ReturnType<typeof createFeature>> =>
+      (
+        feature: any
+      ): feature is NonNullable<ReturnType<typeof createFeature>> =>
         feature !== null
     );
 
   const returnUnitsFeatures = Object.values(
     notAtHomes
-      .filter((item : any) => item.unit_number)
+      .filter((item: any) => item.unit_number)
       .reduce(
         mergeUnits,
         {} as Record<string, NonNullable<ReturnType<typeof createFeature>>>
       )
   );
+
+  const doNotCallAddresses = doNotCall.map(createFeature);
 
   return {
     returnAddresses: {
@@ -89,6 +98,10 @@ export const notAtHomesToFeatureCollection = (notAtHomes: NotAtHomes) => {
     writeAddresses: {
       type: "FeatureCollection" as const,
       features: [...letterHousesFeatures],
+    },
+    doNotCallAddresses: {
+      type: "FeatureCollection" as const,
+      features: [...doNotCallAddresses],
     },
   };
 };

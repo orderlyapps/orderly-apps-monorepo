@@ -8,6 +8,8 @@ import { handleMapClick } from "@amodeo/feature/util/maps/maplibre/not-at-homes/
 import { WriteHouseAddressesSource } from "@amodeo/feature/maps/maplibre/not-at-homes/sources/WriteAddressesSource";
 import { UpdateNotAtHomeActionSheet } from "./components/update-not-at-homes-action-sheet/UpdateNotAtHomeActionSheet.js";
 import { UpdateUnitsModal } from "./components/modify-units-modal/ModifyUnitsModal.js";
+import { useDoNotCallQuery } from "@amodeo/data/react-query/not-at-homes/use-do-not-call-query";
+import { DNCAddressesSource } from "@amodeo/feature/maps/maplibre/not-at-homes/sources/DNCAddressesSource";
 
 export const NotAtHomes = ({
   modalProps,
@@ -15,6 +17,7 @@ export const NotAtHomes = ({
   modalProps: ReturnType<typeof useCardModal>["modalProps"];
 }) => {
   const { data: notAtHomes } = useNotAtHomesQuery();
+  const { data: doNotCall } = useDoNotCallQuery();
 
   if (!notAtHomes) {
     return null;
@@ -23,14 +26,16 @@ export const NotAtHomes = ({
   const {
     writeAddresses,
     returnAddresses,
+    doNotCallAddresses,
   }: ReturnType<typeof notAtHomesToFeatureCollection> =
-    notAtHomesToFeatureCollection(notAtHomes);
+    notAtHomesToFeatureCollection(notAtHomes, doNotCall);
 
   return (
     <MapLibre
       geolocateControl
       onClick={(event, mapRef) => handleMapClick(event, mapRef)}
     >
+      <DNCAddressesSource data={doNotCallAddresses} />
       <WriteHouseAddressesSource data={writeAddresses} />
       <ReturnAndWriteUnitAddressesSource data={returnAddresses} />
       <AddNotAtHomeModal modalProps={modalProps}></AddNotAtHomeModal>

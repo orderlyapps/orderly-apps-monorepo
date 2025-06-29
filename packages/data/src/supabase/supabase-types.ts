@@ -151,6 +151,17 @@ export type Database = MergeDeep<
             center: [number, number];
           };
         };
+        do_not_call: {
+          Row: {
+            location: [number, number];
+          };
+          Insert: {
+            location: [number, number];
+          };
+          Update: {
+            location: [number, number];
+          };
+        };
         not_at_homes: {
           Row: {
             location: [number, number];

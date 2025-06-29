@@ -5,6 +5,7 @@ import { Assignment } from "./Assignments.js";
 import { Row } from "../util/Row.js";
 import { Column } from "../util/Column.js";
 import { OutgoingSpeakers } from "./OutgoingSpeakers.js";
+import { Fragment } from "react/jsx-runtime";
 
 const styles = StyleSheet.create({
   section: { flexGrow: 1 },
@@ -16,9 +17,9 @@ export const Schedule = ({ data }: WeekendMeetingPDFData) => (
     {data &&
       data.map((item: WeekendMeetingPDFData["data"][number]) => {
         return (
-          <>
+          <Fragment key={item.week_id}>
             {item.week_id === "2025-09-15" ? (
-              <View key={item.week_id} style={styles.weekSection}>
+              <View key={item.week_id + "_special"} style={styles.weekSection}>
                 <WeekHeader
                   key={item.week_id}
                   data={{
@@ -49,7 +50,7 @@ export const Schedule = ({ data }: WeekendMeetingPDFData) => (
             ) : (
               <>
                 {item.week_id === "2025-07-28" && (
-                  <View key={item.week_id} style={styles.weekSection}>
+                  <View key={item.week_id + "_special"} style={styles.weekSection}>
                     <WeekHeader
                       key={item.week_id}
                       data={{
@@ -119,7 +120,7 @@ export const Schedule = ({ data }: WeekendMeetingPDFData) => (
                 </View>
               </>
             )}
-          </>
+          </Fragment>
         );
       })}
   </View>

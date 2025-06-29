@@ -51,6 +51,107 @@ export type Database = {
         }
         Relationships: []
       }
+      do_not_call: {
+        Row: {
+          accuracy: string
+          confidence: string
+          congregation_id: string
+          created_at: string
+          created_by: string
+          house_number: string
+          id: string
+          location: unknown
+          match_data: Json
+          returned: boolean
+          street: string
+          suburb: string
+          unit_number: string | null
+          written: boolean
+        }
+        Insert: {
+          accuracy: string
+          confidence: string
+          congregation_id: string
+          created_at?: string
+          created_by?: string
+          house_number: string
+          id?: string
+          location: unknown
+          match_data: Json
+          returned?: boolean
+          street: string
+          suburb: string
+          unit_number?: string | null
+          written?: boolean
+        }
+        Update: {
+          accuracy?: string
+          confidence?: string
+          congregation_id?: string
+          created_at?: string
+          created_by?: string
+          house_number?: string
+          id?: string
+          location?: unknown
+          match_data?: Json
+          returned?: boolean
+          street?: string
+          suburb?: string
+          unit_number?: string | null
+          written?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "do_not_call_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_available_speakers"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "do_not_call_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_midweek_meeting_details"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "do_not_call_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_midweek_meeting_details_new"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "do_not_call_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_midweek_meeting_schedule"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "do_not_call_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_midweek_meeting_schedule_new"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "do_not_call_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "_view_outgoing_speakers"
+            referencedColumns: ["congregation_id"]
+          },
+          {
+            foreignKeyName: "do_not_call_congregation_id_fkey"
+            columns: ["congregation_id"]
+            isOneToOne: false
+            referencedRelation: "congregations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       midweek_assignments: {
         Row: {
           assignment: Database["public"]["Enums"]["midweek_assignment"]
@@ -1997,6 +2098,25 @@ export type Database = {
       }
     }
     Functions: {
+      get_do_not_call_with_coordinates: {
+        Args: { p_congregation_id: string }
+        Returns: {
+          accuracy: string
+          confidence: string
+          congregation_id: string
+          created_at: string
+          created_by: string
+          house_number: string
+          id: string
+          location: unknown
+          match_data: Json
+          returned: boolean
+          street: string
+          suburb: string
+          unit_number: string | null
+          written: boolean
+        }[]
+      }
       get_not_at_homes_with_coordinates: {
         Args: { p_congregation_id: string }
         Returns: {
