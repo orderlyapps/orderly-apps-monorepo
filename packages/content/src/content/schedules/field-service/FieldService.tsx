@@ -67,7 +67,7 @@ const scheduleData: ScheduleDay[] = [
     details: [
       {
         time: "9:15 AM",
-        location: "Kingdom Hall",
+        location: "",
         conductor: "Group Overseers",
       },
     ],
