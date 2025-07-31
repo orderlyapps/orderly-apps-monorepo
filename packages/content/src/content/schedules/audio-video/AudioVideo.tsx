@@ -27,15 +27,47 @@ import {
   homeOutline,
 } from "ionicons/icons";
 
+type Assignee =
+  | "Darcy Bray"
+  | "Damian Amodeo"
+  | "Kadri Demiri-Smith"
+  | "John Bray"
+  | "Matt Taylor"
+  | "Anton Arets"
+  | "Tom Bennies"
+  | "Nigel Vincent"
+  | "Simeon Bray"
+  | "Denis McTackett"
+  | "Tim Stott"
+  | "Igor DeSouza"
+  | "Blake Richmond"
+  | "Phil Woodhall"
+  | "Steve Willder"
+  | "Ron Zapp"
+  | "Denis McTackett"
+  | "Stephen Gurr"
+  | "Lauchlan Davis"
+  | "Tristan Roberts"
+  | "Mark Blackwell"
+  | "Callum McDonald"
+  | "Rob Amos"
+  | "Eric Graves"
+  | "Ben Cizzio"
+  | "Philip Woodhall"
+  | "Matt Taylor"
+  | "Jade Mitchell"
+  | "Glenn Langham"
+  | "";
+
 type MeetingAssignment = {
-  audio: string;
-  video: string;
-  zoom: string;
-  microphone1: string;
-  microphone2: string;
-  stage: string;
-  entrance: string;
-  auditorium: string;
+  audio: Assignee;
+  video: Assignee;
+  zoom: Assignee;
+  microphone1: Assignee;
+  microphone2: Assignee;
+  stage: Assignee;
+  entrance: Assignee;
+  auditorium: Assignee;
 };
 
 type ScheduleWeek = {
@@ -46,38 +78,38 @@ type ScheduleWeek = {
 
 const scheduleData: ScheduleWeek[] = [
   {
-    week: "Jun 30-Jul 6",
+    week: "Jul 28-Aug 3",
     midweek: {
-      audio: "Darcy Bray",
-      video: "Damian Amodeo",
-      stage: "Kadri Demiri-Smith",
-      zoom: "John Bray",
-      microphone1: "Matt Taylor",
-      microphone2: "Anton Arets",
-      entrance: "Tom Bennies",
-      auditorium: "Nigel Vincent",
+      audio: "",
+      video: "",
+      stage: "",
+      zoom: "",
+      microphone1: "",
+      microphone2: "",
+      entrance: "",
+      auditorium: "",
     },
     weekend: {
       audio: "Simeon Bray",
       video: "Denis McTackett",
       stage: "Tim Stott",
       zoom: "Igor DeSouza",
-      microphone1: "Blake Richmond",
+      microphone1: "Matt Taylor",
       microphone2: "Phil Woodhall",
-      entrance: "Steve Willder",
+      entrance: "Tristan Roberts",
       auditorium: "Ron Zapp",
     },
   },
   {
-    week: "Jul 7-13",
+    week: "Aug 4 - 10",
     midweek: {
-      audio: "Phil Woodhall",
+      audio: "Callum McDonald",
       video: "Igor DeSouza",
       stage: "Jade Mitchell",
-      zoom: "Ron Zapp",
+      zoom: "John Bray",
       microphone1: "Stephen Gurr",
       microphone2: "Tim Stott",
-      entrance: "Darcy Bray",
+      entrance: "Ben Cizzio",
       auditorium: "Rob Amos",
     },
     weekend: {
@@ -85,23 +117,23 @@ const scheduleData: ScheduleWeek[] = [
       video: "Darcy Bray",
       stage: "Anton Arets",
       zoom: "Callum McDonald",
-      microphone1: "Lauchlan Davis",
-      microphone2: "Tristan Roberts",
+      microphone1: "Blake Richmond",
+      microphone2: "Tom Bennies",
       entrance: "Mark Blackwell",
       auditorium: "John Bray",
     },
   },
   {
-    week: "Jul 14-Jul 20",
+    week: "Aug 11 - 17",
     midweek: {
-      audio: "Tim Stott",
+      audio: "John Bray",
       video: "Simeon Bray",
       stage: "Darcy Bray",
       zoom: "Glenn Langham",
-      microphone1: "Callum McDonald",
+      microphone1: "Lauchlan Davis",
       microphone2: "Igor DeSouza",
-      entrance: "Denis McTackett",
-      auditorium: "Eric Graves",
+      entrance: "Philip Woodhall",
+      auditorium: "Nigel Vincent",
     },
     weekend: {
       audio: "Igor DeSouza",
@@ -109,55 +141,55 @@ const scheduleData: ScheduleWeek[] = [
       stage: "Simeon Bray",
       zoom: "Damian Amodeo",
       microphone1: "Kadri Demiri-Smith",
-      microphone2: "Matt Taylor",
-      entrance: "Ben Cizzio",
+      microphone2: "Denis McTackett",
+      entrance: "Glenn Langham",
       auditorium: "Philip Woodhall",
     },
   },
   {
-    week: "Jul 21-Jul 27",
+    week: "Aug 18 - 24",
     midweek: {
-      audio: "",
-      video: "",
-      stage: "",
-      zoom: "",
-      microphone1: "",
-      microphone2: "",
-      entrance: "",
-      auditorium: "",
+      audio: "Darcy Bray",
+      video: "Ben Cizzio",
+      stage: "Kadri Demiri-Smith",
+      zoom: "Simeon Bray",
+      microphone1: "Jade Mitchell",
+      microphone2: "Matt Taylor",
+      entrance: "John Bray",
+      auditorium: "Eric Graves",
     },
     weekend: {
-      audio: "",
-      video: "",
-      stage: "",
-      zoom: "",
-      microphone1: "",
-      microphone2: "",
-      entrance: "",
-      auditorium: "",
+      audio: "Igor DeSouza",
+      video: "Damian Amodeo",
+      stage: "Stephen Gurr",
+      zoom: "Steve Willder",
+      microphone1: "Tim Stott",
+      microphone2: "Callum McDonald",
+      entrance: "Darcy Bray",
+      auditorium: "Tristan Roberts",
     },
   },
   {
-    week: "Jul 28-Aug 3",
+    week: "Aug 25 - 31",
     midweek: {
       audio: "Anton Arets",
-      video: "Ben Cizzio",
-      stage: "Stephen Gurr",
-      zoom: "Steve Willder",
+      video: "Simeon Bray",
+      stage: "Callum McDonald",
+      zoom: "Darcy Bray",
       microphone1: "Jade Mitchell",
       microphone2: "Blake Richmond",
-      entrance: "John Bray",
+      entrance: "Damian Amodeo",
       auditorium: "Glenn Langham",
     },
     weekend: {
-      audio: "",
-      video: "",
-      stage: "",
-      zoom: "",
-      microphone1: "",
-      microphone2: "",
-      entrance: "",
-      auditorium: "",
+      audio: "Simeon Bray",
+      video: "Tristan Roberts",
+      stage: "Igor DeSouza",
+      zoom: "Steve Willder",
+      microphone1: "Anton Arets",
+      microphone2: "Lauchlan Davis",
+      entrance: "Tom Bennies",
+      auditorium: "Mark Blackwell",
     },
   },
 ];

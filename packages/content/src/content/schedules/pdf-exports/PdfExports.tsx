@@ -7,12 +7,12 @@ import { IonButton } from "@ionic/react";
 
 export const PdfExports = () => {
   const { data: midweek_meeting_data } = useMidweekMeetingDataQuery({
-    startDate: "2025-07-01",
-    endDate: "2025-09-01",
+    startDate: "2025-11-01",
+    endDate: "2025-12-31",
   });
   const { data: midweek_assignments } = useMidweekAssignmentsQuery({
-    startDate: "2025-07-01",
-    endDate: "2025-09-01",
+    startDate: "2025-11-01",
+    endDate: "2025-12-31",
   });
   const {
     data: weekend_meeting_pdf,
