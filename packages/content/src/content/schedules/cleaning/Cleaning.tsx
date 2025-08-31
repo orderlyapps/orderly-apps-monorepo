@@ -63,6 +63,31 @@ const cleaningScheduleData: CleaningScheduleItem[] = [
     sanitation: "Group 6",
     cleaning: "N/A",
   },
+  {
+    week: "Sep 1-Sep 7",
+    sanitation: "Group 1",
+    cleaning: "Group 4",
+  },
+  {
+    week: "Sep 8-Sep 14",
+    sanitation: "Group 2",
+    cleaning: "Group 5",
+  },
+  {
+    week: "Sep 15-Sep 21",
+    sanitation: "Group 3",
+    cleaning: "Group 6",
+  },
+  {
+    week: "Sep 22-Sep 28",
+    sanitation: "Group 4",
+    cleaning: "Group 1",
+  },
+  {
+    week: "Sep 29-Oct 5",
+    sanitation: "Group 5",
+    cleaning: "Group 2",
+  },
 ];
 
 type CleaningProps = {
@@ -84,25 +109,29 @@ export const Cleaning = ({ children, modalProps }: CleaningProps) => {
                 </IonRow>
               </IonGrid>
             </IonListHeader>
-            {cleaningScheduleData.map((item, index) => (
-              <IonItem key={index}>
-                <IonGrid>
-                  <IonRow>
-                    <IonCol size="12">
-                      <IonLabel>
-                        <strong>{item.week}</strong>
-                      </IonLabel>
-                    </IonCol>
-                    <IonCol size="6">
-                      <IonLabel>{item.sanitation}</IonLabel>
-                    </IonCol>
-                    <IonCol size="6">
-                      <IonLabel>{item.cleaning}</IonLabel>
-                    </IonCol>
-                  </IonRow>
-                </IonGrid>
-              </IonItem>
-            ))}
+            {cleaningScheduleData.map((item, index) => {
+              if (index < 9) return null;
+
+              return (
+                <IonItem key={index}>
+                  <IonGrid>
+                    <IonRow>
+                      <IonCol size="12">
+                        <IonLabel>
+                          <strong>{item.week}</strong>
+                        </IonLabel>
+                      </IonCol>
+                      <IonCol size="6">
+                        <IonLabel>{item.sanitation}</IonLabel>
+                      </IonCol>
+                      <IonCol size="6">
+                        <IonLabel>{item.cleaning}</IonLabel>
+                      </IonCol>
+                    </IonRow>
+                  </IonGrid>
+                </IonItem>
+              );
+            })}
           </IonList>
         </IonCardContent>
       </IonCard>
