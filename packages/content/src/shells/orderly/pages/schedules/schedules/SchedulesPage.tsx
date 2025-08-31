@@ -38,7 +38,7 @@ export default function SchedulesPage() {
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            {hasAccess ? (
+            {true ? (
               <>
                 <CardNav
                   label="Midweek Meeting"
@@ -65,7 +65,7 @@ export default function SchedulesPage() {
                   path={orderlyPath("audio_video")}
                   icon={volumeMediumOutline}
                 />
-                {IS_ORDERLY_APP && (
+                {hasAccess && (
                   <CardNav
                     label="PDF Exports"
                     path={orderlyPath("pdf_exports")}

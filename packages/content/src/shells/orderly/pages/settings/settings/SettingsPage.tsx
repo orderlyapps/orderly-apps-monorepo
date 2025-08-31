@@ -30,7 +30,7 @@ export const useSettings = () => {
   return {
     password,
     handlePasswordChange,
-    hasAccess: true, //password === "kingdom" || password === "damian",
+    hasAccess: password === "kingdom" || password === "damian",
     canEdit: password === "damian",
   };
 };
@@ -68,7 +68,7 @@ export default function SettingsPage() {
                       <IonButton
                         fill="outline"
                         expand="block"
-                        href={`sms://?&body=${encodeURIComponent(`Here is the link to the Proclaimer app 🙂\n\nhttps://proclaimer.pages.dev`)}`}
+                        href={`sms://?&body=${encodeURIComponent(`Here is the link to the Proclaimer app 🙂\n\nhttps://proclaimer.app`)}`}
                         slot="end"
                         className="ion-margin"
                       >

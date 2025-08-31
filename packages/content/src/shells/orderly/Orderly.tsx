@@ -4,7 +4,7 @@ import { UpdateNotification } from "@amodeo/ui/ionic/update-notification/UpdateN
 import { ORDERLY_ROUTES } from "./routes.js";
 
 import "@amodeo/ui/ionic/tabs-app/utils/ionicInit";
-import "@amodeo/util/css/orderly";
+import "@amodeo/util/css/proclaimer";
 
 export function Orderly({ useRegisterSW }: { useRegisterSW?: any }) {
   return (

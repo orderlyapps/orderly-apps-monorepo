@@ -5,7 +5,7 @@ import { createHtmlPlugin } from "vite-plugin-html";
 import path from "path";
 
 const title = {
-  orderly: "Orderly",
+  orderly: "Proclaimer",
   proclaimer: "Proclaimer",
 };
 

@@ -33,7 +33,7 @@ export default function MinistryPage() {
       <IonContent>
         <Suspense fallback={<LoadingSpinner />}>
           <ErrorBoundary fallback={<div>Something went wrong</div>}>
-            {hasAccess ? (
+            {true ? (
               <>
                 <CardNav
                   label="Maps"
