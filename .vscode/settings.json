@@ -295,5 +295,10 @@
   "explorer.sortOrder": "filesFirst",
   "workbench.editor.pinnedTabSizing": "normal",
   "workbench.editor.pinnedTabsOnSeparateRow": true,
-  "editor.useTabStops": true
+  "editor.useTabStops": true,
+  "emmet.useInlineCompletions": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "javascript.suggest.completeFunctionCalls": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.quickSuggestionsDelay": 500
 }

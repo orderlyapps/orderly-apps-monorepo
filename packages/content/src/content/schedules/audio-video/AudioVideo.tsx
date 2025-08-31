@@ -41,7 +41,6 @@ type Assignee =
   | "Tim Stott"
   | "Igor DeSouza"
   | "Blake Richmond"
-  | "Phil Woodhall"
   | "Steve Willder"
   | "Ron Zapp"
   | "Denis McTackett"
@@ -95,7 +94,7 @@ const scheduleData: ScheduleWeek[] = [
       stage: "Tim Stott",
       zoom: "Igor DeSouza",
       microphone1: "Matt Taylor",
-      microphone2: "Phil Woodhall",
+      microphone2: "Philip Woodhall",
       entrance: "Tristan Roberts",
       auditorium: "Ron Zapp",
     },
@@ -192,6 +191,121 @@ const scheduleData: ScheduleWeek[] = [
       auditorium: "Mark Blackwell",
     },
   },
+  {
+    week: "Sep 1-Sep 7",
+    midweek: {
+      audio: "Darcy Bray",
+      video: "Ben Cizzio",
+      stage: "Tim Stott",
+      zoom: "Callum McDonald",
+      microphone1: "Matt Taylor",
+      microphone2: "Simeon Bray",
+      entrance: "Denis McTackett",
+      auditorium: "John Bray",
+    },
+    weekend: {
+      audio: "Lauchlan Davis",
+      video: "Simeon Bray",
+      stage: "John Bray",
+      zoom: "Ron Zapp",
+      microphone1: "Blake Richmond",
+      microphone2: "Tim Stott",
+      entrance: "Steve Willder",
+      auditorium: "Philip Woodhall",
+    },
+  },
+  {
+    week: "Sep 8-Sep 14",
+    midweek: {
+      audio: "Steve Willder",
+      video: "Tom Bennies",
+      stage: "Igor DeSouza",
+      zoom: "Darcy Bray",
+      microphone1: "Lauchlan Davis",
+      microphone2: "Damian Amodeo",
+      entrance: "Mark Blackwell",
+      auditorium: "Tristan Roberts",
+    },
+    weekend: {
+      audio: "Philip Woodhall",
+      video: "Damian Amodeo",
+      stage: "Jade Mitchell",
+      zoom: "John Bray",
+      microphone1: "Callum McDonald",
+      microphone2: "Anton Arets",
+      entrance: "Tristan Roberts",
+      auditorium: "Rob Amos",
+    },
+  },
+  {
+    week: "Sep 15-Sep 21",
+    midweek: {
+      audio: "Anton Arets",
+      video: "Igor DeSouza",
+      stage: "Stephen Gurr",
+      zoom: "Simeon Bray",
+      microphone1: "Matt Taylor",
+      microphone2: "Lauchlan Davis",
+      entrance: "Darcy Bray",
+      auditorium: "Ron Zapp",
+    },
+    weekend: {
+      audio: "Tim Stott",
+      video: "Darcy Bray",
+      stage: "Anton Arets",
+      zoom: "Tom Bennies",
+      microphone1: "Stephen Gurr",
+      microphone2: "Callum McDonald",
+      entrance: "John Bray",
+      auditorium: "Mark Blackwell",
+    },
+  },
+  {
+    week: "Sep 22-Sep 28",
+    midweek: {
+      audio: "Simeon Bray",
+      video: "Denis McTackett",
+      stage: "Callum McDonald",
+      zoom: "Tristan Roberts",
+      microphone1: "Kadri Demiri-Smith",
+      microphone2: "Blake Richmond",
+      entrance: "Philip Woodhall",
+      auditorium: "Eric Graves",
+    },
+    weekend: {
+      audio: "Damian Amodeo",
+      video: "Simeon Bray",
+      stage: "Philip Woodhall",
+      zoom: "Steve Willder",
+      microphone1: "Igor DeSouza",
+      microphone2: "Tim Stott",
+      entrance: "Tom Bennies",
+      auditorium: "Nigel Vincent",
+    },
+  },
+  {
+    week: "Sep 29-Oct 5",
+    midweek: {
+      audio: "Igor DeSouza",
+      video: "Tristan Roberts",
+      stage: "Simeon Bray",
+      zoom: "Ron Zapp",
+      microphone1: "Anton Arets",
+      microphone2: "Stephen Gurr",
+      entrance: "Jade Mitchell",
+      auditorium: "Darcy Bray",
+    },
+    weekend: {
+      audio: "",
+      video: "",
+      stage: "",
+      zoom: "",
+      microphone1: "",
+      microphone2: "",
+      entrance: "",
+      auditorium: "",
+    },
+  },
 ];
 
 const AssignmentItem = ({
@@ -264,13 +378,17 @@ export const AudioVideo = ({
   return (
     <div className="ion-padding">
       <IonGrid>
-        {scheduleData.map((week, index) => (
-          <IonRow key={index}>
-            <IonCol>
-              <WeekSchedule weekData={week} />
-            </IonCol>
-          </IonRow>
-        ))}
+        {scheduleData.map((week, index) => {
+
+          if (index < 5) return null;
+          return (
+            <IonRow key={index}>
+              <IonCol>
+                <WeekSchedule weekData={week} />
+              </IonCol>
+            </IonRow>
+          );
+        })}
       </IonGrid>
       {children}
     </div>

@@ -10,6 +10,7 @@ import {
   IonRow,
   IonCol,
 } from "@ionic/react";
+import { document } from "ionicons/icons";
 
 type CleaningScheduleItem = {
   week: string;
